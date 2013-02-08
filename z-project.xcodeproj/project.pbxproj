@@ -178,9 +178,8 @@
 		40B9A92216C5C2BB004DCC10 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 40B9A92116C5C2BB004DCC10 /* AppDelegate.mm */; };
 		40B9A92516C5C2BB004DCC10 /* HelloWorldLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 40B9A92416C5C2BB004DCC10 /* HelloWorldLayer.mm */; };
 		40B9A92816C5C2BB004DCC10 /* IntroLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 40B9A92716C5C2BB004DCC10 /* IntroLayer.mm */; };
-		40B9A92B16C5C2BB004DCC10 /* GLES-Render.mm in Sources */ = {isa = PBXBuildFile; fileRef = 40B9A92A16C5C2BB004DCC10 /* GLES-Render.mm */; };
-		40B9A92E16C5C2BB004DCC10 /* PhysicsSprite.mm in Sources */ = {isa = PBXBuildFile; fileRef = 40B9A92D16C5C2BB004DCC10 /* PhysicsSprite.mm */; };
-		40B9A93016C5C2BB004DCC10 /* blocks.png in Resources */ = {isa = PBXBuildFile; fileRef = 40B9A92F16C5C2BB004DCC10 /* blocks.png */; };
+		40B9A93716C5C3FC004DCC10 /* firsMap.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 40B9A93616C5C3FC004DCC10 /* firsMap.tmx */; };
+		40B9A93916C5C423004DCC10 /* tiles.png in Resources */ = {isa = PBXBuildFile; fileRef = 40B9A93816C5C423004DCC10 /* tiles.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -540,11 +539,8 @@
 		40B9A92416C5C2BB004DCC10 /* HelloWorldLayer.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = HelloWorldLayer.mm; sourceTree = "<group>"; };
 		40B9A92616C5C2BB004DCC10 /* IntroLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroLayer.h; sourceTree = "<group>"; };
 		40B9A92716C5C2BB004DCC10 /* IntroLayer.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = IntroLayer.mm; sourceTree = "<group>"; };
-		40B9A92916C5C2BB004DCC10 /* GLES-Render.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GLES-Render.h"; sourceTree = "<group>"; };
-		40B9A92A16C5C2BB004DCC10 /* GLES-Render.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = "GLES-Render.mm"; sourceTree = "<group>"; };
-		40B9A92C16C5C2BB004DCC10 /* PhysicsSprite.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhysicsSprite.h; sourceTree = "<group>"; };
-		40B9A92D16C5C2BB004DCC10 /* PhysicsSprite.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PhysicsSprite.mm; sourceTree = "<group>"; };
-		40B9A92F16C5C2BB004DCC10 /* blocks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blocks.png; path = Resources/blocks.png; sourceTree = "<group>"; };
+		40B9A93616C5C3FC004DCC10 /* firsMap.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = firsMap.tmx; path = Resources/firsMap.tmx; sourceTree = "<group>"; };
+		40B9A93816C5C423004DCC10 /* tiles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tiles.png; path = Resources/tiles.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -609,10 +605,6 @@
 				40B9A92416C5C2BB004DCC10 /* HelloWorldLayer.mm */,
 				40B9A92616C5C2BB004DCC10 /* IntroLayer.h */,
 				40B9A92716C5C2BB004DCC10 /* IntroLayer.mm */,
-				40B9A92916C5C2BB004DCC10 /* GLES-Render.h */,
-				40B9A92A16C5C2BB004DCC10 /* GLES-Render.mm */,
-				40B9A92C16C5C2BB004DCC10 /* PhysicsSprite.h */,
-				40B9A92D16C5C2BB004DCC10 /* PhysicsSprite.mm */,
 				40B9A71616C5C2B7004DCC10 /* Resources */,
 				40B9A73016C5C2B7004DCC10 /* libs */,
 				40B9A91C16C5C2BB004DCC10 /* Supporting Files */,
@@ -623,6 +615,8 @@
 		40B9A71616C5C2B7004DCC10 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				40B9A93616C5C3FC004DCC10 /* firsMap.tmx */,
+				40B9A93816C5C423004DCC10 /* tiles.png */,
 				40B9A71716C5C2B7004DCC10 /* Default.png */,
 				40B9A71916C5C2B7004DCC10 /* Default-Landscape~ipad.png */,
 				40B9A71B16C5C2B7004DCC10 /* fps_images.png */,
@@ -636,7 +630,6 @@
 				40B9A72B16C5C2B7004DCC10 /* Icon@2x.png */,
 				40B9A72D16C5C2B7004DCC10 /* Info.plist */,
 				40B9A72E16C5C2B7004DCC10 /* iTunesArtwork */,
-				40B9A92F16C5C2BB004DCC10 /* blocks.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1205,7 +1198,8 @@
 				40B9A72C16C5C2B7004DCC10 /* Icon@2x.png in Resources */,
 				40B9A72F16C5C2B7004DCC10 /* iTunesArtwork in Resources */,
 				40B9A86D16C5C2BA004DCC10 /* ChangeLog in Resources */,
-				40B9A93016C5C2BB004DCC10 /* blocks.png in Resources */,
+				40B9A93716C5C3FC004DCC10 /* firsMap.tmx in Resources */,
+				40B9A93916C5C423004DCC10 /* tiles.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1365,8 +1359,6 @@
 				40B9A92216C5C2BB004DCC10 /* AppDelegate.mm in Sources */,
 				40B9A92516C5C2BB004DCC10 /* HelloWorldLayer.mm in Sources */,
 				40B9A92816C5C2BB004DCC10 /* IntroLayer.mm in Sources */,
-				40B9A92B16C5C2BB004DCC10 /* GLES-Render.mm in Sources */,
-				40B9A92E16C5C2BB004DCC10 /* PhysicsSprite.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
