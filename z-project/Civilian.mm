@@ -20,8 +20,7 @@
 -(id)init {
     if (self = [super initWithFile:@"zombie.png" tag:kTagCivilian]) {
         
-        //[_sprite schedule:@selector(update:)];
-        //[_sprite schedule:@selector(randomWalk) interval:1.0f];
+        [self schedule:@selector(update:)];
     }
     return self;
 }

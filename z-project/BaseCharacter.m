@@ -10,14 +10,42 @@
 
 @implementation BaseCharacter
 
--(id)initWithFile:(NSString*)file tag:(NSInteger*)tag; {
+-(id)initWithFile:(NSString*)file tag:(NSInteger)tag; {
     if (self = [super initWithFile:file]) {
         _properties = [[NSMutableDictionary alloc] init];
         
-        // init tag (inherited property(
         self.tag = tag;
     }
     return self;
+}
+
+- (void)dealloc
+{
+    [_properties release];
+    [super dealloc];
+}
+
+- (CGFloat)left
+{
+    return self.position.x - self.contentSize.width * .5f;
+}
+
+
+- (CGFloat)right
+{
+    return self.position.x + self.contentSize.width * .5f;
+}
+
+
+- (CGFloat)bottom
+{
+    return self.position.y - self.contentSize.height * .5f;
+}
+
+
+- (CGFloat)top
+{
+    return self.position.y - self.contentSize.height * .5f;
 }
 
 @end
