@@ -6,12 +6,11 @@
 //
 //
 
-#import "CCMenu.h"
 #import "cocos2d.h"
 
 @interface MenuLayer : CCLayer
 
--(MenuLayer*)initWithWinSize:(CGSize)winSize;
+-(MenuLayer*)layer;
 
 -(void)updateNumberOfCivilian:(int)number;
 -(void)updateNumberOfZombie:(int)number;
