@@ -88,6 +88,15 @@
     }
 }
 
+-(BOOL)takeDamage:(NSInteger)damage {
+    self.stamina -= damage;
+    if (self.stamina < 0) {
+        [self kill];
+        return YES;
+    }
+    return NO;
+}
+
 -(void)kill
 {
     self.zOrder = kZOrderDead;

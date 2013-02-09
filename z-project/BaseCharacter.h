@@ -14,6 +14,7 @@
 @property (nonatomic, assign) CGPoint velocity;
 @property (nonatomic,retain) NSMutableDictionary* properties;
 @property (nonatomic) State state;
+@property (nonatomic,assign) NSInteger stamina;
 
 // helpers for edges
 @property (nonatomic, readonly) CGFloat left;
@@ -24,5 +25,7 @@
 - (id)initWithSpriteFrameName:(NSString*)file andTag:(NSInteger)tag;
 -(void)kill;
 -(BOOL)isAlive;
+
+-(BOOL)takeDamage:(NSInteger)damage;
 
 @end

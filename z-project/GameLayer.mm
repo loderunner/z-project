@@ -154,12 +154,15 @@ static float const PTM_RATIO = 64.0f;
     location = ccpSub(location, self.map.position);
 
     BaseCharacter* character = [self findCharacterAt:location];
-    if ( character.tag == kTagZombie) {
-        [_scoreCounters registerZombieKilledByPlayer];
-    } else if (character.tag == kTagCivilian) {
-        [_scoreCounters registerCivilianKilledByPlayer];
+
+    BOOL characterWasKilled = [character takeDamage:1];
+    if (characterWasKilled) {
+        if ( character.tag == kTagZombie) {
+            [_scoreCounters registerZombieKilledByPlayer];
+        } else if (character.tag == kTagCivilian) {
+            [_scoreCounters registerCivilianKilledByPlayer];
+        }
     }
-    [character kill];
 }
 
 
