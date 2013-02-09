@@ -182,6 +182,7 @@
 		9A3464B216C5D7EA00828F5D /* ContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A3464B116C5D7EA00828F5D /* ContactListener.mm */; };
 		9A3464BC16C5DDED00828F5D /* zombie.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A3464BB16C5DDED00828F5D /* zombie.png */; };
 		9A3D2B4616C5E68B007F4E05 /* Civilian.mm in Sources */ = {isa = PBXBuildFile; fileRef = 40B9A93B16C5D163004DCC10 /* Civilian.mm */; };
+		9A3D2B4A16C5F3D3007F4E05 /* Zombie.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A3D2B4916C5F3D3007F4E05 /* Zombie.mm */; };
 		9A6DC8BA16C5E0C40030D7A0 /* GameLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 40B9A92416C5C2BB004DCC10 /* GameLayer.mm */; };
 		9A6DC8BB16C5E0C40030D7A0 /* IntroLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 40B9A92716C5C2BB004DCC10 /* IntroLayer.mm */; };
 /* End PBXBuildFile section */
@@ -552,6 +553,8 @@
 		9A3464B116C5D7EA00828F5D /* ContactListener.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ContactListener.mm; sourceTree = "<group>"; };
 		9A3464BB16C5DDED00828F5D /* zombie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = zombie.png; path = Resources/zombie.png; sourceTree = "<group>"; };
 		9A3D2B4716C5EAD8007F4E05 /* Tags.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tags.h; sourceTree = "<group>"; };
+		9A3D2B4816C5F3D3007F4E05 /* Zombie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Zombie.h; sourceTree = "<group>"; };
+		9A3D2B4916C5F3D3007F4E05 /* Zombie.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Zombie.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1180,6 +1183,8 @@
 			children = (
 				40B9A93A16C5D163004DCC10 /* Civilian.h */,
 				40B9A93B16C5D163004DCC10 /* Civilian.mm */,
+				9A3D2B4816C5F3D3007F4E05 /* Zombie.h */,
+				9A3D2B4916C5F3D3007F4E05 /* Zombie.mm */,
 				9A3D2B4716C5EAD8007F4E05 /* Tags.h */,
 			);
 			name = characters;
@@ -1413,6 +1418,7 @@
 				9A6DC8BA16C5E0C40030D7A0 /* GameLayer.mm in Sources */,
 				9A6DC8BB16C5E0C40030D7A0 /* IntroLayer.mm in Sources */,
 				9A3D2B4616C5E68B007F4E05 /* Civilian.mm in Sources */,
+				9A3D2B4A16C5F3D3007F4E05 /* Zombie.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
