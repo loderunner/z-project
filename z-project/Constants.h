@@ -13,6 +13,14 @@ typedef enum
 }
 Tags;
 
+typedef enum
+{
+    kZOrderDead = 0,
+    kZOrderCivilian,
+    kZOrderZombie
+}
+ZOrder;
+
 #define kMinimapSpriteKey @"MiniMapSprite"
 #define kMinimapImageKey @"ImageForMiniMap"
 #define kMinimapSpriteForCivilian @"icon_civilian.png"

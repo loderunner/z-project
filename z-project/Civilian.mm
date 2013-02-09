@@ -34,6 +34,7 @@ static NSString* const FRAME_DEAD = @"civilian-dead";
     if (self = [super initWithSpriteFrameName:@"civilian-up" andTag:kTagCivilian])
     {
         [self schedule:@selector(randomWalk) interval:2.0f];
+        self.zOrder = kZOrderCivilian;
     }
     return self;
 }

@@ -8,6 +8,7 @@
 
 #import "BaseCharacter.h"
 #import "cocos2d.h"
+#import "Constants.h"
 
 typedef enum
 {
@@ -79,7 +80,8 @@ State;
 
 -(void)kill
 {
-    _state = kStateDead;
+    self.state = kStateDead;
+    self.zOrder = kZOrderDead;
 }
 
 -(BOOL)isAlive

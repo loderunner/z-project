@@ -145,8 +145,6 @@ static float const PTM_RATIO = 64.0f;
 
     Zombie* zombie = [self findZombieTouched:location];
     [zombie kill];
-
-    //NSLog(@"TAPPED !");
 }
 
 
