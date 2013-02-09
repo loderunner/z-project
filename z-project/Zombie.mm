@@ -18,8 +18,7 @@ static CGFloat const SPEED = 40.f;
 @implementation Zombie
 
 -(id)init {
-    if (self = [super initWithFile:@"zombie.png" tag:kTagZombie]) {        
-        [self schedule:@selector(update:)];
+    if (self = [super initWithFile:@"zombie.png" tag:kTagZombie]) {
         [self schedule:@selector(randomWalk) interval:1.0f];
     }
     return self;
@@ -38,20 +37,11 @@ static CGFloat const SPEED = 40.f;
     return self;
 }
 
-- (void)update:(ccTime)dt
-{
-    CGPoint pos = self.position;
-    CGPoint move = ccpMult(_velocity, dt);
-    pos = ccpAdd(pos, move);
-    
-    self.position = pos;
-}
-
 -(void)randomWalk {
     CGFloat angle = CCRANDOM_0_1() * 2 * M_PI;
     CGFloat x = cosf(angle) * SPEED;
     CGFloat y = sinf(angle) * SPEED;
-    _velocity = ccp(x, y);
+    self.velocity = ccp(x, y);
 }
 
 @end

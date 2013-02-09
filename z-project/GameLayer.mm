@@ -54,7 +54,7 @@ static float const PTM_RATIO = 64.0f;
 
 -(id) init
 {
-	if (self = [super init]) {
+	if (self = [super init]) {        
         //initialize box2d collision manager
         b2Vec2 gravity = b2Vec2(0.0f, 0.0f);
         world = new b2World(gravity);
