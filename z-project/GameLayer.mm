@@ -31,6 +31,7 @@
     CGSize tileSize;
     b2World* world;
     ContactListener* contactListener;
+    int updateCount;
 }
 
 @end
@@ -68,27 +69,37 @@
         mapSize  = _map.mapSize;
         tileSize = _map.tileSize;
 
-        
+        [self scheduleUpdate];
         self.isTouchEnabled = YES;
         
         self.civilians = [[NSMutableArray alloc] init];
         [self spawnCivilians:200];
         
+        updateCount = 0;
         [self createMiniMap];
 	}
 	return self;
 }
 
+-(void)update:(ccTime)time {
+    if (updateCount % 40 == 0) {
+        [self.minimap updateMiniMap:self.civilians];
+    }
+    ++updateCount;
+}
+
 -(void)createMiniMap {
     // we want 100px height for the minimap
     float height = 200.0;
-    float ratio = height / mapSize.height;
-    float width = ratio * mapSize.width;
+    float ratio = height / (mapSize.height * tileSize.height);
+    float width = ratio * (mapSize.width * tileSize.width);
     CGPoint position = ccp(winSize.width-width,winSize.height-height);
     self.minimap = [[MiniMap alloc] initWithPosition:position size:CGSizeMake(width,height) andRatio:ratio];
     [self addChild:self.minimap];
 
 }
+
+
 
 -(void)spawnCivilians:(int) numCivilians {
     int totalWidth  = mapSize.width  * tileSize.width;

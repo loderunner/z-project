@@ -43,12 +43,14 @@
     [self removeAllChildrenWithCleanup:YES];
     for (Civilian* c in civilians) {
         CGPoint originalPosition = c.sprite.position;
-        CGPoint positionInMinimap = ccp(originalPosition.x*self.ratio,originalPosition.y*self.ratio);
+        //NSLog(@"ratio=%f",self.ratio);
+        //NSLog(@"original = %f,%f",originalPosition.x,originalPosition.y);
+        CGPoint positionInMinimap = ccp(originalPosition.x*self.ratio, originalPosition.y*self.ratio);
+        //NSLog(@"final = %f,%f",positionInMinimap.x,positionInMinimap.y);
         CCSprite* sprite = [CCSprite spriteWithFile:@"icon_civilian.png"];
-        sprite.position = positionInMinimap;
+        sprite.position = ccp(positionInMinimap.x+self.point.x,positionInMinimap.y+self.point.y);
         [self addChild:sprite];
     }
-    
 }
 
 @end
