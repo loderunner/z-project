@@ -196,7 +196,7 @@ static float const PTM_RATIO = 64.0f;
 #pragma mark - menuLayer
 
 -(void)createMenuLayer {
-    self.menuLayer = [[MenuLayer alloc] initWithWinSize:winSize];
+    self.menuLayer = [[MenuLayer alloc] layer];
     [self addChild:self.menuLayer];
 }
 

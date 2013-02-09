@@ -19,8 +19,11 @@
 
 @implementation MenuLayer
 
--(MenuLayer*)initWithWinSize:(CGSize)winSize {
+-(MenuLayer*) layer {
     if (self = [self init]) {
+        
+        CGSize winSize  = [CCDirector sharedDirector].winSize;
+        // TODO change the size with the size of the picture provided by disigners
         _size = CGSizeMake(100, 100);
         // create a few labels with text and selector
         CCLabelTTF* zombieLabel = [CCLabelTTF labelWithString:@"Zombies" fontName:@"Helvetica-BoldOblique" fontSize:26];
