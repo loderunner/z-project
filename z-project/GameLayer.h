@@ -16,6 +16,6 @@
 
 @property (nonatomic, strong) CCTMXTiledMap* map;
 
-+(CCScene *) scene;
++(CCScene *) sceneWithMap:(NSString*)mapName;
 
 @end
