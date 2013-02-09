@@ -84,7 +84,8 @@ static float const PTM_RATIO = 64.0f;
         
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
             [self createMiniMap];
-            [self schedule:@selector(updateMiniMap:) interval:.7f];
+            [self schedule:@selector(updateMiniMapCharacters:) interval:.7f];
+            [self schedule:@selector(updateMiniMapPosition:) interval:.05f];  // 1/20th sec
         }
 	}
 	return self;
@@ -150,13 +151,17 @@ static float const PTM_RATIO = 64.0f;
     [self addChild:self.minimap];
 }
 
-- (void)updateMiniMap:(ccTime)dt
+- (void)updateMiniMapCharacters:(ccTime)dt
 {
     [self.minimap updateMiniMap:self.civilians];
     [self.minimap updateMiniMap:self.zombies];
+}
+
+- (void)updateMiniMapPosition:(ccTime)dt {
     CGPoint viewPosition = ccp(-self.map.position.x,-self.map.position.y);
     [self.minimap updateViewPosition:viewPosition];
 }
+
 
 #pragma mark - Box2D stuff
 
