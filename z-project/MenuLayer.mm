@@ -8,6 +8,7 @@
 
 #import "MenuLayer.h"
 #import "cocos2d.h"
+#import "Constants.h"
 
 @interface MenuLayer()
 
@@ -27,9 +28,9 @@
         _size = CGSizeMake(125, 103);
         CGPoint positionNumber = CGPointMake(93,72);
         // create a few labels with text and selector
-        CCSprite* zombieIcone = [CCSprite spriteWithFile:@"icon_menu_zombie.png"];
+        CCSprite* zombieIcone = [CCSprite spriteWithFile:kHeadmenuSpriteForZombie];
         _zombieNum = [CCLabelTTF labelWithString:@"" fontName:@"Helvetica-BoldOblique" fontSize:20];
-        CCSprite* civilianIcone = [CCSprite spriteWithFile:@"icon_menu_zombie.png"];
+        CCSprite* civilianIcone = [CCSprite spriteWithFile:kHeadmenuSpriteForCivilian];
         _civilianNum = [CCLabelTTF labelWithString:@"" fontName:@"Helvetica-BoldOblique" fontSize:20];
         
         zombieIcone.position = CGPointMake(_size.width/2, winSize.height- _size.height/2);
