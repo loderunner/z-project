@@ -33,7 +33,8 @@ static NSString* const FRAME_DEAD = @"zombie-dead";
 -(id)init {
     if (self = [super initWithSpriteFrameName:@"zombie-up" andTag:kTagZombie])
     {
-        [self schedule:@selector(followCivilian) interval:2.0f];
+        [self schedule:@selector(followCivilian) interval:1.0f];
+        [self followCivilian];
         self.zOrder = kZOrderZombie;
         self.state = kStateAlive;
     }
@@ -90,19 +91,19 @@ static NSString* const FRAME_DEAD = @"zombie-dead";
     
     //select frame from angle
     CCSpriteFrameCache* cache = [CCSpriteFrameCache sharedSpriteFrameCache];
-    if (angle > 7*M_PI_4 || angle < M_PI_4)
+    if (angle > 7*M_PI_4 || angle <= M_PI_4)
     {
         [self setDisplayFrame:[cache spriteFrameByName:FRAME_FACING_RIGHT]];
     }
-    else if (angle < 3*M_PI_4)
+    else if (angle > M_PI_4 && angle <= 3*M_PI_4)
     {
         [self setDisplayFrame:[cache spriteFrameByName:FRAME_FACING_UP]];
     }
-    else if (angle < 5*M_PI_4)
+    else if (angle > 3*M_PI_4 && angle <= 5*M_PI_4)
     {
         [self setDisplayFrame:[cache spriteFrameByName:FRAME_FACING_LEFT]];
     }
-    else if (angle < 3*M_PI_4)
+    else if (angle > 5*M_PI_4 && angle <= 7*M_PI_4)
     {
         [self setDisplayFrame:[cache spriteFrameByName:FRAME_FACING_DOWN]];
     }
