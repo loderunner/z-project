@@ -50,6 +50,7 @@
 -(NSInteger)numZombies {
     return self.numZombiesInitial
     - self.numZombiesKilledByPlayer
+    + self.numCiviliansConvertedToZombie
     + self.numZombiesSpawned;
 
 }
