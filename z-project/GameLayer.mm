@@ -14,6 +14,7 @@
 #import "Box2D.h"
 #import "ContactListener.h"
 #import "Constants.h"
+#import "TiledMap.h"
 
 
 #pragma mark - GameLayer
@@ -66,7 +67,7 @@ static float const PTM_RATIO = 64.0f;
         world->SetContactListener(contactListener);
         
         // load the map
-        _map = [[CCTMXTiledMap alloc] initWithTMXFile:@"firsMap.tmx"];
+        _map = [[TiledMap alloc] initWithTMXFile:@"firsMap.tmx"];
         _map.anchorPoint = CGPointZero;
         CCTMXObjectGroup* spawnPoints = [_map objectGroupNamed:@"spawnPoints"];
         _spawnPoints = [spawnPoints.objects copy];
