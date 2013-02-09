@@ -25,8 +25,8 @@
 -(id)init {
     if (self = [super init]) {
         CCMenuItemSprite* level1 = [self
-                                    createMenuItemWithNormalImage:@"leve1_normal.png"
-                                    selectedImage:@"leve1_selected.png"
+                                    createMenuItemWithNormalImage:@"level1_normal.png"
+                                    selectedImage:@"level1_selected.png"
                                     selector:@selector(firstLevel:)];
         CCMenuItemSprite* level2 = [self
                                     createMenuItemWithNormalImage:@"level2_normal.png"
