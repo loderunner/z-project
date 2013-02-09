@@ -248,29 +248,19 @@ static float const PTM_RATIO = 64.0f;
                 
                 if (overlapX*overlapX < overlapY*overlapY)
                 {
-                    if (spriteA.movedForCollision)
+                    spriteA.position = ccp(spriteA.position.x + overlapX, spriteA.position.y);
+                    if (spriteA.movedSprites)
                     {
-                        spriteB.position = ccp(spriteB.position.x - overlapX, spriteB.position.y);
-                        spriteB.movedForCollision = YES;
                     }
-                    else
-                    {
-                        spriteA.position = ccp(spriteA.position.x + overlapX, spriteA.position.y);
-                        spriteA.movedForCollision = YES;
-                    }
+                    [spriteB.movedSprites addObject:spriteA];
                 }
                 else
                 {
-                    if (spriteA.movedForCollision)
+                    spriteA.position = ccp(spriteA.position.x, spriteA.position.y + overlapY);
+                    for (BaseCharacter* bc in spriteA.movedSprites)
                     {
-                        spriteB.position = ccp(spriteB.position.x, spriteB.position.y - overlapY);
-                        spriteB.movedForCollision = YES;
                     }
-                    else
-                    {
-                        spriteA.position = ccp(spriteA.position.x, spriteA.position.y + overlapY);
-                        spriteA.movedForCollision = YES;
-                    }
+                    [spriteB.movedSprites addObject:spriteA];
                 } 
             }
         }

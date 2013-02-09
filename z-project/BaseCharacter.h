@@ -10,8 +10,8 @@
 
 @interface BaseCharacter : CCSprite
 
-@property (nonatomic,retain) NSMutableDictionary* properties;
-@property (nonatomic) BOOL movedForCollision;
+@property (nonatomic, retain) NSMutableDictionary* properties;
+@property (nonatomic, retain) NSMutableArray* movedSprites;
 
 // helpers for edges
 @property (nonatomic, readonly) CGFloat left;
