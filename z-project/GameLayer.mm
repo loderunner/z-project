@@ -354,7 +354,7 @@ static float const PTM_RATIO = 64.0f;
                     civilian = (Civilian*)spriteA;
                 }
                 
-                // kill civilian, save in list and wake as zombie in 3 seconds
+                // kill civilian and wake as zombie in 3 seconds
                 if ([civilian isAlive] && [zombie isAlive])
                 {
                     [civilian kill];
