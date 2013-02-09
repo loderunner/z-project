@@ -45,17 +45,17 @@ static float const PTM_RATIO = 64.0f;
 
 @implementation GameLayer
 
-+(CCScene *) scene
++(CCScene *) sceneWithMap:(NSString*)mapName
 {
 	CCScene *scene = [CCScene node];
-    GameLayer *layer = [GameLayer node];
+    GameLayer *layer = [[[GameLayer alloc] initWithMap:mapName] autorelease];
 	
 	[scene addChild: layer];
 	
 	return scene;
 }
 
--(id) init
+-(id) initWithMap:(NSString*)mapName
 {
 	if (self = [super init]) {        
         //initialize box2d collision manager
@@ -67,7 +67,7 @@ static float const PTM_RATIO = 64.0f;
         world->SetContactListener(contactListener);
         
         // load the map
-        _map = [[TiledMap alloc] initWithTMXFile:@"mapdeux.tmx"];
+        _map = [[TiledMap alloc] initWithTMXFile:mapName];
         _map.anchorPoint = CGPointZero;
         CCTMXObjectGroup* spawnPoints = [_map objectGroupNamed:@"spawnPoints"];
         _spawnPoints = [spawnPoints.objects copy];
