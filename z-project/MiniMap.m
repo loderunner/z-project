@@ -36,8 +36,8 @@
     glEnable(GL_LINE_SMOOTH);
     glColor4ub(255, 255, 255, 255);
     glLineWidth(2);
-    CGPoint vertices2[] = { self.point, ccp(self.point.x+self.size.width,self.point.y), ccp(self.point.x+self.size.width,self.point.y+self.size.height), ccp(self.point.x,self.point.y+self.size.height) };
-    ccDrawPoly(vertices2, 4, YES);
+    ccColor4F fillColor = kMinimapFillColor;
+    ccDrawSolidRect(self.point,ccp(self.point.x+self.size.width,self.point.y+self.size.height), fillColor);
 }
 
 -(void)updateMiniMap:(NSArray*)civilians {
