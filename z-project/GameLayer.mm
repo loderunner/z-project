@@ -79,7 +79,9 @@ static float const PTM_RATIO = 64.0f;
         [self spawnCivilians:200];
         [self spawnZombies:30];
         
-        [self createMiniMap];
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+            [self createMiniMap];
+        }
         [self schedule:@selector(updateMiniMap:) interval:.7f];
 	}
 	return self;

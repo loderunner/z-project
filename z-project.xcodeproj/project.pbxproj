@@ -555,8 +555,8 @@
 		40B9A95D16C65424004DCC10 /* IntroLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IntroLayer.mm; sourceTree = "<group>"; };
 		40B9A96116C65546004DCC10 /* BaseCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCharacter.h; sourceTree = "<group>"; };
 		40B9A96516C65E9D004DCC10 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = "z-project/Constants.h"; sourceTree = "<group>"; };
-		40B9A96616C66311004DCC10 /* icon_zombie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_zombie.png; path = "z-project/Resources/icon_zombie.png"; sourceTree = "<group>"; };
-		40B9A96816C66A84004DCC10 /* BaseCharacter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = BaseCharacter.mm; path = "z-project/BaseCharacter.mm"; sourceTree = "<group>"; };
+		40B9A96616C66311004DCC10 /* icon_zombie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_zombie.png; path = Resources/icon_zombie.png; sourceTree = "<group>"; };
+		40B9A96816C66A84004DCC10 /* BaseCharacter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BaseCharacter.mm; sourceTree = "<group>"; };
 		9A3464B016C5D7EA00828F5D /* ContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactListener.h; sourceTree = "<group>"; };
 		9A3464B116C5D7EA00828F5D /* ContactListener.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ContactListener.mm; sourceTree = "<group>"; };
 		9A3464BB16C5DDED00828F5D /* zombie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = zombie.png; path = Resources/zombie.png; sourceTree = "<group>"; };
@@ -590,8 +590,6 @@
 		40B9A6F716C5C2B7004DCC10 = {
 			isa = PBXGroup;
 			children = (
-				40B9A96816C66A84004DCC10 /* BaseCharacter.mm */,
-				40B9A96616C66311004DCC10 /* icon_zombie.png */,
 				40B9A96516C65E9D004DCC10 /* Constants.h */,
 				40B9A71516C5C2B7004DCC10 /* z-project */,
 				40B9A70216C5C2B7004DCC10 /* Frameworks */,
@@ -1174,6 +1172,7 @@
 		40B9A94016C5D286004DCC10 /* sprites */ = {
 			isa = PBXGroup;
 			children = (
+				40B9A96616C66311004DCC10 /* icon_zombie.png */,
 				40B9A93D16C5D267004DCC10 /* civilian.png */,
 				9A3464BB16C5DDED00828F5D /* zombie.png */,
 				9A43B63516C5FF250097FE86 /* icon_civilian.png */,
@@ -1197,6 +1196,7 @@
 		40B9A94216C5D7D7004DCC10 /* characters */ = {
 			isa = PBXGroup;
 			children = (
+				40B9A96816C66A84004DCC10 /* BaseCharacter.mm */,
 				40B9A95816C65424004DCC10 /* Civilian.h */,
 				40B9A95916C65424004DCC10 /* Civilian.mm */,
 				9A3D2B4816C5F3D3007F4E05 /* Zombie.h */,
