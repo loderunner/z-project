@@ -186,11 +186,8 @@ static float const PTM_RATIO = 64.0f;
 
 #pragma mark - menuLayer
 
--(void)createMenuLayer {
-    float height = 50.0;
-    float width = winSize.width;
-    CGPoint position = ccp(100, winSize.height);
-    CGSize size = CGSizeMake(0,100); //width, height);
+-(void)createMenuLayer
+{
     self.menuLayer = [[MenuLayer alloc] initWithWinSize:winSize];
     [self addChild:self.menuLayer];
 }
