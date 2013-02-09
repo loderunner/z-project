@@ -98,6 +98,7 @@ static float const PTM_RATIO = 64.0f;
 {
     [self updateBodies:dt];
     [self handleCollisions];
+    [self.minimap updateMiniMap:self.civilians];
 }
 
 -(void)createMiniMap {

@@ -6,10 +6,12 @@
 //
 //
 
+#import "BaseCharacter.h"
+
 #import "cocos2d.h"
 #import <Foundation/Foundation.h>
 
-@interface Zombie : CCSprite
+@interface Zombie : BaseCharacter
 
 -(Zombie*)initWithPosition:(CGPoint)position;
 -(void)randomWalk;

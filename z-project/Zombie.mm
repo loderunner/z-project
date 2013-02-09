@@ -20,13 +20,16 @@ static CGFloat const SPEED = 40.f;
 @implementation Zombie
 
 -(id)init {
-    if (self = [super initWithFile:@"zombie.png"]) {
-        self.tag = TagZombie;
-        
+    if (self = [super initWithFile:@"zombie.png" tag:kTagZombie]) {        
         [self schedule:@selector(update:)];
         [self schedule:@selector(randomWalk) interval:1.0f];
     }
     return self;
+}
+
+-(void)initSchedulers {
+    [self schedule:@selector(update:)];
+    [self schedule:@selector(randomWalk) interval:1.0f];
 }
 
 - (void)dealloc

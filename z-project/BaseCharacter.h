@@ -10,4 +10,8 @@
 
 @interface BaseCharacter : CCSprite
 
+@property (nonatomic,retain) NSMutableDictionary* properties;
+
+-(id)initWithFile:(NSString*)file tag:(NSInteger)tag;
+
 @end

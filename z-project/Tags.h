@@ -8,7 +8,7 @@
 
 typedef enum
 {
-    TagZombie = 0,
-    TagCivilian = 1
+    kTagZombie   = 0,
+    kTagCivilian
 }
 Tags;
