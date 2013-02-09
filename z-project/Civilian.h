@@ -16,6 +16,6 @@
 
 -(Civilian*)initWithPosition:(CGPoint)position;
 -(void)infect;
--(void)randomWalk;
+-(void)fleeZombie;
 
 @end

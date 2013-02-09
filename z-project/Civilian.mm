@@ -7,6 +7,7 @@
 //
 
 #import "Civilian.h"
+#import "Zombie.h"
 
 static CGFloat const SPEED = 40.f;
 
@@ -33,7 +34,8 @@ static NSString* const FRAME_DEAD_INFECTED = @"civilian-dead-infected";
 -(id)init {
     if (self = [super initWithSpriteFrameName:@"civilian-up" andTag:kTagCivilian])
     {
-        [self schedule:@selector(randomWalk) interval:2.0f];
+        [self schedule:@selector(fleeZombie) interval:1.0f];
+        [self fleeZombie];
         self.zOrder = kZOrderCivilian;
     }
     return self;
@@ -60,7 +62,7 @@ static NSString* const FRAME_DEAD_INFECTED = @"civilian-dead-infected";
 - (void) kill
 {
     self.state = kStateDead;
-    [self unschedule:@selector(randomWalk)];
+    [self unschedule:@selector(fleeZombie)];
     [self setDisplayFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:FRAME_DEAD]];
     [super kill];
 }
@@ -68,13 +70,28 @@ static NSString* const FRAME_DEAD_INFECTED = @"civilian-dead-infected";
 - (void) infect
 {
     self.state = kStateCivilianDeadInfected;
-    [self unschedule:@selector(randomWalk)];
+    [self unschedule:@selector(fleeZombie)];
     [self setDisplayFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:FRAME_DEAD_INFECTED]];
 }
 
 
--(void)randomWalk {
-    CGFloat angle = CCRANDOM_0_1() * 2 * M_PI;
+-(void)fleeZombie {
+    CGFloat minDistance2 = CGFLOAT_MAX;
+    Zombie* minZombie = nil;
+    for (CCSprite* sprite in self.parent.children)
+    {
+        if ([sprite isKindOfClass:Zombie.class] && [(Civilian*)sprite isAlive])
+        {
+            CGFloat distance2 = ccpLengthSQ(ccpSub(sprite.position, self.position));
+            if (distance2 < minDistance2)
+            {
+                minZombie = (Zombie*)sprite;
+                minDistance2 = distance2;
+            }
+        }
+    }
+    
+    CGFloat angle = ccpToAngle(ccpSub(self.position, minZombie.position));
     CGFloat x = cosf(angle) * SPEED;
     CGFloat y = sinf(angle) * SPEED;
     self.velocity = ccp(x, y);
@@ -85,15 +102,15 @@ static NSString* const FRAME_DEAD_INFECTED = @"civilian-dead-infected";
     {
         [self setDisplayFrame:[cache spriteFrameByName:FRAME_FACING_RIGHT]];
     }
-    else if (angle < M_PI_4 && angle <= 3*M_PI_4)
+    else if (angle > M_PI_4 && angle <= 3*M_PI_4)
     {
         [self setDisplayFrame:[cache spriteFrameByName:FRAME_FACING_UP]];
     }
-    else if (angle < 3*M_PI_4 && angle <= 5*M_PI_4)
+    else if (angle > 3*M_PI_4 && angle <= 5*M_PI_4)
     {
         [self setDisplayFrame:[cache spriteFrameByName:FRAME_FACING_LEFT]];
     }
-    else if (angle < 5*M_PI_4 && angle <= 7*M_PI_4)
+    else if (angle > 5*M_PI_4 && angle <= 7*M_PI_4)
     {
         [self setDisplayFrame:[cache spriteFrameByName:FRAME_FACING_DOWN]];
     }

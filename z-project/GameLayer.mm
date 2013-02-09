@@ -386,9 +386,11 @@ static float const PTM_RATIO = 64.0f;
                     civilian = (Civilian*)spriteA;
                 }
                 
-                // kill civilian and wake as zombie in 3 seconds
                 if ([civilian isAlive] && [zombie isAlive])
                 {
+                    [zombie eatCivilian:civilian];
+                    
+                    // kill civilian and wake as zombie in 3 seconds
                     [civilian infect];
                     CCDelayTime* delayAction = [CCDelayTime actionWithDuration:3];
                     CCCallBlock* blockAction = [CCCallBlock actionWithBlock:^(void)
