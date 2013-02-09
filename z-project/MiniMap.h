@@ -6,6 +6,7 @@
 //
 //
 
+#import "BaseCharacter.h"
 #import "CCNode.h"
 
 @interface MiniMap : CCLayer
@@ -14,5 +15,6 @@
 -(void)updateMiniMap:(NSArray*)civilians;
 -(void)updateViewPosition:(CGPoint)position;
 -(BOOL)intersectsLocation:(CGPoint)touchLocation withPadding:(float)padding;
+-(void)removeCharacter:(BaseCharacter*)character;
 
 @end

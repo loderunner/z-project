@@ -90,6 +90,13 @@
     self.viewPosition = position;
 }
 
+-(void)removeCharacter:(BaseCharacter *)character {
+    CCSprite* miniMapSprite = [character.properties objectForKey:kMinimapSpriteKey];
+    if (!miniMapSprite) return;
+    
+    [self removeChild:miniMapSprite cleanup:YES];
+ }
+
 #pragma mark - touch events
 
 -(void) registerWithTouchDispatcher
