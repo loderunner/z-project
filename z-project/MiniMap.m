@@ -17,6 +17,7 @@
 @property (nonatomic,assign) CGPoint point;
 @property (nonatomic,assign) CGSize  size;
 @property (nonatomic,assign) float   ratio;
+@property (nonatomic,assign) CGPoint viewPosition;
 
 @end
 
@@ -27,6 +28,7 @@
         _point = point;
         _size  = size;
         _ratio = ratio;
+        _viewPosition = CGPointZero;
         self.isTouchEnabled = YES;
     }
     return self;
@@ -39,6 +41,13 @@
     glLineWidth(2);
     ccColor4F fillColor = kMinimapFillColor;
     ccDrawSolidRect(self.point,ccp(self.point.x+self.size.width,self.point.y+self.size.height), fillColor);
+    
+    float left   = self.viewPosition.x * self.ratio;
+    float bottom = self.viewPosition.y * self.ratio;
+    CGSize windowsSize = [[CCDirector sharedDirector] winSize];
+    float right = left + windowsSize.width * self.ratio;
+    float top = bottom + windowsSize.height * self.ratio;
+    ccDrawRect(ccp(left,bottom),ccp(right,top));
 }
 
 -(void)updateMiniMap:(NSArray*)characters {
