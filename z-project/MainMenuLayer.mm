@@ -52,12 +52,15 @@
 -(void)firstLevel:(id)sender {
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFade
                                               transitionWithDuration:1.5
-                                              scene:[GameLayer scene]
+                                               scene:[GameLayer sceneWithMap:@"map_one.tmx"]
                                               withColor:ccWHITE]];
 }
 
 -(void)secondLevel:(id)sender {
-    
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade
+                                               transitionWithDuration:1.5
+                                               scene:[GameLayer sceneWithMap:@"map_two.tmx"]
+                                               withColor:ccWHITE]];
 }
 
 -(void)thirdLevel:(id)sender {
