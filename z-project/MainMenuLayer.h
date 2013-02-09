@@ -6,8 +6,9 @@
 //
 //
 
+#import "cocos2d.h"
 #import <UIKit/UIKit.h>
 
-@interface MainMenuLayer : CCNoce
+@interface MainMenuLayer : CCNode
 
 @end
