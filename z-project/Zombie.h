@@ -16,6 +16,6 @@
 @property (nonatomic) CGPoint velocity;
 
 -(Zombie*)initWithPosition:(CGPoint)position;
--(void)randomWalk;
+-(void)followCivilian;
 
 @end

@@ -203,8 +203,6 @@ static float const PTM_RATIO = 64.0f;
     [self.civilians addObject:civilian];
     [self.map addChild:civilian];
     [self addBoxBodyForSprite:civilian];
-    
-    [civilian randomWalk];
 }
 
 - (void)removeCivilian:(Civilian*)civilian
@@ -220,8 +218,6 @@ static float const PTM_RATIO = 64.0f;
     [self.zombies addObject:zombie];
     [self.map addChild:zombie];
     [self addBoxBodyForSprite:zombie];
-    
-    [zombie randomWalk];
 }
 
 - (void)removeZombie:(Zombie*)zombie

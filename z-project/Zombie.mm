@@ -7,6 +7,7 @@
 //
 
 #import "Zombie.h"
+#import "Civilian.h"
 
 static CGFloat const SPEED = 60.f;
 
@@ -32,7 +33,7 @@ static NSString* const FRAME_DEAD = @"zombie-dead";
 -(id)init {
     if (self = [super initWithSpriteFrameName:@"zombie-up" andTag:kTagZombie])
     {
-        [self schedule:@selector(randomWalk) interval:2.0f];
+        [self schedule:@selector(followCivilian) interval:2.0f];
         self.zOrder = kZOrderZombie;
         self.state = kStateAlive;
     }
@@ -61,13 +62,28 @@ static NSString* const FRAME_DEAD = @"zombie-dead";
 {
     self.state = kStateDead;
     
-    [self unschedule:@selector(randomWalk)];
+    [self unschedule:@selector(followCivilian)];
     [self setDisplayFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:FRAME_DEAD]];
     [super kill];
 }
 
--(void)randomWalk {
-    CGFloat angle = CCRANDOM_0_1() * 2 * M_PI;
+-(void)followCivilian {
+    CGFloat minDistance2 = CGFLOAT_MAX;
+    Civilian* minCivilian = nil;
+    for (CCSprite* sprite in self.parent.children)
+    {
+        if ([sprite isKindOfClass:Civilian.class])
+        {
+            CGFloat distance2 = ccpLengthSQ(ccpSub(sprite.position, self.position));
+            if (distance2 < minDistance2)
+            {
+                minCivilian = (Civilian*)sprite;
+                minDistance2 = distance2;
+            }
+        }
+    }
+    
+    CGFloat angle = ccpToAngle(ccpSub(minCivilian.position, self.position));
     CGFloat x = cosf(angle) * SPEED;
     CGFloat y = sinf(angle) * SPEED;
     self.velocity = ccp(x, y);
