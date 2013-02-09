@@ -182,6 +182,7 @@
 		40B9A93916C5C423004DCC10 /* tiles.png in Resources */ = {isa = PBXBuildFile; fileRef = 40B9A93816C5C423004DCC10 /* tiles.png */; };
 		40B9A93C16C5D163004DCC10 /* Civilian.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B9A93B16C5D163004DCC10 /* Civilian.m */; };
 		40B9A93E16C5D267004DCC10 /* civilian.png in Resources */ = {isa = PBXBuildFile; fileRef = 40B9A93D16C5D267004DCC10 /* civilian.png */; };
+		40B9A94516C5E0D3004DCC10 /* MiniMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B9A94416C5E0D3004DCC10 /* MiniMap.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -546,6 +547,8 @@
 		40B9A93A16C5D163004DCC10 /* Civilian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Civilian.h; sourceTree = "<group>"; };
 		40B9A93B16C5D163004DCC10 /* Civilian.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Civilian.m; sourceTree = "<group>"; };
 		40B9A93D16C5D267004DCC10 /* civilian.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = civilian.png; path = Resources/civilian.png; sourceTree = "<group>"; };
+		40B9A94316C5E0D3004DCC10 /* MiniMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiniMap.h; sourceTree = "<group>"; };
+		40B9A94416C5E0D3004DCC10 /* MiniMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MiniMap.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1162,6 +1165,8 @@
 				40B9A92416C5C2BB004DCC10 /* GameLayer.mm */,
 				40B9A92616C5C2BB004DCC10 /* IntroLayer.h */,
 				40B9A92716C5C2BB004DCC10 /* IntroLayer.mm */,
+				40B9A94316C5E0D3004DCC10 /* MiniMap.h */,
+				40B9A94416C5E0D3004DCC10 /* MiniMap.m */,
 			);
 			name = layers;
 			sourceTree = "<group>";
@@ -1401,6 +1406,7 @@
 				40B9A92516C5C2BB004DCC10 /* GameLayer.mm in Sources */,
 				40B9A92816C5C2BB004DCC10 /* IntroLayer.mm in Sources */,
 				40B9A93C16C5D163004DCC10 /* Civilian.m in Sources */,
+				40B9A94516C5E0D3004DCC10 /* MiniMap.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
