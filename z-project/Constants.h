@@ -21,6 +21,21 @@ typedef enum
 }
 ZOrder;
 
+typedef enum
+{
+    // common states
+    kStateAlive = 0,
+    kStateDead,
+    
+    //zombie states
+    kStateZombieEating,
+    
+    //civilian states
+    kStateCivilianBeingEaten,
+    kStateCivilianDeadInfected,
+}
+State;
+
 #define kMinimapSpriteKey @"MiniMapSprite"
 #define kMinimapImageKey @"ImageForMiniMap"
 #define kMinimapSpriteForCivilian @"icon_civilian.png"

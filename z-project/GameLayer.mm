@@ -88,7 +88,7 @@ static float const PTM_RATIO = 64.0f;
         _zombies = [[NSMutableArray alloc] init];
         _gestureRecognizers = [[NSMutableArray alloc] init];
         
-        for (int i = 0; i < 200; ++i)
+        for (int i = 0; i < 50; ++i)
         {
             [self addCivilian];
         }
@@ -368,7 +368,7 @@ static float const PTM_RATIO = 64.0f;
                 // kill civilian and wake as zombie in 3 seconds
                 if ([civilian isAlive] && [zombie isAlive])
                 {
-                    [civilian kill];
+                    [civilian infect];
                     CCDelayTime* delayAction = [CCDelayTime actionWithDuration:3];
                     CCCallBlock* blockAction = [CCCallBlock actionWithBlock:^(void)
                                                 {

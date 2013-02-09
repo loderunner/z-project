@@ -15,6 +15,7 @@
 
 
 -(Civilian*)initWithPosition:(CGPoint)position;
+-(void)infect;
 -(void)randomWalk;
 
 @end

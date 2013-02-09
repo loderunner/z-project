@@ -7,9 +7,8 @@
 //
 
 #import "Zombie.h"
-#import "Constants.h"
 
-static CGFloat const SPEED = 40.f;
+static CGFloat const SPEED = 60.f;
 
 static NSString* const FRAME_FACING_LEFT = @"zombie-left";
 static NSString* const FRAME_FACING_RIGHT = @"zombie-right";
@@ -35,6 +34,7 @@ static NSString* const FRAME_DEAD = @"zombie-dead";
     {
         [self schedule:@selector(randomWalk) interval:2.0f];
         self.zOrder = kZOrderZombie;
+        self.state = kStateAlive;
     }
     return self;
 }
@@ -52,8 +52,15 @@ static NSString* const FRAME_DEAD = @"zombie-dead";
     return self;
 }
 
+- (BOOL) isAlive
+{
+    return (self.state == kStateAlive);
+}
+
 - (void) kill
 {
+    self.state = kStateDead;
+    
     [self unschedule:@selector(randomWalk)];
     [self setDisplayFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:FRAME_DEAD]];
     [super kill];

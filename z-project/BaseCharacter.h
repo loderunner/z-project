@@ -7,11 +7,13 @@
 //
 
 #import "CCSprite.h"
+#import "Constants.h"
 
 @interface BaseCharacter : CCSprite
 
 @property (nonatomic, assign) CGPoint velocity;
 @property (nonatomic,retain) NSMutableDictionary* properties;
+@property (nonatomic) State state;
 
 // helpers for edges
 @property (nonatomic, readonly) CGFloat left;
