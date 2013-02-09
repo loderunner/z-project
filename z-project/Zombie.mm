@@ -72,7 +72,7 @@ static NSString* const FRAME_DEAD = @"zombie-dead";
     Civilian* minCivilian = nil;
     for (CCSprite* sprite in self.parent.children)
     {
-        if ([sprite isKindOfClass:Civilian.class])
+        if ([sprite isKindOfClass:Civilian.class] && [(Civilian*)sprite isAlive])
         {
             CGFloat distance2 = ccpLengthSQ(ccpSub(sprite.position, self.position));
             if (distance2 < minDistance2)
