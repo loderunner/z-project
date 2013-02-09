@@ -69,7 +69,7 @@ static float const PTM_RATIO = 64.0f;
         civilians = [[NSMutableArray alloc] init];
         [self spawnCivilians:200];
         
-        [self schedule:@selector(update:)];
+        [self scheduleUpdate];
 	}
 	return self;
 }
