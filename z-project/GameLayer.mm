@@ -120,17 +120,13 @@ static float const PTM_RATIO = 64.0f;
 -(void)registerRecognisers {
     UITapGestureRecognizer* tapRecogniser = [self watchForTap:@selector(onTap:)];
     [self.gestureRecognizers addObject:tapRecogniser];
-    //UIPanGestureRecognizer *panRecogniser = [self watchForPan:@selector(onPan:)];
-    //[panRecogniser setMinimumNumberOfTouches:1];
-    //[panRecogniser setMaximumNumberOfTouches:1];
-    //[self.gestureRecognizers addObject:panRecogniser];
-
 }
 
 -(void)unregisterRecognisers {
     for (UIGestureRecognizer* recognizer in self.gestureRecognizers) {
         [self unwatch:recognizer];
     }
+    [self.gestureRecognizers removeAllObjects];
 }
 
 -(void)onTap:(UITapGestureRecognizer *)recognizer {
@@ -147,33 +143,6 @@ static float const PTM_RATIO = 64.0f;
     NSLog(@"TAPPED !");
 }
 
--(void)onPan:(UIPanGestureRecognizer *)recognizer {
-    CGPoint newPos = [recognizer locationInView:[[CCDirector sharedDirector] view]];
-    newPos = [[CCDirector sharedDirector] convertToGL:newPos];
-    CGPoint translation = [recognizer translationInView:[[CCDirector sharedDirector] view]];
-    translation = [[CCDirector sharedDirector] convertToGL:translation];
-    NSLog(@"%f,%f",translation.x,translation.y);
-    
-    CGPoint currentPos = [self.map position];
-    newPos = ccpSub(currentPos, translation);
-    
-    // constraints
-    if (newPos.x > 0) newPos.x = 0;
-    if (newPos.y > 0) newPos.y = 0;
-    
-    float layerWidth = tileSize.width * mapSize.width;
-    float winWidth   = winSize.width;
-    float minimumX   = winWidth-layerWidth;
-    if (newPos.x < minimumX) newPos.x = minimumX;
-    float layerHeight = tileSize.height * mapSize.height;
-    float winHeight   = winSize.height;
-    float minimumY    = winHeight-layerHeight;
-    if (newPos.y < minimumY) newPos.y = minimumY;
-    
-	[self.map setPosition: newPos];
-    NSLog(@"pannig to %f,%f",newPos.x,newPos.y);
-    //NSLog(@"PANNING !");
-}
 
 - (UITapGestureRecognizer *)watchForTap:(SEL)selector {
     UITapGestureRecognizer *recognizer = [[[UITapGestureRecognizer alloc] initWithTarget:self action:selector] autorelease];
@@ -181,11 +150,6 @@ static float const PTM_RATIO = 64.0f;
     return recognizer;
 }
 
-- (UIPanGestureRecognizer *)watchForPan:(SEL)selector {
-    UIPanGestureRecognizer *recognizer = [[[UIPanGestureRecognizer alloc] initWithTarget:self action:selector] autorelease];
-    [self registerRecognizer:recognizer];
-    return recognizer;
-}
 
 -(void)registerRecognizer:(UIGestureRecognizer*)recognizer {
     [[[CCDirector sharedDirector] view] addGestureRecognizer:recognizer];
@@ -454,6 +418,7 @@ static float const PTM_RATIO = 64.0f;
 
 - (void)dealloc
 {
+    [self unregisterRecognisers];
     self.civilians   = nil;
     self.zombies     = nil;
     self.map         = nil;
