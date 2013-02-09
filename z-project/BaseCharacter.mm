@@ -8,18 +8,8 @@
 
 #import "BaseCharacter.h"
 #import "cocos2d.h"
-#import "Constants.h"
-
-typedef enum
-{
-    kStateAlive = 0,
-    kStateDead
-}
-State;
 
 @interface BaseCharacter ()
-
-@property (nonatomic) State state;
 
 @end
 
@@ -28,9 +18,9 @@ State;
 -(id)initWithSpriteFrameName:(NSString*)frame andTag:(NSInteger)tag; {
     if (self = [super initWithSpriteFrameName:frame]) {
         _properties = [[NSMutableDictionary alloc] init];
-        _state = kStateAlive;
         
         self.tag = tag;
+        self.state = kStateAlive;
         
         [self schedule:@selector(update:)];
     }
@@ -101,7 +91,7 @@ State;
 -(BOOL)takeDamage:(NSInteger)damage {
     self.stamina -= damage;
     if (self.stamina < 0) {
-        [self die];
+        [self kill];
         return YES;
     }
     return NO;
@@ -109,13 +99,13 @@ State;
 
 -(void)kill
 {
-    self.state = kStateDead;
     self.zOrder = kZOrderDead;
 }
 
--(BOOL)isAlive
+- (BOOL)isAlive
 {
-    return (_state == kStateAlive);
+    NSAssert(false, @"isAlive should be implemented in this BaseCharacter subclass");
+    return NO;
 }
 
 

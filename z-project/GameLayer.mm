@@ -69,6 +69,8 @@ static float const PTM_RATIO = 64.0f;
         // load the map
         _map = [[TiledMap alloc] initWithTMXFile:mapName];
         _map.anchorPoint = CGPointZero;
+        CCTMXLayer* collidables = [_map layerNamed:@"collidable"];
+        collidables.visible = NO;
         CCTMXObjectGroup* spawnPoints = [_map objectGroupNamed:@"spawnPoints"];
         _spawnPoints = [spawnPoints.objects copy];
         
@@ -86,7 +88,7 @@ static float const PTM_RATIO = 64.0f;
         _zombies = [[NSMutableArray alloc] init];
         _gestureRecognizers = [[NSMutableArray alloc] init];
         
-        for (int i = 0; i < 200; ++i)
+        for (int i = 0; i < 50; ++i)
         {
             [self addCivilian];
         }
@@ -280,19 +282,17 @@ static float const PTM_RATIO = 64.0f;
 #pragma mark - Box2D stuff
 
 - (void)addBoxBodyForSprite:(BaseCharacter *)sprite
-{
-    CGRect boundingBox = sprite.boundingBox;
-    
+{    
     b2BodyDef spriteBodyDef;
     spriteBodyDef.type = b2_dynamicBody;
-    spriteBodyDef.position.Set((sprite.position.x - sprite.contentSize.width * .5f + boundingBox.origin.x + boundingBox.size.width * .5f)/PTM_RATIO,
-                               (sprite.position.y - sprite.contentSize.height * .5f + boundingBox.origin.y + boundingBox.size.height * .5f)/PTM_RATIO);
+    spriteBodyDef.position.Set(sprite.position.x/PTM_RATIO,
+                               sprite.position.y/PTM_RATIO);
     spriteBodyDef.userData = (void *)sprite;
     b2Body *spriteBody = world->CreateBody(&spriteBodyDef);
     
     b2PolygonShape spriteShape;
-    spriteShape.SetAsBox(.5f * boundingBox.size.width/PTM_RATIO,
-                         .5f * boundingBox.size.height/PTM_RATIO);
+    spriteShape.SetAsBox(.5f * sprite.contentSize.width/PTM_RATIO,
+                         .5f * sprite.contentSize.height/PTM_RATIO);
     b2FixtureDef spriteShapeDef;
     spriteShapeDef.shape = &spriteShape;
     spriteShapeDef.density = 10.0;
@@ -369,7 +369,7 @@ static float const PTM_RATIO = 64.0f;
                 // kill civilian and wake as zombie in 3 seconds
                 if ([civilian isAlive] && [zombie isAlive])
                 {
-                    [civilian die];
+                    [civilian infect];
                     CCDelayTime* delayAction = [CCDelayTime actionWithDuration:3];
                     CCCallBlock* blockAction = [CCCallBlock actionWithBlock:^(void)
                                                 {
