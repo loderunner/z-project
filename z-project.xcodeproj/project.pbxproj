@@ -554,7 +554,7 @@
 		40B9A95C16C65424004DCC10 /* IntroLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroLayer.h; sourceTree = "<group>"; };
 		40B9A95D16C65424004DCC10 /* IntroLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IntroLayer.mm; sourceTree = "<group>"; };
 		40B9A96116C65546004DCC10 /* BaseCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCharacter.h; sourceTree = "<group>"; };
-		40B9A96516C65E9D004DCC10 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = "z-project/Constants.h"; sourceTree = "<group>"; };
+		40B9A96516C65E9D004DCC10 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		40B9A96616C66311004DCC10 /* icon_zombie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_zombie.png; path = Resources/icon_zombie.png; sourceTree = "<group>"; };
 		40B9A96816C66A84004DCC10 /* BaseCharacter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BaseCharacter.mm; sourceTree = "<group>"; };
 		9A3464B016C5D7EA00828F5D /* ContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactListener.h; sourceTree = "<group>"; };
@@ -590,7 +590,6 @@
 		40B9A6F716C5C2B7004DCC10 = {
 			isa = PBXGroup;
 			children = (
-				40B9A96516C65E9D004DCC10 /* Constants.h */,
 				40B9A71516C5C2B7004DCC10 /* z-project */,
 				40B9A70216C5C2B7004DCC10 /* Frameworks */,
 				40B9A70116C5C2B7004DCC10 /* Products */,
@@ -630,6 +629,7 @@
 				40B9A92116C5C2BB004DCC10 /* AppDelegate.mm */,
 				9A3464B016C5D7EA00828F5D /* ContactListener.h */,
 				9A3464B116C5D7EA00828F5D /* ContactListener.mm */,
+				40B9A96516C65E9D004DCC10 /* Constants.h */,
 				40B9A71616C5C2B7004DCC10 /* Resources */,
 				40B9A73016C5C2B7004DCC10 /* libs */,
 				40B9A91C16C5C2BB004DCC10 /* Supporting Files */,

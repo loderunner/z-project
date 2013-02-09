@@ -13,7 +13,6 @@
 -(id)initWithFile:(NSString*)file tag:(NSInteger)tag; {
     if (self = [super initWithFile:file]) {
         _properties = [[NSMutableDictionary alloc] init];
-        _movedSprites = [[NSMutableArray alloc] init];
         
         self.tag = tag;
     }
@@ -45,7 +44,6 @@
 
 -(void)dealloc {
     [_properties release];
-    [_movedSprites release];
     
     [super dealloc];
 }

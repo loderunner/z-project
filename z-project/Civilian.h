@@ -13,7 +13,10 @@
 
 @interface Civilian : BaseCharacter
 
+
 -(Civilian*)initWithPosition:(CGPoint)position;
 -(void)randomWalk;
+-(void)kill;
+-(BOOL)isAlive;
 
 @end
