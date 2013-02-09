@@ -551,6 +551,7 @@
 		9A3464B016C5D7EA00828F5D /* ContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactListener.h; sourceTree = "<group>"; };
 		9A3464B116C5D7EA00828F5D /* ContactListener.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ContactListener.mm; sourceTree = "<group>"; };
 		9A3464BB16C5DDED00828F5D /* zombie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = zombie.png; path = Resources/zombie.png; sourceTree = "<group>"; };
+		9A3D2B4716C5EAD8007F4E05 /* Tags.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tags.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1179,6 +1180,7 @@
 			children = (
 				40B9A93A16C5D163004DCC10 /* Civilian.h */,
 				40B9A93B16C5D163004DCC10 /* Civilian.mm */,
+				9A3D2B4716C5EAD8007F4E05 /* Tags.h */,
 			);
 			name = characters;
 			sourceTree = "<group>";

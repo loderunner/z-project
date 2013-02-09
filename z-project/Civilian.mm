@@ -7,6 +7,7 @@
 //
 
 #import "Civilian.h"
+#import "Tags.h"
 
 @interface Civilian()
 
@@ -18,7 +19,8 @@
 
 -(id)init {
     if (self = [super init]) {
-        self.sprite = [CCSprite spriteWithFile:@"zombie.png"];
+        _sprite = [[CCSprite spriteWithFile:@"zombie.png"] retain];
+        _sprite.tag = TagCivilian;
     }
     return self;
 }
