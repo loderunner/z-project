@@ -83,16 +83,27 @@ static float const PTM_RATIO = 64.0f;
 	return self;
 }
 
-- (void)dealloc
+#pragma mark - map populating
+
+-(void)spawnZombies:(int) numZombies
 {
-    [_civilians release];
-    [_zombies release];
-    [_map release];
-    delete world;
-    delete contactListener;
-    
-    [super dealloc];
+    int totalWidth  = mapSize.width  * tileSize.width;
+    int totalHeight = mapSize.height * tileSize.height;
+    for (int i = 0; i < numZombies; ++i)
+    {
+        int x = arc4random_uniform(totalWidth);
+        int y = arc4random_uniform(totalHeight);
+        
+        Civilian* dude = [[Civilian alloc] initWithPosition: ccp(x,y)];
+        [self.civilians addObject:dude];
+        [self.map addChild:dude];
+        [self addBoxBodyForSprite:dude];
+        
+        [dude randomWalk];
+    }
 }
+
+#pragma mark - scheduled events
 
 - (void) update:(ccTime)dt
 {
@@ -100,6 +111,8 @@ static float const PTM_RATIO = 64.0f;
     [self handleCollisions];
     [self.minimap updateMiniMap:self.civilians];
 }
+
+#pragma mark - minimap
 
 -(void)createMiniMap {
     // we want 100px height for the minimap
@@ -116,23 +129,8 @@ static float const PTM_RATIO = 64.0f;
     [self.minimap updateMiniMap:self.zombies];
 }
 
--(void)spawnZombies:(int) numZombies
-{
-    int totalWidth  = mapSize.width  * tileSize.width;
-    int totalHeight = mapSize.height * tileSize.height;
-    for (int i = 0; i < numZombies; ++i)
-    {
-        int x = arc4random_uniform(totalWidth);
-        int y = arc4random_uniform(totalHeight);
-        
-        Civilian* dude = [[Civilian alloc] initWithPosition: ccp(x,y)];
-        [self.civilians addObject:dude];
-        [self.map addChild:dude];
-        [self addBoxBodyForSprite:dude];
 
-        [dude randomWalk];
-    }
-}
+#pragma mark - Box2D stuff
 
 - (void)addBoxBodyForSprite:(CCSprite *)sprite
 {    
@@ -192,13 +190,13 @@ static float const PTM_RATIO = 64.0f;
     }
 }
 
+#pragma mark - touch events
+
 -(void) registerWithTouchDispatcher
 {
 	CCDirector *director = [CCDirector sharedDirector];
 	[[director touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
 }
-
-#pragma mark - touch events
 
 -(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
@@ -242,5 +240,17 @@ static float const PTM_RATIO = 64.0f;
 	[self.map setPosition: newPos];
 }
 
+#pragma mark - cleanup
+
+- (void)dealloc
+{
+    [_civilians release];
+    [_zombies release];
+    [_map release];
+    delete world;
+    delete contactListener;
+    
+    [super dealloc];
+}
 
 @end

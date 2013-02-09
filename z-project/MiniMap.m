@@ -23,9 +23,9 @@
 
 -(MiniMap*)initWithPosition:(CGPoint)point size:(CGSize)size andRatio:(float)ratio {
     if (self = [self init]) {
-        self.point = point;
-        self.size  = size;
-        self.ratio = ratio;
+        _point = point;
+        _size  = size;
+        _ratio = ratio;
     }
     return self;
 }
@@ -40,16 +40,17 @@
 }
 
 -(void)updateMiniMap:(NSArray*)civilians {
-    [self removeAllChildrenWithCleanup:YES];
+    //[self removeAllChildrenWithCleanup:YES];
     for (Civilian* c in civilians) {
         CGPoint originalPosition = c.position;
-        //NSLog(@"ratio=%f",self.ratio);
-        //NSLog(@"original = %f,%f",originalPosition.x,originalPosition.y);
         CGPoint positionInMinimap = ccp(originalPosition.x*self.ratio, originalPosition.y*self.ratio);
-        //NSLog(@"final = %f,%f",positionInMinimap.x,positionInMinimap.y);
-        CCSprite* sprite = [CCSprite spriteWithFile:@"icon_civilian.png"];
+        CCSprite* sprite = [c.properties objectForKey:@"MiniMapSprite"];
+        if (sprite == nil) {
+            sprite = [CCSprite spriteWithFile:@"icon_civilian.png"];
+            [c.properties setObject:sprite forKey:@"MiniMapSprite"];
+            [self addChild:sprite];
+        }
         sprite.position = ccp(positionInMinimap.x+self.point.x,positionInMinimap.y+self.point.y);
-        [self addChild:sprite];
     }
 }
 
