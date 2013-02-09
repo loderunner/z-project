@@ -19,12 +19,6 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [_properties release];
-    [super dealloc];
-}
-
 - (CGFloat)left
 {
     return self.position.x - self.contentSize.width * .5f;
@@ -46,6 +40,12 @@
 - (CGFloat)top
 {
     return self.position.y - self.contentSize.height * .5f;
+}
+
+-(void)dealloc {
+    self.properties = nil;
+    
+    [super dealloc];
 }
 
 @end

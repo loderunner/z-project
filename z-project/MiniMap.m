@@ -10,6 +10,7 @@
 #import "cocos2d.h"
 #import "MiniMap.h"
 #import "Civilian.h"
+#import "Constants.h"
 
 @interface MiniMap()
 
@@ -40,18 +41,30 @@
 }
 
 -(void)updateMiniMap:(NSArray*)civilians {
-    //[self removeAllChildrenWithCleanup:YES];
     for (Civilian* c in civilians) {
+        // compute position in the minimap
         CGPoint originalPosition = c.position;
         CGPoint positionInMinimap = ccp(originalPosition.x*self.ratio, originalPosition.y*self.ratio);
-        CCSprite* sprite = [c.properties objectForKey:@"MiniMapSprite"];
+        // dequeue reusable sprite
+        CCSprite* sprite = [[c.properties objectForKey:kMinimapSpriteKey] retain];
         if (sprite == nil) {
-            sprite = [CCSprite spriteWithFile:@"icon_civilian.png"];
-            [c.properties setObject:sprite forKey:@"MiniMapSprite"];
+            // create new sprite
+            NSString* imageFileName = [[c.properties objectForKey:kMinimapImageKey] retain];
+            sprite = [[CCSprite alloc] initWithFile:imageFileName];
+            [imageFileName release];
+            [c.properties setObject:sprite forKey:kMinimapSpriteKey];
             [self addChild:sprite];
         }
+        // move
         sprite.position = ccp(positionInMinimap.x+self.point.x,positionInMinimap.y+self.point.y);
+        [sprite release];
     }
+}
+
+#pragma mark - cleanup
+
+-(void)dealloc {
+    [super dealloc];
 }
 
 @end

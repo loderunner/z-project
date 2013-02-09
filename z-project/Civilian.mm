@@ -7,7 +7,7 @@
 //
 
 #import "Civilian.h"
-#import "Tags.h"
+#import "Constants.h"
 
 @interface Civilian()
 
@@ -18,7 +18,7 @@
 @implementation Civilian
 
 -(id)init {
-    if (self = [super initWithFile:@"zombie.png" tag:kTagCivilian]) {
+    if (self = [super initWithFile:@"civilian.png" tag:kTagCivilian]) {
         
         [self schedule:@selector(update:)];
     }
@@ -33,6 +33,7 @@
 -(Civilian *)initWithPosition:(CGPoint)position {
     if (self = [self init]) {
         self.position = position;
+        [self.properties setObject:kMinimapSpriteForCivilian forKey:kMinimapImageKey];
     }
     return self;
 }
