@@ -99,9 +99,6 @@ static float const PTM_RATIO = 64.0f;
             CGPoint pos = ccp(x,y);
             
             [self addZombieAt:pos];
-            
-            //#DEBUG Chrales: only one zombie to test "smart"zombies
-            break;
         }
         
         _scoreCounters = [[ScoreCounters alloc] initWithZombies:_zombies.count civilians:_civilians.count];
