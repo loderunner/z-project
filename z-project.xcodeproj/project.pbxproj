@@ -176,13 +176,13 @@
 		40B9A91916C5C2BB004DCC10 /* b2Rope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 40B9A91816C5C2BB004DCC10 /* b2Rope.cpp */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		40B9A91F16C5C2BB004DCC10 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B9A91E16C5C2BB004DCC10 /* main.m */; };
 		40B9A92216C5C2BB004DCC10 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 40B9A92116C5C2BB004DCC10 /* AppDelegate.mm */; };
-		40B9A92516C5C2BB004DCC10 /* GameLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 40B9A92416C5C2BB004DCC10 /* GameLayer.mm */; };
-		40B9A92816C5C2BB004DCC10 /* IntroLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 40B9A92716C5C2BB004DCC10 /* IntroLayer.mm */; };
 		40B9A93716C5C3FC004DCC10 /* firsMap.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 40B9A93616C5C3FC004DCC10 /* firsMap.tmx */; };
 		40B9A93916C5C423004DCC10 /* tiles.png in Resources */ = {isa = PBXBuildFile; fileRef = 40B9A93816C5C423004DCC10 /* tiles.png */; };
-		9A3464B216C5D7EA00828F5D /* ContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A3464B116C5D7EA00828F5D /* ContactListener.mm */; };
 		40B9A93C16C5D163004DCC10 /* Civilian.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B9A93B16C5D163004DCC10 /* Civilian.m */; };
 		40B9A93E16C5D267004DCC10 /* civilian.png in Resources */ = {isa = PBXBuildFile; fileRef = 40B9A93D16C5D267004DCC10 /* civilian.png */; };
+		9A3464B216C5D7EA00828F5D /* ContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A3464B116C5D7EA00828F5D /* ContactListener.mm */; };
+		9A3464B516C5DADE00828F5D /* GameLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A3464B416C5DADE00828F5D /* GameLayer.mm */; };
+		9A3464BA16C5DB0000828F5D /* IntroLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A3464B916C5DB0000828F5D /* IntroLayer.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -538,17 +538,21 @@
 		40B9A91E16C5C2BB004DCC10 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		40B9A92016C5C2BB004DCC10 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		40B9A92116C5C2BB004DCC10 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
-		40B9A92316C5C2BB004DCC10 /* GameLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameLayer.h; sourceTree = "<group>"; };
-		40B9A92416C5C2BB004DCC10 /* GameLayer.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = GameLayer.mm; sourceTree = "<group>"; };
-		40B9A92616C5C2BB004DCC10 /* IntroLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroLayer.h; sourceTree = "<group>"; };
-		40B9A92716C5C2BB004DCC10 /* IntroLayer.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = IntroLayer.mm; sourceTree = "<group>"; };
+		40B9A92316C5C2BB004DCC10 /* GameLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GameLayer.h; path = "/Users/chrales/Work/z-project/z-project/GameLayer.h"; sourceTree = "<absolute>"; };
+		40B9A92416C5C2BB004DCC10 /* GameLayer.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = GameLayer.mm; path = "/Users/chrales/Work/z-project/z-project/GameLayer.mm"; sourceTree = "<absolute>"; };
+		40B9A92616C5C2BB004DCC10 /* IntroLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IntroLayer.h; path = "/Users/chrales/Work/z-project/z-project/IntroLayer.h"; sourceTree = "<absolute>"; };
+		40B9A92716C5C2BB004DCC10 /* IntroLayer.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = IntroLayer.mm; path = "/Users/chrales/Work/z-project/z-project/IntroLayer.mm"; sourceTree = "<absolute>"; };
 		40B9A93616C5C3FC004DCC10 /* firsMap.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = firsMap.tmx; path = Resources/firsMap.tmx; sourceTree = "<group>"; };
 		40B9A93816C5C423004DCC10 /* tiles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tiles.png; path = Resources/tiles.png; sourceTree = "<group>"; };
-		9A3464B016C5D7EA00828F5D /* ContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactListener.h; sourceTree = "<group>"; };
-		9A3464B116C5D7EA00828F5D /* ContactListener.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ContactListener.mm; sourceTree = "<group>"; };
 		40B9A93A16C5D163004DCC10 /* Civilian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Civilian.h; sourceTree = "<group>"; };
 		40B9A93B16C5D163004DCC10 /* Civilian.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Civilian.m; sourceTree = "<group>"; };
 		40B9A93D16C5D267004DCC10 /* civilian.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = civilian.png; path = Resources/civilian.png; sourceTree = "<group>"; };
+		9A3464B016C5D7EA00828F5D /* ContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactListener.h; sourceTree = "<group>"; };
+		9A3464B116C5D7EA00828F5D /* ContactListener.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ContactListener.mm; sourceTree = "<group>"; };
+		9A3464B316C5DADE00828F5D /* GameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLayer.h; sourceTree = "<group>"; };
+		9A3464B416C5DADE00828F5D /* GameLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameLayer.mm; sourceTree = "<group>"; };
+		9A3464B816C5DB0000828F5D /* IntroLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroLayer.h; sourceTree = "<group>"; };
+		9A3464B916C5DB0000828F5D /* IntroLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IntroLayer.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -613,14 +617,12 @@
 				40B9A92116C5C2BB004DCC10 /* AppDelegate.mm */,
 				9A3464B016C5D7EA00828F5D /* ContactListener.h */,
 				9A3464B116C5D7EA00828F5D /* ContactListener.mm */,
-				40B9A92316C5C2BB004DCC10 /* HelloWorldLayer.h */,
-				40B9A92416C5C2BB004DCC10 /* HelloWorldLayer.mm */,
-				40B9A92316C5C2BB004DCC10 /* GameLayer.h */,
-				40B9A92416C5C2BB004DCC10 /* GameLayer.mm */,
-				40B9A92616C5C2BB004DCC10 /* IntroLayer.h */,
-				40B9A92716C5C2BB004DCC10 /* IntroLayer.mm */,
+				9A3464B316C5DADE00828F5D /* GameLayer.h */,
+				9A3464B416C5DADE00828F5D /* GameLayer.mm */,
 				40B9A93A16C5D163004DCC10 /* Civilian.h */,
 				40B9A93B16C5D163004DCC10 /* Civilian.m */,
+				9A3464B816C5DB0000828F5D /* IntroLayer.h */,
+				9A3464B916C5DB0000828F5D /* IntroLayer.mm */,
 				40B9A71616C5C2B7004DCC10 /* Resources */,
 				40B9A73016C5C2B7004DCC10 /* libs */,
 				40B9A91C16C5C2BB004DCC10 /* Supporting Files */,
@@ -1411,10 +1413,10 @@
 				40B9A91916C5C2BB004DCC10 /* b2Rope.cpp in Sources */,
 				40B9A91F16C5C2BB004DCC10 /* main.m in Sources */,
 				40B9A92216C5C2BB004DCC10 /* AppDelegate.mm in Sources */,
-				40B9A92516C5C2BB004DCC10 /* GameLayer.mm in Sources */,
-				40B9A92816C5C2BB004DCC10 /* IntroLayer.mm in Sources */,
 				9A3464B216C5D7EA00828F5D /* ContactListener.mm in Sources */,
 				40B9A93C16C5D163004DCC10 /* Civilian.m in Sources */,
+				9A3464B516C5DADE00828F5D /* GameLayer.mm in Sources */,
+				9A3464BA16C5DB0000828F5D /* IntroLayer.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
