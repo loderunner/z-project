@@ -14,3 +14,6 @@ typedef enum
 Tags;
 
 #define kMinimapSpriteKey @"MiniMapSprite"
+#define kMinimapImageKey @"ImageForMiniMap"
+#define kMinimapSpriteForCivilian @"icon_civilian.png"
+#define kMinimapSpriteForZombie @"icon_zombie.png"

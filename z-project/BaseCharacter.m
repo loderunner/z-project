@@ -20,4 +20,10 @@
     return self;
 }
 
+-(void)dealloc {
+    self.properties = nil;
+    
+    [super dealloc];
+}
+
 @end

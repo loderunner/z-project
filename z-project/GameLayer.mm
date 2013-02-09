@@ -75,7 +75,8 @@ static float const PTM_RATIO = 64.0f;
         
         _civilians = [[NSMutableArray alloc] init];
         _zombies = [[NSMutableArray alloc] init];
-        [self spawnZombies:200];
+        [self spawnCivilians:200];
+        [self spawnZombies:30];
         
         [self createMiniMap];
         [self schedule:@selector(updateMiniMap:) interval:.7f];
@@ -85,7 +86,7 @@ static float const PTM_RATIO = 64.0f;
 
 #pragma mark - map populating
 
--(void)spawnZombies:(int) numZombies
+-(void)spawnCivilians:(int) numZombies
 {
     int totalWidth  = mapSize.width  * tileSize.width;
     int totalHeight = mapSize.height * tileSize.height;
@@ -100,6 +101,23 @@ static float const PTM_RATIO = 64.0f;
         [self addBoxBodyForSprite:dude];
         
         [dude randomWalk];
+    }
+}
+
+-(void)spawnZombies:(int)numZombies{
+    int totalWidth  = mapSize.width  * tileSize.width;
+    int totalHeight = mapSize.height * tileSize.height;
+    for (int i = 0; i < numZombies; ++i)
+    {
+        int x = arc4random_uniform(totalWidth);
+        int y = arc4random_uniform(totalHeight);
+        
+        Zombie* grrr = [[Zombie alloc] initWithPosition: ccp(x,y)];
+        [self.zombies addObject:grrr];
+        [self.map addChild:grrr];
+        [self addBoxBodyForSprite:grrr];
+        
+        [grrr randomWalk];
     }
 }
 

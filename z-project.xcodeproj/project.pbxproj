@@ -183,6 +183,7 @@
 		40B9A95F16C65424004DCC10 /* GameLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 40B9A95B16C65424004DCC10 /* GameLayer.mm */; };
 		40B9A96016C65424004DCC10 /* IntroLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 40B9A95D16C65424004DCC10 /* IntroLayer.mm */; };
 		40B9A96316C65546004DCC10 /* BaseCharacter.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B9A96216C65546004DCC10 /* BaseCharacter.m */; };
+		40B9A96716C66311004DCC10 /* icon_zombie.png in Resources */ = {isa = PBXBuildFile; fileRef = 40B9A96616C66311004DCC10 /* icon_zombie.png */; };
 		9A3464B216C5D7EA00828F5D /* ContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A3464B116C5D7EA00828F5D /* ContactListener.mm */; };
 		9A3464BC16C5DDED00828F5D /* zombie.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A3464BB16C5DDED00828F5D /* zombie.png */; };
 		9A3D2B4A16C5F3D3007F4E05 /* Zombie.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A3D2B4916C5F3D3007F4E05 /* Zombie.mm */; };
@@ -555,6 +556,7 @@
 		40B9A96116C65546004DCC10 /* BaseCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCharacter.h; sourceTree = "<group>"; };
 		40B9A96216C65546004DCC10 /* BaseCharacter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCharacter.m; sourceTree = "<group>"; };
 		40B9A96516C65E9D004DCC10 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = "z-project/Constants.h"; sourceTree = "<group>"; };
+		40B9A96616C66311004DCC10 /* icon_zombie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_zombie.png; path = "z-project/Resources/icon_zombie.png"; sourceTree = "<group>"; };
 		9A3464B016C5D7EA00828F5D /* ContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactListener.h; sourceTree = "<group>"; };
 		9A3464B116C5D7EA00828F5D /* ContactListener.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ContactListener.mm; sourceTree = "<group>"; };
 		9A3464BB16C5DDED00828F5D /* zombie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = zombie.png; path = Resources/zombie.png; sourceTree = "<group>"; };
@@ -588,6 +590,7 @@
 		40B9A6F716C5C2B7004DCC10 = {
 			isa = PBXGroup;
 			children = (
+				40B9A96616C66311004DCC10 /* icon_zombie.png */,
 				40B9A96516C65E9D004DCC10 /* Constants.h */,
 				40B9A71516C5C2B7004DCC10 /* z-project */,
 				40B9A70216C5C2B7004DCC10 /* Frameworks */,
@@ -1271,6 +1274,7 @@
 				40B9A93E16C5D267004DCC10 /* civilian.png in Resources */,
 				9A3464BC16C5DDED00828F5D /* zombie.png in Resources */,
 				9A43B63616C5FF250097FE86 /* icon_civilian.png in Resources */,
+				40B9A96716C66311004DCC10 /* icon_zombie.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -40,6 +40,7 @@ static CGFloat const SPEED = 40.f;
 -(Zombie *)initWithPosition:(CGPoint)position {
     if (self = [self init]) {
         self.position = position;
+        [self.properties setObject:kMinimapSpriteForZombie forKey:kMinimapImageKey];
     }
     return self;
 }

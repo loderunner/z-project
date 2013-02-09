@@ -42,15 +42,22 @@
 
 -(void)updateMiniMap:(NSArray*)civilians {
     for (Civilian* c in civilians) {
+        // compute position in the minimap
         CGPoint originalPosition = c.position;
         CGPoint positionInMinimap = ccp(originalPosition.x*self.ratio, originalPosition.y*self.ratio);
-        CCSprite* sprite = [c.properties objectForKey:kMinimapSpriteKey];
+        // dequeue reusable sprite
+        CCSprite* sprite = [[c.properties objectForKey:kMinimapSpriteKey] retain];
         if (sprite == nil) {
-            sprite = [CCSprite spriteWithFile:@"icon_civilian.png"];
+            // create new sprite
+            NSString* imageFileName = [[c.properties objectForKey:kMinimapImageKey] retain];
+            sprite = [[CCSprite alloc] initWithFile:imageFileName];
+            [imageFileName release];
             [c.properties setObject:sprite forKey:kMinimapSpriteKey];
             [self addChild:sprite];
         }
+        // move
         sprite.position = ccp(positionInMinimap.x+self.point.x,positionInMinimap.y+self.point.y);
+        [sprite release];
     }
 }
 
