@@ -42,7 +42,7 @@
 -(void)updateMiniMap:(NSArray*)civilians {
     [self removeAllChildrenWithCleanup:YES];
     for (Civilian* c in civilians) {
-        CGPoint originalPosition = c.sprite.position;
+        CGPoint originalPosition = c.position;
         //NSLog(@"ratio=%f",self.ratio);
         //NSLog(@"original = %f,%f",originalPosition.x,originalPosition.y);
         CGPoint positionInMinimap = ccp(originalPosition.x*self.ratio, originalPosition.y*self.ratio);

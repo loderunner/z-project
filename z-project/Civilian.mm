@@ -19,9 +19,9 @@
 @implementation Civilian
 
 -(id)init {
-    if (self = [super init]) {
-        _sprite = [[CCSprite spriteWithFile:@"zombie.png"] retain];
+    if (self = [super initWithFile:@"zombie.png"]) {
         _sprite.tag = TagCivilian;
+        [self randomWalk];
         
         //[_sprite schedule:@selector(update:)];
         //[_sprite schedule:@selector(randomWalk) interval:1.0f];

@@ -9,6 +9,8 @@
 #import "Zombie.h"
 #import "Tags.h"
 
+static CGFloat const SPEED = 40.f;
+
 @interface Zombie()
 
 @property (nonatomic, strong) CCSprite* sprite;
@@ -19,41 +21,41 @@
 @implementation Zombie
 
 -(id)init {
-    if (self = [super init]) {
-        _sprite = [[CCSprite spriteWithFile:@"zombie.png"] retain];
-        _sprite.tag = TagZombie;
+    if (self = [super initWithFile:@"zombie.png"]) {
+        self.tag = TagZombie;
         
-        [_sprite schedule:@selector(update:)];
-        [_sprite schedule:@selector(randomWalk) interval:1.0f];
+        [self schedule:@selector(update:)];
+        [self schedule:@selector(randomWalk) interval:1.0f];
     }
     return self;
 }
 
 - (void)dealloc
 {
-    [_sprite release];
     [super dealloc];
 }
 
 -(Zombie *)initWithPosition:(CGPoint)position {
     if (self = [self init]) {
-        _sprite.position = position;
+        self.position = position;
     }
     return self;
 }
 
 - (void)update:(ccTime)dt
 {
+    CGPoint pos = self.position;
+    CGPoint move = ccpMult(_velocity, dt);
+    pos = ccpAdd(pos, move);
     
+    self.position = pos;
 }
 
 -(void)randomWalk {
-    int x = arc4random_uniform(40) - 19;
-    int y = arc4random_uniform(40) - 19;
-    CCMoveBy* move = [CCMoveBy actionWithDuration:1 position:ccp(x,y)];
-    CCCallFunc* loop = [CCCallFunc actionWithTarget:self selector:@selector(randomWalk)];
-    CCSequence* seq = [CCSequence actions:move, loop, nil];
-    [self.sprite runAction:seq];
+    CGFloat angle = CCRANDOM_0_1() * 2 * M_PI;
+    CGFloat x = cosf(angle) * SPEED;
+    CGFloat y = sinf(angle) * SPEED;
+    _velocity = ccp(x, y);
 }
 
 @end

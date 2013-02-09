@@ -9,10 +9,9 @@
 #import "cocos2d.h"
 #import <Foundation/Foundation.h>
 
-@interface Civilian : NSObject
+@interface Civilian : CCSprite
 
 -(Civilian*)initWithPosition:(CGPoint)position;
--(CCSprite*)sprite;
 -(void)randomWalk;
 
 @end

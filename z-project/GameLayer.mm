@@ -9,7 +9,7 @@
 // Import the interfaces
 #import "GameLayer.h"
 #import "AppDelegate.h"
-#import "Civilian.h"
+#import "Zombie.h"
 #import "Box2D.h"
 #import "ContactListener.h"
 
@@ -21,6 +21,7 @@ static float const PTM_RATIO = 64.0f;
 
 @property (nonatomic,retain) MiniMap* minimap;
 @property (nonatomic,retain) NSMutableArray* civilians;
+@property (nonatomic,retain) NSMutableArray* zombies;
 
 @end
 
@@ -58,7 +59,7 @@ static float const PTM_RATIO = 64.0f;
         contactListener = new ContactListener();
         world->SetContactListener(contactListener);
         
-        _map = [CCTMXTiledMap tiledMapWithTMXFile:@"firsMap.tmx"];
+        _map = [[CCTMXTiledMap alloc] initWithTMXFile:@"firsMap.tmx"];
         _map.anchorPoint = CGPointZero;
         
         [self addChild:_map];
@@ -72,7 +73,8 @@ static float const PTM_RATIO = 64.0f;
         self.isTouchEnabled = YES;
         
         _civilians = [[NSMutableArray alloc] init];
-        [self spawnCivilians:200];
+        _zombies = [[NSMutableArray alloc] init];
+        [self spawnZombies:200];
         
         [self createMiniMap];
         [self schedule:@selector(updateMiniMap:) interval:.7f];
@@ -83,6 +85,7 @@ static float const PTM_RATIO = 64.0f;
 - (void)dealloc
 {
     [_civilians release];
+    [_zombies release];
     [_map release];
     delete world;
     delete contactListener;
@@ -108,20 +111,22 @@ static float const PTM_RATIO = 64.0f;
 
 - (void)updateMiniMap:(ccTime)dt
 {
-    [self.minimap updateMiniMap:self.civilians];
+    [self.minimap updateMiniMap:self.zombies];
 }
 
--(void)spawnCivilians:(int) numCivilians {
+-(void)spawnZombies:(int) numZombies
+{
     int totalWidth  = mapSize.width  * tileSize.width;
     int totalHeight = mapSize.height * tileSize.height;
-    for (int i=0; i<numCivilians; ++i) {
+    for (int i = 0; i < numZombies; ++i)
+    {
         int x = arc4random_uniform(totalWidth);
         int y = arc4random_uniform(totalHeight);
         
-        Civilian* dude = [[[Civilian alloc] initWithPosition: ccp(x,y)] autorelease];
-        [self.civilians addObject:dude];
-        [self.map addChild:dude.sprite];
-        [self addBoxBodyForSprite:dude.sprite];
+        Zombie* dude = [[[Zombie alloc] initWithPosition: ccp(x,y)] autorelease];
+        [self.zombies addObject:dude];
+        [self.map addChild:dude];
+        [self addBoxBodyForSprite:dude];
         
         [dude randomWalk];
     }

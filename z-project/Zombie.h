@@ -9,10 +9,9 @@
 #import "cocos2d.h"
 #import <Foundation/Foundation.h>
 
-@interface Zombie : NSObject
+@interface Zombie : CCSprite
 
 -(Zombie*)initWithPosition:(CGPoint)position;
--(CCSprite*)sprite;
 -(void)randomWalk;
 
 @end
