@@ -102,8 +102,10 @@ static float const PTM_RATIO = 64.0f;
             [self schedule:@selector(updateMiniMapCharacters:) interval:.7f];
             [self schedule:@selector(updateMiniMapPosition:) interval:.05f];  // 1/20th sec
 
-            [self createMenuLayer];
-        }
+            }
+        
+        [self createMenuLayer];
+        [self schedule:@selector(updateMenuLayer:) interval:.7f];
 	}
 	return self;
 }
@@ -194,12 +196,13 @@ static float const PTM_RATIO = 64.0f;
 #pragma mark - menuLayer
 
 -(void)createMenuLayer {
-    float height = 50.0;
-    float width = winSize.width;
-    CGPoint position = ccp(100, winSize.height);
-    CGSize size = CGSizeMake(0,100); //width, height);
     self.menuLayer = [[MenuLayer alloc] initWithWinSize:winSize];
     [self addChild:self.menuLayer];
+}
+
+-(void)updateMenuLayer:(ccTime)dt {
+    [self.menuLayer updateNumberOfCivilian:self.civilians.count];
+    [self.menuLayer updateNumberOfZombie:self.zombies.count];
 }
 
 #pragma mark - Box2D stuff
