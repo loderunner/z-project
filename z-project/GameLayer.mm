@@ -55,6 +55,20 @@ static float const PTM_RATIO = 64.0f;
 	return scene;
 }
 
+-(void)enumerateTilesInMap:(CCTMXTiledMap*)map layer:(CCTMXLayer*)layer usingBlock:(void(^)(NSUInteger x, NSUInteger y, NSDictionary* property))block {
+    // see http://stackoverflow.com/a/8393829/1969636
+    for (NSUInteger y = 0; y < layer.layerSize.height; y++) {
+        for (NSUInteger x = 0; x < layer.layerSize.width; x++) {
+            NSUInteger pos = x + layer.layerSize.width * y;
+            uint32_t gid = layer.tiles[pos];
+            if (gid > 0) {
+                NSDictionary *tileProperty = [map propertiesForGID:gid];
+                block(x,y,tileProperty);
+            }
+        }
+    }
+}
+
 -(id) initWithMap:(NSString*)mapName
 {
 	if (self = [super init]) {        
@@ -69,9 +83,20 @@ static float const PTM_RATIO = 64.0f;
         // load the map
         _map = [[TiledMap alloc] initWithTMXFile:mapName];
         _map.anchorPoint = CGPointZero;
-        CCTMXLayer* collidables = [_map layerNamed:@"collidable"];
+        
+        CCTMXLayer* collidables = [_map layerNamed:@"collidables"];
+        [self enumerateTilesInMap:_map layer:collidables usingBlock:^(NSUInteger x, NSUInteger y, NSDictionary *property) {
+            if ([@"0" compare: [property objectForKey:@"can_walk"]] == NSOrderedSame) {
+                NSLog(@"tile at %d,%d is collidable",x,y);
+                int xOnScreen = x * _map.tileSize.width;
+                int yOnScreen = (_map.mapSize.height - y) * _map.tileSize.height;
+                NSLog(@"tile at %d,%d (ON SCREEN) is collidable",xOnScreen,yOnScreen);
+            }
+        }];
         collidables.visible = NO;
+        
         CCTMXObjectGroup* spawnPoints = [_map objectGroupNamed:@"spawnPoints"];
+
         _spawnPoints = [spawnPoints.objects copy];
         
         [self addChild:_map];
