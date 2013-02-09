@@ -18,6 +18,7 @@
 @property (nonatomic, readonly) CGFloat right;
 @property (nonatomic, readonly) CGFloat bottom;
 
--(id)initWithFile:(NSString*)file tag:(NSInteger)tag;
+- (id)initWithFile:(NSString*)file tag:(NSInteger)tag;
+- (void)kill;
 
 @end

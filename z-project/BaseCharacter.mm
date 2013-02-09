@@ -43,7 +43,7 @@
 }
 
 -(void)dealloc {
-    self.properties = nil;
+    [_properties release];
     
     [super dealloc];
 }

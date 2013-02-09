@@ -13,6 +13,7 @@
 #import "Zombie.h"
 #import "Box2D.h"
 #import "ContactListener.h"
+#import "Constants.h"
 
 
 #pragma mark - GameLayer
@@ -73,14 +74,26 @@ static float const PTM_RATIO = 64.0f;
         winSize  = [CCDirector sharedDirector].winSize;
         mapSize  = _map.mapSize;
         tileSize = _map.tileSize;
-
+        
         [self scheduleUpdate];
         self.isTouchEnabled = YES;
         
         _civilians = [[NSMutableArray alloc] init];
         _zombies = [[NSMutableArray alloc] init];
-        [self spawnCivilians:200];
-        [self spawnZombies];
+        
+        for (int i = 0; i < 200; ++i)
+        {
+            [self addCivilian];
+        }
+        
+        for (NSDictionary* spawnPoint in self.spawnPoints) {
+            int x = [[spawnPoint objectForKey:@"x"] intValue];
+            int y = [[spawnPoint objectForKey:@"y"] intValue];
+            NSLog(@"spawn point at %d,%d",x,y);
+            CGPoint pos = ccp(x,y);
+            
+            [self addZombieAt:pos];
+        }
         
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
             [self createMiniMap];
@@ -93,39 +106,50 @@ static float const PTM_RATIO = 64.0f;
 
 #pragma mark - map populating
 
--(void)spawnCivilians:(int) numZombies
-{
+-(void)addCivilian {
     int totalWidth  = mapSize.width  * tileSize.width;
     int totalHeight = mapSize.height * tileSize.height;
-    for (int i = 0; i < numZombies; ++i)
-    {
-        int x = arc4random_uniform(totalWidth);
-        int y = arc4random_uniform(totalHeight);
-        
-        Civilian* dude = [[Civilian alloc] initWithPosition: ccp(x,y)];
-        [self.civilians addObject:dude];
-        [self.map addChild:dude];
-        [self addBoxBodyForSprite:dude];
-        
-        [dude randomWalk];
-    }
+    
+    int x = arc4random_uniform(totalWidth);
+    int y = arc4random_uniform(totalHeight);
+    
+    [self addCivilianAt:ccp(x, y)];
 }
 
--(void)spawnZombies {
-    for (NSDictionary* spawnPoint in self.spawnPoints) {
-        int x = [[spawnPoint objectForKey:@"x"] intValue];
-        int y = [[spawnPoint objectForKey:@"y"] intValue];
-        NSLog(@"spawn point at %d,%d",x,y);
-        CGPoint pos = ccp(x,y);
-        
-        Zombie* grrr = [[Zombie alloc] initWithPosition: pos];
-        [self.zombies addObject:grrr];
-        [self.map addChild:grrr];
-        [self addBoxBodyForSprite:grrr];
-        [grrr randomWalk];
-    }
+- (void)addCivilianAt:(CGPoint)pos
+{
+    Civilian* civilian = [[Civilian alloc] initWithPosition:pos];
+    [self.civilians addObject:civilian];
+    [self.map addChild:civilian];
+    [self addBoxBodyForSprite:civilian];
+    
+    [civilian randomWalk];
 }
 
+- (void)removeCivilian:(Civilian*)civilian
+{
+    if (self.minimap) [self.minimap removeCharacter:civilian];
+    [self.civilians removeObject:civilian];
+    [self.map removeChild:civilian cleanup:YES];
+    [self removeBoxForBody:civilian];
+}
+
+-(void)addZombieAt:(CGPoint)pos {
+    Zombie* zombie = [[Zombie alloc] initWithPosition: pos];
+    [self.zombies addObject:zombie];
+    [self.map addChild:zombie];
+    [self addBoxBodyForSprite:zombie];
+    
+    [zombie randomWalk];
+}
+
+- (void)removeZombie:(Zombie*)zombie
+{
+    if (self.minimap) [self.minimap removeCharacter:zombie];
+    [self.zombies removeObject:zombie];
+    [self.map removeChild:zombie cleanup:YES];
+    [self removeBoxForBody:zombie];
+}
 
 #pragma mark - scheduled events
 
@@ -166,7 +190,7 @@ static float const PTM_RATIO = 64.0f;
 #pragma mark - Box2D stuff
 
 - (void)addBoxBodyForSprite:(CCSprite *)sprite
-{    
+{
     b2BodyDef spriteBodyDef;
     spriteBodyDef.type = b2_dynamicBody;
     spriteBodyDef.position.Set(sprite.position.x/PTM_RATIO,
@@ -182,6 +206,23 @@ static float const PTM_RATIO = 64.0f;
     spriteShapeDef.density = 10.0;
     spriteShapeDef.isSensor = true;
     spriteBody->CreateFixture(&spriteShapeDef);
+}
+
+- (void)removeBoxForBody:(CCSprite*)sprite
+{
+    b2Body *spriteBody = NULL;
+    for(b2Body *b = world->GetBodyList(); b; b=b->GetNext()) {
+        if (b->GetUserData() != NULL) {
+            CCSprite *curSprite = (CCSprite *)b->GetUserData();
+            if (sprite == curSprite) {
+                spriteBody = b;
+                break;
+            }
+        }
+    }
+    if (spriteBody != NULL) {
+        world->DestroyBody(spriteBody);
+    }
 }
 
 - (void)updateBodies:(ccTime)dt
@@ -206,10 +247,10 @@ static float const PTM_RATIO = 64.0f;
 {
     //CCLOG(@"%ld collisions", contactListener->_contacts.size());
     
-    std::vector<MyContact>::iterator pos;
-    for(pos = contactListener->_contacts.begin();
-        pos != contactListener->_contacts.end(); ++pos) {
-        MyContact contact = *pos;
+    std::vector<Contact>::iterator pos;
+    for(pos = contactListener->_contacts.begin(); pos != contactListener->_contacts.end(); ++pos)
+    {
+        Contact contact = *pos;
         
         b2Body *bodyA = contact.fixtureA->GetBody();
         b2Body *bodyB = contact.fixtureB->GetBody();
@@ -218,24 +259,33 @@ static float const PTM_RATIO = 64.0f;
             BaseCharacter* spriteA = (BaseCharacter*) bodyA->GetUserData();
             BaseCharacter* spriteB = (BaseCharacter*) bodyB->GetUserData();
             
-            // if same sprite class, do not let them overlap
-            if (spriteA.tag == spriteB.tag)
+            if (spriteA.tag != spriteB.tag)
             {
-                CGFloat overlapTop = spriteA.top - spriteB.bottom;
-                CGFloat overlapBottom = spriteB.top - spriteA.bottom;
-                CGFloat overlapLeft = spriteB.right - spriteA.left;
-                CGFloat overlapRight = spriteA.right - spriteB.left;
-                
-                CGFloat overlapX = MIN(overlapLeft, overlapRight);
-                CGFloat overlapY = MIN(overlapBottom, overlapTop);
-                
-                CGPoint posA = spriteA.position;
-                if (overlapX > overlapY)
+                Zombie* zombie;
+                Civilian* civilian;
+                if (spriteA.tag == kTagZombie)
                 {
-                    
+                    zombie = (Zombie*)spriteA;
+                    civilian = (Civilian*)spriteB;
                 }
                 else
                 {
+                    zombie = (Zombie*)spriteB;
+                    civilian = (Civilian*)spriteA;
+                }
+                
+                // kill civilian, save in list and wake as zombie in 3 seconds
+                if ([civilian isAlive])
+                {
+                    [civilian kill];
+                    CCDelayTime* delayAction = [CCDelayTime actionWithDuration:3];
+                    CCCallBlock* blockAction = [CCCallBlock actionWithBlock:^(void)
+                                                {
+                                                    [self addZombieAt:civilian.position];
+                                                    [self removeCivilian:civilian];
+                                                }];
+                    CCSequence* sequenceAction = [CCSequence actionOne:delayAction two:blockAction];
+                    [self runAction:sequenceAction];
                 }
             }
         }
@@ -282,7 +332,7 @@ static float const PTM_RATIO = 64.0f;
     // constraints
     if (newPos.x > 0) newPos.x = 0;
     if (newPos.y > 0) newPos.y = 0;
-
+    
     float layerWidth = tileSize.width * mapSize.width;
     float winWidth   = winSize.width;
     float minimumX   = winWidth-layerWidth;
@@ -291,7 +341,7 @@ static float const PTM_RATIO = 64.0f;
     float winHeight   = winSize.height;
     float minimumY    = winHeight-layerHeight;
     if (newPos.y < minimumY) newPos.y = minimumY;
-
+    
 	[self.map setPosition: newPos];
 }
 

@@ -13,6 +13,8 @@
 
 @interface Zombie : BaseCharacter
 
+@property (nonatomic) CGPoint velocity;
+
 -(Zombie*)initWithPosition:(CGPoint)position;
 -(void)randomWalk;
 
