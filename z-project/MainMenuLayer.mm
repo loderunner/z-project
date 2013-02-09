@@ -8,6 +8,7 @@
 
 #import "cocos2d.h"
 #import "MainMenuLayer.h"
+#import "GameLayer.h"
 
 @implementation MainMenuLayer
 
@@ -24,18 +25,21 @@
 -(id)init {
     if (self = [super init]) {
         CCMenuItemSprite* level1 = [self
-                                    createMenuItemWithNormalImage:@"leve1_nornal.png"
+                                    createMenuItemWithNormalImage:@"leve1_normal.png"
                                     selectedImage:@"leve1_selected.png"
                                     selector:@selector(firstLevel:)];
         CCMenuItemSprite* level2 = [self
-                                    createMenuItemWithNormalImage:@"leve2_nornal.png"
-                                    selectedImage:@"leve2_selected.png"
+                                    createMenuItemWithNormalImage:@"level2_normal.png"
+                                    selectedImage:@"level2_selected.png"
                                     selector:@selector(secondLevel:)];
         CCMenuItemSprite* level3 = [self
-                                    createMenuItemWithNormalImage:@"leve3_nornal.png"
-                                    selectedImage:@"leve3_selected.png"
+                                    createMenuItemWithNormalImage:@"level3_normal.png"
+                                    selectedImage:@"level3_selected.png"
                                     selector:@selector(thirdLevel:)];
-        CCMenu* menu = [CCMenu menuWithItems:level1,level2,level3, nil];
+        CCMenu* menu = [CCMenu menuWithItems:level1
+                        ,level2
+                        ,level3
+                        , nil];
         
         CGSize size = [CCDirector sharedDirector].winSize;
         menu.position = CGPointMake(size.width/2, size.height/2);
@@ -46,7 +50,10 @@
 }
 
 -(void)firstLevel:(id)sender {
-    
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade
+                                              transitionWithDuration:1.5
+                                              scene:[GameLayer scene]
+                                              withColor:ccWHITE]];
 }
 
 -(void)secondLevel:(id)sender {
