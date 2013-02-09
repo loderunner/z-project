@@ -3,7 +3,7 @@
  <tileset firstgid="1" name="testtiles" tilewidth="32" tileheight="32">
   <image source="tiles.png" width="517" height="516"/>
  </tileset>
- <layer name="Calque de Tile 1" width="100" height="100">
+ <layer name="map" width="100" height="100">
   <data encoding="base64" compression="zlib">
    eJzt20FugzAUQEGy4/4nzrZFDaZtUr/GsxixQrL+kzAIuG3bdrto/+DqOTzfscH+hdlrXMnZzLXQY3V6tGjRokeLHh32jhY9WvRo0aNFjxY9WvRo0aNFjxY9Ws5mroceKxtdq/Ro9Zi9vtXo0aJHix4terTo0bEfjnrowed5j575NPnbHqOZ66HHqq7sH3rosaLjvzd6/I8es9e5Cj1a9GjRo0WPFj1aRj20mNNCj/lcq1r0aNGjRY8WPVp+c6+r0+ta/KQHerwzPVr0aNGjRY8WPTquzl4PPVakR4seLXq06NGiR4seHd9576THnB6P/ifQY06Ps06z1/vu9Gjx3UKLHi16dPh+p0WPFj1aRjPXpEWPFj1a9GjRo0WPFj1a9AAAAAAAAAB4jTvS3C1i
   </data>
