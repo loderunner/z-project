@@ -14,7 +14,6 @@
 #import "Box2D.h"
 #import "ContactListener.h"
 #import "Constants.h"
-#import "TiledMap.h"
 #import "ScoreCounters.h"
 
 #pragma mark - GameLayer
@@ -22,10 +21,10 @@
 static float const PTM_RATIO = 64.0f;
 @interface GameLayer()
 
-@property (nonatomic,retain) MiniMap* minimap;
-@property (nonatomic,retain) MenuLayer* menuLayer;
 @property (nonatomic,retain) NSMutableArray* civilians;
 @property (nonatomic,retain) NSMutableArray* zombies;
+@property (nonatomic,retain) MiniMap* minimap;
+@property (nonatomic,retain) MenuLayer* menuLayer;
 @property (nonatomic,retain) NSMutableArray* spawnPoints;
 @property (nonatomic,retain) NSMutableArray* gestureRecognizers;
 @property (nonatomic,retain) ScoreCounters* scoreCounters;
@@ -100,6 +99,9 @@ static float const PTM_RATIO = 64.0f;
             CGPoint pos = ccp(x,y);
             
             [self addZombieAt:pos];
+            
+            //#DEBUG Chrales: only one zombie to test "smart"zombies
+            break;
         }
         
         _scoreCounters = [[ScoreCounters alloc] initWithZombies:_zombies.count civilians:_civilians.count];
