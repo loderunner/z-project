@@ -68,6 +68,18 @@ static NSString* const FRAME_DEAD = @"zombie-dead";
     [super kill];
 }
 
+-(void)eatCivilian:(Civilian*)civilian
+{
+    self.state = kStateZombieEating;
+    self.position = civilian.position;
+    [self scheduleOnce:@selector(doneEating) delay:1];
+}
+
+- (void)doneEating
+{
+    self.state = kStateAlive;
+}
+
 -(void)followCivilian {
     CGFloat minDistance2 = CGFLOAT_MAX;
     Civilian* minCivilian = nil;

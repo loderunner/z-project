@@ -11,11 +11,14 @@
 #import "cocos2d.h"
 #import <Foundation/Foundation.h>
 
+@class Civilian;
+
 @interface Zombie : BaseCharacter
 
 @property (nonatomic) CGPoint velocity;
 
 -(Zombie*)initWithPosition:(CGPoint)position;
+-(void)eatCivilian:(Civilian*)civilian;
 -(void)followCivilian;
 
 @end
