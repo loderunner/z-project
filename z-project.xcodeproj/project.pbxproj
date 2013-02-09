@@ -193,6 +193,7 @@
 		9AB4ED4016C6B8B900C1837B /* civilian.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB4ED3E16C6B8B900C1837B /* civilian.png */; };
 		9AB4ED4316C6B8FD00C1837B /* zombie.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9AB4ED4116C6B8FD00C1837B /* zombie.plist */; };
 		9AB4ED4416C6B8FD00C1837B /* zombie.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB4ED4216C6B8FD00C1837B /* zombie.png */; };
+		9AB4ED4716C6DFCD00C1837B /* TiledMap.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AB4ED4616C6DFCD00C1837B /* TiledMap.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -575,6 +576,8 @@
 		9AB4ED3E16C6B8B900C1837B /* civilian.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = civilian.png; path = Resources/civilian.png; sourceTree = "<group>"; };
 		9AB4ED4116C6B8FD00C1837B /* zombie.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = zombie.plist; path = Resources/zombie.plist; sourceTree = "<group>"; };
 		9AB4ED4216C6B8FD00C1837B /* zombie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = zombie.png; path = Resources/zombie.png; sourceTree = "<group>"; };
+		9AB4ED4516C6DFCD00C1837B /* TiledMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TiledMap.h; sourceTree = "<group>"; };
+		9AB4ED4616C6DFCD00C1837B /* TiledMap.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TiledMap.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1205,6 +1208,8 @@
 				40DA75C716C6DAF6005D90FA /* MenuLayer.mm */,
 				9A43B63216C5FD070097FE86 /* MiniMap.h */,
 				40DA75C816C6DAF7005D90FA /* MiniMap.mm */,
+				9AB4ED4516C6DFCD00C1837B /* TiledMap.h */,
+				9AB4ED4616C6DFCD00C1837B /* TiledMap.mm */,
 			);
 			name = layers;
 			sourceTree = "<group>";
@@ -1459,6 +1464,7 @@
 				40DA75C916C6DAFB005D90FA /* MainMenuLayer.mm in Sources */,
 				40DA75CA16C6DAFB005D90FA /* MenuLayer.mm in Sources */,
 				40DA75CB16C6DAFB005D90FA /* MiniMap.mm in Sources */,
+				9AB4ED4716C6DFCD00C1837B /* TiledMap.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
