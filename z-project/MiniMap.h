@@ -12,5 +12,6 @@
 
 -(MiniMap*)initWithPosition:(CGPoint)point size:(CGSize)size andRatio:(float)ratio;
 -(void)updateMiniMap:(NSArray*)civilians;
+-(BOOL)intersectsLocation:(CGPoint)touchLocation withPadding:(float)padding;
 
 @end
