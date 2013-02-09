@@ -5,29 +5,7 @@
 	<key>frames</key>
 	<dict>
 		
-		<key>z-d.png</key>
-		<dict>
-			<key>aliases</key>
-			<array>
-			
-			</array>
-			<key>spriteColorRect</key>
-			<string>{{10, 10}, {112, 116}}</string>
-			<key>spriteOffset</key>
-			<string>{2, -4}</string>
-			<key>spriteSize</key>
-			<string>{112, 116}</string>
-			<key>spriteSourceSize</key>
-			<string>{128, 128}</string>
-			<key>spriteTrimmed</key>
-			<true/>
-			<key>textureRect</key>
-			<string>{{112, 122}, {112, 116}}</string>
-			<key>textureRotated</key>
-			<false/>
-		</dict>
-		
-		<key>z-dead.png</key>
+		<key>zombie-dead</key>
 		<dict>
 			<key>aliases</key>
 			<array>
@@ -49,7 +27,29 @@
 			<false/>
 		</dict>
 		
-		<key>z-l.png</key>
+		<key>zombie-down</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{10, 10}, {112, 116}}</string>
+			<key>spriteOffset</key>
+			<string>{2, -4}</string>
+			<key>spriteSize</key>
+			<string>{112, 116}</string>
+			<key>spriteSourceSize</key>
+			<string>{128, 128}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{112, 122}, {112, 116}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>zombie-left</key>
 		<dict>
 			<key>aliases</key>
 			<array>
@@ -71,7 +71,7 @@
 			<false/>
 		</dict>
 		
-		<key>z-r.png</key>
+		<key>zombie-right</key>
 		<dict>
 			<key>aliases</key>
 			<array>
@@ -93,7 +93,7 @@
 			<false/>
 		</dict>
 		
-		<key>z-u.png</key>
+		<key>zombie-up</key>
 		<dict>
 			<key>aliases</key>
 			<array>

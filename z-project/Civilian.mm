@@ -17,8 +17,15 @@ static CGFloat const SPEED = 40.f;
 
 @implementation Civilian
 
++ (void)initialize
+{
+    [super initialize];
+    
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"civilian.plist"];
+}
+
 -(id)init {
-    if (self = [super initWithFile:@"civilian.png" tag:kTagCivilian])
+    if (self = [super initWithSpriteFrameName:@"civilian-up" andTag:kTagCivilian])
     {
         [self schedule:@selector(randomWalk) interval:1.0f];
     }

@@ -20,10 +20,12 @@ static CGFloat const SPEED = 40.f;
 + (void)initialize
 {
     [super initialize];
+    
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"zombie.plist"];
 }
 
 -(id)init {
-    if (self = [super initWithFile:@"zombie.png" tag:kTagZombie]) {
+    if (self = [super initWithSpriteFrameName:@"zombie-up" andTag:kTagZombie]) {
         [self schedule:@selector(randomWalk) interval:1.0f];
     }
     return self;

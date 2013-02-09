@@ -24,8 +24,8 @@ State;
 
 @implementation BaseCharacter
 
--(id)initWithFile:(NSString*)file tag:(NSInteger)tag; {
-    if (self = [super initWithFile:file]) {
+-(id)initWithSpriteFrameName:(NSString*)frame andTag:(NSInteger)tag; {
+    if (self = [super initWithSpriteFrameName:frame]) {
         _properties = [[NSMutableDictionary alloc] init];
         _state = kStateAlive;
         

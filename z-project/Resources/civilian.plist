@@ -5,29 +5,7 @@
 	<key>frames</key>
 	<dict>
 		
-		<key>h-d.png</key>
-		<dict>
-			<key>aliases</key>
-			<array>
-			
-			</array>
-			<key>spriteColorRect</key>
-			<string>{{33, 11}, {60, 86}}</string>
-			<key>spriteOffset</key>
-			<string>{-1, 10}</string>
-			<key>spriteSize</key>
-			<string>{60, 86}</string>
-			<key>spriteSourceSize</key>
-			<string>{128, 128}</string>
-			<key>spriteTrimmed</key>
-			<true/>
-			<key>textureRect</key>
-			<string>{{62, 188}, {60, 86}}</string>
-			<key>textureRotated</key>
-			<false/>
-		</dict>
-		
-		<key>h-dead.png</key>
+		<key>civilian-dead</key>
 		<dict>
 			<key>aliases</key>
 			<array>
@@ -49,7 +27,29 @@
 			<false/>
 		</dict>
 		
-		<key>h-l.png</key>
+		<key>civilian-down</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{33, 11}, {60, 86}}</string>
+			<key>spriteOffset</key>
+			<string>{-1, 10}</string>
+			<key>spriteSize</key>
+			<string>{60, 86}</string>
+			<key>spriteSourceSize</key>
+			<string>{128, 128}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{62, 188}, {60, 86}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>civilian-left</key>
 		<dict>
 			<key>aliases</key>
 			<array>
@@ -71,7 +71,7 @@
 			<false/>
 		</dict>
 		
-		<key>h-r.png</key>
+		<key>civilian-right</key>
 		<dict>
 			<key>aliases</key>
 			<array>
@@ -93,7 +93,7 @@
 			<false/>
 		</dict>
 		
-		<key>h-u.png</key>
+		<key>civilian-up</key>
 		<dict>
 			<key>aliases</key>
 			<array>
