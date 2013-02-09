@@ -1196,12 +1196,12 @@
 		40B9A94216C5D7D7004DCC10 /* characters */ = {
 			isa = PBXGroup;
 			children = (
+				40B9A96116C65546004DCC10 /* BaseCharacter.h */,
 				40B9A96816C66A84004DCC10 /* BaseCharacter.mm */,
 				40B9A95816C65424004DCC10 /* Civilian.h */,
 				40B9A95916C65424004DCC10 /* Civilian.mm */,
 				9A3D2B4816C5F3D3007F4E05 /* Zombie.h */,
 				9A3D2B4916C5F3D3007F4E05 /* Zombie.mm */,
-				40B9A96116C65546004DCC10 /* BaseCharacter.h */,
 			);
 			name = characters;
 			sourceTree = "<group>";
