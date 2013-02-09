@@ -27,6 +27,7 @@
         _point = point;
         _size  = size;
         _ratio = ratio;
+        self.isTouchEnabled = YES;
     }
     return self;
 }
@@ -36,12 +37,12 @@
     glEnable(GL_LINE_SMOOTH);
     glColor4ub(255, 255, 255, 255);
     glLineWidth(2);
-    CGPoint vertices2[] = { self.point, ccp(self.point.x+self.size.width,self.point.y), ccp(self.point.x+self.size.width,self.point.y+self.size.height), ccp(self.point.x,self.point.y+self.size.height) };
-    ccDrawPoly(vertices2, 4, YES);
+    ccColor4F fillColor = kMinimapFillColor;
+    ccDrawSolidRect(self.point,ccp(self.point.x+self.size.width,self.point.y+self.size.height), fillColor);
 }
 
--(void)updateMiniMap:(NSArray*)civilians {
-    for (Civilian* c in civilians) {
+-(void)updateMiniMap:(NSArray*)characters {
+    for (BaseCharacter* c in characters) {
         // compute position in the minimap
         CGPoint originalPosition = c.position;
         CGPoint positionInMinimap = ccp(originalPosition.x*self.ratio, originalPosition.y*self.ratio);
@@ -57,20 +58,46 @@
         }
         // move
         sprite.position = ccp(positionInMinimap.x+self.point.x,positionInMinimap.y+self.point.y);
+        sprite.visible = [self intersectsLocation:sprite.position withPadding:0.0];
         [sprite release];
     }
 }
 
--(BOOL)intersectsLocation:(CGPoint)touchLocation withPadding:(float)padding {
+-(BOOL)intersectsLocation:(CGPoint)location withPadding:(float)padding {
     float left   = self.point.x;
     float bottom = self.point.y;
     float right  = self.point.x+self.size.width;
     float top    = self.point.y+self.size.height;
-    if (touchLocation.x > right + padding) return NO;
-    if (touchLocation.x < left - padding) return NO;
-    if (touchLocation.y < bottom - padding) return NO;
-    if (touchLocation.y > top + padding) return NO;
+    if (location.x > right + padding) return NO;
+    if (location.x < left - padding) return NO;
+    if (location.y < bottom - padding) return NO;
+    if (location.y > top + padding) return NO;
     return YES;
+}
+
+#pragma mark - touch events
+
+-(void) registerWithTouchDispatcher
+{
+	CCDirector *director = [CCDirector sharedDirector];
+	[[director touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
+}
+
+-(void)showAgain {
+    self.visible = YES;
+}
+
+-(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
+{
+    CGPoint touchLocation = [touch locationInView: [touch view]];
+    touchLocation = [[CCDirector sharedDirector] convertToGL:touchLocation];
+    
+    if([self intersectsLocation:touchLocation withPadding:15.0]) {
+        [self unschedule:@selector(showAgain)];
+        [self scheduleOnce:@selector(showAgain) delay:2.0];
+        self.visible = NO;
+    }
+    return NO; //do *not* swallow touches !
 }
 
 #pragma mark - cleanup

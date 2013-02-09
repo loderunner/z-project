@@ -17,3 +17,5 @@ Tags;
 #define kMinimapImageKey @"ImageForMiniMap"
 #define kMinimapSpriteForCivilian @"icon_civilian.png"
 #define kMinimapSpriteForZombie @"icon_zombie.png"
+#define kMinimapFillColor ccc4f(0.5, 0.5, 0.5, 0.5)
+
