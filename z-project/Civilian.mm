@@ -11,17 +11,7 @@
 
 static CGFloat const SPEED = 40.f;
 
-typedef enum
-{
-    kStateAlive = 0,
-    kStateDead
-}
-State;
-
 @interface Civilian()
-
-@property (nonatomic, assign) CGPoint velocity;
-@property (nonatomic) State state;
 
 @end
 
@@ -30,9 +20,7 @@ State;
 -(id)init {
     if (self = [super initWithFile:@"civilian.png" tag:kTagCivilian])
     {
-        [self schedule:@selector(update:)];
         [self schedule:@selector(randomWalk) interval:1.0f];
-        _state = kStateAlive;
     }
     return self;
 }
@@ -50,33 +38,11 @@ State;
     return self;
 }
 
-- (void)update:(ccTime)dt
-{
-    if ([self isAlive])
-    {
-        CGPoint pos = self.position;
-        CGPoint move = ccpMult(_velocity, dt);
-        pos = ccpAdd(pos, move);
-        
-        self.position = pos;
-    }
-}
-
 -(void)randomWalk {
     CGFloat angle = CCRANDOM_0_1() * 2 * M_PI;
     CGFloat x = cosf(angle) * SPEED;
     CGFloat y = sinf(angle) * SPEED;
-    _velocity = ccp(x, y);
-}
-
--(void)kill
-{
-    _state = kStateDead;
-}
-
--(BOOL)isAlive
-{
-    return (_state == kStateAlive);
+    self.velocity = ccp(x, y);
 }
 
 @end

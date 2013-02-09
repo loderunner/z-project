@@ -10,6 +10,7 @@
 
 @interface BaseCharacter : CCSprite
 
+@property (nonatomic, assign) CGPoint velocity;
 @property (nonatomic,retain) NSMutableDictionary* properties;
 
 // helpers for edges
@@ -19,6 +20,7 @@
 @property (nonatomic, readonly) CGFloat bottom;
 
 - (id)initWithFile:(NSString*)file tag:(NSInteger)tag;
-- (void)kill;
+-(void)kill;
+-(BOOL)isAlive;
 
 @end

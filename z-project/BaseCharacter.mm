@@ -7,14 +7,31 @@
 //
 
 #import "BaseCharacter.h"
+#import "cocos2d.h"
+
+typedef enum
+{
+    kStateAlive = 0,
+    kStateDead
+}
+State;
+
+@interface BaseCharacter ()
+
+@property (nonatomic) State state;
+
+@end
 
 @implementation BaseCharacter
 
 -(id)initWithFile:(NSString*)file tag:(NSInteger)tag; {
     if (self = [super initWithFile:file]) {
         _properties = [[NSMutableDictionary alloc] init];
+        _state = kStateAlive;
         
         self.tag = tag;
+        
+        [self schedule:@selector(update:)];
     }
     return self;
 }
@@ -46,6 +63,28 @@
     [_properties release];
     
     [super dealloc];
+}
+
+- (void)update:(ccTime)dt
+{
+    if ([self isAlive])
+    {
+        CGPoint pos = self.position;
+        CGPoint move = ccpMult(_velocity, dt);
+        pos = ccpAdd(pos, move);
+        
+        self.position = pos;
+    }
+}
+
+-(void)kill
+{
+    _state = kStateDead;
+}
+
+-(BOOL)isAlive
+{
+    return (_state == kStateAlive);
 }
 
 @end
