@@ -13,8 +13,6 @@ static CGFloat const SPEED = 40.f;
 
 @interface Zombie()
 
-@property (nonatomic) CGPoint velocity;
-
 @end
 
 @implementation Zombie
@@ -25,11 +23,6 @@ static CGFloat const SPEED = 40.f;
         [self schedule:@selector(randomWalk) interval:1.0f];
     }
     return self;
-}
-
--(void)initSchedulers {
-    [self schedule:@selector(update:)];
-    [self schedule:@selector(randomWalk) interval:1.0f];
 }
 
 - (void)dealloc
