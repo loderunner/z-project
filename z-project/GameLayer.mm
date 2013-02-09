@@ -149,6 +149,7 @@ static float const PTM_RATIO = 64.0f;
 
 - (void)updateMiniMap:(ccTime)dt
 {
+    [self.minimap updateMiniMap:self.civilians];
     [self.minimap updateMiniMap:self.zombies];
 }
 

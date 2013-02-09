@@ -41,8 +41,8 @@
     ccDrawSolidRect(self.point,ccp(self.point.x+self.size.width,self.point.y+self.size.height), fillColor);
 }
 
--(void)updateMiniMap:(NSArray*)civilians {
-    for (Civilian* c in civilians) {
+-(void)updateMiniMap:(NSArray*)characters {
+    for (BaseCharacter* c in characters) {
         // compute position in the minimap
         CGPoint originalPosition = c.position;
         CGPoint positionInMinimap = ccp(originalPosition.x*self.ratio, originalPosition.y*self.ratio);
@@ -94,25 +94,10 @@
     
     if([self intersectsLocation:touchLocation withPadding:15.0]) {
         [self unschedule:@selector(showAgain)];
+        [self scheduleOnce:@selector(showAgain) delay:2.0];
         self.visible = NO;
-        return YES;
     }
     return NO; //do *not* swallow touches !
-}
-
--(void) ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event
-{
-    if (!self.visible) {
-        [self scheduleOnce:@selector(showAgain) delay:2.0];
-    }
-}
-
--(void) ccTouchCancelled:(UITouch *)touch withEvent:(UIEvent *)event
-{
-}
-
--(void) ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event
-{
 }
 
 #pragma mark - cleanup
