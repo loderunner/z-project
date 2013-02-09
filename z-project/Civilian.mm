@@ -7,7 +7,6 @@
 //
 
 #import "Civilian.h"
-#import "Constants.h"
 
 static CGFloat const SPEED = 40.f;
 
@@ -16,6 +15,7 @@ static NSString* const FRAME_FACING_RIGHT = @"civilian-right";
 static NSString* const FRAME_FACING_UP = @"civilian-up";
 static NSString* const FRAME_FACING_DOWN = @"civilian-down";
 static NSString* const FRAME_DEAD = @"civilian-dead";
+static NSString* const FRAME_DEAD_INFECTED = @"civilian-dead-infected";
 
 @interface Civilian()
 
@@ -52,12 +52,26 @@ static NSString* const FRAME_DEAD = @"civilian-dead";
     return self;
 }
 
-- (void) die
+- (BOOL) isAlive
 {
+    return (self.state == kStateAlive);
+}
+
+- (void) kill
+{
+    self.state = kStateDead;
     [self unschedule:@selector(randomWalk)];
     [self setDisplayFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:FRAME_DEAD]];
     [super kill];
 }
+
+- (void) infect
+{
+    self.state = kStateCivilianDeadInfected;
+    [self unschedule:@selector(randomWalk)];
+    [self setDisplayFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:FRAME_DEAD_INFECTED]];
+}
+
 
 -(void)randomWalk {
     CGFloat angle = CCRANDOM_0_1() * 2 * M_PI;
@@ -67,19 +81,19 @@ static NSString* const FRAME_DEAD = @"civilian-dead";
     
     //select frame from angle
     CCSpriteFrameCache* cache = [CCSpriteFrameCache sharedSpriteFrameCache];
-    if (angle > 7*M_PI_4 || angle < M_PI_4)
+    if (angle > 7*M_PI_4 || angle <= M_PI_4)
     {
         [self setDisplayFrame:[cache spriteFrameByName:FRAME_FACING_RIGHT]];
     }
-    else if (angle < 3*M_PI_4)
+    else if (angle < M_PI_4 && angle <= 3*M_PI_4)
     {
         [self setDisplayFrame:[cache spriteFrameByName:FRAME_FACING_UP]];
     }
-    else if (angle < 5*M_PI_4)
+    else if (angle < 3*M_PI_4 && angle <= 5*M_PI_4)
     {
         [self setDisplayFrame:[cache spriteFrameByName:FRAME_FACING_LEFT]];
     }
-    else if (angle < 3*M_PI_4)
+    else if (angle < 5*M_PI_4 && angle <= 7*M_PI_4)
     {
         [self setDisplayFrame:[cache spriteFrameByName:FRAME_FACING_DOWN]];
     }

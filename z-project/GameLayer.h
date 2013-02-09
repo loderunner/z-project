@@ -9,12 +9,11 @@
 #import "cocos2d.h"
 #import "MiniMap.h"
 #import "MenuLayer.h"
+#import "TiledMap.h"
 
 @interface GameLayer : CCLayer
-{
-}
 
-@property (nonatomic, strong) CCTMXTiledMap* map;
+@property (nonatomic, strong) TiledMap* map;
 
 +(CCScene *) sceneWithMap:(NSString*)mapName;
 
