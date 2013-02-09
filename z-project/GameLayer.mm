@@ -69,6 +69,8 @@ static float const PTM_RATIO = 64.0f;
         // load the map
         _map = [[TiledMap alloc] initWithTMXFile:mapName];
         _map.anchorPoint = CGPointZero;
+        CCTMXLayer* collidables = [_map layerNamed:@"collidable"];
+        collidables.visible = NO;
         CCTMXObjectGroup* spawnPoints = [_map objectGroupNamed:@"spawnPoints"];
         _spawnPoints = [spawnPoints.objects copy];
         
