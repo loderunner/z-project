@@ -76,8 +76,8 @@ static float const PTM_RATIO = 64.0f;
         
         _civilians = [[NSMutableArray alloc] init];
         _zombies = [[NSMutableArray alloc] init];
-        [self spawnCivilians:200];
-        [self spawnZombies:30];
+        //[self spawnCivilians:200];
+        [self spawnZombies:200];
         
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
             [self createMiniMap];
@@ -124,12 +124,14 @@ static float const PTM_RATIO = 64.0f;
     }
 }
 
+
 #pragma mark - scheduled events
 
 - (void) update:(ccTime)dt
 {
-    [self updateBodies:dt];
     [self handleCollisions];
+    [self updateBodies:dt];
+    
     if (self.minimap.visible) {
         [self.minimap updateMiniMap:self.civilians];
     } else if (lastTouchEndedTimestamp) {
@@ -208,8 +210,7 @@ static float const PTM_RATIO = 64.0f;
     //CCLOG(@"%ld collisions", contactListener->_contacts.size());
     
     std::vector<Contact>::iterator pos;
-    for(pos = contactListener->_contacts.begin();
-        pos != contactListener->_contacts.end(); ++pos) {
+    for(pos = contactListener->_contacts.begin(); pos != contactListener->_contacts.end(); ++pos) {
         Contact contact = *pos;
         
         b2Body *bodyA = contact.fixtureA->GetBody();
@@ -245,17 +246,49 @@ static float const PTM_RATIO = 64.0f;
                     overlapY = spriteB.top - spriteA.bottom;
                 }
                 
-                CGPoint posA = spriteA.position;
                 if (overlapX*overlapX < overlapY*overlapY)
                 {
-                    posA = ccp(posA.x + overlapX, posA.y);
+                    if (spriteA.movedForCollision)
+                    {
+                        spriteB.position = ccp(spriteB.position.x - overlapX, spriteB.position.y);
+                        spriteB.movedForCollision = YES;
+                    }
+                    else
+                    {
+                        spriteA.position = ccp(spriteA.position.x + overlapX, spriteA.position.y);
+                        spriteA.movedForCollision = YES;
+                    }
                 }
                 else
                 {
-                    posA = ccp(posA.x, posA.y + overlapY);
-                }
-                //spriteA.position = posA;
+                    if (spriteA.movedForCollision)
+                    {
+                        spriteB.position = ccp(spriteB.position.x, spriteB.position.y - overlapY);
+                        spriteB.movedForCollision = YES;
+                    }
+                    else
+                    {
+                        spriteA.position = ccp(spriteA.position.x, spriteA.position.y + overlapY);
+                        spriteA.movedForCollision = YES;
+                    }
+                } 
             }
+        }
+    }
+    
+    // cleanup movedForCollision flags
+    for(pos = contactListener->_contacts.begin(); pos != contactListener->_contacts.end(); ++pos) {
+        Contact contact = *pos;
+        
+        b2Body *bodyA = contact.fixtureA->GetBody();
+        b2Body *bodyB = contact.fixtureB->GetBody();
+        if (bodyA->GetUserData() != NULL && bodyB->GetUserData() != NULL)
+        {
+            BaseCharacter* spriteA = (BaseCharacter*) bodyA->GetUserData();
+            BaseCharacter* spriteB = (BaseCharacter*) bodyB->GetUserData();
+            
+            spriteA.movedForCollision = NO;
+            spriteB.movedForCollision = NO;
         }
     }
 }
