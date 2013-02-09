@@ -186,6 +186,7 @@
 		40DA75C916C6DAFB005D90FA /* MainMenuLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 40DA75C616C6DAF6005D90FA /* MainMenuLayer.mm */; };
 		40DA75CA16C6DAFB005D90FA /* MenuLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 40DA75C716C6DAF6005D90FA /* MenuLayer.mm */; };
 		40DA75CB16C6DAFB005D90FA /* MiniMap.mm in Sources */ = {isa = PBXBuildFile; fileRef = 40DA75C816C6DAF7005D90FA /* MiniMap.mm */; };
+		64D7297316C6E45C0047189A /* FinishLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D7297216C6E45C0047189A /* FinishLayer.m */; };
 		9A3464B216C5D7EA00828F5D /* ContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A3464B116C5D7EA00828F5D /* ContactListener.mm */; };
 		9A3D2B4A16C5F3D3007F4E05 /* Zombie.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A3D2B4916C5F3D3007F4E05 /* Zombie.mm */; };
 		9A43B63616C5FF250097FE86 /* icon_civilian.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A43B63516C5FF250097FE86 /* icon_civilian.png */; };
@@ -566,6 +567,8 @@
 		40DA75C716C6DAF6005D90FA /* MenuLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MenuLayer.mm; sourceTree = "<group>"; };
 		40DA75C816C6DAF7005D90FA /* MiniMap.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MiniMap.mm; sourceTree = "<group>"; };
 		64D7296816C678900047189A /* MenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuLayer.h; sourceTree = "<group>"; };
+		64D7297116C6E45C0047189A /* FinishLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinishLayer.h; sourceTree = "<group>"; };
+		64D7297216C6E45C0047189A /* FinishLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinishLayer.m; sourceTree = "<group>"; };
 		9A3464B016C5D7EA00828F5D /* ContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactListener.h; sourceTree = "<group>"; };
 		9A3464B116C5D7EA00828F5D /* ContactListener.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ContactListener.mm; sourceTree = "<group>"; };
 		9A3D2B4816C5F3D3007F4E05 /* Zombie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Zombie.h; sourceTree = "<group>"; };
@@ -1198,6 +1201,8 @@
 		40B9A94116C5D7C0004DCC10 /* layers */ = {
 			isa = PBXGroup;
 			children = (
+				64D7297116C6E45C0047189A /* FinishLayer.h */,
+				64D7297216C6E45C0047189A /* FinishLayer.m */,
 				40B9A95A16C65424004DCC10 /* GameLayer.h */,
 				40B9A95B16C65424004DCC10 /* GameLayer.mm */,
 				40B9A95C16C65424004DCC10 /* IntroLayer.h */,
@@ -1465,6 +1470,7 @@
 				40DA75CA16C6DAFB005D90FA /* MenuLayer.mm in Sources */,
 				40DA75CB16C6DAFB005D90FA /* MiniMap.mm in Sources */,
 				9AB4ED4716C6DFCD00C1837B /* TiledMap.mm in Sources */,
+				64D7297316C6E45C0047189A /* FinishLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
