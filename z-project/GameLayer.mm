@@ -25,6 +25,7 @@ static float const PTM_RATIO = 64.0f;
 @property (nonatomic,retain) MenuLayer* menuLayer;
 @property (nonatomic,retain) NSMutableArray* civilians;
 @property (nonatomic,retain) NSMutableArray* zombies;
+@property (nonatomic,retain) NSMutableArray* spawnPoints;
 
 @end
 
@@ -62,8 +63,11 @@ static float const PTM_RATIO = 64.0f;
         contactListener = new ContactListener();
         world->SetContactListener(contactListener);
         
+        // load the map
         _map = [[CCTMXTiledMap alloc] initWithTMXFile:@"firsMap.tmx"];
         _map.anchorPoint = CGPointZero;
+        CCTMXObjectGroup* spawnPoints = [_map objectGroupNamed:@"spawnPoints"];
+        _spawnPoints = [spawnPoints.objects copy];
         
         [self addChild:_map];
 		
@@ -82,16 +86,24 @@ static float const PTM_RATIO = 64.0f;
         {
             [self addCivilian];
         }
-        for (int i = 0; i < 30; ++i)
-        {
-            [self addZombie];
+        
+        for (NSDictionary* spawnPoint in self.spawnPoints) {
+            int x = [[spawnPoint objectForKey:@"x"] intValue];
+            int y = [[spawnPoint objectForKey:@"y"] intValue];
+            NSLog(@"spawn point at %d,%d",x,y);
+            CGPoint pos = ccp(x,y);
+            
+            [self addZombieAt:pos];
         }
         
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
             [self createMiniMap];
+
+            [self schedule:@selector(updateMiniMapCharacters:) interval:.7f];
+            [self schedule:@selector(updateMiniMapPosition:) interval:.05f];  // 1/20th sec
+
             [self createMenuLayer];
         }
-        [self schedule:@selector(updateMiniMap:) interval:.7f];
 	}
 	return self;
 }
@@ -120,38 +132,28 @@ static float const PTM_RATIO = 64.0f;
 
 - (void)removeCivilian:(Civilian*)civilian
 {
+    if (self.minimap) [self.minimap removeCharacter:civilian];
     [self.civilians removeObject:civilian];
     [self.map removeChild:civilian cleanup:YES];
     [self removeBoxForBody:civilian];
 }
 
--(void)addZombie {
-    int totalWidth  = mapSize.width  * tileSize.width;
-    int totalHeight = mapSize.height * tileSize.height;
+-(void)addZombieAt:(CGPoint)pos {
+    Zombie* zombie = [[Zombie alloc] initWithPosition: pos];
+    [self.zombies addObject:zombie];
+    [self.map addChild:zombie];
+    [self addBoxBodyForSprite:zombie];
     
-    int x = arc4random_uniform(totalWidth);
-    int y = arc4random_uniform(totalHeight);
-    
-    [self addZombieAt:ccp(x, y)];
-}
-
-- (void)addZombieAt:(CGPoint)pos
-{
-    Zombie* grrr = [[Zombie alloc] initWithPosition:pos];
-    [self.zombies addObject:grrr];
-    [self.map addChild:grrr];
-    [self addBoxBodyForSprite:grrr];
-    
-    [grrr randomWalk];
+    [zombie randomWalk];
 }
 
 - (void)removeZombie:(Zombie*)zombie
 {
+    if (self.minimap) [self.minimap removeCharacter:zombie];
     [self.zombies removeObject:zombie];
     [self.map removeChild:zombie cleanup:YES];
     [self removeBoxForBody:zombie];
 }
-
 
 #pragma mark - scheduled events
 
@@ -177,10 +179,15 @@ static float const PTM_RATIO = 64.0f;
     [self addChild:self.minimap];
 }
 
-- (void)updateMiniMap:(ccTime)dt
+- (void)updateMiniMapCharacters:(ccTime)dt
 {
     [self.minimap updateMiniMap:self.civilians];
     [self.minimap updateMiniMap:self.zombies];
+}
+
+- (void)updateMiniMapPosition:(ccTime)dt {
+    CGPoint viewPosition = ccp(-self.map.position.x,-self.map.position.y);
+    [self.minimap updateViewPosition:viewPosition];
 }
 
 
@@ -354,9 +361,11 @@ static float const PTM_RATIO = 64.0f;
 
 - (void)dealloc
 {
-    [_civilians release];
-    [_zombies release];
-    [_map release];
+    self.civilians   = nil;
+    self.zombies     = nil;
+    self.map         = nil;
+    self.spawnPoints = nil;
+
     delete world;
     delete contactListener;
     

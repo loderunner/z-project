@@ -5,7 +5,24 @@
  </tileset>
  <layer name="map" width="100" height="100">
   <data encoding="base64" compression="zlib">
-   eJzt20FugzAUQEGy4/4nzrZFDaZtUr/GsxixQrL+kzAIuG3bdrto/+DqOTzfscH+hdlrXMnZzLXQY3V6tGjRokeLHh32jhY9WvRo0aNFjxY9WvRo0aNFjxY9Ws5mroceKxtdq/Ro9Zi9vtXo0aJHix4terTo0bEfjnrowed5j575NPnbHqOZ66HHqq7sH3rosaLjvzd6/I8es9e5Cj1a9GjRo0WPFj1aRj20mNNCj/lcq1r0aNGjRY8WPVp+c6+r0+ta/KQHerwzPVr0aNGjRY8WPTquzl4PPVakR4seLXq06NGiR4seHd9576THnB6P/ifQY06Ps06z1/vu9Gjx3UKLHi16dPh+p0WPFj1aRjPXpEWPFj1a9GjRo0WPFj1a9AAAAAAAAAB4jTvS3C1i
+   eJzt20uugkAURVHsOYE3/6naJYRPocA9r2o1VodIUt4dwU/5mqbp1eg903oO11s2eK+oXuNI9ma+dvxvpnrtPTrbY96keu090qN+9vMGZ1vo8WwfPeqbtPTR45kWe9cr94+sHluP0aOux9pjfQap74Eeo9Ejix5Z9MiiRxY9suzNXA89Rvbtd1fU9Khe32j0yKJHFj2y6JFFjxy/7C1Bj9617CHR5NkeRzPXQ49Rtdw/9NBjRMv9oXr8jx7V6xyFHln0yKJHFj2y6JEx++Wxrfe0WjzXY+2/aXo82+MK1c+jJ1v3i63Xhvnn9Ng7zj09jq5DetzbYquBHvVa7h8t53Jti296oEfP9MiiRxY9suiRRY8crbPXQ48R6ZFFjyx6ZNEjix5Z9Mhx5ncnPWp62OuT1WOvU/V6e6dHFvsWsuiRRY8c9u9k0SOLHlmOZq5JFj2y6JFFjyx6ZNEjix5Z9AAAAAAAAAC4xwfwUjAm
   </data>
  </layer>
+ <objectgroup name="spawnPoints" width="100" height="100">
+  <object x="111" y="272">
+   <ellipse/>
+  </object>
+  <object x="624" y="659">
+   <ellipse/>
+  </object>
+  <object x="341" y="1109">
+   <ellipse/>
+  </object>
+  <object x="687" y="1454">
+   <ellipse/>
+  </object>
+  <object x="335" y="2325">
+   <ellipse/>
+  </object>
+ </objectgroup>
 </map>

@@ -17,6 +17,7 @@
 @property (nonatomic,assign) CGPoint point;
 @property (nonatomic,assign) CGSize  size;
 @property (nonatomic,assign) float   ratio;
+@property (nonatomic,assign) CGPoint viewPosition;
 
 @end
 
@@ -27,6 +28,7 @@
         _point = point;
         _size  = size;
         _ratio = ratio;
+        _viewPosition = CGPointZero;
         self.isTouchEnabled = YES;
     }
     return self;
@@ -39,7 +41,28 @@
     glLineWidth(2);
     ccColor4F fillColor = kMinimapFillColor;
     ccDrawSolidRect(self.point,ccp(self.point.x+self.size.width,self.point.y+self.size.height), fillColor);
+    
+    float left   = self.viewPosition.x * self.ratio;
+    float bottom = self.viewPosition.y * self.ratio;
+    CGSize windowsSize = [[CCDirector sharedDirector] winSize];
+    float right = left + windowsSize.width * self.ratio;
+    float top = bottom + windowsSize.height * self.ratio;
+    ccDrawRect(ccp(left,bottom),ccp(right,top));
 }
+
+-(BOOL)intersectsLocation:(CGPoint)location withPadding:(float)padding {
+    float left   = self.point.x;
+    float bottom = self.point.y;
+    float right  = self.point.x+self.size.width;
+    float top    = self.point.y+self.size.height;
+    if (location.x > right + padding) return NO;
+    if (location.x < left - padding) return NO;
+    if (location.y < bottom - padding) return NO;
+    if (location.y > top + padding) return NO;
+    return YES;
+}
+
+#pragma mark - update methods
 
 -(void)updateMiniMap:(NSArray*)characters {
     for (BaseCharacter* c in characters) {
@@ -63,17 +86,16 @@
     }
 }
 
--(BOOL)intersectsLocation:(CGPoint)location withPadding:(float)padding {
-    float left   = self.point.x;
-    float bottom = self.point.y;
-    float right  = self.point.x+self.size.width;
-    float top    = self.point.y+self.size.height;
-    if (location.x > right + padding) return NO;
-    if (location.x < left - padding) return NO;
-    if (location.y < bottom - padding) return NO;
-    if (location.y > top + padding) return NO;
-    return YES;
+-(void)updateViewPosition:(CGPoint)position {
+    self.viewPosition = position;
 }
+
+-(void)removeCharacter:(BaseCharacter *)character {
+    CCSprite* miniMapSprite = [character.properties objectForKey:kMinimapSpriteKey];
+    if (!miniMapSprite) return;
+    
+    [self removeChild:miniMapSprite cleanup:YES];
+ }
 
 #pragma mark - touch events
 
