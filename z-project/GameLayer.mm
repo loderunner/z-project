@@ -31,7 +31,6 @@ static float const PTM_RATIO = 64.0f;
     CGSize tileSize;
     b2World* world;
     ContactListener* contactListener;
-    int updateCount;
 }
 
 @end
@@ -72,18 +71,18 @@ static float const PTM_RATIO = 64.0f;
         [self scheduleUpdate];
         self.isTouchEnabled = YES;
         
-        self.civilians = [[NSMutableArray alloc] init];
+        _civilians = [[NSMutableArray alloc] init];
         [self spawnCivilians:200];
         
-        updateCount = 0;
         [self createMiniMap];
+        [self schedule:@selector(updateMiniMap:) interval:.7f];
 	}
 	return self;
 }
 
 - (void)dealloc
 {
-    [civilians release];
+    [_civilians release];
     [_map release];
     delete world;
     delete contactListener;
@@ -97,7 +96,20 @@ static float const PTM_RATIO = 64.0f;
     [self handleCollisions];
 }
 
+-(void)createMiniMap {
+    // we want 100px height for the minimap
+    float height = 200.0;
+    float ratio = height / (mapSize.height * tileSize.height);
+    float width = ratio * (mapSize.width * tileSize.width);
+    CGPoint position = ccp(winSize.width-width,winSize.height-height);
+    self.minimap = [[MiniMap alloc] initWithPosition:position size:CGSizeMake(width,height) andRatio:ratio];
+    [self addChild:self.minimap];
+}
 
+- (void)updateMiniMap:(ccTime)dt
+{
+    [self.minimap updateMiniMap:self.civilians];
+}
 
 -(void)spawnCivilians:(int) numCivilians {
     int totalWidth  = mapSize.width  * tileSize.width;
@@ -106,13 +118,12 @@ static float const PTM_RATIO = 64.0f;
         int x = arc4random_uniform(totalWidth);
         int y = arc4random_uniform(totalHeight);
         
-        Civilian* dude = [[Civilian alloc] initWithPosition: ccp(x,y)];
+        Civilian* dude = [[[Civilian alloc] initWithPosition: ccp(x,y)] autorelease];
         [self.civilians addObject:dude];
         [self.map addChild:dude.sprite];
         [self addBoxBodyForSprite:dude.sprite];
         
         [dude randomWalk];
-        [dude release];
     }
 }
 
