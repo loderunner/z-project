@@ -24,9 +24,9 @@
         _size = CGSizeMake(100, 100);
         // create a few labels with text and selector
         CCLabelTTF* zombieLabel = [CCLabelTTF labelWithString:@"Zombies" fontName:@"Helvetica-BoldOblique" fontSize:26];
-        _zombieNum = [CCLabelTTF labelWithString:@"32" fontName:@"Helvetica-BoldOblique" fontSize:26];
+        _zombieNum = [CCLabelTTF labelWithString:@"" fontName:@"Helvetica-BoldOblique" fontSize:26];
         CCLabelTTF* civilianLabel = [CCLabelTTF labelWithString:@"Civilians" fontName:@"Helvetica-BoldOblique" fontSize:26];
-        _civilianNum = [CCLabelTTF labelWithString:@"26" fontName:@"Helvetica-BoldOblique" fontSize:26];
+        _civilianNum = [CCLabelTTF labelWithString:@"" fontName:@"Helvetica-BoldOblique" fontSize:26];
         
         zombieLabel.position = CGPointMake(_size.width/2, winSize.height- _size.height/2);
         [self addChild:zombieLabel];
