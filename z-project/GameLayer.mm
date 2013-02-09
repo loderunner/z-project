@@ -15,7 +15,7 @@
 #import "ContactListener.h"
 #import "Constants.h"
 #import "TiledMap.h"
-
+#import "ScoreCounters.h"
 
 #pragma mark - GameLayer
 
@@ -28,6 +28,8 @@ static float const PTM_RATIO = 64.0f;
 @property (nonatomic,retain) NSMutableArray* zombies;
 @property (nonatomic,retain) NSMutableArray* spawnPoints;
 @property (nonatomic,retain) NSMutableArray* gestureRecognizers;
+@property (nonatomic,retain) ScoreCounters* scoreCounters;
+
 
 
 @end
@@ -100,6 +102,8 @@ static float const PTM_RATIO = 64.0f;
             [self addZombieAt:pos];
         }
         
+        _scoreCounters = [[ScoreCounters alloc] initWithZombies:_zombies.count civilians:_civilians.count];
+        
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
             [self createMiniMap];
 
@@ -115,6 +119,7 @@ static float const PTM_RATIO = 64.0f;
 	}
 	return self;
 }
+
 
 #pragma mark - gesture recognisers
 
@@ -149,6 +154,11 @@ static float const PTM_RATIO = 64.0f;
     location = ccpSub(location, self.map.position);
 
     BaseCharacter* character = [self findCharacterAt:location];
+    if ( character.tag == kTagZombie) {
+        [_scoreCounters registerZombieKilledByPlayer];
+    } else if (character.tag == kTagCivilian) {
+        [_scoreCounters registerCivilianKilledByPlayer];
+    }
     [character kill];
 }
 
@@ -261,9 +271,10 @@ static float const PTM_RATIO = 64.0f;
 }
 
 -(void)updateMenuLayer:(ccTime)dt {
-    [self.menuLayer updateNumberOfCivilian:self.civilians.count];
-    [self.menuLayer updateNumberOfZombie:self.zombies.count];
+    [self.menuLayer updateNumberOfCivilian:_scoreCounters.numCivilians];
+    [self.menuLayer updateNumberOfZombie:_scoreCounters.numZombies];
 }
+
 
 #pragma mark - Box2D stuff
 
@@ -363,6 +374,7 @@ static float const PTM_RATIO = 64.0f;
                                                 {
                                                     [self addZombieAt:civilian.position];
                                                     [self removeCivilian:civilian];
+                                                    [_scoreCounters registerCivilianConvertedToZombie];
                                                 }];
                     CCSequence* sequenceAction = [CCSequence actionOne:delayAction two:blockAction];
                     [self runAction:sequenceAction];
