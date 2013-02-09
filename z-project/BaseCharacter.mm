@@ -89,7 +89,7 @@ State;
 
 - (CGRect)hitBox
 {
-    return CGRectMake(0, 0, 64, 88);
+    return CGRectMake(32, 32, 64, 88);
 }
 
 
