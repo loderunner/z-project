@@ -21,6 +21,7 @@ static float const PTM_RATIO = 64.0f;
 @interface GameLayer()
 
 @property (nonatomic,retain) MiniMap* minimap;
+@property (nonatomic,retain) MenuLayer* menuLayer;
 @property (nonatomic,retain) NSMutableArray* civilians;
 @property (nonatomic,retain) NSMutableArray* zombies;
 
@@ -81,6 +82,7 @@ static float const PTM_RATIO = 64.0f;
         
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
             [self createMiniMap];
+            [self createMenuLayer];
         }
         [self schedule:@selector(updateMiniMap:) interval:.7f];
 	}
@@ -163,6 +165,17 @@ static float const PTM_RATIO = 64.0f;
     [self.minimap updateMiniMap:self.zombies];
 }
 
+
+#pragma mark - menuLayer
+
+-(void)createMenuLayer {
+    float height = 50.0;
+    float width = winSize.width;
+    CGPoint position = ccp(winSize.width / 2, winSize.height - 50 );
+    self.menuLayer = [[MenuLayer alloc] initWithPosition:position
+                                               size:CGSizeMake(width,height)];
+    [self addChild:self.menuLayer];
+}
 
 #pragma mark - Box2D stuff
 
