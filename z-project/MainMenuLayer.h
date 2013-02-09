@@ -11,4 +11,6 @@
 
 @interface MainMenuLayer : CCNode
 
++(CCScene*)scene;
+
 @end
