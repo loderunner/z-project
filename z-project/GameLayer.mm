@@ -196,10 +196,10 @@ static float const PTM_RATIO = 64.0f;
 {
     //CCLOG(@"%ld collisions", contactListener->_contacts.size());
     
-    std::vector<MyContact>::iterator pos;
+    std::vector<Contact>::iterator pos;
     for(pos = contactListener->_contacts.begin();
         pos != contactListener->_contacts.end(); ++pos) {
-        MyContact contact = *pos;
+        Contact contact = *pos;
         
         b2Body *bodyA = contact.fixtureA->GetBody();
         b2Body *bodyB = contact.fixtureB->GetBody();
@@ -207,26 +207,43 @@ static float const PTM_RATIO = 64.0f;
         {
             BaseCharacter* spriteA = (BaseCharacter*) bodyA->GetUserData();
             BaseCharacter* spriteB = (BaseCharacter*) bodyB->GetUserData();
+            CGFloat overlapX, overlapY;
             
             // if same sprite class, do not let them overlap
             if (spriteA.tag == spriteB.tag)
             {
-                CGFloat overlapTop = spriteA.top - spriteB.bottom;
-                CGFloat overlapBottom = spriteB.top - spriteA.bottom;
-                CGFloat overlapLeft = spriteB.right - spriteA.left;
-                CGFloat overlapRight = spriteA.right - spriteB.left;
+                if (spriteA.right > spriteB.left && spriteA.right < spriteB.right)
+                {
+                    //A's right edge is touching
+                    overlapX = spriteB.left - spriteA.right;
+                }
+                else if (spriteA.left > spriteB.left && spriteA.left < spriteB.right)
+                {
+                    //A's left edge is touching
+                    overlapX = spriteB.right - spriteA.left;
+                }
                 
-                CGFloat overlapX = MIN(overlapLeft, overlapRight);
-                CGFloat overlapY = MIN(overlapBottom, overlapTop);
+                if (spriteA.top > spriteB.bottom && spriteA.top < spriteB.top)
+                {
+                    //A's top edge is touching
+                    overlapY = spriteB.bottom - spriteA.top;
+                }
+                else if (spriteA.bottom > spriteB.bottom && spriteA.bottom < spriteB.top)
+                {
+                    //A's bottom edge is touching
+                    overlapY = spriteB.top - spriteA.bottom;
+                }
                 
                 CGPoint posA = spriteA.position;
-                if (overlapX > overlapY)
+                if (overlapX*overlapX < overlapY*overlapY)
                 {
-                    
+                    posA = ccp(posA.x + overlapX, posA.y);
                 }
                 else
                 {
+                    posA = ccp(posA.x, posA.y + overlapY);
                 }
+                //spriteA.position = posA;
             }
         }
     }
