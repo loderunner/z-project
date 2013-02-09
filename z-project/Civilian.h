@@ -14,4 +14,5 @@
 -(Civilian*)initWithPosition:(CGPoint)position;
 -(CCSprite*)sprite;
 -(void)randomWalk;
+
 @end

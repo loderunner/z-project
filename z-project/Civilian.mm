@@ -11,7 +11,7 @@
 
 @interface Civilian()
 
-@property (nonatomic,strong) CCSprite* sprite;
+@property (nonatomic,retain) CCSprite* sprite;
 
 @end
 
@@ -19,15 +19,15 @@
 
 -(id)init {
     if (self = [super init]) {
-        _sprite = [[CCSprite spriteWithFile:@"zombie.png"] retain];
-        _sprite.tag = TagCivilian;
+        self.sprite = [CCSprite spriteWithFile:@"zombie.png"];
+        self.sprite.tag = TagCivilian;
     }
     return self;
 }
 
 - (void)dealloc
 {
-    [_sprite release];
+    self.sprite = nil;
     [super dealloc];
 }
 

@@ -13,12 +13,14 @@
 #import "Box2D.h"
 #import "ContactListener.h"
 
+#define PTM_RATIO 32
 
 #pragma mark - GameLayer
 
 @interface GameLayer()
 
-@property (nonatomic,strong) MiniMap* minimap;
+@property (nonatomic,retain) MiniMap* minimap;
+@property (nonatomic,retain) NSMutableArray* civilians;
 
 @end
 
@@ -27,7 +29,6 @@
     CGSize winSize;
     CGSize mapSize;
     CGSize tileSize;
-    NSMutableArray* civilians;
     b2World* world;
     ContactListener* contactListener;
 }
@@ -70,7 +71,7 @@
         
         self.isTouchEnabled = YES;
         
-        civilians = [[NSMutableArray alloc] init];
+        self.civilians = [[NSMutableArray alloc] init];
         [self spawnCivilians:200];
         
         [self createMiniMap];
@@ -97,11 +98,12 @@
         int y = arc4random_uniform(totalHeight);
         
         Civilian* dude = [[Civilian alloc] initWithPosition: ccp(x,y)];
-        [civilians addObject:dude];
+        [self.civilians addObject:dude];
         [self.map addChild:dude.sprite];
         [self addBoxBodyForSprite:dude.sprite];
         
         [dude randomWalk];
+        [dude release];
     }
 }
 
