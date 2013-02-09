@@ -14,7 +14,6 @@
 		408F6C5D16C6E8DB008BF783 /* level3_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 408F6C5716C6E8DB008BF783 /* level3_normal.png */; };
 		408F6C5E16C6E8DB008BF783 /* level3_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 408F6C5816C6E8DB008BF783 /* level3_selected.png */; };
 		408F6C6816C6F5CD008BF783 /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 408F6C6516C6F5CD008BF783 /* map.png */; };
-		408F6C6A16C6F5CD008BF783 /* route.png in Resources */ = {isa = PBXBuildFile; fileRef = 408F6C6716C6F5CD008BF783 /* route.png */; };
 		408F6C6D16C6F919008BF783 /* map_one.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 408F6C6B16C6F919008BF783 /* map_one.tmx */; };
 		408F6C6E16C6F919008BF783 /* map_two.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 408F6C6C16C6F919008BF783 /* map_two.tmx */; };
 		40B9A70416C5C2B7004DCC10 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40B9A70316C5C2B7004DCC10 /* QuartzCore.framework */; };
@@ -215,7 +214,6 @@
 		408F6C5716C6E8DB008BF783 /* level3_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = level3_normal.png; path = Resources/level3_normal.png; sourceTree = "<group>"; };
 		408F6C5816C6E8DB008BF783 /* level3_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = level3_selected.png; path = Resources/level3_selected.png; sourceTree = "<group>"; };
 		408F6C6516C6F5CD008BF783 /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = map.png; path = Resources/map.png; sourceTree = "<group>"; };
-		408F6C6716C6F5CD008BF783 /* route.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = route.png; path = Resources/route.png; sourceTree = "<group>"; };
 		408F6C6B16C6F919008BF783 /* map_one.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = map_one.tmx; path = Resources/map_one.tmx; sourceTree = "<group>"; };
 		408F6C6C16C6F919008BF783 /* map_two.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = map_two.tmx; path = Resources/map_two.tmx; sourceTree = "<group>"; };
 		40B9A70016C5C2B7004DCC10 /* z-project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "z-project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1219,7 +1217,6 @@
 				408F6C6B16C6F919008BF783 /* map_one.tmx */,
 				408F6C6C16C6F919008BF783 /* map_two.tmx */,
 				408F6C6516C6F5CD008BF783 /* map.png */,
-				408F6C6716C6F5CD008BF783 /* route.png */,
 				40B9A93816C5C423004DCC10 /* tiles.png */,
 			);
 			name = maps;
@@ -1349,7 +1346,6 @@
 				408F6C5D16C6E8DB008BF783 /* level3_normal.png in Resources */,
 				408F6C5E16C6E8DB008BF783 /* level3_selected.png in Resources */,
 				408F6C6816C6F5CD008BF783 /* map.png in Resources */,
-				408F6C6A16C6F5CD008BF783 /* route.png in Resources */,
 				408F6C6D16C6F919008BF783 /* map_one.tmx in Resources */,
 				408F6C6E16C6F919008BF783 /* map_two.tmx in Resources */,
 			);
