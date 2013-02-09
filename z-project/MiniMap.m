@@ -61,6 +61,18 @@
     }
 }
 
+-(BOOL)intersectsLocation:(CGPoint)touchLocation withPadding:(float)padding {
+    float left   = self.point.x;
+    float bottom = self.point.y;
+    float right  = self.point.x+self.size.width;
+    float top    = self.point.y+self.size.height;
+    if (touchLocation.x > right + padding) return NO;
+    if (touchLocation.x < left - padding) return NO;
+    if (touchLocation.y < bottom - padding) return NO;
+    if (touchLocation.y > top + padding) return NO;
+    return YES;
+}
+
 #pragma mark - cleanup
 
 -(void)dealloc {
