@@ -129,18 +129,24 @@ static float const PTM_RATIO = 64.0f;
     [self.gestureRecognizers removeAllObjects];
 }
 
+-(Zombie*)findZombieTouched:(CGPoint) location {
+    for (Zombie* zombie in self.zombies) {
+        if (CGRectContainsPoint(zombie.boundingBox,location)) {
+            return zombie;
+        }
+    }
+    return nil;
+}
+
 -(void)onTap:(UITapGestureRecognizer *)recognizer {
     CGPoint location = [recognizer locationInView:[[CCDirector sharedDirector] view]];
     location = [[CCDirector sharedDirector] convertToGL:location];
     location = ccpSub(location, self.map.position);
 
-    for (Zombie* zombie in self.zombies) {
-        
-        if (CGRectContainsPoint(zombie.boundingBox,location)) {
-            [zombie runAction:[CCTintBy actionWithDuration:2.0 red:1.0 green:0 blue:0]];
-        }
-    }
-    NSLog(@"TAPPED !");
+    Zombie* zombie = [self findZombieTouched:location];
+    if (zombie) [self removeZombie:zombie];
+
+    //NSLog(@"TAPPED !");
 }
 
 
