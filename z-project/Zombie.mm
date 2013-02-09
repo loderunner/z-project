@@ -52,7 +52,7 @@ static NSString* const FRAME_DEAD = @"zombie-dead";
     return self;
 }
 
-- (void) kill
+- (void) die
 {
     [self unschedule:@selector(randomWalk)];
     [self setDisplayFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:FRAME_DEAD]];

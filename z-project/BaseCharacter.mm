@@ -78,6 +78,15 @@ State;
     }
 }
 
+-(BOOL)takeDamage:(NSInteger)damage {
+    self.stamina -= damage;
+    if (self.stamina < 0) {
+        [self die];
+        return YES;
+    }
+    return NO;
+}
+
 -(void)kill
 {
     self.state = kStateDead;

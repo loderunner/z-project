@@ -149,7 +149,7 @@ static float const PTM_RATIO = 64.0f;
     location = ccpSub(location, self.map.position);
 
     BaseCharacter* character = [self findCharacterAt:location];
-    [character kill];
+    BOOL characterWasKilled = [character takeDamage:1];
 }
 
 
@@ -357,7 +357,7 @@ static float const PTM_RATIO = 64.0f;
                 // kill civilian, save in list and wake as zombie in 3 seconds
                 if ([civilian isAlive] && [zombie isAlive])
                 {
-                    [civilian kill];
+                    [civilian die];
                     CCDelayTime* delayAction = [CCDelayTime actionWithDuration:3];
                     CCCallBlock* blockAction = [CCCallBlock actionWithBlock:^(void)
                                                 {
