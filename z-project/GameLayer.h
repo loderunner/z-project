@@ -8,7 +8,7 @@
 
 #import "cocos2d.h"
 #import "MiniMap.h"
-#import "MenuLayer.h"
+
 
 @interface GameLayer : CCLayer
 {

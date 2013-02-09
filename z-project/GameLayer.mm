@@ -16,6 +16,8 @@
 #import "Constants.h"
 #import "TiledMap.h"
 #import "ScoreCounters.h"
+#import "MenuLayer.h"
+#import "FinishLayer.h"
 
 #pragma mark - GameLayer
 
@@ -24,6 +26,7 @@ static float const PTM_RATIO = 64.0f;
 
 @property (nonatomic,retain) MiniMap* minimap;
 @property (nonatomic,retain) MenuLayer* menuLayer;
+@property (nonatomic,retain) FinishLayer* finishLayer;
 @property (nonatomic,retain) NSMutableArray* civilians;
 @property (nonatomic,retain) NSMutableArray* zombies;
 @property (nonatomic,retain) NSMutableArray* spawnPoints;
@@ -114,6 +117,8 @@ static float const PTM_RATIO = 64.0f;
         
         [self createMenuLayer];
         [self schedule:@selector(updateMenuLayer:) interval:.7f];
+        [self schedule:@selector(finishGame:) interval:5.f];
+
         
         [self registerRecognisers];
 	}
@@ -276,6 +281,12 @@ static float const PTM_RATIO = 64.0f;
 -(void)updateMenuLayer:(ccTime)dt {
     [self.menuLayer updateNumberOfCivilian:_scoreCounters.numCivilians];
     [self.menuLayer updateNumberOfZombie:_scoreCounters.numZombies];
+}
+
+#pragma mark - finishGame
+-(void)finishGame:(ccTime)dt  {
+    self.finishLayer = [[FinishLayer alloc] layer];
+    [self addChild:self.finishLayer];
 }
 
 
