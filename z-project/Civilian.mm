@@ -7,18 +7,28 @@
 //
 
 #import "Civilian.h"
+#import "Tags.h"
 
 @interface Civilian()
+
 @property (nonatomic,strong) CCSprite* sprite;
+
 @end
 
 @implementation Civilian
 
 -(id)init {
     if (self = [super init]) {
-        self.sprite = [CCSprite spriteWithFile:@"civilian.png"];
+        _sprite = [[CCSprite spriteWithFile:@"zombie.png"] retain];
+        _sprite.tag = TagCivilian;
     }
     return self;
+}
+
+- (void)dealloc
+{
+    [_sprite release];
+    [super dealloc];
 }
 
 -(Civilian *)initWithPosition:(CGPoint)position {
