@@ -27,6 +27,7 @@
         _point = point;
         _size  = size;
         _ratio = ratio;
+        self.isTouchEnabled = YES;
     }
     return self;
 }
@@ -72,6 +73,46 @@
     if (location.y < bottom - padding) return NO;
     if (location.y > top + padding) return NO;
     return YES;
+}
+
+#pragma mark - touch events
+
+-(void) registerWithTouchDispatcher
+{
+	CCDirector *director = [CCDirector sharedDirector];
+	[[director touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
+}
+
+-(void)showAgain {
+    self.visible = YES;
+}
+
+-(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
+{
+    CGPoint touchLocation = [touch locationInView: [touch view]];
+    touchLocation = [[CCDirector sharedDirector] convertToGL:touchLocation];
+    
+    if([self intersectsLocation:touchLocation withPadding:15.0]) {
+        [self unschedule:@selector(showAgain)];
+        self.visible = NO;
+        return YES;
+    }
+    return NO; //do *not* swallow touches !
+}
+
+-(void) ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event
+{
+    if (!self.visible) {
+        [self scheduleOnce:@selector(showAgain) delay:2.0];
+    }
+}
+
+-(void) ccTouchCancelled:(UITouch *)touch withEvent:(UIEvent *)event
+{
+}
+
+-(void) ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event
+{
 }
 
 #pragma mark - cleanup

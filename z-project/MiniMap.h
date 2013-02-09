@@ -8,7 +8,7 @@
 
 #import "CCNode.h"
 
-@interface MiniMap : CCNode
+@interface MiniMap : CCLayer
 
 -(MiniMap*)initWithPosition:(CGPoint)point size:(CGSize)size andRatio:(float)ratio;
 -(void)updateMiniMap:(NSArray*)civilians;

@@ -33,7 +33,6 @@ static float const PTM_RATIO = 64.0f;
     CGSize tileSize;
     b2World* world;
     ContactListener* contactListener;
-    CFTimeInterval  lastTouchEndedTimestamp;
 }
 
 @end
@@ -130,15 +129,6 @@ static float const PTM_RATIO = 64.0f;
 {
     [self updateBodies:dt];
     [self handleCollisions];
-    if (self.minimap.visible) {
-        [self.minimap updateMiniMap:self.civilians];
-    } else if (lastTouchEndedTimestamp) {
-        CFTimeInterval currentTime = CACurrentMediaTime();
-        if ((currentTime-lastTouchEndedTimestamp) > 2.0f) {
-            self.minimap.visible = YES;
-            [self.minimap updateMiniMap:self.civilians];
-        }
-    }
 }
 
 #pragma mark - minimap
@@ -255,16 +245,11 @@ static float const PTM_RATIO = 64.0f;
     CGPoint touchLocation = [touch locationInView: [touch view]];
     touchLocation = [[CCDirector sharedDirector] convertToGL:touchLocation];
     
-    if([self.minimap intersectsLocation:touchLocation withPadding:15.0]) {
-        self.minimap.visible    = NO;
-        lastTouchEndedTimestamp = 0;
-    }
     return YES;
 }
 
 -(void) ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event
 {
-    lastTouchEndedTimestamp = CACurrentMediaTime();
 }
 
 -(void) ccTouchCancelled:(UITouch *)touch withEvent:(UIEvent *)event
