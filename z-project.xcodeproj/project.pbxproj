@@ -183,6 +183,7 @@
 		40B9A96016C65424004DCC10 /* IntroLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 40B9A95D16C65424004DCC10 /* IntroLayer.mm */; };
 		40B9A96716C66311004DCC10 /* icon_zombie.png in Resources */ = {isa = PBXBuildFile; fileRef = 40B9A96616C66311004DCC10 /* icon_zombie.png */; };
 		40B9A96916C66A84004DCC10 /* BaseCharacter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 40B9A96816C66A84004DCC10 /* BaseCharacter.mm */; };
+		40DA75C516C6C041005D90FA /* MainMenuLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DA75C416C6C040005D90FA /* MainMenuLayer.m */; };
 		64D7296A16C678900047189A /* MenuLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D7296916C678900047189A /* MenuLayer.m */; };
 		9A3464B216C5D7EA00828F5D /* ContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A3464B116C5D7EA00828F5D /* ContactListener.mm */; };
 		9A3D2B4A16C5F3D3007F4E05 /* Zombie.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A3D2B4916C5F3D3007F4E05 /* Zombie.mm */; };
@@ -559,6 +560,8 @@
 		40B9A96516C65E9D004DCC10 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		40B9A96616C66311004DCC10 /* icon_zombie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_zombie.png; path = Resources/icon_zombie.png; sourceTree = "<group>"; };
 		40B9A96816C66A84004DCC10 /* BaseCharacter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BaseCharacter.mm; sourceTree = "<group>"; };
+		40DA75C316C6C040005D90FA /* MainMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuLayer.h; sourceTree = "<group>"; };
+		40DA75C416C6C040005D90FA /* MainMenuLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuLayer.m; sourceTree = "<group>"; };
 		64D7296816C678900047189A /* MenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuLayer.h; sourceTree = "<group>"; };
 		64D7296916C678900047189A /* MenuLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuLayer.m; sourceTree = "<group>"; };
 		9A3464B016C5D7EA00828F5D /* ContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactListener.h; sourceTree = "<group>"; };
@@ -1200,6 +1203,8 @@
 				9A43B63316C5FD070097FE86 /* MiniMap.m */,
 				64D7296816C678900047189A /* MenuLayer.h */,
 				64D7296916C678900047189A /* MenuLayer.m */,
+				40DA75C316C6C040005D90FA /* MainMenuLayer.h */,
+				40DA75C416C6C040005D90FA /* MainMenuLayer.m */,
 			);
 			name = layers;
 			sourceTree = "<group>";
@@ -1453,6 +1458,7 @@
 				40B9A96016C65424004DCC10 /* IntroLayer.mm in Sources */,
 				40B9A96916C66A84004DCC10 /* BaseCharacter.mm in Sources */,
 				64D7296A16C678900047189A /* MenuLayer.m in Sources */,
+				40DA75C516C6C041005D90FA /* MainMenuLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
