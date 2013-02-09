@@ -561,9 +561,9 @@
 		40B9A96616C66311004DCC10 /* icon_zombie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_zombie.png; path = Resources/icon_zombie.png; sourceTree = "<group>"; };
 		40B9A96816C66A84004DCC10 /* BaseCharacter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BaseCharacter.mm; sourceTree = "<group>"; };
 		40DA75C316C6C040005D90FA /* MainMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuLayer.h; sourceTree = "<group>"; };
-		40DA75C616C6DAF6005D90FA /* MainMenuLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MainMenuLayer.mm; path = "z-project/MainMenuLayer.mm"; sourceTree = "<group>"; };
-		40DA75C716C6DAF6005D90FA /* MenuLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MenuLayer.mm; path = "z-project/MenuLayer.mm"; sourceTree = "<group>"; };
-		40DA75C816C6DAF7005D90FA /* MiniMap.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MiniMap.mm; path = "z-project/MiniMap.mm"; sourceTree = "<group>"; };
+		40DA75C616C6DAF6005D90FA /* MainMenuLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MainMenuLayer.mm; sourceTree = "<group>"; };
+		40DA75C716C6DAF6005D90FA /* MenuLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MenuLayer.mm; sourceTree = "<group>"; };
+		40DA75C816C6DAF7005D90FA /* MiniMap.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MiniMap.mm; sourceTree = "<group>"; };
 		64D7296816C678900047189A /* MenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuLayer.h; sourceTree = "<group>"; };
 		9A3464B016C5D7EA00828F5D /* ContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactListener.h; sourceTree = "<group>"; };
 		9A3464B116C5D7EA00828F5D /* ContactListener.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ContactListener.mm; sourceTree = "<group>"; };
@@ -600,9 +600,6 @@
 		40B9A6F716C5C2B7004DCC10 = {
 			isa = PBXGroup;
 			children = (
-				40DA75C616C6DAF6005D90FA /* MainMenuLayer.mm */,
-				40DA75C716C6DAF6005D90FA /* MenuLayer.mm */,
-				40DA75C816C6DAF7005D90FA /* MiniMap.mm */,
 				40B9A71516C5C2B7004DCC10 /* z-project */,
 				40B9A70216C5C2B7004DCC10 /* Frameworks */,
 				40B9A70116C5C2B7004DCC10 /* Products */,
@@ -1202,9 +1199,12 @@
 				40B9A95B16C65424004DCC10 /* GameLayer.mm */,
 				40B9A95C16C65424004DCC10 /* IntroLayer.h */,
 				40B9A95D16C65424004DCC10 /* IntroLayer.mm */,
-				9A43B63216C5FD070097FE86 /* MiniMap.h */,
-				64D7296816C678900047189A /* MenuLayer.h */,
 				40DA75C316C6C040005D90FA /* MainMenuLayer.h */,
+				40DA75C616C6DAF6005D90FA /* MainMenuLayer.mm */,
+				64D7296816C678900047189A /* MenuLayer.h */,
+				40DA75C716C6DAF6005D90FA /* MenuLayer.mm */,
+				9A43B63216C5FD070097FE86 /* MiniMap.h */,
+				40DA75C816C6DAF7005D90FA /* MiniMap.mm */,
 			);
 			name = layers;
 			sourceTree = "<group>";
