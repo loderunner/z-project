@@ -16,12 +16,12 @@
    eJztmdeKFFEQhqfnyog5oI9gwhzQC99AHbOiV+YcMYerNSuCGC/MYg64uC9gwhxQ3BcwoWMGcS/8hunGM4fu3ak6B2ylFz6mt7ur9q+taqZ/qiaXy22BrVBshO2wF2phKSyD5TAyJUR6aoT1nIVzcD48vy28tgN2wi7YDXvgOryEgsHfrjsi0iOt5x7chwfh/RfgIlyCy3AFrsI1eAE/YRSMhjEpqDsi0iOt5wN8zP2Zi4fwCB7DE3gKz+B5+H/sHqR7/qX12Pd/gs/wBb7CN/gOP6AbtY8I0j3/0nraQFtoF5Tvb89nB+gInaAzdIGuMBymB+mef2k9faEf9A/vH8DnQBgEg2EIDIVhMC3sf5rnX1pPAcaG94+D8TABJsIkmAxTYGpQfl5K/U/b/Jt6pPWs4HMlrILVsAbWwjpYH7IBNsIm2Bykb/5NPdJ6bkAd7BMcm/O/P+a6/bu0HomWOkuPfa2p2FdQH56r9ticN2lsfRhvao5yabTUW3qksb+gITxX7bE5b/Y99k9cnorn1UCjpcHSI9Uyg/MzYRbMhjkwF+bBfFgAC2ERLIYlVu808QXrmY3ql+TypUfqF2qtnmnj4+a/2lw+9Wj8j9k7V/9kIslV9KRH43/M3mnik+ZfkqvoSY/G/5g908bHzb8kVzHnR4/G/5i9c/VPjWlvLFfRkx6N/zF7p4lPmn9JrtJ1H3o0/sfsmTY+bv4luUrXfejR+J+TcApOK+OT5l+ay4cejf+5BbfhTqCLP2FpPgPN8rJcvvRo/M8beAvvgrL/OQAH4RAchiPW8VE4BsfD2m9amu8qNCTpkcZqPEcLetUSWuV1fuW1pfl92H9pHh96NJ6jJ3+nF/TO6/xP83yl5tYxeXzpaepY419KvYrQxPfIV2ruo8jlS4/Gv5jfXZp4U6+JJFfRkx5X/6KNj/v+1/ofFz2u+x+t/4lD639c9Ljuf7T+J+79V+t/XPS4+hdtfDX+r1r/46LHdf+j9T9xaP2Pix7X/Y/W/8TNv9b/uOhx9i/K+Lj5l+SKnn9XPa77H0180vxr/U/a9z/2cdL8a7TY+x+plmz/k+1/sv3Pv7X/sf2Pi55s/5Ptf7L9j8y/ZPufbP+j8Sz/y/6noneK+KT51/ofFz0a/2K+Q2r9T9z8a/2P+T4r1fMbsnVCsw==
   </data>
  </layer>
- <layer name="collidables" width="64" height="48" visible="0">
+ <layer name="collidables" width="64" height="48">
   <data encoding="base64" compression="zlib">
    eJzt1jEKACEMRcHU3v/A228lbFyIfx6kE2WquKpqhc+73XNT4ufn5+e/y/U1fn7+3Pj5T+z/zj3bcdff/x9+fn7+qf6U+Pn5c+Pnt//73+Tn5+ef6k+Jn58/N35++7//TX5+fn7+Gf7keQAkdR05
   </data>
  </layer>
- <objectgroup name="spawnPoints" width="64" height="48" visible="0">
+ <objectgroup name="spawnPoints" width="64" height="48">
   <object x="2811" y="260"/>
   <object x="2755" y="294"/>
   <object x="2718" y="328"/>
