@@ -10,4 +10,7 @@
 
 @interface MiniMap : CCNode
 
+-(MiniMap*)initWithPosition:(CGPoint)point size:(CGSize)size andRatio:(float)ratio;
+
+
 @end

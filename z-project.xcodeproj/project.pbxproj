@@ -183,6 +183,8 @@
 		40B9A93C16C5D163004DCC10 /* Civilian.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B9A93B16C5D163004DCC10 /* Civilian.m */; };
 		40B9A93E16C5D267004DCC10 /* civilian.png in Resources */ = {isa = PBXBuildFile; fileRef = 40B9A93D16C5D267004DCC10 /* civilian.png */; };
 		40B9A94516C5E0D3004DCC10 /* MiniMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B9A94416C5E0D3004DCC10 /* MiniMap.m */; };
+		40B9A94716C5E340004DCC10 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40B9A94616C5E340004DCC10 /* GLKit.framework */; };
+		40B9A94916C5EAD7004DCC10 /* icon_civilian.png in Resources */ = {isa = PBXBuildFile; fileRef = 40B9A94816C5EAD7004DCC10 /* icon_civilian.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -549,6 +551,8 @@
 		40B9A93D16C5D267004DCC10 /* civilian.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = civilian.png; path = Resources/civilian.png; sourceTree = "<group>"; };
 		40B9A94316C5E0D3004DCC10 /* MiniMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiniMap.h; sourceTree = "<group>"; };
 		40B9A94416C5E0D3004DCC10 /* MiniMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MiniMap.m; sourceTree = "<group>"; };
+		40B9A94616C5E340004DCC10 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		40B9A94816C5EAD7004DCC10 /* icon_civilian.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_civilian.png; path = "z-project/Resources/icon_civilian.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -556,6 +560,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40B9A94716C5E340004DCC10 /* GLKit.framework in Frameworks */,
 				40B9A70416C5C2B7004DCC10 /* QuartzCore.framework in Frameworks */,
 				40B9A70616C5C2B7004DCC10 /* OpenGLES.framework in Frameworks */,
 				40B9A70816C5C2B7004DCC10 /* OpenAL.framework in Frameworks */,
@@ -574,6 +579,8 @@
 		40B9A6F716C5C2B7004DCC10 = {
 			isa = PBXGroup;
 			children = (
+				40B9A94816C5EAD7004DCC10 /* icon_civilian.png */,
+				40B9A94616C5E340004DCC10 /* GLKit.framework */,
 				40B9A71516C5C2B7004DCC10 /* z-project */,
 				40B9A70216C5C2B7004DCC10 /* Frameworks */,
 				40B9A70116C5C2B7004DCC10 /* Products */,
@@ -1246,6 +1253,7 @@
 				40B9A93716C5C3FC004DCC10 /* firsMap.tmx in Resources */,
 				40B9A93916C5C423004DCC10 /* tiles.png in Resources */,
 				40B9A93E16C5D267004DCC10 /* civilian.png in Resources */,
+				40B9A94916C5EAD7004DCC10 /* icon_civilian.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

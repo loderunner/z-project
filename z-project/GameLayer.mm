@@ -15,6 +15,9 @@
 #pragma mark - GameLayer
 
 @interface GameLayer()
+
+@property (nonatomic,strong) MiniMap* minimap;
+
 @end
 
 @implementation GameLayer {
@@ -56,8 +59,21 @@
         civilians = [[NSMutableArray alloc] init];
 		
         [self spawnCivilians:200];
+        
+        [self createMiniMap];
 	}
 	return self;
+}
+
+-(void)createMiniMap {
+    // we want 100px height for the minimap
+    float height = 200.0;
+    float ratio = height / mapSize.height;
+    float width = ratio * mapSize.width;
+    CGPoint position = ccp(winSize.width-width,winSize.height-height);
+    self.minimap = [[MiniMap alloc] initWithPosition:position size:CGSizeMake(width,height) andRatio:ratio];
+    [self addChild:self.minimap];
+
 }
 
 -(void)spawnCivilians:(int) numCivilians {
