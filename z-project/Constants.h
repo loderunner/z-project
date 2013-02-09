@@ -15,7 +15,7 @@ Tags;
 
 typedef enum
 {
-    kZOrderDead = 0,
+    kZOrderDead = 1000,
     kZOrderCivilian,
     kZOrderZombie
 }

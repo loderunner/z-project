@@ -106,7 +106,7 @@ static float const PTM_RATIO = 64.0f;
             [self schedule:@selector(updateMiniMapCharacters:) interval:.7f];
             [self schedule:@selector(updateMiniMapPosition:) interval:.05f];  // 1/20th sec
 
-            }
+        }
         
         [self createMenuLayer];
         [self schedule:@selector(updateMenuLayer:) interval:.7f];
@@ -130,10 +130,14 @@ static float const PTM_RATIO = 64.0f;
     [self.gestureRecognizers removeAllObjects];
 }
 
--(Zombie*)findZombieTouched:(CGPoint) location {
-    for (Zombie* zombie in self.zombies) {
-        if (CGRectContainsPoint(zombie.boundingBox,location)) {
-            return zombie;
+-(BaseCharacter*)findCharacterAt:(CGPoint) location {
+    for (BaseCharacter* character in self.map.children)
+    {
+        if ([character isKindOfClass:BaseCharacter.class])
+        {
+            if (CGRectContainsPoint(character.boundingBox, location) && [character isAlive]) {
+                return character;
+            }
         }
     }
     return nil;
@@ -144,8 +148,8 @@ static float const PTM_RATIO = 64.0f;
     location = [[CCDirector sharedDirector] convertToGL:location];
     location = ccpSub(location, self.map.position);
 
-    Zombie* zombie = [self findZombieTouched:location];
-    [zombie kill];
+    BaseCharacter* character = [self findCharacterAt:location];
+    [character kill];
 }
 
 
