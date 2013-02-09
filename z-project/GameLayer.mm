@@ -117,7 +117,7 @@ static float const PTM_RATIO = 64.0f;
         
         [self createMenuLayer];
         [self schedule:@selector(updateMenuLayer:) interval:.7f];
-        [self scheduleOnce:@selector(finishGame:) delay:5.f];
+        [self schedule:@selector(testFinishGame:) interval:.5f]; //TODO make it appear once
 
         
         [self registerRecognisers];
@@ -284,7 +284,14 @@ static float const PTM_RATIO = 64.0f;
 }
 
 #pragma mark - finishGame
--(void)finishGame:(ccTime)dt  {
+-(void)testFinishGame:(ccTime)dt  {
+    if ([_scoreCounters numCivilians] == 0 || [_scoreCounters numZombies] == 0) {
+        [self unschedule:@selector(testFinishGame:)];
+        [self finishGame];
+    }
+}
+
+-(void)finishGame {
     self.finishLayer = [[FinishLayer alloc] layerWithStat:self.scoreCounters];
     [self addChild:self.finishLayer];
 }
