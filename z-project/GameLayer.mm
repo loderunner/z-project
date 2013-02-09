@@ -9,6 +9,7 @@
 // Import the interfaces
 #import "GameLayer.h"
 #import "AppDelegate.h"
+#import "Civilian.h"
 
 
 #pragma mark - GameLayer
@@ -20,6 +21,7 @@
     CGSize winSize;
     CGSize mapSize;
     CGSize tileSize;
+    NSMutableArray* civilians;
 }
 
 +(CCScene *) scene
@@ -36,10 +38,6 @@
 {
 	if( (self=[super init])) {
         //CGSize s = [CCDirector sharedDirector].winSize;
-        // save all sizes
-        winSize  = [CCDirector sharedDirector].winSize;
-        mapSize  = self.map.mapSize;
-        tileSize = self.map.tileSize;
 
         self.map = [CCTMXTiledMap tiledMapWithTMXFile:@"firsMap.tmx"];
         self.map.anchorPoint = CGPointZero;
@@ -47,11 +45,32 @@
         
         [self addChild:self.map];
 		
+        // save all sizes
+        winSize  = [CCDirector sharedDirector].winSize;
+        mapSize  = self.map.mapSize;
+        tileSize = self.map.tileSize;
+
         
         self.isTouchEnabled = YES;
+        
+        civilians = [[NSMutableArray alloc] init];
 		
+        [self spawnCivilians:200];
 	}
 	return self;
+}
+
+-(void)spawnCivilians:(int) numCivilians {
+    int totalWidth  = mapSize.width  * tileSize.width;
+    int totalHeight = mapSize.height * tileSize.height;
+    for (int i=0; i<numCivilians; ++i) {
+        int x = arc4random_uniform(totalWidth);
+        int y = arc4random_uniform(totalHeight);
+        
+        Civilian* dude = [[Civilian alloc] initWithPosition: ccp(x,y)];
+        [civilians addObject:dude];
+        [self.map addChild:dude.sprite];
+    }
 }
 
 -(void) registerWithTouchDispatcher
@@ -88,18 +107,18 @@
     CGPoint currentPos = [self.map position];
     CGPoint newPos     = ccpAdd(currentPos, diff);
     
+    // constraints
     if (newPos.x > 0) newPos.x = 0;
     if (newPos.y > 0) newPos.y = 0;
 
-    float layerHeight = tileSize.height * mapSize.height;
-    float winHeight   = winSize.height;
-    float minimumY    = winHeight-layerHeight;
-    if (newPos.y < minimumY) newPos.y = minimumY;
-    
     float layerWidth = tileSize.width * mapSize.width;
     float winWidth   = winSize.width;
     float minimumX   = winWidth-layerWidth;
     if (newPos.x < minimumX) newPos.x = minimumX;
+    float layerHeight = tileSize.height * mapSize.height;
+    float winHeight   = winSize.height;
+    float minimumY    = winHeight-layerHeight;
+    if (newPos.y < minimumY) newPos.y = minimumY;
 
 	[self.map setPosition: newPos];
 }

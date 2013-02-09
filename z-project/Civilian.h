@@ -11,6 +11,7 @@
 
 @interface Civilian : NSObject
 
+-(Civilian*)initWithPosition:(CGPoint)position;
 -(CCSprite*)sprite;
 
 @end

@@ -21,4 +21,11 @@
     return self;
 }
 
+-(Civilian *)initWithPosition:(CGPoint)position {
+    if (self = [self init]) {
+        self.sprite.position = position;
+    }
+    return self;
+}
+
 @end
