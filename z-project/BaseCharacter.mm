@@ -39,7 +39,7 @@
 
 - (CGFloat)top
 {
-    return self.position.y - self.contentSize.height * .5f;
+    return self.position.y + self.contentSize.height * .5f;
 }
 
 -(void)dealloc {
