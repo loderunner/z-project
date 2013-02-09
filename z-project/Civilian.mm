@@ -11,8 +11,8 @@
 
 @interface Civilian()
 
-@property (nonatomic, strong) CCSprite* sprite;
-@property (nonatomic) CGPoint velocity;
+@property (nonatomic,retain) CCSprite* sprite;
+@property (nonatomic,assign) CGPoint velocity;
 
 @end
 
@@ -23,15 +23,15 @@
         _sprite = [[CCSprite spriteWithFile:@"zombie.png"] retain];
         _sprite.tag = TagCivilian;
         
-        [_sprite schedule:@selector(update:)];
-        [_sprite schedule:@selector(randomWalk) interval:1.0f];
+        //[_sprite schedule:@selector(update:)];
+        //[_sprite schedule:@selector(randomWalk) interval:1.0f];
     }
     return self;
 }
 
 - (void)dealloc
 {
-    [_sprite release];
+    self.sprite = nil;
     [super dealloc];
 }
 
