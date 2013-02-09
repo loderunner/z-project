@@ -186,6 +186,7 @@
 		40DA75C916C6DAFB005D90FA /* MainMenuLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 40DA75C616C6DAF6005D90FA /* MainMenuLayer.mm */; };
 		40DA75CA16C6DAFB005D90FA /* MenuLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 40DA75C716C6DAF6005D90FA /* MenuLayer.mm */; };
 		40DA75CB16C6DAFB005D90FA /* MiniMap.mm in Sources */ = {isa = PBXBuildFile; fileRef = 40DA75C816C6DAF7005D90FA /* MiniMap.mm */; };
+		40DA75CE16C6DCE5005D90FA /* ScoreCounters.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DA75CD16C6DCE4005D90FA /* ScoreCounters.m */; };
 		9A3464B216C5D7EA00828F5D /* ContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A3464B116C5D7EA00828F5D /* ContactListener.mm */; };
 		9A3D2B4A16C5F3D3007F4E05 /* Zombie.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A3D2B4916C5F3D3007F4E05 /* Zombie.mm */; };
 		9A43B63616C5FF250097FE86 /* icon_civilian.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A43B63516C5FF250097FE86 /* icon_civilian.png */; };
@@ -564,6 +565,8 @@
 		40DA75C616C6DAF6005D90FA /* MainMenuLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MainMenuLayer.mm; path = "z-project/MainMenuLayer.mm"; sourceTree = "<group>"; };
 		40DA75C716C6DAF6005D90FA /* MenuLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MenuLayer.mm; path = "z-project/MenuLayer.mm"; sourceTree = "<group>"; };
 		40DA75C816C6DAF7005D90FA /* MiniMap.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MiniMap.mm; path = "z-project/MiniMap.mm"; sourceTree = "<group>"; };
+		40DA75CC16C6DCE4005D90FA /* ScoreCounters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreCounters.h; sourceTree = "<group>"; };
+		40DA75CD16C6DCE4005D90FA /* ScoreCounters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreCounters.m; sourceTree = "<group>"; };
 		64D7296816C678900047189A /* MenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuLayer.h; sourceTree = "<group>"; };
 		9A3464B016C5D7EA00828F5D /* ContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactListener.h; sourceTree = "<group>"; };
 		9A3464B116C5D7EA00828F5D /* ContactListener.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ContactListener.mm; sourceTree = "<group>"; };
@@ -646,6 +649,8 @@
 				40B9A71616C5C2B7004DCC10 /* Resources */,
 				40B9A73016C5C2B7004DCC10 /* libs */,
 				40B9A91C16C5C2BB004DCC10 /* Supporting Files */,
+				40DA75CC16C6DCE4005D90FA /* ScoreCounters.h */,
+				40DA75CD16C6DCE4005D90FA /* ScoreCounters.m */,
 			);
 			path = "z-project";
 			sourceTree = "<group>";
@@ -1459,6 +1464,7 @@
 				40DA75C916C6DAFB005D90FA /* MainMenuLayer.mm in Sources */,
 				40DA75CA16C6DAFB005D90FA /* MenuLayer.mm in Sources */,
 				40DA75CB16C6DAFB005D90FA /* MiniMap.mm in Sources */,
+				40DA75CE16C6DCE5005D90FA /* ScoreCounters.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
