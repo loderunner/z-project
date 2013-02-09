@@ -7,7 +7,7 @@
 //
 
 #import "Zombie.h"
-#import "Tags.h"
+#import "Constants.h"
 
 static CGFloat const SPEED = 40.f;
 

@@ -7,7 +7,7 @@
 //
 
 #import "Civilian.h"
-#import "Tags.h"
+#import "Constants.h"
 
 @interface Civilian()
 

@@ -10,7 +10,7 @@
 
 @implementation BaseCharacter
 
--(id)initWithFile:(NSString*)file tag:(NSInteger*)tag; {
+-(id)initWithFile:(NSString*)file tag:(NSInteger)tag; {
     if (self = [super initWithFile:file]) {
         _properties = [[NSMutableDictionary alloc] init];
         

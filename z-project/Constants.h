@@ -12,3 +12,5 @@ typedef enum
     kTagCivilian
 }
 Tags;
+
+#define kMinimapSpriteKey @"MiniMapSprite"
