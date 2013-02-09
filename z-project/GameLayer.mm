@@ -117,7 +117,7 @@ static float const PTM_RATIO = 64.0f;
         
         [self createMenuLayer];
         [self schedule:@selector(updateMenuLayer:) interval:.7f];
-        [self schedule:@selector(finishGame:) interval:5.f];
+        [self scheduleOnce:@selector(finishGame:) delay:5.f];
 
         
         [self registerRecognisers];
@@ -285,7 +285,7 @@ static float const PTM_RATIO = 64.0f;
 
 #pragma mark - finishGame
 -(void)finishGame:(ccTime)dt  {
-    self.finishLayer = [[FinishLayer alloc] layer];
+    self.finishLayer = [[FinishLayer alloc] layerWithStat:self.scoreCounters];
     [self addChild:self.finishLayer];
 }
 
