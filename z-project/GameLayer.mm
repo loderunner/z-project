@@ -30,8 +30,6 @@ static float const PTM_RATIO = 64.0f;
 @property (nonatomic,retain) NSMutableArray* gestureRecognizers;
 @property (nonatomic,retain) ScoreCounters* scoreCounters;
 
-
-
 @end
 
 @interface GameLayer()
@@ -69,7 +67,7 @@ static float const PTM_RATIO = 64.0f;
         world->SetContactListener(contactListener);
         
         // load the map
-        _map = [[TiledMap alloc] initWithTMXFile:@"firsMap.tmx"];
+        _map = [[TiledMap alloc] initWithTMXFile:@"mapdeux.tmx"];
         _map.anchorPoint = CGPointZero;
         CCTMXObjectGroup* spawnPoints = [_map objectGroupNamed:@"spawnPoints"];
         _spawnPoints = [spawnPoints.objects copy];
