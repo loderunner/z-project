@@ -23,6 +23,7 @@ static float const PTM_RATIO = 64.0f;
 @property (nonatomic,retain) MiniMap* minimap;
 @property (nonatomic,retain) NSMutableArray* civilians;
 @property (nonatomic,retain) NSMutableArray* zombies;
+@property (nonatomic,retain) NSMutableArray* spawnPoints;
 
 @end
 
@@ -60,8 +61,11 @@ static float const PTM_RATIO = 64.0f;
         contactListener = new ContactListener();
         world->SetContactListener(contactListener);
         
+        // load the map
         _map = [[CCTMXTiledMap alloc] initWithTMXFile:@"firsMap.tmx"];
         _map.anchorPoint = CGPointZero;
+        CCTMXObjectGroup* spawnPoints = [_map objectGroupNamed:@"spawnPoints"];
+        _spawnPoints = [spawnPoints.objects copy];
         
         [self addChild:_map];
 		
@@ -76,7 +80,7 @@ static float const PTM_RATIO = 64.0f;
         _civilians = [[NSMutableArray alloc] init];
         _zombies = [[NSMutableArray alloc] init];
         [self spawnCivilians:200];
-        [self spawnZombies:30];
+        [self spawnZombies];
         
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
             [self createMiniMap];
@@ -106,22 +110,21 @@ static float const PTM_RATIO = 64.0f;
     }
 }
 
--(void)spawnZombies:(int)numZombies{
-    int totalWidth  = mapSize.width  * tileSize.width;
-    int totalHeight = mapSize.height * tileSize.height;
-    for (int i = 0; i < numZombies; ++i)
-    {
-        int x = arc4random_uniform(totalWidth);
-        int y = arc4random_uniform(totalHeight);
+-(void)spawnZombies {
+    for (NSDictionary* spawnPoint in self.spawnPoints) {
+        int x = [[spawnPoint objectForKey:@"x"] intValue];
+        int y = [[spawnPoint objectForKey:@"y"] intValue];
+        NSLog(@"spawn point at %d,%d",x,y);
+        CGPoint pos = ccp(x,y);
         
-        Zombie* grrr = [[Zombie alloc] initWithPosition: ccp(x,y)];
+        Zombie* grrr = [[Zombie alloc] initWithPosition: pos];
         [self.zombies addObject:grrr];
         [self.map addChild:grrr];
         [self addBoxBodyForSprite:grrr];
-        
         [grrr randomWalk];
     }
 }
+
 
 #pragma mark - scheduled events
 
