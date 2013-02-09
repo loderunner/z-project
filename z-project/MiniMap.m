@@ -50,6 +50,20 @@
     ccDrawRect(ccp(left,bottom),ccp(right,top));
 }
 
+-(BOOL)intersectsLocation:(CGPoint)location withPadding:(float)padding {
+    float left   = self.point.x;
+    float bottom = self.point.y;
+    float right  = self.point.x+self.size.width;
+    float top    = self.point.y+self.size.height;
+    if (location.x > right + padding) return NO;
+    if (location.x < left - padding) return NO;
+    if (location.y < bottom - padding) return NO;
+    if (location.y > top + padding) return NO;
+    return YES;
+}
+
+#pragma mark - update methods
+
 -(void)updateMiniMap:(NSArray*)characters {
     for (BaseCharacter* c in characters) {
         // compute position in the minimap
@@ -72,16 +86,8 @@
     }
 }
 
--(BOOL)intersectsLocation:(CGPoint)location withPadding:(float)padding {
-    float left   = self.point.x;
-    float bottom = self.point.y;
-    float right  = self.point.x+self.size.width;
-    float top    = self.point.y+self.size.height;
-    if (location.x > right + padding) return NO;
-    if (location.x < left - padding) return NO;
-    if (location.y < bottom - padding) return NO;
-    if (location.y > top + padding) return NO;
-    return YES;
+-(void)updateViewPosition:(CGPoint)position {
+    self.viewPosition = position;
 }
 
 #pragma mark - touch events

@@ -154,8 +154,9 @@ static float const PTM_RATIO = 64.0f;
 {
     [self.minimap updateMiniMap:self.civilians];
     [self.minimap updateMiniMap:self.zombies];
+    CGPoint viewPosition = ccp(-self.map.position.x,-self.map.position.y);
+    [self.minimap updateViewPosition:viewPosition];
 }
-
 
 #pragma mark - Box2D stuff
 
