@@ -182,13 +182,13 @@
 		40B9A95E16C65424004DCC10 /* Civilian.mm in Sources */ = {isa = PBXBuildFile; fileRef = 40B9A95916C65424004DCC10 /* Civilian.mm */; };
 		40B9A95F16C65424004DCC10 /* GameLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 40B9A95B16C65424004DCC10 /* GameLayer.mm */; };
 		40B9A96016C65424004DCC10 /* IntroLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 40B9A95D16C65424004DCC10 /* IntroLayer.mm */; };
-		40B9A96316C65546004DCC10 /* BaseCharacter.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B9A96216C65546004DCC10 /* BaseCharacter.m */; };
 		40B9A96716C66311004DCC10 /* icon_zombie.png in Resources */ = {isa = PBXBuildFile; fileRef = 40B9A96616C66311004DCC10 /* icon_zombie.png */; };
 		9A3464B216C5D7EA00828F5D /* ContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A3464B116C5D7EA00828F5D /* ContactListener.mm */; };
 		9A3464BC16C5DDED00828F5D /* zombie.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A3464BB16C5DDED00828F5D /* zombie.png */; };
 		9A3D2B4A16C5F3D3007F4E05 /* Zombie.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A3D2B4916C5F3D3007F4E05 /* Zombie.mm */; };
 		9A43B63416C5FD070097FE86 /* MiniMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A43B63316C5FD070097FE86 /* MiniMap.m */; };
 		9A43B63616C5FF250097FE86 /* icon_civilian.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A43B63516C5FF250097FE86 /* icon_civilian.png */; };
+		9AB4ED3C16C66C5100C1837B /* BaseCharacter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AB4ED3B16C66C5100C1837B /* BaseCharacter.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -554,7 +554,6 @@
 		40B9A95C16C65424004DCC10 /* IntroLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroLayer.h; sourceTree = "<group>"; };
 		40B9A95D16C65424004DCC10 /* IntroLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IntroLayer.mm; sourceTree = "<group>"; };
 		40B9A96116C65546004DCC10 /* BaseCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCharacter.h; sourceTree = "<group>"; };
-		40B9A96216C65546004DCC10 /* BaseCharacter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCharacter.m; sourceTree = "<group>"; };
 		40B9A96516C65E9D004DCC10 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = "z-project/Constants.h"; sourceTree = "<group>"; };
 		40B9A96616C66311004DCC10 /* icon_zombie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_zombie.png; path = "z-project/Resources/icon_zombie.png"; sourceTree = "<group>"; };
 		9A3464B016C5D7EA00828F5D /* ContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactListener.h; sourceTree = "<group>"; };
@@ -565,6 +564,7 @@
 		9A43B63216C5FD070097FE86 /* MiniMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiniMap.h; sourceTree = "<group>"; };
 		9A43B63316C5FD070097FE86 /* MiniMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MiniMap.m; sourceTree = "<group>"; };
 		9A43B63516C5FF250097FE86 /* icon_civilian.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_civilian.png; path = Resources/icon_civilian.png; sourceTree = "<group>"; };
+		9AB4ED3B16C66C5100C1837B /* BaseCharacter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BaseCharacter.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1201,7 +1201,7 @@
 				9A3D2B4816C5F3D3007F4E05 /* Zombie.h */,
 				9A3D2B4916C5F3D3007F4E05 /* Zombie.mm */,
 				40B9A96116C65546004DCC10 /* BaseCharacter.h */,
-				40B9A96216C65546004DCC10 /* BaseCharacter.m */,
+				9AB4ED3B16C66C5100C1837B /* BaseCharacter.mm */,
 			);
 			name = characters;
 			sourceTree = "<group>";
@@ -1438,7 +1438,7 @@
 				40B9A95E16C65424004DCC10 /* Civilian.mm in Sources */,
 				40B9A95F16C65424004DCC10 /* GameLayer.mm in Sources */,
 				40B9A96016C65424004DCC10 /* IntroLayer.mm in Sources */,
-				40B9A96316C65546004DCC10 /* BaseCharacter.m in Sources */,
+				9AB4ED3C16C66C5100C1837B /* BaseCharacter.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
