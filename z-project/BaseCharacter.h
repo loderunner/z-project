@@ -12,6 +12,7 @@
 
 @property (nonatomic, assign) CGPoint velocity;
 @property (nonatomic,retain) NSMutableDictionary* properties;
+@property (nonatomic, readonly) CGRect hitBox;
 
 // helpers for edges
 @property (nonatomic, readonly) CGFloat left;

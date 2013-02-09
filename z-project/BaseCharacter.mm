@@ -87,4 +87,10 @@ State;
     return (_state == kStateAlive);
 }
 
+- (CGRect)hitBox
+{
+    return CGRectMake(32, 32, 64, 88);
+}
+
+
 @end
