@@ -24,20 +24,22 @@
         
         CGSize winSize  = [CCDirector sharedDirector].winSize;
         // TODO change the size with the size of the picture provided by disigners
-        _size = CGSizeMake(100, 100);
+        _size = CGSizeMake(125, 103);
+        CGPoint positionNumber = CGPointMake(93,72);
         // create a few labels with text and selector
-        CCLabelTTF* zombieLabel = [CCLabelTTF labelWithString:@"Zombies" fontName:@"Helvetica-BoldOblique" fontSize:26];
-        _zombieNum = [CCLabelTTF labelWithString:@"" fontName:@"Helvetica-BoldOblique" fontSize:26];
-        CCLabelTTF* civilianLabel = [CCLabelTTF labelWithString:@"Civilians" fontName:@"Helvetica-BoldOblique" fontSize:26];
-        _civilianNum = [CCLabelTTF labelWithString:@"" fontName:@"Helvetica-BoldOblique" fontSize:26];
+        CCSprite* zombieIcone = [CCSprite spriteWithFile:@"icon_menu_zombie.png"];
+        _zombieNum = [CCLabelTTF labelWithString:@"" fontName:@"Helvetica-BoldOblique" fontSize:20];
+        CCSprite* civilianIcone = [CCSprite spriteWithFile:@"icon_menu_zombie.png"];
+        _civilianNum = [CCLabelTTF labelWithString:@"" fontName:@"Helvetica-BoldOblique" fontSize:20];
         
-        zombieLabel.position = CGPointMake(_size.width/2, winSize.height- _size.height/2);
-        [self addChild:zombieLabel];
-        _zombieNum.position = CGPointMake(3 * _size.width/2, winSize.height-_size.height/2);
+        zombieIcone.position = CGPointMake(_size.width/2, winSize.height- _size.height/2);
+        [self addChild:zombieIcone];
+        _zombieNum.position = CGPointMake(positionNumber.x, winSize.height- positionNumber.y);
         [self addChild:_zombieNum];
-        civilianLabel.position = CGPointMake(winSize.width - _size.width/2, winSize.height-_size.height/2);
-        [self addChild:civilianLabel];
-        _civilianNum.position = CGPointMake(winSize.width - 3 * _size.width/2, winSize.height-_size.height/2);
+        
+        civilianIcone.position = CGPointMake(winSize.width - _size.width/2, winSize.height-_size.height/2);
+        [self addChild:civilianIcone];
+        _civilianNum.position = CGPointMake(winSize.width - positionNumber.x, winSize.height- positionNumber.y);
         [self addChild:_civilianNum];
     }
     return self;
