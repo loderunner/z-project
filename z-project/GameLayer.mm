@@ -84,8 +84,8 @@ static float const PTM_RATIO = 64.0f;
         
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
             [self createMiniMap];
+            [self schedule:@selector(updateMiniMap:) interval:.7f];
         }
-        [self schedule:@selector(updateMiniMap:) interval:.7f];
 	}
 	return self;
 }
@@ -293,9 +293,11 @@ static float const PTM_RATIO = 64.0f;
 
 - (void)dealloc
 {
-    [_civilians release];
-    [_zombies release];
-    [_map release];
+    self.civilians   = nil;
+    self.zombies     = nil;
+    self.map         = nil;
+    self.spawnPoints = nil;
+
     delete world;
     delete contactListener;
     
