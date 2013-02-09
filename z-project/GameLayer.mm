@@ -144,7 +144,7 @@ static float const PTM_RATIO = 64.0f;
     location = ccpSub(location, self.map.position);
 
     Zombie* zombie = [self findZombieTouched:location];
-    if (zombie) [self removeZombie:zombie];
+    [zombie kill];
 
     //NSLog(@"TAPPED !");
 }
@@ -352,7 +352,7 @@ static float const PTM_RATIO = 64.0f;
                 }
                 
                 // kill civilian, save in list and wake as zombie in 3 seconds
-                if ([civilian isAlive])
+                if ([civilian isAlive] && [zombie isAlive])
                 {
                     [civilian kill];
                     CCDelayTime* delayAction = [CCDelayTime actionWithDuration:3];
