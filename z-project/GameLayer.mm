@@ -269,18 +269,18 @@ static float const PTM_RATIO = 64.0f;
 
 - (void)addBoxBodyForSprite:(BaseCharacter *)sprite
 {
-    CGRect hitBox = sprite.hitBox;
+    CGRect boundingBox = sprite.boundingBox;
     
     b2BodyDef spriteBodyDef;
     spriteBodyDef.type = b2_dynamicBody;
-    spriteBodyDef.position.Set((sprite.position.x - sprite.contentSize.width * .5f + hitBox.origin.x + hitBox.size.width * .5f)/PTM_RATIO,
-                               (sprite.position.y - sprite.contentSize.height * .5f + hitBox.origin.y + hitBox.size.height * .5f)/PTM_RATIO);
+    spriteBodyDef.position.Set((sprite.position.x - sprite.contentSize.width * .5f + boundingBox.origin.x + boundingBox.size.width * .5f)/PTM_RATIO,
+                               (sprite.position.y - sprite.contentSize.height * .5f + boundingBox.origin.y + boundingBox.size.height * .5f)/PTM_RATIO);
     spriteBodyDef.userData = (void *)sprite;
     b2Body *spriteBody = world->CreateBody(&spriteBodyDef);
     
     b2PolygonShape spriteShape;
-    spriteShape.SetAsBox(.5f * hitBox.size.width/PTM_RATIO,
-                         .5f * hitBox.size.height/PTM_RATIO);
+    spriteShape.SetAsBox(.5f * boundingBox.size.width/PTM_RATIO,
+                         .5f * boundingBox.size.height/PTM_RATIO);
     b2FixtureDef spriteShapeDef;
     spriteShapeDef.shape = &spriteShape;
     spriteShapeDef.density = 10.0;
