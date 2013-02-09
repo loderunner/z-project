@@ -26,6 +26,8 @@ static float const PTM_RATIO = 64.0f;
 @property (nonatomic,retain) NSMutableArray* civilians;
 @property (nonatomic,retain) NSMutableArray* zombies;
 @property (nonatomic,retain) NSMutableArray* spawnPoints;
+@property (nonatomic,retain) NSMutableArray* gestureRecognizers;
+
 
 @end
 
@@ -81,6 +83,7 @@ static float const PTM_RATIO = 64.0f;
         
         _civilians = [[NSMutableArray alloc] init];
         _zombies = [[NSMutableArray alloc] init];
+        _gestureRecognizers = [[NSMutableArray alloc] init];
         
         for (int i = 0; i < 200; ++i)
         {
@@ -106,9 +109,93 @@ static float const PTM_RATIO = 64.0f;
         
         [self createMenuLayer];
         [self schedule:@selector(updateMenuLayer:) interval:.7f];
+        
+        [self registerRecognisers];
 	}
 	return self;
 }
+
+#pragma mark - gesture recognisers
+
+-(void)registerRecognisers {
+    UITapGestureRecognizer* tapRecogniser = [self watchForTap:@selector(onTap:)];
+    [self.gestureRecognizers addObject:tapRecogniser];
+    //UIPanGestureRecognizer *panRecogniser = [self watchForPan:@selector(onPan:)];
+    //[panRecogniser setMinimumNumberOfTouches:1];
+    //[panRecogniser setMaximumNumberOfTouches:1];
+    //[self.gestureRecognizers addObject:panRecogniser];
+
+}
+
+-(void)unregisterRecognisers {
+    for (UIGestureRecognizer* recognizer in self.gestureRecognizers) {
+        [self unwatch:recognizer];
+    }
+}
+
+-(void)onTap:(UITapGestureRecognizer *)recognizer {
+    CGPoint location = [recognizer locationInView:[[CCDirector sharedDirector] view]];
+    location = [[CCDirector sharedDirector] convertToGL:location];
+    location = ccpSub(location, self.map.position);
+
+    for (Zombie* zombie in self.zombies) {
+        
+        if (CGRectContainsPoint(zombie.boundingBox,location)) {
+            [zombie runAction:[CCTintBy actionWithDuration:2.0 red:1.0 green:0 blue:0]];
+        }
+    }
+    NSLog(@"TAPPED !");
+}
+
+-(void)onPan:(UIPanGestureRecognizer *)recognizer {
+    CGPoint newPos = [recognizer locationInView:[[CCDirector sharedDirector] view]];
+    newPos = [[CCDirector sharedDirector] convertToGL:newPos];
+    CGPoint translation = [recognizer translationInView:[[CCDirector sharedDirector] view]];
+    translation = [[CCDirector sharedDirector] convertToGL:translation];
+    NSLog(@"%f,%f",translation.x,translation.y);
+    
+    CGPoint currentPos = [self.map position];
+    newPos = ccpSub(currentPos, translation);
+    
+    // constraints
+    if (newPos.x > 0) newPos.x = 0;
+    if (newPos.y > 0) newPos.y = 0;
+    
+    float layerWidth = tileSize.width * mapSize.width;
+    float winWidth   = winSize.width;
+    float minimumX   = winWidth-layerWidth;
+    if (newPos.x < minimumX) newPos.x = minimumX;
+    float layerHeight = tileSize.height * mapSize.height;
+    float winHeight   = winSize.height;
+    float minimumY    = winHeight-layerHeight;
+    if (newPos.y < minimumY) newPos.y = minimumY;
+    
+	[self.map setPosition: newPos];
+    NSLog(@"pannig to %f,%f",newPos.x,newPos.y);
+    //NSLog(@"PANNING !");
+}
+
+- (UITapGestureRecognizer *)watchForTap:(SEL)selector {
+    UITapGestureRecognizer *recognizer = [[[UITapGestureRecognizer alloc] initWithTarget:self action:selector] autorelease];
+    [self registerRecognizer:recognizer];
+    return recognizer;
+}
+
+- (UIPanGestureRecognizer *)watchForPan:(SEL)selector {
+    UIPanGestureRecognizer *recognizer = [[[UIPanGestureRecognizer alloc] initWithTarget:self action:selector] autorelease];
+    [self registerRecognizer:recognizer];
+    return recognizer;
+}
+
+-(void)registerRecognizer:(UIGestureRecognizer*)recognizer {
+    [[[CCDirector sharedDirector] view] addGestureRecognizer:recognizer];
+}
+
+
+- (void)unwatch:(UIGestureRecognizer *)gr {
+    [[[CCDirector sharedDirector] view] removeGestureRecognizer:gr];
+}
+
 
 #pragma mark - map populating
 
@@ -371,6 +458,7 @@ static float const PTM_RATIO = 64.0f;
     self.zombies     = nil;
     self.map         = nil;
     self.spawnPoints = nil;
+    self.gestureRecognizers = nil;
 
     delete world;
     delete contactListener;
