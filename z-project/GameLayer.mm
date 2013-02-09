@@ -119,8 +119,13 @@ static float const PTM_RATIO = 64.0f;
     float height = 200.0;
     float ratio = height / (mapSize.height * tileSize.height);
     float width = ratio * (mapSize.width * tileSize.width);
-    CGPoint position = ccp(winSize.width-width,winSize.height-height);
-    self.minimap = [[MiniMap alloc] initWithPosition:position size:CGSizeMake(width,height) andRatio:ratio];
+    float padding = 5.0; // padding from the scren limits
+    CGPoint position = ccp(padding,padding);
+    NSLog(@"position of minimap: %f,%f",position.x,position.y);
+    self.minimap = [[MiniMap alloc]
+                    initWithPosition:position
+                    size:CGSizeMake(width,height)
+                    andRatio:ratio];
     [self addChild:self.minimap];
 }
 
