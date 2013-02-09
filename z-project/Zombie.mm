@@ -13,7 +13,6 @@ static CGFloat const SPEED = 40.f;
 
 @interface Zombie()
 
-@property (nonatomic, strong) CCSprite* sprite;
 @property (nonatomic) CGPoint velocity;
 
 @end

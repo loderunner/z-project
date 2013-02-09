@@ -9,6 +9,7 @@
 // Import the interfaces
 #import "GameLayer.h"
 #import "AppDelegate.h"
+#import "Civilian.h"
 #import "Zombie.h"
 #import "Box2D.h"
 #import "ContactListener.h"
@@ -123,11 +124,11 @@ static float const PTM_RATIO = 64.0f;
         int x = arc4random_uniform(totalWidth);
         int y = arc4random_uniform(totalHeight);
         
-        Zombie* dude = [[[Zombie alloc] initWithPosition: ccp(x,y)] autorelease];
-        [self.zombies addObject:dude];
+        Civilian* dude = [[Civilian alloc] initWithPosition: ccp(x,y)];
+        [self.civilians addObject:dude];
         [self.map addChild:dude];
         [self addBoxBodyForSprite:dude];
-        
+
         [dude randomWalk];
     }
 }
