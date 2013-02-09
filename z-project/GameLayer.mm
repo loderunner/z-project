@@ -182,10 +182,29 @@ static float const PTM_RATIO = 64.0f;
         b2Body *bodyB = contact.fixtureB->GetBody();
         if (bodyA->GetUserData() != NULL && bodyB->GetUserData() != NULL)
         {
-            CCSprite* spriteA = (CCSprite*) bodyA->GetUserData();
-            CCSprite* spriteB = (CCSprite*) bodyB->GetUserData();
+            BaseCharacter* spriteA = (BaseCharacter*) bodyA->GetUserData();
+            BaseCharacter* spriteB = (BaseCharacter*) bodyB->GetUserData();
             
-            //TODO: handle collisions here
+            // if same sprite class, do not let them overlap
+            if (spriteA.tag == spriteB.tag)
+            {
+                CGFloat overlapTop = spriteA.top - spriteB.bottom;
+                CGFloat overlapBottom = spriteB.top - spriteA.bottom;
+                CGFloat overlapLeft = spriteB.right - spriteA.left;
+                CGFloat overlapRight = spriteA.right - spriteB.left;
+                
+                CGFloat overlapX = MIN(overlapLeft, overlapRight);
+                CGFloat overlapY = MIN(overlapBottom, overlapTop);
+                
+                CGPoint posA = spriteA.position;
+                if (overlapX > overlapY)
+                {
+                    
+                }
+                else
+                {
+                }
+            }
         }
     }
 }
