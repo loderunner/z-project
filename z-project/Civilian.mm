@@ -9,16 +9,24 @@
 #import "Civilian.h"
 
 @interface Civilian()
+
 @property (nonatomic,strong) CCSprite* sprite;
+
 @end
 
 @implementation Civilian
 
 -(id)init {
     if (self = [super init]) {
-        self.sprite = [CCSprite spriteWithFile:@"civilian.png"];
+        self.sprite = [CCSprite spriteWithFile:@"zombie.png"];
     }
     return self;
+}
+
+- (void)dealloc
+{
+    [_sprite release];
+    [super dealloc];
 }
 
 -(Civilian *)initWithPosition:(CGPoint)position {

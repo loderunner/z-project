@@ -14,5 +14,7 @@
 }
 
 @property (nonatomic, strong) CCTMXTiledMap* map;
+
 +(CCScene *) scene;
+
 @end
