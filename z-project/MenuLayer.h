@@ -7,9 +7,13 @@
 //
 
 #import "CCMenu.h"
+#import "cocos2d.h"
 
-@interface MenuLayer : CCMenu
+@interface MenuLayer : CCLayer
 
--(MenuLayer*)initWithPosition:(CGPoint)point size:(CGSize)size;
+-(MenuLayer*)initWithWinSize:(CGSize)winSize;
+
+-(void)updateNumberOfCivilian:(int)number;
+-(void)updateNumberOfZombie:(int)number;
 
 @end

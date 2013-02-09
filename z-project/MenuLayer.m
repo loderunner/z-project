@@ -12,37 +12,40 @@
 @interface MenuLayer()
 
 @property (nonatomic,assign) CGSize size;
+@property (nonatomic,assign) CCLabelTTF* zombieNum;
+@property (nonatomic,assign) CCLabelTTF* civilianNum;
 
 @end
 
 @implementation MenuLayer
 
--(MenuLayer*)initWithPosition:(CGPoint)point size:(CGSize)size {
+-(MenuLayer*)initWithWinSize:(CGSize)winSize {
     if (self = [self init]) {
-        _size = size;
-        
-        [CCMenuItemFont setFontName:@"Helvetica-BoldOblique"];
-        [CCMenuItemFont setFontSize:26];
+        _size = CGSizeMake(100, 100);
         // create a few labels with text and selector
-        CCMenuItemFont* zombieLabel = [CCMenuItemFont itemWithString:@"Zombies : "
-                                                        target:self
-                                                      selector:@selector(menuItem1Touched:)];
-        CCMenuItemFont* zombieNum = [CCMenuItemFont itemWithString:@"45"
-                                                              target:self
-                                                            selector:@selector(menuItem1Touched:)];
+        CCLabelTTF* zombieLabel = [CCLabelTTF labelWithString:@"Zombies" fontName:@"Helvetica-BoldOblique" fontSize:26];
+        _zombieNum = [CCLabelTTF labelWithString:@"32" fontName:@"Helvetica-BoldOblique" fontSize:26];
+        CCLabelTTF* civilianLabel = [CCLabelTTF labelWithString:@"Civilians" fontName:@"Helvetica-BoldOblique" fontSize:26];
+        _civilianNum = [CCLabelTTF labelWithString:@"26" fontName:@"Helvetica-BoldOblique" fontSize:26];
         
-        CCMenuItemFont* civilianLabel = [CCMenuItemFont itemWithString:@"Civilians : "
-                                                        target:self
-                                                      selector:@selector(menuItem2Touched:)];
-        CCMenuItemFont* civilianNum = [CCMenuItemFont itemWithString:@"32"
-                                                                target:self
-                                                              selector:@selector(menuItem2Touched:)];
-        self = [CCMenu menuWithItems:zombieLabel, zombieNum,civilianLabel, civilianNum, nil];
-        
-        self.position = point;
-        [self alignItemsHorizontallyWithPadding:40];
+        zombieLabel.position = CGPointMake(_size.width/2, winSize.height- _size.height/2);
+        [self addChild:zombieLabel];
+        _zombieNum.position = CGPointMake(3 * _size.width/2, winSize.height-_size.height/2);
+        [self addChild:_zombieNum];
+        civilianLabel.position = CGPointMake(winSize.width - _size.width/2, winSize.height-_size.height/2);
+        [self addChild:civilianLabel];
+        _civilianNum.position = CGPointMake(winSize.width - 3 * _size.width/2, winSize.height-_size.height/2);
+        [self addChild:_civilianNum];
     }
     return self;
+}
+
+-(void)updateNumberOfCivilian:(int)number {
+    [_civilianNum setString:[NSString stringWithFormat:@"%d", number]];
+}
+
+-(void)updateNumberOfZombie:(int)number {
+    [_zombieNum setString:[NSString stringWithFormat:@"%d", number]];
 }
 
 @end
