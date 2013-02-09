@@ -71,8 +71,28 @@ State;
     if ([self isAlive])
     {
         CGPoint pos = self.position;
+        CGPoint halfSize = ccpMult(ccpFromSize(self.boundingBox.size), .5f);
         CGPoint move = ccpMult(_velocity, dt);
         pos = ccpAdd(pos, move);
+        
+        //clip character to edges
+        if (pos.x - halfSize.x < 0)
+        {
+            pos = ccp(halfSize.x, pos.y);
+        }
+        if (pos.x + halfSize.x > self.parent.contentSize.width)
+        {
+            pos = ccp(self.parent.contentSize.width - halfSize.x, pos.y);
+        }
+        
+        if (pos.y - halfSize.y < 0)
+        {
+            pos = ccp(pos.x, halfSize.y);
+        }
+        if (pos.y + halfSize.y > self.parent.contentSize.height)
+        {
+            pos = ccp(pos.x, self.parent.contentSize.height - halfSize.y);
+        }
         
         self.position = pos;
     }
