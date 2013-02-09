@@ -604,14 +604,10 @@
 		40B9A71516C5C2B7004DCC10 /* z-project */ = {
 			isa = PBXGroup;
 			children = (
+				40B9A94216C5D7D7004DCC10 /* characters */,
+				40B9A94116C5D7C0004DCC10 /* layers */,
 				40B9A92016C5C2BB004DCC10 /* AppDelegate.h */,
 				40B9A92116C5C2BB004DCC10 /* AppDelegate.mm */,
-				40B9A92316C5C2BB004DCC10 /* GameLayer.h */,
-				40B9A92416C5C2BB004DCC10 /* GameLayer.mm */,
-				40B9A92616C5C2BB004DCC10 /* IntroLayer.h */,
-				40B9A92716C5C2BB004DCC10 /* IntroLayer.mm */,
-				40B9A93A16C5D163004DCC10 /* Civilian.h */,
-				40B9A93B16C5D163004DCC10 /* Civilian.m */,
 				40B9A71616C5C2B7004DCC10 /* Resources */,
 				40B9A73016C5C2B7004DCC10 /* libs */,
 				40B9A91C16C5C2BB004DCC10 /* Supporting Files */,
@@ -1157,6 +1153,26 @@
 				40B9A93D16C5D267004DCC10 /* civilian.png */,
 			);
 			name = sprites;
+			sourceTree = "<group>";
+		};
+		40B9A94116C5D7C0004DCC10 /* layers */ = {
+			isa = PBXGroup;
+			children = (
+				40B9A92316C5C2BB004DCC10 /* GameLayer.h */,
+				40B9A92416C5C2BB004DCC10 /* GameLayer.mm */,
+				40B9A92616C5C2BB004DCC10 /* IntroLayer.h */,
+				40B9A92716C5C2BB004DCC10 /* IntroLayer.mm */,
+			);
+			name = layers;
+			sourceTree = "<group>";
+		};
+		40B9A94216C5D7D7004DCC10 /* characters */ = {
+			isa = PBXGroup;
+			children = (
+				40B9A93A16C5D163004DCC10 /* Civilian.h */,
+				40B9A93B16C5D163004DCC10 /* Civilian.m */,
+			);
+			name = characters;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

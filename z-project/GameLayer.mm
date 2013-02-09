@@ -70,6 +70,7 @@
         Civilian* dude = [[Civilian alloc] initWithPosition: ccp(x,y)];
         [civilians addObject:dude];
         [self.map addChild:dude.sprite];
+        [dude randomWalk];
     }
 }
 

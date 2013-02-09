@@ -28,4 +28,13 @@
     return self;
 }
 
+-(void)randomWalk {
+    int x = arc4random_uniform(40) - 19;
+    int y = arc4random_uniform(40) - 19;
+    CCMoveBy* move = [CCMoveBy actionWithDuration:1 position:ccp(x,y)];
+    CCCallFunc* loop = [CCCallFunc actionWithTarget:self selector:@selector(randomWalk)];
+    CCSequence* seq = [CCSequence actions:move, loop, nil];
+    [self.sprite runAction:seq];
+}
+
 @end
