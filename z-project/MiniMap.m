@@ -54,4 +54,10 @@
     }
 }
 
+#pragma mark - cleanup
+
+-(void)dealloc {
+    [super dealloc];
+}
+
 @end
