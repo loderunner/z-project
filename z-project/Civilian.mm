@@ -11,7 +11,8 @@
 
 @interface Civilian()
 
-@property (nonatomic,strong) CCSprite* sprite;
+@property (nonatomic, strong) CCSprite* sprite;
+@property (nonatomic) CGPoint velocity;
 
 @end
 
@@ -21,6 +22,9 @@
     if (self = [super init]) {
         _sprite = [[CCSprite spriteWithFile:@"zombie.png"] retain];
         _sprite.tag = TagCivilian;
+        
+        [_sprite schedule:@selector(update:)];
+        [_sprite schedule:@selector(randomWalk) interval:1.0f];
     }
     return self;
 }
@@ -33,9 +37,14 @@
 
 -(Civilian *)initWithPosition:(CGPoint)position {
     if (self = [self init]) {
-        self.sprite.position = position;
+        _sprite.position = position;
     }
     return self;
+}
+
+- (void)update:(ccTime)dt
+{
+    
 }
 
 -(void)randomWalk {
