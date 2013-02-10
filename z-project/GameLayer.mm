@@ -152,6 +152,7 @@ static float const PTM_RATIO = 64.0f;
                 [list addObject:[NSValue valueWithCGPoint:pos]];
                 [list release];
             } else {
+                [_scoreCounters registerZombieSpawned];
                 [self addZombieAt:pos];
             }
         }
@@ -187,6 +188,7 @@ static float const PTM_RATIO = 64.0f;
             NSArray* positions = (NSArray*) obj;
             for (NSValue *rawPosition in positions) {
                 CGPoint point = [rawPosition CGPointValue];
+                [_scoreCounters registerZombieSpawned];
                 [self addZombieAt:point];
             }
             [toRemove addObject:numkey];
@@ -521,9 +523,10 @@ static float const PTM_RATIO = 64.0f;
                     CCDelayTime* delayAction = [CCDelayTime actionWithDuration:3];
                     CCCallBlock* blockAction = [CCCallBlock actionWithBlock:^(void)
                                                 {
+                                                    [_scoreCounters registerCivilianConvertedToZombie];
                                                     [self addZombieAt:civilian.position];
                                                     [self removeCivilian:civilian];
-                                                    [_scoreCounters registerCivilianConvertedToZombie];
+                                                    
                                                 }];
                     CCSequence* sequenceAction = [CCSequence actionOne:delayAction two:blockAction];
                     [self runAction:sequenceAction];
