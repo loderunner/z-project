@@ -502,10 +502,12 @@ static float const PTM_RATIO = 64.0f;
                     
                     // kill civilian and wake as zombie in 3 seconds
                     [civilian infect];
+                    [[SoundManager sharedManager] playSound:kSoundScreamCivilian];
                     CCDelayTime* delayAction = [CCDelayTime actionWithDuration:3];
                     CCCallBlock* blockAction = [CCCallBlock actionWithBlock:^(void)
                                                 {
                                                     [self addZombieAt:civilian.position];
+                                                    [[SoundManager sharedManager] playSound:kSoundScreamZombie];
                                                     [self removeCivilian:civilian];
                                                     [_scoreCounters registerCivilianConvertedToZombie];
                                                 }];
