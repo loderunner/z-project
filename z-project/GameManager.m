@@ -67,7 +67,7 @@ typedef enum {
 }
 
 -(void)loadLevelWithMap:(NSString*)mapName {
-    [self loadLevelWithMap:mapName andDifficulty:kGameDifficultyNormal];
+    [self loadLevelWithMap:mapName andDifficulty:kGameDifficultyEasy];
 }
 
 -(void)loadLevelWithMap:(NSString*)mapName andDifficulty:(GameDifficulty)difficulty {

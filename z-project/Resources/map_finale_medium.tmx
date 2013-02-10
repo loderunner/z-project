@@ -34,7 +34,7 @@
    eJzlmbezEzEQxtekoSS8DncEd9AR3EFHcAcd4ch0BJd0BJd0BJMfUBBc0hH+CXKmImcqMt8OaE6j0ZrT+qQbP3bmN5p776TZfXq3+nZFlM5qYCqY5hlrCf2oyjjGWWC2Z/wf4h8BC8BCzzhSoV+prAGWgeWesVGhX6msCdaAtZ6xWaFfqawFdoCdnrFVoV+pLAN7wT7PmFXmVTprg0PgsGdsV+hXKuuAC+CiZ+xU6Fcq64Kr4Jpn7FboVyrrkaz/ehX5xH/3o+AYOO55PgFOglPgNBgFZ8BZcE7xvqT/uiVT1Kfn4AV4CV6B1+ANeAvegffgA/gIPoHPY2zOV/ANfAc/wE/wC7Agr4FxYDyYACaCSbWxNSfm/7rvZ5L+C13bjEXfl36nsSmU563pAfO4xpP0n7b+q1u+pLKZlOetOQHzuMaT9J+2/qtbvqSy+ZTXrYsC5nGNJ+k/bf1Xt3xJZUspr1tXBMzjGk/Sf9r6r275kspWU5631gXM429c0n+DfP/Gl1SmzX8jJOu/Qb7/Ycl/DZL13yDf/7DkvybJ/T/t9z+Phif/tUju/2n7P0toePJfRrL+y5S+rKL0+W875bptV8C8tjXP5CzzrO3/bLPWSGV7KNdt+wPmdax5JmeZZ23/Z7e1Rio7SLluOxIwr2vNMznLPGv7PwesNVLZecp126WAeT1rnslZ5lnb/xm11tCYpv9zhXLddr3A+3YdauaZnGX3/4r44f78srWGpoZP3ZeR9F/RNcv2N3VfRtJ/Rdcs219N/8fV/yH9H0n/FfVDei8D68EGsBFsApvBFrCV/pyTvnU1ptX/XONJ+q/2N4ZB+Ff87r5NDvDdNq3+5xpP0n+x7/85VnfftPFr9T/XeFL/L/b9P8fq7ps2fq3+5xpP6v/Fvv/nWN1908av1f9c40n9v9j3/xyru2/a+LX6PyO5/5cpfSlqHKu7b9r4tfq/X/8v9v0/x+rumzZ+rf7v1/+Lff/Psbr7po3f1f9FrV//L/b9P8da1vmv7f/26//Fvv8v8/zX6r8Y/b+iVub5r9V/GZXf/ytqvvN/BrgBboJb4Da4A+6Ce+A+eAAegkfgMXgCnpJO/9n9P3eMnf85Vvf8nwueka6m1ug/u//njrHzP8fqnv+LwRfS1dQa/Wf3/9wxdv7nWN3zfyX4DYGKLGo=
   </data>
  </layer>
- <objectgroup name="spawnpoints" width="64" height="48">
+ <objectgroup name="spawnPoints" width="64" height="48">
   <object name="point1" x="373" y="1942" width="170" height="112">
    <properties>
     <property name="time" value="0"/>
@@ -55,7 +55,7 @@
   </object>
   <object name="point5" x="2399" y="770" width="207" height="124">
    <properties>
-    <property name="time" value="30"/>
+    <property name="time" value="0"/>
     <property name="zombie_nbr" value="4"/>
    </properties>
   </object>

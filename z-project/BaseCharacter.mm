@@ -22,6 +22,7 @@
         
         self.tag = tag;
         self.state = kStateAlive;
+        self.stamina = 1;
     }
     return self;
 }
@@ -91,8 +92,9 @@
 }
 
 -(BOOL)takeDamage:(NSInteger)damage {
+    if (self.stamina <= 0) return NO;
     self.stamina -= damage;
-    if (self.stamina < 0) {
+    if (self.stamina <= 0) {
         [self kill];
         return YES;
     }

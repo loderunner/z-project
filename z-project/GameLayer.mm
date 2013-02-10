@@ -123,7 +123,7 @@ static float const PTM_RATIO = 64.0f;
         _gestureRecognizers = [[NSMutableArray alloc] init];
         _zombitesTospawn = [[NSMutableDictionary alloc] init];
         
-        for (int i = 0; i < 200; ++i)
+        for (int i = 0; i < 150; ++i)
         {
             [self addCivilian];
         }

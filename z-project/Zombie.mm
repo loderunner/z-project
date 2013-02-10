@@ -41,6 +41,7 @@ static NSString* const FRAME_ATTACKING = @"zombie-attacking";
         _speed = [[GameManager sharedManager] currentLevel].zombieSpeed;
         self.zOrder = kZOrderZombie;
         self.state = kStateAlive;
+        self.stamina = 1;
     }
     return self;
 }
