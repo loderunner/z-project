@@ -516,7 +516,7 @@ static float const PTM_RATIO = 64.0f;
                     if (isCivilianVisible) {
                         [soundManager playSound:kSoundScreamCivilian];
                     } else {
-                        [soundManager playSound:kSoundScreamZombie];
+                        [soundManager playScreamZombie];
                     }
                     
                     CCDelayTime* delayAction = [CCDelayTime actionWithDuration:3];
