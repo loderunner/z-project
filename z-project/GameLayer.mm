@@ -17,6 +17,7 @@
 #import "ScoreCounters.h"
 #import "MenuLayer.h"
 #import "FinishLayer.h"
+#import "SoundManager.h"
 
 #pragma mark - GameLayer
 
@@ -66,6 +67,9 @@ static float const PTM_RATIO = 64.0f;
 -(id) initWithMap:(NSString*)mapName
 {
     if (self = [super init]) {
+        
+        [[SoundManager sharedManager] startMusic:kMusicCity];
+        
         //initialize box2d collision manager
         b2Vec2 gravity = b2Vec2(0.0f, 0.0f);
         world = new b2World(gravity);

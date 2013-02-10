@@ -9,6 +9,7 @@
 #import "cocos2d.h"
 #import "MainMenuLayer.h"
 #import "GameLayer.h"
+#import "SoundManager.h"
 
 @implementation MainMenuLayer
 
@@ -24,6 +25,8 @@
 
 -(id)init {
     if (self = [super init]) {
+        [[SoundManager sharedManager] startMusic:kMusicHome];
+        
         CCSprite* background = [CCSprite spriteWithFile:kHomemenuSprit];
         CGSize size = [CCDirector sharedDirector].winSize;
         CGPoint centerPoint = CGPointMake(size.width/2, size.height/2);
