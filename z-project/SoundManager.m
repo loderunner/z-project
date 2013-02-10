@@ -93,6 +93,4 @@ static NSArray* allMenuSounds;
     [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
 }
 
-
-
 @end
