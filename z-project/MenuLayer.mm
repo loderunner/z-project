@@ -50,7 +50,7 @@
     [_civilianNum setString:[NSString stringWithFormat:@"%d", number]];
     
     // At the end the game color of the number changes
-    if (number < 20) {
+    if (number < 10) {
         _civilianNum.color = ccRED;
     } else {
         _civilianNum.color = ccWHITE;
@@ -61,7 +61,7 @@
     [_zombieNum setString:[NSString stringWithFormat:@"%d", number]];
     
     // At the end the game color of the number changes
-    if (number < 20) {
+    if (number < 10) {
         _zombieNum.color = ccGREEN;
     } else {
         _zombieNum.color = ccWHITE;
