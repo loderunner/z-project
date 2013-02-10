@@ -162,7 +162,6 @@ static float const PTM_RATIO = 64.0f;
             
             [self schedule:@selector(updateMiniMapCharacters:) interval:.7f];
             [self schedule:@selector(updateMiniMapPosition:) interval:.05f];  // 1/20th sec
-            
         }
         
         [self createMenuLayer];

@@ -19,6 +19,6 @@
 
 -(void) loadFirstScene;
 -(void) loadSelectionMenuScene;
--(void)loadLevelWithMap:(NSString*)mapName;
+-(void) loadLevelWithMap:(NSString*)mapName;
 
 @end
