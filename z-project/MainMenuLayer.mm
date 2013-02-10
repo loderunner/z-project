@@ -74,7 +74,7 @@
 
 -(void)secondLevel:(id)sender {
     [self playClickSound];
-    [[GameManager sharedManager] loadLevelWithMap:@"map_two.tmx"];}
+    [[GameManager sharedManager] loadLevelWithMap:@"map_finale.tmx"];}
 
 -(void)thirdLevel:(id)sender {
     
