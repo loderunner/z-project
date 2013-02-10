@@ -1512,15 +1512,9 @@
 				40654AF616C7F245009F45FF /* arbres_lampadaires.png in Resources */,
 				40654AF816C7F5FB009F45FF /* maisons sans trottoir_filtre.png in Resources */,
 				646BE71616C7FF4D00C95861 /* Icon_140.png in Resources */,
-<<<<<<< HEAD
-				646BE71816C804BA00C95861 /* Default-Landscape~ipad.png in Resources */,
-				646BE71A16C804C500C95861 /* Default-Portrait~ipad.png in Resources */,
-				646BE78F16C8052C00C95861 /* screen.png in Resources */,
-=======
 				40C05C9B16C8028C00B48040 /* map_finale_difficile.tmx in Resources */,
 				40C05C9C16C8028C00B48040 /* map_finale_facile.tmx in Resources */,
 				40C05C9D16C8028C00B48040 /* map_finale_medium.tmx in Resources */,
->>>>>>> d7581129da27e5b3ab2cff5c9c02482d73e701d6
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
