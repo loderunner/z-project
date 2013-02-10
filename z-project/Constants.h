@@ -18,9 +18,19 @@ typedef enum
 {
     kZOrderDead = 1000,
     kZOrderCivilian,
-    kZOrderZombie
+    kZOrderZombie,
+    kZOrderTile
 }
 ZOrder;
+
+typedef enum
+{
+    kTouchingLeft= 1<<0,
+    kTouchingRight = 1<<1,
+    kTouchingTop = 1<<2,
+    kTouchingBottom = 1<<3
+}
+TouchingEdges;
 
 typedef enum
 {

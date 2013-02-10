@@ -66,6 +66,9 @@ static float const PTM_RATIO = 64.0f;
 -(id) initWithMap:(NSString*)mapName
 {
     if (self = [super init]) {
+        //randomize seed
+        CCRANDOM_SEED();
+        
         //initialize box2d collision manager
         b2Vec2 gravity = b2Vec2(0.0f, 0.0f);
         world = new b2World(gravity);
@@ -123,10 +126,11 @@ static float const PTM_RATIO = 64.0f;
         _gestureRecognizers = [[NSMutableArray alloc] init];
         _zombitesTospawn = [[NSMutableDictionary alloc] init];
         
-        for (int i = 0; i < 50; ++i)
+        for (int i = 0; i < 200; ++i)
         {
             [self addCivilian];
         }
+        
         
         for (NSDictionary* spawnPoint in self.spawnPoints) {
             int x = [[spawnPoint objectForKey:@"x"] intValue];
@@ -264,7 +268,7 @@ static float const PTM_RATIO = 64.0f;
     int x = arc4random_uniform(totalWidth);
     int y = arc4random_uniform(totalHeight);
     
-    [self addCivilianAt:ccp(x, y)];
+    [self addCivilianAt:ccp(1000, 1000)];
 }
 
 - (void)addCivilianAt:(CGPoint)pos
@@ -303,7 +307,21 @@ static float const PTM_RATIO = 64.0f;
 - (void) update:(ccTime)dt
 {
     [self updateBodies:dt];
-    [self handleCollisions];
+    [self handleCollisions:dt];
+    [self updateCharacters:dt];
+}
+
+- (void) updateCharacters:(ccTime)dt
+{
+    for (Zombie* zombie in self.zombies)
+    {
+        [zombie update:dt];
+    }
+    
+    for (Civilian* civilian in self.civilians)
+    {
+        [civilian update:dt];
+    }
 }
 
 #pragma mark - minimap
@@ -383,13 +401,18 @@ static float const PTM_RATIO = 64.0f;
 
 - (void)addBoxBodyForTile:(CGPoint)coord
 {
-    CGFloat x = 1.5f * coord.x * _map.tileSize.width;
-    CGFloat y = 1.5f * (_map.mapSize.height - coord.y) * _map.tileSize.height;
+    CGFloat x = (coord.x + .5f) * _map.tileSize.width;
+    CGFloat y = (_map.mapSize.height - coord.y - .5f) * _map.tileSize.height;
     
-    CCNode* tile = [CCNode node];
+    BaseCharacter* tile = [BaseCharacter spriteWithFile:@"redbox.png"];
+    
+    // un-comment this line to show debug red box for tiles
+//    [self.map addChild:tile];
+    
     tile.position = ccp(x, y);
-    tile.contentSize = CGSizeMake(_map.tileSize.width, _map.tileSize.height);
+    //tile.contentSize = CGSizeMake(_map.tileSize.width, _map.tileSize.height);
     tile.tag = kTagTile;
+    tile.zOrder = kZOrderTile;
     [_collidables addObject:tile];
     
     b2BodyDef spriteBodyDef;
@@ -444,7 +467,7 @@ static float const PTM_RATIO = 64.0f;
     }
 }
 
-- (void)handleCollisions
+- (void)handleCollisions:(ccTime)dt
 {
     //CCLOG(@"%ld collisions", contactListener->_contacts.size());
     
@@ -462,7 +485,7 @@ static float const PTM_RATIO = 64.0f;
             
             Zombie* zombie = nil;
             Civilian* civilian = nil;
-            CCNode* tile = nil;
+            BaseCharacter* tile = nil;
             if (spriteA.tag == kTagZombie)
             {
                 zombie = (Zombie*)spriteA;
@@ -473,7 +496,7 @@ static float const PTM_RATIO = 64.0f;
             }
             else if (spriteA.tag == kTagTile)
             {
-                tile = spriteA;
+                tile = (BaseCharacter*)spriteA;
             }
             
             if (spriteB.tag == kTagZombie)
@@ -482,11 +505,11 @@ static float const PTM_RATIO = 64.0f;
             }
             else if (spriteB.tag == kTagCivilian)
             {
-                civilian = (Civilian*)spriteB;
+                civilian = (Civilian*) spriteB;
             }
             else if (spriteB.tag == kTagTile)
             {
-                tile = spriteB;
+                tile = (BaseCharacter*)spriteB;
             }
             
             if (civilian != nil && zombie != nil)
@@ -508,12 +531,22 @@ static float const PTM_RATIO = 64.0f;
                     [self runAction:sequenceAction];
                 }
             }
-            else if (tile != nil)
+            else if (tile != nil && (zombie != nil || civilian != nil))
             {
                 BaseCharacter* character = (zombie == nil) ? civilian : zombie;
-                
+                [character.touching addObject: tile];
             }
         }
+    }
+    
+    for (Zombie* zombie in self.zombies)
+    {
+        [zombie solveCollisions];
+    }
+    
+    for (Civilian* civilian in self.civilians)
+    {
+        [civilian solveCollisions];
     }
 }
 

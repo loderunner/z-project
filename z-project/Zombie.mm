@@ -96,7 +96,15 @@ static NSString* const FRAME_DEAD = @"zombie-dead";
         }
     }
     
-    CGFloat angle = ccpToAngle(ccpSub(minCivilian.position, self.position));
+    CGFloat angle;
+    if (!minCivilian)
+    {
+        angle = CCRANDOM_MINUS1_1() * M_PI;
+    }
+    else
+    {
+        angle = ccpToAngle(ccpSub(minCivilian.position, self.position));
+    }
     CGFloat x = cosf(angle) * SPEED;
     CGFloat y = sinf(angle) * SPEED;
     self.velocity = ccp(x, y);

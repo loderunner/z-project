@@ -34,8 +34,9 @@ static NSString* const FRAME_DEAD_INFECTED = @"civilian-dead-infected";
 -(id)init {
     if (self = [super initWithSpriteFrameName:@"civilian-up" andTag:kTagCivilian])
     {
-        [self schedule:@selector(fleeZombie) interval:1.0f];
+//        [self schedule:@selector(fleeZombie) interval:1.0f];
         [self fleeZombie];
+        
         self.zOrder = kZOrderCivilian;
     }
     return self;
@@ -91,7 +92,15 @@ static NSString* const FRAME_DEAD_INFECTED = @"civilian-dead-infected";
         }
     }
     
-    CGFloat angle = ccpToAngle(ccpSub(self.position, minZombie.position));
+    CGFloat angle;
+    if (!minZombie)
+    {
+        angle = CCRANDOM_MINUS1_1() * M_PI;
+    }
+    else
+    {
+        ccpToAngle(ccpSub(self.position, minZombie.position));
+    }
     CGFloat x = cosf(angle) * SPEED;
     CGFloat y = sinf(angle) * SPEED;
     self.velocity = ccp(x, y);

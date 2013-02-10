@@ -15,6 +15,7 @@
 @property (nonatomic,retain) NSMutableDictionary* properties;
 @property (nonatomic) State state;
 @property (nonatomic,assign) NSInteger stamina;
+@property (nonatomic, retain) NSMutableArray* touching;
 
 // helpers for edges
 @property (nonatomic, readonly) CGFloat left;
@@ -23,9 +24,12 @@
 @property (nonatomic, readonly) CGFloat bottom;
 
 - (id)initWithSpriteFrameName:(NSString*)file andTag:(NSInteger)tag;
--(void)kill;
--(BOOL)isAlive;
+- (void)update:(ccTime)dt;
+- (void)kill;
+- (BOOL)isAlive;
+- (void)solveCollisions;
+- (CGRect)getCGRect;
 
--(BOOL)takeDamage:(NSInteger)damage;
+- (BOOL)takeDamage:(NSInteger)damage;
 
 @end
