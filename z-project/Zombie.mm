@@ -9,7 +9,7 @@
 #import "Zombie.h"
 #import "Civilian.h"
 
-static CGFloat const SPEED = 60.f;
+static CGFloat const SPEED = 100.f;
 
 static NSString* const FRAME_FACING_LEFT = @"zombie-left";
 static NSString* const FRAME_FACING_RIGHT = @"zombie-right";

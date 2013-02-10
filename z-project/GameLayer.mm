@@ -48,6 +48,7 @@ static float const PTM_RATIO = 64.0f;
     b2World* world;
     ContactListener* contactListener;
     float timeCounter;
+    float timeForLastSpawn;
 }
 
 @end
@@ -132,6 +133,7 @@ static float const PTM_RATIO = 64.0f;
             [self addCivilian];
         }
         
+        timeForLastSpawn = 0;
         for (NSDictionary* spawnPoint in self.spawnPoints) {
             int x = [[spawnPoint objectForKey:@"x"] intValue];
             int y = [[spawnPoint objectForKey:@"y"] intValue];
@@ -140,6 +142,7 @@ static float const PTM_RATIO = 64.0f;
             NSString* timeString = [spawnPoint objectForKey:@"time"];
             if (timeString) {
                 float value = [timeString floatValue];
+                timeForLastSpawn = MAX(timeForLastSpawn,value);
                 NSNumber *keyValue = [NSNumber numberWithFloat:value];
                 NSMutableArray* list = [[_zombitesTospawn objectForKey:keyValue] retain];
                 if (!list) {
@@ -352,7 +355,7 @@ static float const PTM_RATIO = 64.0f;
 
 #pragma mark - finishGame
 -(void)testFinishGame:(ccTime)dt  {
-    if ([_scoreCounters numCivilians] == 0 || [_scoreCounters numZombies] == 0) {
+    if (([_scoreCounters numCivilians] == 0 || [_scoreCounters numZombies] == 0) && timeCounter > timeForLastSpawn) {
         [self unschedule:@selector(testFinishGame:)];
         [self finishGame];
     }
