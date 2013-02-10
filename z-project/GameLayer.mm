@@ -233,6 +233,7 @@ static float const PTM_RATIO = 64.0f;
     
     BOOL characterWasKilled = [character takeDamage:1];
     if (characterWasKilled) {
+        [[SoundManager sharedManager] playDeathSound];
         if ( character.tag == kTagZombie) {
             [_scoreCounters registerZombieKilledByPlayer];
         } else if (character.tag == kTagCivilian) {

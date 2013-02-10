@@ -23,14 +23,14 @@ static NSArray* allMenuSounds;
     allMusics = @[
                   kMusicCity,
                   kMusicHome];
-    allDeathSounds = @[
+    allDeathSounds = [@[
                   kSoundDeath1
                   ,kSoundDeath2
                   ,kSoundDeath3
                   ,kSoundDeath4
                   ,kSoundDeath5
                   ,kSoundDeath6
-                  ];
+                  ] retain];
     allDeathScreams = @[
                   kSoundScreamCivilian
                   ,kSoundScreamZombie];
@@ -54,13 +54,25 @@ static NSArray* allMenuSounds;
             [engine preloadBackgroundMusic:music];
         }
         for (NSString* sound in allDeathSounds) {
-            [engine preloadBackgroundMusic:sound];
+            [engine preloadEffect:sound];
         }
         for (NSString* sound in allDeathScreams) {
-            [engine preloadBackgroundMusic:sound];
+            [engine preloadEffect:sound];
         }
+        for (NSString* sound in allMenuSounds) {
+            [engine preloadEffect:sound];
+        }
+        
+        [engine setBackgroundMusicVolume:0.05];
+        [engine setEffectsVolume:1];
     }
     return self;
+}
+
+-(void)playDeathSound {
+    NSUInteger index = arc4random_uniform([allDeathSounds count]);
+    NSString *selectedSound = [allDeathSounds objectAtIndex:index];
+    [self playSound:selectedSound];
 }
 
 -(void)playSound:(NSString *)sound {
