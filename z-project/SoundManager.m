@@ -12,6 +12,7 @@
 static NSArray* allMusics;
 static NSArray* allDeathSounds;
 static NSArray* allDeathScreams;
+static NSArray* allDeathScreamsZombie;
 static NSArray* allMenuSounds;
 
 @interface SoundManager()
@@ -33,7 +34,12 @@ static NSArray* allMenuSounds;
                   ] retain];
     allDeathScreams = [@[
                   kSoundScreamCivilian
-                  ,kSoundScreamZombie] retain];
+                  ] retain];
+    allDeathScreamsZombie = [@[kSoundScreamZombie1
+                        ,kSoundScreamZombie2
+                        ,kSoundScreamZombie3
+                        ,kSoundScreamZombie4
+                        ] retain];
     allMenuSounds = [@[
                   kSoundPlay] retain];
 }
@@ -53,6 +59,9 @@ static NSArray* allMenuSounds;
         for (NSString* sound in allMenuSounds) {
             [engine preloadEffect:sound];
         }
+        for (NSString* sound in allDeathScreamsZombie) {
+            [engine preloadEffect:sound];
+        }
         
         [engine setBackgroundMusicVolume:0.05];
         [engine setEffectsVolume:1];
@@ -63,6 +72,12 @@ static NSArray* allMenuSounds;
 -(void)playDeathSound {
     NSUInteger index = arc4random_uniform([allDeathSounds count]);
     NSString *selectedSound = [allDeathSounds objectAtIndex:index];
+    [self playSound:selectedSound];
+}
+
+-(void)playScreamZombie {
+    NSUInteger index = arc4random_uniform([allDeathScreamsZombie count]);
+    NSString *selectedSound = [allDeathScreamsZombie objectAtIndex:index];
     [self playSound:selectedSound];
 }
 

@@ -203,7 +203,6 @@
 		6470B14B16C7AFD600B254A9 /* sfx_music_city.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6470B14316C7AFD600B254A9 /* sfx_music_city.mp3 */; };
 		6470B14C16C7AFD600B254A9 /* sfx_music_home.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6470B14416C7AFD600B254A9 /* sfx_music_home.mp3 */; };
 		6470B15016C7B07C00B254A9 /* sfx_play.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6470B14D16C7B07C00B254A9 /* sfx_play.mp3 */; };
-		6470B15116C7B07C00B254A9 /* sfx_scream_zombie.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6470B14E16C7B07C00B254A9 /* sfx_scream_zombie.mp3 */; };
 		6470B15216C7B07C00B254A9 /* sfx_scream.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6470B14F16C7B07C00B254A9 /* sfx_scream.mp3 */; };
 		64A8E09B16C7C5C800858EDC /* icon_zombie.png in Resources */ = {isa = PBXBuildFile; fileRef = 64A8E09A16C7C5C800858EDC /* icon_zombie.png */; };
 		64A8E0A916C7DAB300858EDC /* map_one.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 64A8E0A816C7DAB300858EDC /* map_one.tmx */; };
@@ -211,6 +210,10 @@
 		64A8E0AF16C7DB1400858EDC /* cars.png in Resources */ = {isa = PBXBuildFile; fileRef = 64A8E0AB16C7DB1400858EDC /* cars.png */; };
 		64A8E0B016C7DB1400858EDC /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 64A8E0AC16C7DB1400858EDC /* map.png */; };
 		64A8E0B116C7DB1400858EDC /* park.png in Resources */ = {isa = PBXBuildFile; fileRef = 64A8E0AD16C7DB1400858EDC /* park.png */; };
+		64A8E0B616C7E73D00858EDC /* sfx_scream_zombie1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 64A8E0B216C7E73C00858EDC /* sfx_scream_zombie1.mp3 */; };
+		64A8E0B716C7E73D00858EDC /* sfx_scream_zombie2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 64A8E0B316C7E73C00858EDC /* sfx_scream_zombie2.mp3 */; };
+		64A8E0B816C7E73D00858EDC /* sfx_scream_zombie3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 64A8E0B416C7E73C00858EDC /* sfx_scream_zombie3.mp3 */; };
+		64A8E0B916C7E73D00858EDC /* sfx_scream_zombie4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 64A8E0B516C7E73D00858EDC /* sfx_scream_zombie4.mp3 */; };
 		64D7297316C6E45C0047189A /* FinishLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D7297216C6E45C0047189A /* FinishLayer.m */; };
 		64D7297616C6E6520047189A /* ScoreCounters.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D7297516C6E6510047189A /* ScoreCounters.m */; };
 		64F6A9D916C71AF100824D29 /* icon_menu_civilian.png in Resources */ = {isa = PBXBuildFile; fileRef = 64F6A9D816C71AF100824D29 /* icon_menu_civilian.png */; };
@@ -617,7 +620,6 @@
 		6470B14316C7AFD600B254A9 /* sfx_music_city.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = sfx_music_city.mp3; path = Resources/sfx_music_city.mp3; sourceTree = "<group>"; };
 		6470B14416C7AFD600B254A9 /* sfx_music_home.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = sfx_music_home.mp3; path = Resources/sfx_music_home.mp3; sourceTree = "<group>"; };
 		6470B14D16C7B07C00B254A9 /* sfx_play.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = sfx_play.mp3; path = Resources/sfx_play.mp3; sourceTree = "<group>"; };
-		6470B14E16C7B07C00B254A9 /* sfx_scream_zombie.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = sfx_scream_zombie.mp3; path = Resources/sfx_scream_zombie.mp3; sourceTree = "<group>"; };
 		6470B14F16C7B07C00B254A9 /* sfx_scream.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = sfx_scream.mp3; path = Resources/sfx_scream.mp3; sourceTree = "<group>"; };
 		64A8E09A16C7C5C800858EDC /* icon_zombie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_zombie.png; path = Resources/icon_zombie.png; sourceTree = "<group>"; };
 		64A8E0A816C7DAB300858EDC /* map_one.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = map_one.tmx; path = Resources/map_one.tmx; sourceTree = "<group>"; };
@@ -625,6 +627,10 @@
 		64A8E0AB16C7DB1400858EDC /* cars.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cars.png; path = Resources/cars.png; sourceTree = "<group>"; };
 		64A8E0AC16C7DB1400858EDC /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = map.png; path = Resources/map.png; sourceTree = "<group>"; };
 		64A8E0AD16C7DB1400858EDC /* park.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = park.png; path = Resources/park.png; sourceTree = "<group>"; };
+		64A8E0B216C7E73C00858EDC /* sfx_scream_zombie1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = sfx_scream_zombie1.mp3; path = Resources/sfx_scream_zombie1.mp3; sourceTree = "<group>"; };
+		64A8E0B316C7E73C00858EDC /* sfx_scream_zombie2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = sfx_scream_zombie2.mp3; path = Resources/sfx_scream_zombie2.mp3; sourceTree = "<group>"; };
+		64A8E0B416C7E73C00858EDC /* sfx_scream_zombie3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = sfx_scream_zombie3.mp3; path = Resources/sfx_scream_zombie3.mp3; sourceTree = "<group>"; };
+		64A8E0B516C7E73D00858EDC /* sfx_scream_zombie4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = sfx_scream_zombie4.mp3; path = Resources/sfx_scream_zombie4.mp3; sourceTree = "<group>"; };
 		64D7296816C678900047189A /* MenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuLayer.h; sourceTree = "<group>"; };
 		64D7297116C6E45C0047189A /* FinishLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinishLayer.h; sourceTree = "<group>"; };
 		64D7297216C6E45C0047189A /* FinishLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinishLayer.m; sourceTree = "<group>"; };
@@ -1341,8 +1347,11 @@
 		6470B12316C7AC1800B254A9 /* sound */ = {
 			isa = PBXGroup;
 			children = (
+				64A8E0B216C7E73C00858EDC /* sfx_scream_zombie1.mp3 */,
+				64A8E0B316C7E73C00858EDC /* sfx_scream_zombie2.mp3 */,
+				64A8E0B416C7E73C00858EDC /* sfx_scream_zombie3.mp3 */,
+				64A8E0B516C7E73D00858EDC /* sfx_scream_zombie4.mp3 */,
 				6470B14D16C7B07C00B254A9 /* sfx_play.mp3 */,
-				6470B14E16C7B07C00B254A9 /* sfx_scream_zombie.mp3 */,
 				6470B14F16C7B07C00B254A9 /* sfx_scream.mp3 */,
 				6470B13D16C7AFD600B254A9 /* sfx_death_short2.mp3 */,
 				6470B13E16C7AFD600B254A9 /* sfx_death_short4.mp3 */,
@@ -1454,7 +1463,6 @@
 				6470B14B16C7AFD600B254A9 /* sfx_music_city.mp3 in Resources */,
 				6470B14C16C7AFD600B254A9 /* sfx_music_home.mp3 in Resources */,
 				6470B15016C7B07C00B254A9 /* sfx_play.mp3 in Resources */,
-				6470B15116C7B07C00B254A9 /* sfx_scream_zombie.mp3 in Resources */,
 				6470B15216C7B07C00B254A9 /* sfx_scream.mp3 in Resources */,
 				64A8E09B16C7C5C800858EDC /* icon_zombie.png in Resources */,
 				64A8E0A916C7DAB300858EDC /* map_one.tmx in Resources */,
@@ -1462,6 +1470,10 @@
 				64A8E0AF16C7DB1400858EDC /* cars.png in Resources */,
 				64A8E0B016C7DB1400858EDC /* map.png in Resources */,
 				64A8E0B116C7DB1400858EDC /* park.png in Resources */,
+				64A8E0B616C7E73D00858EDC /* sfx_scream_zombie1.mp3 in Resources */,
+				64A8E0B716C7E73D00858EDC /* sfx_scream_zombie2.mp3 in Resources */,
+				64A8E0B816C7E73D00858EDC /* sfx_scream_zombie3.mp3 in Resources */,
+				64A8E0B916C7E73D00858EDC /* sfx_scream_zombie4.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
