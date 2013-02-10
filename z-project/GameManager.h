@@ -10,6 +10,7 @@
 #import "cocos2d.h"
 
 #import "SoundManager.h"
+#import "LevelManager.h"
 
 @interface GameManager : NSObject
 
@@ -20,5 +21,6 @@
 -(void) loadFirstScene;
 -(void) loadSelectionMenuScene;
 -(void) loadLevelWithMap:(NSString*)mapName;
+-(LevelManager*) currentLevel;
 
 @end
