@@ -186,7 +186,6 @@
 		40B9A95E16C65424004DCC10 /* Civilian.mm in Sources */ = {isa = PBXBuildFile; fileRef = 40B9A95916C65424004DCC10 /* Civilian.mm */; };
 		40B9A95F16C65424004DCC10 /* GameLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 40B9A95B16C65424004DCC10 /* GameLayer.mm */; };
 		40B9A96016C65424004DCC10 /* IntroLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 40B9A95D16C65424004DCC10 /* IntroLayer.mm */; };
-		40B9A96716C66311004DCC10 /* icon_zombie.png in Resources */ = {isa = PBXBuildFile; fileRef = 40B9A96616C66311004DCC10 /* icon_zombie.png */; };
 		40B9A96916C66A84004DCC10 /* BaseCharacter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 40B9A96816C66A84004DCC10 /* BaseCharacter.mm */; };
 		40DA75C916C6DAFB005D90FA /* MainMenuLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 40DA75C616C6DAF6005D90FA /* MainMenuLayer.mm */; };
 		40DA75CA16C6DAFB005D90FA /* MenuLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 40DA75C716C6DAF6005D90FA /* MenuLayer.mm */; };
@@ -205,6 +204,7 @@
 		6470B15016C7B07C00B254A9 /* sfx_play.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6470B14D16C7B07C00B254A9 /* sfx_play.mp3 */; };
 		6470B15116C7B07C00B254A9 /* sfx_scream_zombie.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6470B14E16C7B07C00B254A9 /* sfx_scream_zombie.mp3 */; };
 		6470B15216C7B07C00B254A9 /* sfx_scream.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6470B14F16C7B07C00B254A9 /* sfx_scream.mp3 */; };
+		64A8E09B16C7C5C800858EDC /* icon_zombie.png in Resources */ = {isa = PBXBuildFile; fileRef = 64A8E09A16C7C5C800858EDC /* icon_zombie.png */; };
 		64D7297316C6E45C0047189A /* FinishLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D7297216C6E45C0047189A /* FinishLayer.m */; };
 		64D7297616C6E6520047189A /* ScoreCounters.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D7297516C6E6510047189A /* ScoreCounters.m */; };
 		64F6A9D916C71AF100824D29 /* icon_menu_civilian.png in Resources */ = {isa = PBXBuildFile; fileRef = 64F6A9D816C71AF100824D29 /* icon_menu_civilian.png */; };
@@ -589,7 +589,6 @@
 		40B9A95D16C65424004DCC10 /* IntroLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IntroLayer.mm; sourceTree = "<group>"; };
 		40B9A96116C65546004DCC10 /* BaseCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCharacter.h; sourceTree = "<group>"; };
 		40B9A96516C65E9D004DCC10 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
-		40B9A96616C66311004DCC10 /* icon_zombie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_zombie.png; path = Resources/icon_zombie.png; sourceTree = "<group>"; };
 		40B9A96816C66A84004DCC10 /* BaseCharacter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BaseCharacter.mm; sourceTree = "<group>"; };
 		40DA75C316C6C040005D90FA /* MainMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuLayer.h; sourceTree = "<group>"; };
 		40DA75C616C6DAF6005D90FA /* MainMenuLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MainMenuLayer.mm; sourceTree = "<group>"; };
@@ -611,6 +610,7 @@
 		6470B14D16C7B07C00B254A9 /* sfx_play.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = sfx_play.mp3; path = Resources/sfx_play.mp3; sourceTree = "<group>"; };
 		6470B14E16C7B07C00B254A9 /* sfx_scream_zombie.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = sfx_scream_zombie.mp3; path = Resources/sfx_scream_zombie.mp3; sourceTree = "<group>"; };
 		6470B14F16C7B07C00B254A9 /* sfx_scream.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = sfx_scream.mp3; path = Resources/sfx_scream.mp3; sourceTree = "<group>"; };
+		64A8E09A16C7C5C800858EDC /* icon_zombie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_zombie.png; path = Resources/icon_zombie.png; sourceTree = "<group>"; };
 		64D7296816C678900047189A /* MenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuLayer.h; sourceTree = "<group>"; };
 		64D7297116C6E45C0047189A /* FinishLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinishLayer.h; sourceTree = "<group>"; };
 		64D7297216C6E45C0047189A /* FinishLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinishLayer.m; sourceTree = "<group>"; };
@@ -1261,10 +1261,10 @@
 		40B9A94016C5D286004DCC10 /* sprites */ = {
 			isa = PBXGroup;
 			children = (
+				64A8E09A16C7C5C800858EDC /* icon_zombie.png */,
 				64F6A9DA16C7210500824D29 /* accueil-background.png */,
 				64F6A9D816C71AF100824D29 /* icon_menu_civilian.png */,
 				64F8531616C6F911001BF71A /* icon_menu_zombie.png */,
-				40B9A96616C66311004DCC10 /* icon_zombie.png */,
 				9AB4ED3D16C6B8B900C1837B /* civilian.plist */,
 				9AB4ED3E16C6B8B900C1837B /* civilian.png */,
 				9A43B63516C5FF250097FE86 /* icon_civilian.png */,
@@ -1401,7 +1401,6 @@
 				40B9A86D16C5C2BA004DCC10 /* ChangeLog in Resources */,
 				40B9A93916C5C423004DCC10 /* tiles.png in Resources */,
 				9A43B63616C5FF250097FE86 /* icon_civilian.png in Resources */,
-				40B9A96716C66311004DCC10 /* icon_zombie.png in Resources */,
 				9AB4ED3F16C6B8B900C1837B /* civilian.plist in Resources */,
 				9AB4ED4016C6B8B900C1837B /* civilian.png in Resources */,
 				9AB4ED4316C6B8FD00C1837B /* zombie.plist in Resources */,
@@ -1428,6 +1427,7 @@
 				6470B15016C7B07C00B254A9 /* sfx_play.mp3 in Resources */,
 				6470B15116C7B07C00B254A9 /* sfx_scream_zombie.mp3 in Resources */,
 				6470B15216C7B07C00B254A9 /* sfx_scream.mp3 in Resources */,
+				64A8E09B16C7C5C800858EDC /* icon_zombie.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
