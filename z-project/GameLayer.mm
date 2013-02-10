@@ -169,7 +169,6 @@ static float const PTM_RATIO = 64.0f;
         [self schedule:@selector(updateMenuLayer:) interval:.7f];
         [self schedule:@selector(testFinishGame:) interval:.5f]; //TODO make it appear once
         
-        
         [self registerRecognisers];
     }
     return self;
@@ -242,7 +241,6 @@ static float const PTM_RATIO = 64.0f;
         }
     }
 }
-
 
 - (UITapGestureRecognizer *)watchForTap:(SEL)selector {
     UITapGestureRecognizer *recognizer = [[[UITapGestureRecognizer alloc] initWithTarget:self action:selector] autorelease];
