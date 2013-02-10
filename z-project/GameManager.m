@@ -20,11 +20,16 @@ typedef enum {
     kGameStatePaused
 } GameState;
 
+typedef enum {
+    kGameDifficultyEasy,
+    kGameDifficultyNormal,
+    kGameDifficultyHard
+} GameDifficulty;
+
 @interface GameManager()
 
 @property (nonatomic,assign) GameState state;
 @property (nonatomic,retain) LevelManager *level;
-
 
 @end
 
@@ -47,6 +52,10 @@ typedef enum {
     return self;
 }
 
+-(LevelManager*) currentLevel {
+    return self.level;
+}
+
 #pragma mark - scene transition helpers (public API)
 
 -(void)loadFirstScene {
@@ -58,7 +67,24 @@ typedef enum {
 }
 
 -(void)loadLevelWithMap:(NSString*)mapName {
+    [self loadLevelWithMap:mapName andDifficulty:kGameDifficultyNormal];
+}
+
+-(void)loadLevelWithMap:(NSString*)mapName andDifficulty:(GameDifficulty)difficulty {
     self.level = [[LevelManager alloc] initWithMap:mapName];
+    switch (difficulty) {
+        case kGameDifficultyEasy:
+            [self.level.settings setObject:[NSNumber numberWithFloat:50.0] forKey:@"zombieSpeed"];
+            break;
+        case kGameDifficultyNormal:
+            [self.level.settings setObject:[NSNumber numberWithFloat:80.0] forKey:@"zombieSpeed"];
+            break;
+        case kGameDifficultyHard:
+            [self.level.settings setObject:[NSNumber numberWithFloat:100.0] forKey:@"zombieSpeed"];
+            break;
+        default:
+            break;
+    }
     [self transitionStateTo:kGameStateInGame];
 }
 

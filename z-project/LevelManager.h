@@ -11,8 +11,10 @@
 
 @interface LevelManager : NSObject
 
-@property (nonatomic,retain) NSString      *mapFile;
-@property (nonatomic,retain) ScoreCounters *scoreCounters;
+@property (nonatomic,retain) NSString            *mapFile;
+@property (nonatomic,retain) ScoreCounters       *scoreCounters;
+@property (nonatomic,retain) NSMutableDictionary *settings;
+@property (nonatomic,readonly) CGFloat           zombieSpeed;
 
 -(id)initWithMap:(NSString *)mapFile;
 
