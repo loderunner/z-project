@@ -24,10 +24,19 @@
 
 -(id)init {
     if (self = [super init]) {
+        CCSprite* background = [CCSprite spriteWithFile:kHomemenuSprit];
+        CGSize size = [CCDirector sharedDirector].winSize;
+        CGPoint centerPoint = CGPointMake(size.width/2, size.height/2);
+        
+        //TODO the background will be changed by design team
+        background.position = centerPoint;
+        [self addChild:background];
+        
         CCMenuItemSprite* level1 = [self
                                     createMenuItemWithNormalImage:@"level1_normal.png"
                                     selectedImage:@"level1_selected.png"
                                     selector:@selector(firstLevel:)];
+        
         CCMenuItemSprite* level2 = [self
                                     createMenuItemWithNormalImage:@"level2_normal.png"
                                     selectedImage:@"level2_selected.png"
@@ -36,13 +45,14 @@
                                     createMenuItemWithNormalImage:@"level3_normal.png"
                                     selectedImage:@"level3_selected.png"
                                     selector:@selector(thirdLevel:)];
+        
         CCMenu* menu = [CCMenu menuWithItems:level1
                         ,level2
                         ,level3
                         , nil];
         
-        CGSize size = [CCDirector sharedDirector].winSize;
-        menu.position = CGPointMake(size.width/2, size.height/2);
+        menu.position = centerPoint;
+                                          
         [self addChild:menu];
         [menu alignItemsHorizontallyWithPadding:40.0];
     }
