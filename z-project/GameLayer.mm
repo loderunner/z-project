@@ -501,12 +501,24 @@ static float const PTM_RATIO = 64.0f;
                     
                     // kill civilian and wake as zombie in 3 seconds
                     [civilian infect];
-                    [[SoundManager sharedManager] playSound:kSoundScreamCivilian];
+                    
+                    
+                    CGPoint positionCivilian = civilian.position;
+                    CGPoint mapPosition = self.map.position;
+                    CGPoint viewPosition = ccpSub(CGPointZero,mapPosition);
+                    CGSize winSize = [[CCDirector sharedDirector] winSize];
+                    CGRect viewFrustrum = CGRectMake(viewPosition.x,viewPosition.y,winSize.width,winSize.height);
+                    BOOL isCivilianVisible = CGRectContainsPoint(viewFrustrum, positionCivilian);
+                    if (isCivilianVisible) {
+                        [[SoundManager sharedManager] playSound:kSoundScreamCivilian];
+                    } else {
+                        [[SoundManager sharedManager] playSound:kSoundScreamZombie];
+                    }
+                    
                     CCDelayTime* delayAction = [CCDelayTime actionWithDuration:3];
                     CCCallBlock* blockAction = [CCCallBlock actionWithBlock:^(void)
                                                 {
                                                     [self addZombieAt:civilian.position];
-                                                    [[SoundManager sharedManager] playSound:kSoundScreamZombie];
                                                     [self removeCivilian:civilian];
                                                     [_scoreCounters registerCivilianConvertedToZombie];
                                                 }];
