@@ -11,6 +11,10 @@
 #import "Constants.h"
 #import "AchievementProtocol.h"
 #import "CivilianAchievement.h"
+#import "GameManager.h"
+#import "cocos2d.h"
+
+
 
 @interface FinishLayer()
 
@@ -48,8 +52,14 @@
         
         [self addCount];
         [self addAchievements];
+        
+        [self schedule:@selector(backToLevelSelection:) interval:5.0];
     }
     return self;
+}
+
+-(void)backToLevelSelection:(ccTime)dt {
+    [[GameManager sharedManager] loadSelectionMenuScene];
 }
 
 - (void)draw

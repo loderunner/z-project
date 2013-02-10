@@ -134,6 +134,13 @@ typedef enum {
                 [self transitionToScene:gameScene duration:1.0];
                 // sound events
                 [self.soundManager startMusic:kMusicCity];
+            } else if (newState == kGameStateLevelSelectionMenu) {
+                // Splash Screen -> Level Selection
+                CCScene *menuScene = [MainMenuLayer scene];
+                [self transitionToScene:menuScene duration:0.5];
+                self.state = kGameStateLevelSelectionMenu;
+                // sound events
+                [self.soundManager startMusic:kMusicHome];
             }
             break;
         default:
