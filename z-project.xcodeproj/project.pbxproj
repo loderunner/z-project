@@ -690,8 +690,6 @@
 		40B9A71616C5C2B7004DCC10 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				6463C46616C6FFD800130B37 /* map_one.tmx */,
-				6463C46716C6FFD800130B37 /* map_two.tmx */,
 				408F6C4E16C6E60B008BF783 /* menus */,
 				40B9A94016C5D286004DCC10 /* sprites */,
 				40B9A93F16C5D278004DCC10 /* maps */,
@@ -1216,6 +1214,8 @@
 		40B9A93F16C5D278004DCC10 /* maps */ = {
 			isa = PBXGroup;
 			children = (
+				6463C46616C6FFD800130B37 /* map_one.tmx */,
+				6463C46716C6FFD800130B37 /* map_two.tmx */,
 				40B9A93816C5C423004DCC10 /* tiles.png */,
 			);
 			name = maps;
