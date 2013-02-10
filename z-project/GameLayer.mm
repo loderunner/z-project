@@ -28,6 +28,8 @@ static float const PTM_RATIO = 64.0f;
 @property (nonatomic,retain) NSMutableArray* spawnPoints;
 @property (nonatomic,retain) NSMutableArray* gestureRecognizers;
 @property (nonatomic,retain) ScoreCounters* scoreCounters;
+@property (nonatomic,retain) NSMutableDictionary* zombitesTospawn;
+
 
 @end
 
@@ -38,6 +40,7 @@ static float const PTM_RATIO = 64.0f;
     CGSize tileSize;
     b2World* world;
     ContactListener* contactListener;
+    float timeCounter;
 }
 
 @end
@@ -95,7 +98,6 @@ static float const PTM_RATIO = 64.0f;
         collidables.visible = NO;
         
         CCTMXObjectGroup* spawnPoints = [_map objectGroupNamed:@"spawnPoints"];
-
         _spawnPoints = [spawnPoints.objects copy];
         
         [self addChild:_map];
@@ -111,6 +113,7 @@ static float const PTM_RATIO = 64.0f;
         _civilians = [[NSMutableArray alloc] init];
         _zombies = [[NSMutableArray alloc] init];
         _gestureRecognizers = [[NSMutableArray alloc] init];
+        _zombitesTospawn = [[NSMutableDictionary alloc] init];
         
         for (int i = 0; i < 50; ++i)
         {
@@ -120,11 +123,25 @@ static float const PTM_RATIO = 64.0f;
         for (NSDictionary* spawnPoint in self.spawnPoints) {
             int x = [[spawnPoint objectForKey:@"x"] intValue];
             int y = [[spawnPoint objectForKey:@"y"] intValue];
-            NSLog(@"spawn point at %d,%d",x,y);
             CGPoint pos = ccp(x,y);
-            
-            [self addZombieAt:pos];
+
+            NSString* timeString = [spawnPoint objectForKey:@"time"];
+            if (timeString) {
+                float value = [timeString floatValue];
+                NSNumber *keyValue = [NSNumber numberWithFloat:value];
+                NSMutableArray* list = [[_zombitesTospawn objectForKey:keyValue] retain];
+                if (!list) {
+                    list = [[NSMutableArray alloc] init];
+                    [_zombitesTospawn setObject:list forKey:keyValue];
+                }
+                [list addObject:[NSValue valueWithCGPoint:pos]];
+                [list release];
+            } else {
+                [self addZombieAt:pos];
+            }
         }
+        timeCounter = 0;
+        [self schedule:@selector(timerCallback:) interval:0.5];
         
         _scoreCounters = [[ScoreCounters alloc] initWithZombies:_zombies.count civilians:_civilians.count];
         
@@ -144,6 +161,27 @@ static float const PTM_RATIO = 64.0f;
 	return self;
 }
 
+-(void)timerCallback:(ccTime)time {
+    timeCounter += time;
+    NSMutableArray* toRemove = [[NSMutableArray alloc] init];
+    [self.zombitesTospawn enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        NSNumber *numkey = (NSNumber*)key;
+        float timeCondition = [numkey floatValue];
+        if (timeCondition < timeCounter) {
+            NSArray* positions = (NSArray*) obj;
+            for (NSValue *rawPosition in positions) {
+                CGPoint point = [rawPosition CGPointValue];
+                [self addZombieAt:point];
+            }
+            [toRemove addObject:numkey];
+        }
+    }];
+    [toRemove enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSNumber *numkey = obj;
+        [self.zombitesTospawn removeObjectForKey:numkey];
+    }];
+    [toRemove release];
+}
 
 #pragma mark - gesture recognisers
 
