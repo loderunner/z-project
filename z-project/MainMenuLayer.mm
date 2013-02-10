@@ -10,6 +10,8 @@
 #import "MainMenuLayer.h"
 #import "GameLayer.h"
 #import "SoundManager.h"
+#import "GameManager.h"
+
 
 @implementation MainMenuLayer
 
@@ -24,9 +26,7 @@
 }
 
 -(id)init {
-    if (self = [super init]) {
-        [[SoundManager sharedManager] startMusic:kMusicHome];
-        
+    if (self = [super init]) {        
         CCSprite* background = [CCSprite spriteWithFile:kHomemenuSprit];
         CGSize size = [CCDirector sharedDirector].winSize;
         CGPoint centerPoint = CGPointMake(size.width/2, size.height/2);
@@ -63,24 +63,18 @@
 }
 
 -(void)playClickSound {
-    [[SoundManager sharedManager] playSound:kSoundPlay];
+    SoundManager *soundManager = [[GameManager sharedManager] soundManager];
+    [soundManager playSound:kSoundPlay];
 }
 
 -(void)firstLevel:(id)sender {
     [self playClickSound];
-    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade
-                                              transitionWithDuration:1.5
-                                               scene:[GameLayer sceneWithMap:@"map_one.tmx"]
-                                              withColor:ccWHITE]];
+    [[GameManager sharedManager] loadLevelWithMap:@"map_one.tmx"];
 }
 
 -(void)secondLevel:(id)sender {
     [self playClickSound];
-    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade
-                                               transitionWithDuration:1.5
-                                               scene:[GameLayer sceneWithMap:@"map_two.tmx"]
-                                               withColor:ccWHITE]];
-}
+    [[GameManager sharedManager] loadLevelWithMap:@"map_two.tmx"];}
 
 -(void)thirdLevel:(id)sender {
     

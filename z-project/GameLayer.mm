@@ -17,7 +17,8 @@
 #import "ScoreCounters.h"
 #import "MenuLayer.h"
 #import "FinishLayer.h"
-#import "SoundManager.h"
+#import "GameManager.h"
+#import "LevelManager.h"
 
 #pragma mark - GameLayer
 
@@ -25,7 +26,7 @@ static float const PTM_RATIO = 64.0f;
 
 @interface GameLayer()
 
-
+@property (nonatomic,retain) LevelManager* level;
 @property (nonatomic,retain) MiniMap* minimap;
 @property (nonatomic,retain) MenuLayer* menuLayer;
 @property (nonatomic,retain) FinishLayer* finishLayer;
@@ -55,22 +56,19 @@ static float const PTM_RATIO = 64.0f;
 
 @implementation GameLayer
 
-+(CCScene *) sceneWithMap:(NSString*)mapName
++(CCScene *) sceneForLevel:(LevelManager*) level
 {
     CCScene *scene = [CCScene node];
-    GameLayer *layer = [[[GameLayer alloc] initWithMap:mapName] autorelease];
+    GameLayer *layer = [[[GameLayer alloc] initWithLevel:level] autorelease];
     
     [scene addChild: layer];
     
     return scene;
 }
 
--(id) initWithMap:(NSString*)mapName
+-(id) initWithLevel:(LevelManager*) level
 {
     if (self = [super init]) {
-        
-        [[SoundManager sharedManager] startMusic:kMusicCity];
-        
         //initialize box2d collision manager
         b2Vec2 gravity = b2Vec2(0.0f, 0.0f);
         world = new b2World(gravity);
@@ -80,7 +78,7 @@ static float const PTM_RATIO = 64.0f;
         world->SetContactListener(contactListener);
         
         // load the map
-        _map = [[TiledMap alloc] initWithTMXFile:mapName];
+        _map = [[TiledMap alloc] initWithTMXFile:level.mapFile];
         _map.anchorPoint = CGPointZero;
         
         //        [self enumerateTilesInMap:_map layer:collidables usingBlock:^(NSUInteger x, NSUInteger y, NSDictionary *property) {
@@ -237,7 +235,8 @@ static float const PTM_RATIO = 64.0f;
     
     BOOL characterWasKilled = [character takeDamage:1];
     if (characterWasKilled) {
-        [[SoundManager sharedManager] playDeathSound];
+        SoundManager* soundManager = [[GameManager sharedManager] soundManager];
+        [soundManager playDeathSound];
         [self.minimap removeCharacter:character];
         if ( character.tag == kTagZombie) {
             [_scoreCounters registerZombieKilledByPlayer];
@@ -511,13 +510,13 @@ static float const PTM_RATIO = 64.0f;
                     CGPoint positionCivilian = civilian.position;
                     CGPoint mapPosition = self.map.position;
                     CGPoint viewPosition = ccpSub(CGPointZero,mapPosition);
-                    CGSize winSize = [[CCDirector sharedDirector] winSize];
                     CGRect viewFrustrum = CGRectMake(viewPosition.x,viewPosition.y,winSize.width,winSize.height);
                     BOOL isCivilianVisible = CGRectContainsPoint(viewFrustrum, positionCivilian);
+                    SoundManager* soundManager = [[GameManager sharedManager] soundManager];
                     if (isCivilianVisible) {
-                        [[SoundManager sharedManager] playSound:kSoundScreamCivilian];
+                        [soundManager playSound:kSoundScreamCivilian];
                     } else {
-                        [[SoundManager sharedManager] playSound:kSoundScreamZombie];
+                        [soundManager playSound:kSoundScreamZombie];
                     }
                     
                     CCDelayTime* delayAction = [CCDelayTime actionWithDuration:3];
