@@ -17,6 +17,8 @@
 #import "ScoreCounters.h"
 #import "MenuLayer.h"
 #import "FinishLayer.h"
+#import "GameManager.h"
+#import "LevelManager.h"
 
 #pragma mark - GameLayer
 
@@ -24,7 +26,7 @@ static float const PTM_RATIO = 64.0f;
 
 @interface GameLayer()
 
-
+@property (nonatomic,retain) LevelManager* level;
 @property (nonatomic,retain) MiniMap* minimap;
 @property (nonatomic,retain) MenuLayer* menuLayer;
 @property (nonatomic,retain) FinishLayer* finishLayer;
@@ -47,23 +49,24 @@ static float const PTM_RATIO = 64.0f;
     b2World* world;
     ContactListener* contactListener;
     float timeCounter;
+    float timeForLastSpawn;
 }
 
 @end
 
 @implementation GameLayer
 
-+(CCScene *) sceneWithMap:(NSString*)mapName
++(CCScene *) sceneForLevel:(LevelManager*) level
 {
     CCScene *scene = [CCScene node];
-    GameLayer *layer = [[[GameLayer alloc] initWithMap:mapName] autorelease];
+    GameLayer *layer = [[[GameLayer alloc] initWithLevel:level] autorelease];
     
     [scene addChild: layer];
     
     return scene;
 }
 
--(id) initWithMap:(NSString*)mapName
+-(id) initWithLevel:(LevelManager*) level
 {
     if (self = [super init]) {
         //randomize seed
@@ -78,15 +81,9 @@ static float const PTM_RATIO = 64.0f;
         world->SetContactListener(contactListener);
         
         // load the map
-        _map = [[TiledMap alloc] initWithTMXFile:mapName];
+        _map = [[TiledMap alloc] initWithTMXFile:level.mapFile];
         _map.anchorPoint = CGPointZero;
         
-        //        [self enumerateTilesInMap:_map layer:collidables usingBlock:^(NSUInteger x, NSUInteger y, NSDictionary *property) {
-        //            if ([@"0" compare: [property objectForKey:@"can_walk"]] == NSOrderedSame) {
-        //                int xOnScreen = x * _map.tileSize.width;
-        //                int yOnScreen = (_map.mapSize.height - y) * _map.tileSize.height;
-        //            }
-        //        }];
         _collidables = [[NSMutableArray alloc] init];
         CCTMXLayer* collidables = [_map layerNamed:@"collidables"];
         for (NSUInteger y = 0; y < collidables.layerSize.height; y++)
@@ -131,6 +128,7 @@ static float const PTM_RATIO = 64.0f;
             [self addCivilian];
         }
         
+        timeForLastSpawn = 0;
         
         for (NSDictionary* spawnPoint in self.spawnPoints) {
             int x = [[spawnPoint objectForKey:@"x"] intValue];
@@ -140,6 +138,7 @@ static float const PTM_RATIO = 64.0f;
             NSString* timeString = [spawnPoint objectForKey:@"time"];
             if (timeString) {
                 float value = [timeString floatValue];
+                timeForLastSpawn = MAX(timeForLastSpawn,value);
                 NSNumber *keyValue = [NSNumber numberWithFloat:value];
                 NSMutableArray* list = [[_zombitesTospawn objectForKey:keyValue] retain];
                 if (!list) {
@@ -149,6 +148,7 @@ static float const PTM_RATIO = 64.0f;
                 [list addObject:[NSValue valueWithCGPoint:pos]];
                 [list release];
             } else {
+                [_scoreCounters registerZombieSpawned];
                 [self addZombieAt:pos];
             }
         }
@@ -169,7 +169,6 @@ static float const PTM_RATIO = 64.0f;
         [self schedule:@selector(updateMenuLayer:) interval:.7f];
         [self schedule:@selector(testFinishGame:) interval:.5f]; //TODO make it appear once
         
-        
         [self registerRecognisers];
     }
     return self;
@@ -185,6 +184,7 @@ static float const PTM_RATIO = 64.0f;
             NSArray* positions = (NSArray*) obj;
             for (NSValue *rawPosition in positions) {
                 CGPoint point = [rawPosition CGPointValue];
+                [_scoreCounters registerZombieSpawned];
                 [self addZombieAt:point];
             }
             [toRemove addObject:numkey];
@@ -233,6 +233,9 @@ static float const PTM_RATIO = 64.0f;
     
     BOOL characterWasKilled = [character takeDamage:1];
     if (characterWasKilled) {
+        SoundManager* soundManager = [[GameManager sharedManager] soundManager];
+        [soundManager playDeathSound];
+        [self.minimap removeCharacter:character];
         if ( character.tag == kTagZombie) {
             [_scoreCounters registerZombieKilledByPlayer];
         } else if (character.tag == kTagCivilian) {
@@ -240,7 +243,6 @@ static float const PTM_RATIO = 64.0f;
         }
     }
 }
-
 
 - (UITapGestureRecognizer *)watchForTap:(SEL)selector {
     UITapGestureRecognizer *recognizer = [[[UITapGestureRecognizer alloc] initWithTarget:self action:selector] autorelease];
@@ -366,7 +368,7 @@ static float const PTM_RATIO = 64.0f;
 
 #pragma mark - finishGame
 -(void)testFinishGame:(ccTime)dt  {
-    if ([_scoreCounters numCivilians] == 0 || [_scoreCounters numZombies] == 0) {
+    if (([_scoreCounters numCivilians] == 0 || [_scoreCounters numZombies] == 0) && timeCounter > timeForLastSpawn) {
         [self unschedule:@selector(testFinishGame:)];
         [self finishGame];
     }
@@ -520,12 +522,27 @@ static float const PTM_RATIO = 64.0f;
                     
                     // kill civilian and wake as zombie in 3 seconds
                     [civilian infect];
+                    
+                    
+                    CGPoint positionCivilian = civilian.position;
+                    CGPoint mapPosition = self.map.position;
+                    CGPoint viewPosition = ccpSub(CGPointZero,mapPosition);
+                    CGRect viewFrustrum = CGRectMake(viewPosition.x,viewPosition.y,winSize.width,winSize.height);
+                    BOOL isCivilianVisible = CGRectContainsPoint(viewFrustrum, positionCivilian);
+                    SoundManager* soundManager = [[GameManager sharedManager] soundManager];
+                    if (isCivilianVisible) {
+                        [soundManager playSound:kSoundScreamCivilian];
+                    } else {
+                        [soundManager playScreamZombie];
+                    }
+                    
                     CCDelayTime* delayAction = [CCDelayTime actionWithDuration:3];
                     CCCallBlock* blockAction = [CCCallBlock actionWithBlock:^(void)
                                                 {
+                                                    [_scoreCounters registerCivilianConvertedToZombie];
                                                     [self addZombieAt:civilian.position];
                                                     [self removeCivilian:civilian];
-                                                    [_scoreCounters registerCivilianConvertedToZombie];
+                                                    
                                                 }];
                     CCSequence* sequenceAction = [CCSequence actionOne:delayAction two:blockAction];
                     [self runAction:sequenceAction];

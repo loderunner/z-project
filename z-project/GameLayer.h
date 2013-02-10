@@ -10,11 +10,13 @@
 #import "MiniMap.h"
 #import "MenuLayer.h"
 #import "TiledMap.h"
+#import "LevelManager.h"
+
 
 @interface GameLayer : CCLayer
 
 @property (nonatomic, strong) TiledMap* map;
 
-+(CCScene *) sceneWithMap:(NSString*)mapName;
++(CCScene *) sceneForLevel:(LevelManager*) level;
 
 @end

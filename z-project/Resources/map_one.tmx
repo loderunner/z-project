@@ -1,28 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="32" tileheight="32">
- <tileset firstgid="1" name="main" tilewidth="32" tileheight="32">
+<map version="1.0" orientation="orthogonal" width="64" height="48" tilewidth="64" tileheight="64">
+ <tileset firstgid="1" name="tiles" tilewidth="64" tileheight="64">
   <image source="tiles.png" width="517" height="516"/>
+  <tile id="9">
+   <properties>
+    <property name="can_walk" value="0"/>
+   </properties>
+  </tile>
  </tileset>
- <layer name="map" width="100" height="100">
+ <tileset firstgid="65" name="map" tilewidth="64" tileheight="64">
+  <image source="map.png" width="2185" height="1628"/>
+ </tileset>
+ <tileset firstgid="915" name="park" tilewidth="64" tileheight="64">
+  <image source="park.png" width="768" height="960"/>
+ </tileset>
+ <tileset firstgid="1095" name="arbres_lampadaires" tilewidth="64" tileheight="64">
+  <image source="arbres_lampadaires.png" width="1216" height="576"/>
+ </tileset>
+ <tileset firstgid="1266" name="cars" tilewidth="64" tileheight="64">
+  <image source="cars.png" width="1280" height="462"/>
+ </tileset>
+ <layer name="street" width="64" height="48">
   <data encoding="base64" compression="zlib">
-   eJzt20uugkAURVHsOYE3/6naJYRPocA9r2o1VodIUt4dwU/5mqbp1eg903oO11s2eK+oXuNI9ma+dvxvpnrtPTrbY96keu090qN+9vMGZ1vo8WwfPeqbtPTR45kWe9cr94+sHluP0aOux9pjfQap74Eeo9Ejix5Z9MiiRxY9suzNXA89Rvbtd1fU9Khe32j0yKJHFj2y6JFFjxy/7C1Bj9617CHR5NkeRzPXQ49Rtdw/9NBjRMv9oXr8jx7V6xyFHln0yKJHFj2y6JEx++Wxrfe0WjzXY+2/aXo82+MK1c+jJ1v3i63Xhvnn9Ng7zj09jq5DetzbYquBHvVa7h8t53Jti296oEfP9MiiRxY9suiRRY8crbPXQ48R6ZFFjyx6ZNEjix5Z9Mhx5ncnPWp62OuT1WOvU/V6e6dHFvsWsuiRRY8c9u9k0SOLHlmOZq5JFj2y6JFFjyx6ZNEjix5Z9AAAAAAAAAC4xwfwUjAm
+   eJztmceKFVEQhm/flRFzQB/BhDmgC99AHbOiCzHniDmsxqwIYlyYxRxw0BcwYQ4ozguY0GsGcRZ+l+nGcw/dM111DthKLz5uT/epmr+mqpn7U9WFQmEzbIFSA2yDPVADS2ApLIPhGSHSUy2s5wychXPh/a3hs+2wA3bCLtgN1+AlVBn87bojIj3Seu7BfXgQnj8PF+AiXILLcAWuwgv4CSNgJIzKQN0RkR5pPR/gY+HPXDyER/AYnsBTeAbPw79j1yDb8y+txz7/CT7DF/gK3+A7/IAu1D4syPb8S+tpBa2hTVB/vi2f7aA9dICO0Ak6w1CYGmR7/qX19IY+0Dc834/P/jAABsIgGAxDYErY/yzPv7SeKhgdnh8DY2EcjIcJMBEmweSg/n0p9z9r82/qkdaznM8VsBJWwWpYA2thXch62AAbYVOQvfk39UjruQ43YK/g2pz/fTHP7Z+l9Ui03LD02M8ai30FteG9tNfmvElja8N4U3OUS6Ol1tIjjf0FdeG9tNfmvNlnphUqictT8b4aaLTUWXqi+7aOJC3TuT8DZsIsmA1zYC7Mg/mwABbCIlhs9U4TX2W9s1H9kly+9Ej9Qo3VM2183PynzeVTj8b/mL1z9U8mklwlT3o0/sfsnSY+af4luUqe9Gj8j9kzbXzc/EtylQp+9Gj8j9k7V//UkPaGcpU86dH4H7N3mvik+ZfkKj/3oUfjf8yeaePj5l+Sq/zchx6N/zkBJ+GUMj5p/qW5fOjR+J9bcBvuBLr445bm09CkKMvlS4/G/7yBt/AuqPc/++EAHIRDcNi6PgJH4VhY+01L812FhiQ90liN52hGr5pDi6LOr7y2NL8P+y/N40OPxnN05/f0gJ7Fxv1PGftM02Kl5pYxeXzpaexa41/KvYrQxHcrVmrupcjlS4/Gv5j/uzTxpl4TSa6SJz2u/kUbH/f/X+t/XPS47n+0/icOrf9x0eO6/9H6n7jvv1r/46LH1b9o49P4v7T+x0WP6/5H63/i0PofFz2u+x+t/4mbf63/cdHj7F+U8XHzL8kVvf+uelz3P5r4pPnX+p+s73/s66T512ix9z9SLfn+x9/+J+3OJWn+fe5/0nqxfP/z7+1/bP/joiff/+T7n3z/I/Mv+f4n3/9oPMv/sv+p6J0iPmn+tf7HRY/Gv5jfIbX+J27+tf7H/D4r1fMbuxBICQ==
   </data>
  </layer>
- <objectgroup name="spawnPoints" width="100" height="100">
-  <object x="111" y="272">
-   <ellipse/>
+ <layer name="park" width="64" height="48">
+  <data encoding="base64" compression="zlib">
+   eJztz+lLF0EAh/GF3Q5JUCtJyDQx6FLyKE1KS6u/sMOsPDM77PIoK7PDDrOyS7NMzQ7DoLTEIM2iHtldfssy75LaF98HPszOzgzMWNbfN2hb1hCG8RojeIO3oe/wPPht+mdaf4f3GMUHex4uPw+NcY+P2It92I8DKMdBfMa4pwKHcBhHDCpR5e39FDjrjxP4gq+YjMj7p7jHN1SjBrWow1HUYxoznmNowHGcMDiJU97e74Gz/vgDs/iJXxF5/++5eziW1ch4GmdwFudwHg5rCzxNzJvRglaDC7hou3ttJ3bWHxdiERYjzvnfL3dbwj3i0ca9L+EyrqAdV5HIWpKng/k1XMcNg5votN29CU7srD8uxTIsR3JE3r+Ce6TgFve+jTu4iy7cQyprqzzdzO/jAR4a9OCR7e5d6cTO+mMa0rEaGRF5fyb3WIPH3PsJnuIZetGHdayt9zxn3o8XeGkwgFe2u3etEzvrjxuwEVnIjsj7N3GPHOQiD/nYjC2h7/A8+G36Z1ovQCG2oigi79/GPbajGCXYgZ0oDX2H58Fv0z/Tehl2YTf2ROT9SimllFJKKaWUUkoppZRSSimllFJKKaXUv+4PFk2Ucg==
+  </data>
+ </layer>
+ <layer name="cars" width="64" height="48">
+  <data encoding="base64" compression="zlib">
+   eJzt2lVvwzAYheFIS8bMzMzM1DEzMzMz/vBtN3svel9Vc5c49pEe5cpqjhxViT4bhvz5Mg3jGz+m3XdiT6Isw4hGjGX3ndiTPHrno0DR/k30bkaLov1H6T2GcUX7b9J7C9uK9r+l9x3uFe2v87dM8NxMYgrTmMEs5lzyPAXTIwShCEM4IhDp7bfDdRd72McBDnHkkv7p9MhAJrKQjRzkevs9cH3EE57xgle8uaR/NT1qUIs61KMBjS7p56YEsScmLEX3JoXeqUhTtH8FvStRpWj/Hnr3wqNo/3l6L2BR0f7H9D7BqaL93+n9gU9F++vo6MgTX9+W/iSWNXGIRwISkYRkB/8X+vq29CeFrClCMUpQijKUO7i/yG/LVta0oR0d6EQXuh3cX0dHR0dHR0fOyPjeKTIyvneKjH7vdEf62K9+DGAQQxjGiCL7uETPZaxgFWtYx0aA+ztlZnXG75/jApe4wjVuAnxfImdWMp5lFDmzkvEso8iZlYxnGUXOrGQ8yyhyZiXjWUaRMyt9lvF/zzL+AjugOAU=
+  </data>
+ </layer>
+ <layer name="trees_lamps" width="64" height="48">
+  <data encoding="base64" compression="zlib">
+   eJztmbVyxDAURV3s7wXqMKcKc6owpwozFGGGIsxQhDkfEPiMnB/w7oy1WkmZd2dOI8+jQpau7Xn6FBfyvHhIgMSQxkKGNMVM02HmyuBZJmRBdgznz6FWLuRBvsa6W+TeDpO/jGflUAGVin0kEZ8MKZAKaZDuk7OK9WqogVqN81+R+zpM/haetUIbtCv2UUB8IRRBMZRAqU/ODtY7oQu6De67IWoPwwiMKvZRR3w9NEAjNEGzT84x1sdhAiYNzr9E7WVYgVXFPnqI74U+6IcBGPTJucb6OmzApsH5j6h9DCdwqtjHDPGzMAfzsACLPjnPWD+HC7g0OP8TtZ/hBV4V+9ghfhf2YB8O4NAn5xvr7/ABnwbn/6L2N/zAr2IfN8Tfwh3cwwM8/sM7hUhksyLdeW2Qzh4j3XltkM4eI915bZALPQZVrLydLqnuzVh5O11S3Zu2eLugUt2btng7U7LF25mSLd7OlGzxdiKRyE654NF0ygWPplNB7liu+wpVue4rVOW6r1CV+IrgviKa542ps0vFV0TzvDF1dqn4imh+b/vP3+5EIhclfkL8hLyTg0u8lXgr8VbireSfjfyzse2fzR9S55kq
+  </data>
+ </layer>
+ <layer name="collidables" width="64" height="48">
+  <data encoding="base64" compression="zlib">
+   eJzt1UEOhCAQBEDO/v/B+4I1sNOiO1YnHBm7IoFjjHFYU+ss1f0z4efn5+f/PnOnefW71czOvMO/K2/3/xJ+fv5z41PsV3RY/cfVs1DZf8W57OhPzkz2r+7n5+e/1//0pLrz/6c/Ff7cGUrcK7vvKH7+xPuffKurXSr9Uv35+fn5O/g7h5+fn7+Lf9XBn3kL75iT6NHNn+rHz8/Pz99/fQCntzL7
+  </data>
+ </layer>
+ <objectgroup name="spawnPoints" width="64" height="48">
+  <object name="spawningpt1" x="783" y="805" width="155" height="87">
+   <properties>
+    <property name="time" value="0"/>
+   </properties>
   </object>
-  <object x="624" y="659">
-   <ellipse/>
+  <object name="spawningpt2" x="1117" y="2082" width="119" height="106">
+   <properties>
+    <property name="time" value="5"/>
+   </properties>
   </object>
-  <object x="341" y="1109">
-   <ellipse/>
+  <object name="spawningpt3" x="2296" y="2096" width="161" height="93">
+   <properties>
+    <property name="time" value="10"/>
+   </properties>
   </object>
-  <object x="687" y="1454">
-   <ellipse/>
+  <object name="spawningpt3" x="3400" y="798" width="146" height="114">
+   <properties>
+    <property name="time" value="15"/>
+   </properties>
   </object>
-  <object x="335" y="2325">
-   <ellipse/>
+  <object name="spawningpt5" x="1823" y="1072" width="140" height="89">
+   <properties>
+    <property name="time" value="20"/>
+   </properties>
   </object>
  </objectgroup>
 </map>
