@@ -20,9 +20,9 @@ static NSArray* allMenuSounds;
 @implementation SoundManager
 
 +(void)initialize {
-    allMusics = @[
+    allMusics = [@[
                   kMusicCity,
-                  kMusicHome];
+                  kMusicHome] retain];
     allDeathSounds = [@[
                   kSoundDeath1
                   ,kSoundDeath2
@@ -31,11 +31,11 @@ static NSArray* allMenuSounds;
                   ,kSoundDeath5
                   ,kSoundDeath6
                   ] retain];
-    allDeathScreams = @[
+    allDeathScreams = [@[
                   kSoundScreamCivilian
-                  ,kSoundScreamZombie];
-    allMenuSounds = @[
-                  kSoundPlay];
+                  ,kSoundScreamZombie] retain];
+    allMenuSounds = [@[
+                  kSoundPlay] retain];
 }
 
 +(SoundManager*)sharedManager {

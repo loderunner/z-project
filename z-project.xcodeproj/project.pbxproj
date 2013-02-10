@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C01115B16C7D3A1005B3783 /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C01115A16C7D3A1005B3783 /* GameManager.m */; };
+		2C01115E16C7DD08005B3783 /* LevelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C01115D16C7DD08005B3783 /* LevelManager.m */; };
 		408F6C5916C6E8DB008BF783 /* level1_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 408F6C5316C6E8DB008BF783 /* level1_normal.png */; };
 		408F6C5A16C6E8DB008BF783 /* level1_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 408F6C5416C6E8DB008BF783 /* level1_selected.png */; };
 		408F6C5B16C6E8DB008BF783 /* level2_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 408F6C5516C6E8DB008BF783 /* level2_normal.png */; };
@@ -226,6 +228,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C01115916C7D3A1005B3783 /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameManager.h; sourceTree = "<group>"; };
+		2C01115A16C7D3A1005B3783 /* GameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameManager.m; sourceTree = "<group>"; };
+		2C01115C16C7DD08005B3783 /* LevelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelManager.h; sourceTree = "<group>"; };
+		2C01115D16C7DD08005B3783 /* LevelManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelManager.m; sourceTree = "<group>"; };
 		408F6C5316C6E8DB008BF783 /* level1_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = level1_normal.png; path = Resources/level1_normal.png; sourceTree = "<group>"; };
 		408F6C5416C6E8DB008BF783 /* level1_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = level1_selected.png; path = Resources/level1_selected.png; sourceTree = "<group>"; };
 		408F6C5516C6E8DB008BF783 /* level2_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = level2_normal.png; path = Resources/level2_normal.png; sourceTree = "<group>"; };
@@ -663,6 +669,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C01115F16C7DD1E005B3783 /* Game Logic */ = {
+			isa = PBXGroup;
+			children = (
+				2C01115C16C7DD08005B3783 /* LevelManager.h */,
+				2C01115D16C7DD08005B3783 /* LevelManager.m */,
+				64D7297416C6E6510047189A /* ScoreCounters.h */,
+				64D7297516C6E6510047189A /* ScoreCounters.m */,
+				6470B13A16C7ACA400B254A9 /* SoundManager.h */,
+				6470B13B16C7ACA400B254A9 /* SoundManager.m */,
+				2C01115916C7D3A1005B3783 /* GameManager.h */,
+				2C01115A16C7D3A1005B3783 /* GameManager.m */,
+			);
+			name = "Game Logic";
+			sourceTree = "<group>";
+		};
 		408F6C4E16C6E60B008BF783 /* menus */ = {
 			isa = PBXGroup;
 			children = (
@@ -712,9 +733,8 @@
 		40B9A71516C5C2B7004DCC10 /* z-project */ = {
 			isa = PBXGroup;
 			children = (
+				2C01115F16C7DD1E005B3783 /* Game Logic */,
 				64F6A9DE16C73D1D00824D29 /* achievements */,
-				64D7297416C6E6510047189A /* ScoreCounters.h */,
-				64D7297516C6E6510047189A /* ScoreCounters.m */,
 				40B9A94216C5D7D7004DCC10 /* characters */,
 				40B9A94116C5D7C0004DCC10 /* layers */,
 				40B9A92016C5C2BB004DCC10 /* AppDelegate.h */,
@@ -725,8 +745,6 @@
 				40B9A71616C5C2B7004DCC10 /* Resources */,
 				40B9A73016C5C2B7004DCC10 /* libs */,
 				40B9A91C16C5C2BB004DCC10 /* Supporting Files */,
-				6470B13A16C7ACA400B254A9 /* SoundManager.h */,
-				6470B13B16C7ACA400B254A9 /* SoundManager.m */,
 			);
 			path = "z-project";
 			sourceTree = "<group>";
@@ -1615,6 +1633,8 @@
 				64D7297616C6E6520047189A /* ScoreCounters.m in Sources */,
 				64F6A9E116C73D6E00824D29 /* CivilianAchievement.m in Sources */,
 				6470B13C16C7ACA400B254A9 /* SoundManager.m in Sources */,
+				2C01115B16C7D3A1005B3783 /* GameManager.m in Sources */,
+				2C01115E16C7DD08005B3783 /* LevelManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,6 +18,7 @@
 #import "MenuLayer.h"
 #import "FinishLayer.h"
 #import "SoundManager.h"
+#import "LevelManager.h"
 
 #pragma mark - GameLayer
 
@@ -25,7 +26,7 @@ static float const PTM_RATIO = 64.0f;
 
 @interface GameLayer()
 
-
+@property (nonatomic,retain) LevelManager* level;
 @property (nonatomic,retain) MiniMap* minimap;
 @property (nonatomic,retain) MenuLayer* menuLayer;
 @property (nonatomic,retain) FinishLayer* finishLayer;
@@ -55,17 +56,17 @@ static float const PTM_RATIO = 64.0f;
 
 @implementation GameLayer
 
-+(CCScene *) sceneWithMap:(NSString*)mapName
++(CCScene *) sceneForLevel:(LevelManager*) level
 {
     CCScene *scene = [CCScene node];
-    GameLayer *layer = [[[GameLayer alloc] initWithMap:mapName] autorelease];
+    GameLayer *layer = [[[GameLayer alloc] initWithLevel:level] autorelease];
     
     [scene addChild: layer];
     
     return scene;
 }
 
--(id) initWithMap:(NSString*)mapName
+-(id) initWithLevel:(LevelManager*) level
 {
     if (self = [super init]) {
         
@@ -80,7 +81,8 @@ static float const PTM_RATIO = 64.0f;
         world->SetContactListener(contactListener);
         
         // load the map
-        _map = [[TiledMap alloc] initWithTMXFile:mapName];
+        NSLog(level.mapFile);
+        _map = [[TiledMap alloc] initWithTMXFile:level.mapFile];
         _map.anchorPoint = CGPointZero;
         
         //        [self enumerateTilesInMap:_map layer:collidables usingBlock:^(NSUInteger x, NSUInteger y, NSDictionary *property) {

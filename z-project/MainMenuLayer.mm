@@ -10,6 +10,8 @@
 #import "MainMenuLayer.h"
 #import "GameLayer.h"
 #import "SoundManager.h"
+#import "GameManager.h"
+
 
 @implementation MainMenuLayer
 
@@ -68,19 +70,12 @@
 
 -(void)firstLevel:(id)sender {
     [self playClickSound];
-    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade
-                                              transitionWithDuration:1.5
-                                               scene:[GameLayer sceneWithMap:@"map_one.tmx"]
-                                              withColor:ccWHITE]];
+    [[GameManager sharedManager] loadLevelWithMap:@"map_one.tmx"];
 }
 
 -(void)secondLevel:(id)sender {
     [self playClickSound];
-    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade
-                                               transitionWithDuration:1.5
-                                               scene:[GameLayer sceneWithMap:@"map_two.tmx"]
-                                               withColor:ccWHITE]];
-}
+    [[GameManager sharedManager] loadLevelWithMap:@"map_two.tmx"];}
 
 -(void)thirdLevel:(id)sender {
     

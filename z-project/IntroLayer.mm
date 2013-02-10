@@ -9,8 +9,9 @@
 
 // Import the interfaces
 #import "IntroLayer.h"
-#import "GameLayer.h"
+#import "GameManager.h"
 #import "MainMenuLayer.h"
+
 
 
 #pragma mark - IntroLayer
@@ -54,18 +55,13 @@
 
 	// add the label as a child to this Layer
 	[self addChild: background];
-	
-	// In one second transition to the new scene
-	[self scheduleOnce:@selector(makeTransition:) delay:1];
+    
+    [self scheduleOnce:@selector(loadSceneSelectionMenu:) delay:1];
+
 }
 
--(void) makeTransition:(ccTime)dt
-{
-	[[CCDirector sharedDirector]
-        replaceScene:[CCTransitionFade
-                    transitionWithDuration:0.5
-                    //scene:[GameLayer scene]
-                      scene:[MainMenuLayer scene]
-                    withColor:ccWHITE]];
+-(void)loadSceneSelectionMenu:(ccTime)dt {
+    [[GameManager sharedManager] loadSelectionMenuScene];
 }
+
 @end
