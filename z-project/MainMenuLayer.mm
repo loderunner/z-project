@@ -9,6 +9,7 @@
 #import "cocos2d.h"
 #import "MainMenuLayer.h"
 #import "GameLayer.h"
+#import "SoundManager.h"
 
 @implementation MainMenuLayer
 
@@ -24,6 +25,8 @@
 
 -(id)init {
     if (self = [super init]) {
+        [[SoundManager sharedManager] startMusic:kMusicHome];
+        
         CCSprite* background = [CCSprite spriteWithFile:kHomemenuSprit];
         CGSize size = [CCDirector sharedDirector].winSize;
         CGPoint centerPoint = CGPointMake(size.width/2, size.height/2);
@@ -59,7 +62,12 @@
     return self;
 }
 
+-(void)playClickSound {
+    [[SoundManager sharedManager] playSound:kSoundPlay];
+}
+
 -(void)firstLevel:(id)sender {
+    [self playClickSound];
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFade
                                               transitionWithDuration:1.5
                                                scene:[GameLayer sceneWithMap:@"map_one.tmx"]
@@ -67,6 +75,7 @@
 }
 
 -(void)secondLevel:(id)sender {
+    [self playClickSound];
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFade
                                                transitionWithDuration:1.5
                                                scene:[GameLayer sceneWithMap:@"map_two.tmx"]

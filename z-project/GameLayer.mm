@@ -17,6 +17,7 @@
 #import "ScoreCounters.h"
 #import "MenuLayer.h"
 #import "FinishLayer.h"
+#import "SoundManager.h"
 
 #pragma mark - GameLayer
 
@@ -66,6 +67,9 @@ static float const PTM_RATIO = 64.0f;
 -(id) initWithMap:(NSString*)mapName
 {
     if (self = [super init]) {
+        
+        [[SoundManager sharedManager] startMusic:kMusicCity];
+        
         //initialize box2d collision manager
         b2Vec2 gravity = b2Vec2(0.0f, 0.0f);
         world = new b2World(gravity);
@@ -229,6 +233,7 @@ static float const PTM_RATIO = 64.0f;
     
     BOOL characterWasKilled = [character takeDamage:1];
     if (characterWasKilled) {
+        [[SoundManager sharedManager] playDeathSound];
         if ( character.tag == kTagZombie) {
             [_scoreCounters registerZombieKilledByPlayer];
         } else if (character.tag == kTagCivilian) {
@@ -497,10 +502,12 @@ static float const PTM_RATIO = 64.0f;
                     
                     // kill civilian and wake as zombie in 3 seconds
                     [civilian infect];
+                    [[SoundManager sharedManager] playSound:kSoundScreamCivilian];
                     CCDelayTime* delayAction = [CCDelayTime actionWithDuration:3];
                     CCCallBlock* blockAction = [CCCallBlock actionWithBlock:^(void)
                                                 {
                                                     [self addZombieAt:civilian.position];
+                                                    [[SoundManager sharedManager] playSound:kSoundScreamZombie];
                                                     [self removeCivilian:civilian];
                                                     [_scoreCounters registerCivilianConvertedToZombie];
                                                 }];
