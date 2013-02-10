@@ -16,7 +16,8 @@ typedef enum {
     kGameStateNotRunning = 0,
     kGameStateSplashScreen,
     kGameStateLevelSelectionMenu,
-    kGameStateInGame
+    kGameStateInGame,
+    kGameStatePaused
 } GameState;
 
 @interface GameManager()
