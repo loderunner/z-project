@@ -193,6 +193,17 @@
 		40DA75CB16C6DAFB005D90FA /* MiniMap.mm in Sources */ = {isa = PBXBuildFile; fileRef = 40DA75C816C6DAF7005D90FA /* MiniMap.mm */; };
 		6463C46816C6FFD800130B37 /* map_one.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 6463C46616C6FFD800130B37 /* map_one.tmx */; };
 		6463C46916C6FFD800130B37 /* map_two.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 6463C46716C6FFD800130B37 /* map_two.tmx */; };
+		6470B12F16C7AC4300B254A9 /* clic sur play.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6470B12416C7AC4300B254A9 /* clic sur play.mp3 */; };
+		6470B13016C7AC4300B254A9 /* WilhelmScream_zombi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6470B12516C7AC4300B254A9 /* WilhelmScream_zombi.mp3 */; };
+		6470B13116C7AC4300B254A9 /* WilhelmScream.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6470B12616C7AC4300B254A9 /* WilhelmScream.mp3 */; };
+		6470B13216C7AC4300B254A9 /* ZPROJECT_loopcarpenter_cityfxplusforts.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6470B12716C7AC4300B254A9 /* ZPROJECT_loopcarpenter_cityfxplusforts.mp3 */; };
+		6470B13316C7AC4300B254A9 /* ZPROJECT_loopcarpenterasfuck.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6470B12816C7AC4300B254A9 /* ZPROJECT_loopcarpenterasfuck.mp3 */; };
+		6470B13416C7AC4300B254A9 /* ZPROJECT_sfxsploutch_long1-001.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6470B12916C7AC4300B254A9 /* ZPROJECT_sfxsploutch_long1-001.mp3 */; };
+		6470B13516C7AC4300B254A9 /* ZPROJECT_sfxsploutch_long2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6470B12A16C7AC4300B254A9 /* ZPROJECT_sfxsploutch_long2.mp3 */; };
+		6470B13616C7AC4300B254A9 /* ZPROJECT_sfxsploutch_long3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6470B12B16C7AC4300B254A9 /* ZPROJECT_sfxsploutch_long3.mp3 */; };
+		6470B13716C7AC4300B254A9 /* ZPROJECT_sfxsploutch_long4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6470B12C16C7AC4300B254A9 /* ZPROJECT_sfxsploutch_long4.mp3 */; };
+		6470B13816C7AC4300B254A9 /* ZPROJECT_sfxsploutch_short2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6470B12D16C7AC4300B254A9 /* ZPROJECT_sfxsploutch_short2.mp3 */; };
+		6470B13916C7AC4300B254A9 /* ZPROJECT_sfxsploutch_short4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6470B12E16C7AC4300B254A9 /* ZPROJECT_sfxsploutch_short4.mp3 */; };
 		64D7297316C6E45C0047189A /* FinishLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D7297216C6E45C0047189A /* FinishLayer.m */; };
 		64D7297616C6E6520047189A /* ScoreCounters.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D7297516C6E6510047189A /* ScoreCounters.m */; };
 		64F6A9D916C71AF100824D29 /* icon_menu_civilian.png in Resources */ = {isa = PBXBuildFile; fileRef = 64F6A9D816C71AF100824D29 /* icon_menu_civilian.png */; };
@@ -586,6 +597,17 @@
 		6447E3CF16C795ED00AC86A8 /* AchievementProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievementProtocol.h; sourceTree = "<group>"; };
 		6463C46616C6FFD800130B37 /* map_one.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = map_one.tmx; path = Resources/map_one.tmx; sourceTree = "<group>"; };
 		6463C46716C6FFD800130B37 /* map_two.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = map_two.tmx; path = Resources/map_two.tmx; sourceTree = "<group>"; };
+		6470B12416C7AC4300B254A9 /* clic sur play.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "clic sur play.mp3"; sourceTree = "<group>"; };
+		6470B12516C7AC4300B254A9 /* WilhelmScream_zombi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = WilhelmScream_zombi.mp3; sourceTree = "<group>"; };
+		6470B12616C7AC4300B254A9 /* WilhelmScream.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = WilhelmScream.mp3; sourceTree = "<group>"; };
+		6470B12716C7AC4300B254A9 /* ZPROJECT_loopcarpenter_cityfxplusforts.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ZPROJECT_loopcarpenter_cityfxplusforts.mp3; sourceTree = "<group>"; };
+		6470B12816C7AC4300B254A9 /* ZPROJECT_loopcarpenterasfuck.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ZPROJECT_loopcarpenterasfuck.mp3; sourceTree = "<group>"; };
+		6470B12916C7AC4300B254A9 /* ZPROJECT_sfxsploutch_long1-001.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "ZPROJECT_sfxsploutch_long1-001.mp3"; sourceTree = "<group>"; };
+		6470B12A16C7AC4300B254A9 /* ZPROJECT_sfxsploutch_long2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ZPROJECT_sfxsploutch_long2.mp3; sourceTree = "<group>"; };
+		6470B12B16C7AC4300B254A9 /* ZPROJECT_sfxsploutch_long3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ZPROJECT_sfxsploutch_long3.mp3; sourceTree = "<group>"; };
+		6470B12C16C7AC4300B254A9 /* ZPROJECT_sfxsploutch_long4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ZPROJECT_sfxsploutch_long4.mp3; sourceTree = "<group>"; };
+		6470B12D16C7AC4300B254A9 /* ZPROJECT_sfxsploutch_short2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ZPROJECT_sfxsploutch_short2.mp3; sourceTree = "<group>"; };
+		6470B12E16C7AC4300B254A9 /* ZPROJECT_sfxsploutch_short4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ZPROJECT_sfxsploutch_short4.mp3; sourceTree = "<group>"; };
 		64D7296816C678900047189A /* MenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuLayer.h; sourceTree = "<group>"; };
 		64D7297116C6E45C0047189A /* FinishLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinishLayer.h; sourceTree = "<group>"; };
 		64D7297216C6E45C0047189A /* FinishLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinishLayer.m; sourceTree = "<group>"; };
@@ -699,6 +721,7 @@
 		40B9A71616C5C2B7004DCC10 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6470B12316C7AC1800B254A9 /* sound */,
 				408F6C4E16C6E60B008BF783 /* menus */,
 				40B9A94016C5D286004DCC10 /* sprites */,
 				40B9A93F16C5D278004DCC10 /* maps */,
@@ -1280,6 +1303,24 @@
 			name = characters;
 			sourceTree = "<group>";
 		};
+		6470B12316C7AC1800B254A9 /* sound */ = {
+			isa = PBXGroup;
+			children = (
+				6470B12416C7AC4300B254A9 /* clic sur play.mp3 */,
+				6470B12516C7AC4300B254A9 /* WilhelmScream_zombi.mp3 */,
+				6470B12616C7AC4300B254A9 /* WilhelmScream.mp3 */,
+				6470B12716C7AC4300B254A9 /* ZPROJECT_loopcarpenter_cityfxplusforts.mp3 */,
+				6470B12816C7AC4300B254A9 /* ZPROJECT_loopcarpenterasfuck.mp3 */,
+				6470B12916C7AC4300B254A9 /* ZPROJECT_sfxsploutch_long1-001.mp3 */,
+				6470B12A16C7AC4300B254A9 /* ZPROJECT_sfxsploutch_long2.mp3 */,
+				6470B12B16C7AC4300B254A9 /* ZPROJECT_sfxsploutch_long3.mp3 */,
+				6470B12C16C7AC4300B254A9 /* ZPROJECT_sfxsploutch_long4.mp3 */,
+				6470B12D16C7AC4300B254A9 /* ZPROJECT_sfxsploutch_short2.mp3 */,
+				6470B12E16C7AC4300B254A9 /* ZPROJECT_sfxsploutch_short4.mp3 */,
+			);
+			name = sound;
+			sourceTree = "<group>";
+		};
 		64F6A9DE16C73D1D00824D29 /* achievements */ = {
 			isa = PBXGroup;
 			children = (
@@ -1371,6 +1412,17 @@
 				6463C46916C6FFD800130B37 /* map_two.tmx in Resources */,
 				64F6A9D916C71AF100824D29 /* icon_menu_civilian.png in Resources */,
 				64F6A9DB16C7210500824D29 /* accueil-background.png in Resources */,
+				6470B12F16C7AC4300B254A9 /* clic sur play.mp3 in Resources */,
+				6470B13016C7AC4300B254A9 /* WilhelmScream_zombi.mp3 in Resources */,
+				6470B13116C7AC4300B254A9 /* WilhelmScream.mp3 in Resources */,
+				6470B13216C7AC4300B254A9 /* ZPROJECT_loopcarpenter_cityfxplusforts.mp3 in Resources */,
+				6470B13316C7AC4300B254A9 /* ZPROJECT_loopcarpenterasfuck.mp3 in Resources */,
+				6470B13416C7AC4300B254A9 /* ZPROJECT_sfxsploutch_long1-001.mp3 in Resources */,
+				6470B13516C7AC4300B254A9 /* ZPROJECT_sfxsploutch_long2.mp3 in Resources */,
+				6470B13616C7AC4300B254A9 /* ZPROJECT_sfxsploutch_long3.mp3 in Resources */,
+				6470B13716C7AC4300B254A9 /* ZPROJECT_sfxsploutch_long4.mp3 in Resources */,
+				6470B13816C7AC4300B254A9 /* ZPROJECT_sfxsploutch_short2.mp3 in Resources */,
+				6470B13916C7AC4300B254A9 /* ZPROJECT_sfxsploutch_short4.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
