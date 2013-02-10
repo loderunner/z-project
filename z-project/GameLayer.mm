@@ -21,6 +21,7 @@
 #pragma mark - GameLayer
 
 static float const PTM_RATIO = 64.0f;
+
 @interface GameLayer()
 
 
@@ -29,6 +30,7 @@ static float const PTM_RATIO = 64.0f;
 @property (nonatomic,retain) FinishLayer* finishLayer;
 @property (nonatomic,retain) NSMutableArray* civilians;
 @property (nonatomic,retain) NSMutableArray* zombies;
+@property (nonatomic,retain) NSMutableArray* collidables;
 @property (nonatomic,retain) NSMutableArray* spawnPoints;
 @property (nonatomic,retain) NSMutableArray* gestureRecognizers;
 @property (nonatomic,retain) ScoreCounters* scoreCounters;
@@ -53,31 +55,17 @@ static float const PTM_RATIO = 64.0f;
 
 +(CCScene *) sceneWithMap:(NSString*)mapName
 {
-	CCScene *scene = [CCScene node];
+    CCScene *scene = [CCScene node];
     GameLayer *layer = [[[GameLayer alloc] initWithMap:mapName] autorelease];
-	
-	[scene addChild: layer];
-	
-	return scene;
-}
-
--(void)enumerateTilesInMap:(CCTMXTiledMap*)map layer:(CCTMXLayer*)layer usingBlock:(void(^)(NSUInteger x, NSUInteger y, NSDictionary* property))block {
-    // see http://stackoverflow.com/a/8393829/1969636
-    for (NSUInteger y = 0; y < layer.layerSize.height; y++) {
-        for (NSUInteger x = 0; x < layer.layerSize.width; x++) {
-            NSUInteger pos = x + layer.layerSize.width * y;
-            uint32_t gid = layer.tiles[pos];
-            if (gid > 0) {
-                NSDictionary *tileProperty = [map propertiesForGID:gid];
-                block(x,y,tileProperty);
-            }
-        }
-    }
+    
+    [scene addChild: layer];
+    
+    return scene;
 }
 
 -(id) initWithMap:(NSString*)mapName
 {
-	if (self = [super init]) {        
+    if (self = [super init]) {
         //initialize box2d collision manager
         b2Vec2 gravity = b2Vec2(0.0f, 0.0f);
         world = new b2World(gravity);
@@ -90,22 +78,38 @@ static float const PTM_RATIO = 64.0f;
         _map = [[TiledMap alloc] initWithTMXFile:mapName];
         _map.anchorPoint = CGPointZero;
         
+        //        [self enumerateTilesInMap:_map layer:collidables usingBlock:^(NSUInteger x, NSUInteger y, NSDictionary *property) {
+        //            if ([@"0" compare: [property objectForKey:@"can_walk"]] == NSOrderedSame) {
+        //                int xOnScreen = x * _map.tileSize.width;
+        //                int yOnScreen = (_map.mapSize.height - y) * _map.tileSize.height;
+        //            }
+        //        }];
+        _collidables = [[NSMutableArray alloc] init];
         CCTMXLayer* collidables = [_map layerNamed:@"collidables"];
-        [self enumerateTilesInMap:_map layer:collidables usingBlock:^(NSUInteger x, NSUInteger y, NSDictionary *property) {
-            if ([@"0" compare: [property objectForKey:@"can_walk"]] == NSOrderedSame) {
-                NSLog(@"tile at %d,%d is collidable",x,y);
-                int xOnScreen = x * _map.tileSize.width;
-                int yOnScreen = (_map.mapSize.height - y) * _map.tileSize.height;
-                NSLog(@"tile at %d,%d (ON SCREEN) is collidable",xOnScreen,yOnScreen);
+        for (NSUInteger y = 0; y < collidables.layerSize.height; y++)
+        {
+            for (NSUInteger x = 0; x < collidables.layerSize.width; x++)
+            {
+                NSUInteger pos = x + collidables.layerSize.width * y;
+                uint32_t gid = collidables.tiles[pos];
+                if (gid > 0)
+                {
+                    NSDictionary* properties = [_map propertiesForGID:gid];
+                    NSString* canWalkString = [properties objectForKey:@"can_walk"];
+                    if ([canWalkString isEqualToString:@"0"])
+                    {
+                        [self addBoxBodyForTile:ccp(x,y)];
+                    }
+                }
             }
-        }];
+        }
         collidables.visible = NO;
         
         CCTMXObjectGroup* spawnPoints = [_map objectGroupNamed:@"spawnPoints"];
         _spawnPoints = [spawnPoints.objects copy];
         
         [self addChild:_map];
-		
+        
         // save all sizes
         winSize  = [CCDirector sharedDirector].winSize;
         mapSize  = _map.mapSize;
@@ -128,7 +132,7 @@ static float const PTM_RATIO = 64.0f;
             int x = [[spawnPoint objectForKey:@"x"] intValue];
             int y = [[spawnPoint objectForKey:@"y"] intValue];
             CGPoint pos = ccp(x,y);
-
+            
             NSString* timeString = [spawnPoint objectForKey:@"time"];
             if (timeString) {
                 float value = [timeString floatValue];
@@ -151,20 +155,20 @@ static float const PTM_RATIO = 64.0f;
         
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
             [self createMiniMap];
-
+            
             [self schedule:@selector(updateMiniMapCharacters:) interval:.7f];
             [self schedule:@selector(updateMiniMapPosition:) interval:.05f];  // 1/20th sec
-
+            
         }
         
         [self createMenuLayer];
         [self schedule:@selector(updateMenuLayer:) interval:.7f];
         [self schedule:@selector(testFinishGame:) interval:.5f]; //TODO make it appear once
-
+        
         
         [self registerRecognisers];
-	}
-	return self;
+    }
+    return self;
 }
 
 -(void)timerCallback:(ccTime)time {
@@ -220,9 +224,9 @@ static float const PTM_RATIO = 64.0f;
     CGPoint location = [recognizer locationInView:[[CCDirector sharedDirector] view]];
     location = [[CCDirector sharedDirector] convertToGL:location];
     location = ccpSub(location, self.map.position);
-
+    
     BaseCharacter* character = [self findCharacterAt:location];
-
+    
     BOOL characterWasKilled = [character takeDamage:1];
     if (characterWasKilled) {
         if ( character.tag == kTagZombie) {
@@ -359,7 +363,7 @@ static float const PTM_RATIO = 64.0f;
 #pragma mark - Box2D stuff
 
 - (void)addBoxBodyForSprite:(BaseCharacter *)sprite
-{    
+{
     b2BodyDef spriteBodyDef;
     spriteBodyDef.type = b2_dynamicBody;
     spriteBodyDef.position.Set(sprite.position.x/PTM_RATIO,
@@ -370,6 +374,34 @@ static float const PTM_RATIO = 64.0f;
     b2PolygonShape spriteShape;
     spriteShape.SetAsBox(.5f * sprite.contentSize.width/PTM_RATIO,
                          .5f * sprite.contentSize.height/PTM_RATIO);
+    b2FixtureDef spriteShapeDef;
+    spriteShapeDef.shape = &spriteShape;
+    spriteShapeDef.density = 10.0;
+    spriteShapeDef.isSensor = true;
+    spriteBody->CreateFixture(&spriteShapeDef);
+}
+
+- (void)addBoxBodyForTile:(CGPoint)coord
+{
+    CGFloat x = 1.5f * coord.x * _map.tileSize.width;
+    CGFloat y = 1.5f * (_map.mapSize.height - coord.y) * _map.tileSize.height;
+    
+    CCNode* tile = [CCNode node];
+    tile.position = ccp(x, y);
+    tile.contentSize = CGSizeMake(_map.tileSize.width, _map.tileSize.height);
+    tile.tag = kTagTile;
+    [_collidables addObject:tile];
+    
+    b2BodyDef spriteBodyDef;
+    spriteBodyDef.type = b2_dynamicBody;
+    spriteBodyDef.position.Set(x/PTM_RATIO,
+                               y/PTM_RATIO);
+    spriteBodyDef.userData = tile;
+    b2Body *spriteBody = world->CreateBody(&spriteBodyDef);
+    
+    b2PolygonShape spriteShape;
+    spriteShape.SetAsBox(.5f * _map.tileSize.width/PTM_RATIO,
+                         .5f * _map.tileSize.width/PTM_RATIO);
     b2FixtureDef spriteShapeDef;
     spriteShapeDef.shape = &spriteShape;
     spriteShapeDef.density = 10.0;
@@ -425,24 +457,40 @@ static float const PTM_RATIO = 64.0f;
         b2Body *bodyB = contact.fixtureB->GetBody();
         if (bodyA->GetUserData() != NULL && bodyB->GetUserData() != NULL)
         {
-            BaseCharacter* spriteA = (BaseCharacter*) bodyA->GetUserData();
-            BaseCharacter* spriteB = (BaseCharacter*) bodyB->GetUserData();
+            CCNode* spriteA = (CCNode*) bodyA->GetUserData();
+            CCNode* spriteB = (CCNode*) bodyB->GetUserData();
             
-            if (spriteA.tag != spriteB.tag)
+            Zombie* zombie = nil;
+            Civilian* civilian = nil;
+            CCNode* tile = nil;
+            if (spriteA.tag == kTagZombie)
             {
-                Zombie* zombie;
-                Civilian* civilian;
-                if (spriteA.tag == kTagZombie)
-                {
-                    zombie = (Zombie*)spriteA;
-                    civilian = (Civilian*)spriteB;
-                }
-                else
-                {
-                    zombie = (Zombie*)spriteB;
-                    civilian = (Civilian*)spriteA;
-                }
-                
+                zombie = (Zombie*)spriteA;
+            }
+            else if (spriteA.tag == kTagCivilian)
+            {
+                civilian = (Civilian*) spriteA;
+            }
+            else if (spriteA.tag == kTagTile)
+            {
+                tile = spriteA;
+            }
+            
+            if (spriteB.tag == kTagZombie)
+            {
+                zombie = (Zombie*)spriteB;
+            }
+            else if (spriteB.tag == kTagCivilian)
+            {
+                civilian = (Civilian*)spriteB;
+            }
+            else if (spriteB.tag == kTagTile)
+            {
+                tile = spriteB;
+            }
+            
+            if (civilian != nil && zombie != nil)
+            {
                 if ([civilian isAlive] && [zombie isAlive])
                 {
                     [zombie eatCivilian:civilian];
@@ -460,6 +508,11 @@ static float const PTM_RATIO = 64.0f;
                     [self runAction:sequenceAction];
                 }
             }
+            else if (tile != nil)
+            {
+                BaseCharacter* character = (zombie == nil) ? civilian : zombie;
+                
+            }
         }
     }
 }
@@ -468,8 +521,8 @@ static float const PTM_RATIO = 64.0f;
 
 -(void) registerWithTouchDispatcher
 {
-	CCDirector *director = [CCDirector sharedDirector];
-	[[director touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
+    CCDirector *director = [CCDirector sharedDirector];
+    [[director touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
 }
 
 -(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
@@ -490,13 +543,13 @@ static float const PTM_RATIO = 64.0f;
 
 -(void) ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event
 {
-	CGPoint touchLocation = [touch locationInView: [touch view]];
-	CGPoint prevLocation  = [touch previousLocationInView: [touch view]];
+    CGPoint touchLocation = [touch locationInView: [touch view]];
+    CGPoint prevLocation  = [touch previousLocationInView: [touch view]];
     
-	touchLocation = [[CCDirector sharedDirector] convertToGL: touchLocation];
-	prevLocation  = [[CCDirector sharedDirector] convertToGL: prevLocation];
+    touchLocation = [[CCDirector sharedDirector] convertToGL: touchLocation];
+    prevLocation  = [[CCDirector sharedDirector] convertToGL: prevLocation];
     
-	CGPoint diff = ccpSub(touchLocation,prevLocation);
+    CGPoint diff = ccpSub(touchLocation,prevLocation);
     
     CGPoint currentPos = [self.map position];
     CGPoint newPos     = ccpAdd(currentPos, diff);
@@ -514,20 +567,22 @@ static float const PTM_RATIO = 64.0f;
     float minimumY    = winHeight-layerHeight;
     if (newPos.y < minimumY) newPos.y = minimumY;
     
-	[self.map setPosition: newPos];
+    [self.map setPosition: newPos];
 }
 
 #pragma mark - cleanup
 
 - (void)dealloc
 {
+    
     [self unregisterRecognisers];
-    self.civilians   = nil;
-    self.zombies     = nil;
-    self.map         = nil;
-    self.spawnPoints = nil;
-    self.gestureRecognizers = nil;
-
+    [_civilians release];
+    [_zombies release];
+    [_collidables release];
+    [_map release];
+    [_spawnPoints release];
+    [_gestureRecognizers release];
+    
     delete world;
     delete contactListener;
     
