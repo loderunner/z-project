@@ -15,16 +15,20 @@
 #import "ContactListener.h"
 #import "Constants.h"
 #import "ScoreCounters.h"
+#import "MenuLayer.h"
+#import "FinishLayer.h"
 
 #pragma mark - GameLayer
 
 static float const PTM_RATIO = 64.0f;
 @interface GameLayer()
 
-@property (nonatomic,retain) NSMutableArray* civilians;
-@property (nonatomic,retain) NSMutableArray* zombies;
+
 @property (nonatomic,retain) MiniMap* minimap;
 @property (nonatomic,retain) MenuLayer* menuLayer;
+@property (nonatomic,retain) FinishLayer* finishLayer;
+@property (nonatomic,retain) NSMutableArray* civilians;
+@property (nonatomic,retain) NSMutableArray* zombies;
 @property (nonatomic,retain) NSMutableArray* spawnPoints;
 @property (nonatomic,retain) NSMutableArray* gestureRecognizers;
 @property (nonatomic,retain) ScoreCounters* scoreCounters;
@@ -155,6 +159,8 @@ static float const PTM_RATIO = 64.0f;
         
         [self createMenuLayer];
         [self schedule:@selector(updateMenuLayer:) interval:.7f];
+        [self schedule:@selector(testFinishGame:) interval:.5f]; //TODO make it appear once
+
         
         [self registerRecognisers];
 	}
@@ -334,6 +340,19 @@ static float const PTM_RATIO = 64.0f;
 -(void)updateMenuLayer:(ccTime)dt {
     [self.menuLayer updateNumberOfCivilian:_scoreCounters.numCivilians];
     [self.menuLayer updateNumberOfZombie:_scoreCounters.numZombies];
+}
+
+#pragma mark - finishGame
+-(void)testFinishGame:(ccTime)dt  {
+    if ([_scoreCounters numCivilians] == 0 || [_scoreCounters numZombies] == 0) {
+        [self unschedule:@selector(testFinishGame:)];
+        [self finishGame];
+    }
+}
+
+-(void)finishGame {
+    self.finishLayer = [[FinishLayer alloc] layerWithStat:self.scoreCounters];
+    [self addChild:self.finishLayer];
 }
 
 

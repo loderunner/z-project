@@ -7,9 +7,11 @@
 //
 
 #import "cocos2d.h"
+#import "ScoreCounters.h"
 
 @interface FinishLayer : CCLayer
 
--(FinishLayer*)layer;
+
+-(FinishLayer *) layerWithStat:(ScoreCounters*)stat;
 
 @end
