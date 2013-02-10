@@ -62,7 +62,12 @@
     return self;
 }
 
+-(void)playClickSound {
+    [[SoundManager sharedManager] playSound:kSoundPlay];
+}
+
 -(void)firstLevel:(id)sender {
+    [self playClickSound];
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFade
                                               transitionWithDuration:1.5
                                                scene:[GameLayer sceneWithMap:@"map_one.tmx"]
@@ -70,6 +75,7 @@
 }
 
 -(void)secondLevel:(id)sender {
+    [self playClickSound];
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFade
                                                transitionWithDuration:1.5
                                                scene:[GameLayer sceneWithMap:@"map_two.tmx"]
