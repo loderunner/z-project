@@ -7,64 +7,87 @@
 //
 
 #import "FinishLayer.h"
+#import <GLKit/GLKit.h>
+#import "Constants.h"
+
+@interface FinishLayer()
+
+@property (nonatomic,assign) ScoreCounters* stat;
+
+@end
 
 @implementation FinishLayer
 
--(FinishLayer*) layer {
+-(FinishLayer*) layerWithStat:(ScoreCounters*)stat {
     if (self = [self init]) {
     
+        _stat = stat;
         CGSize winSize  = [CCDirector sharedDirector].winSize;
         
         // Center the layer
         self.position = CGPointMake(winSize.width/2, winSize.height/2);
         
         CCLabelTTF* finishLabel = [CCLabelTTF labelWithString:@"FAILURE" fontName:@"Helvetica-BoldOblique" fontSize:26];
-        finishLabel.position = CGPointMake(0, 200);
+        finishLabel.position = CGPointMake(0, 100);
         finishLabel.color = ccRED;
         [self addChild:finishLabel];
         
-        [self addZombiesCount];
-        [self addCivilianCount];
+        [self addCount];
     }
     return self;
 }
 
--(void)addZombiesCount {
-    CCNode* node = [CCNode node];
+- (void)draw
+{
+    CGSize winSize  = [CCDirector sharedDirector].winSize;
+    
+    glEnable(GL_LINE_SMOOTH);
+    glColor4ub(255, 255, 255, 255);
+    glLineWidth(2);
+    ccColor4F fillColor = kFinishmenuFillColor;
+    CGPoint point = CGPointMake( - winSize.width / 4, - winSize.height / 4);
+    
+    ccDrawSolidRect(point,ccp(point.x + winSize.width / 2, point.y + winSize.height / 2 ), fillColor);
+}
+
+-(void)addCount {
+    CCNode* countNode = [CCNode node];
+    
+    CCNode* zombieNode = [CCNode node];
     CCLabelTTF* zombiesLabel = [CCLabelTTF labelWithString:@"Zombies killed:" fontName:@"Helvetica" fontSize:20];
     zombiesLabel.color = ccBLACK;
     zombiesLabel.position = CGPointMake(0, 10);
     
-    [node addChild:zombiesLabel];
+    [zombieNode addChild:zombiesLabel];
 
-    int numKilled = 32;
-    CCLabelTTF* zombiesCount = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d", numKilled] fontName:@"Helvetica-Bold" fontSize:20];
+    int zombieNumKilled = _stat.numZombiesKilledByPlayer;
+    
+    CCLabelTTF* zombiesCount = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d", zombieNumKilled] fontName:@"Helvetica-Bold" fontSize:20];
     zombiesCount.color = ccBLACK;
     zombiesCount.position = CGPointMake(0, -10);
-    [node addChild:zombiesCount];
+    [zombieNode addChild:zombiesCount];
     
-    node.position = CGPointMake(-100, 100);
-    [self addChild:node];
+    zombieNode.position = CGPointMake(-100, 0);
+    [countNode addChild:zombieNode];
     
-}
-
--(void)addCivilianCount {
-    CCNode* node = [CCNode node];
-    CCLabelTTF* civilianLabel = [CCLabelTTF labelWithString:@"civilians killed:" fontName:@"Helvetica" fontSize:20];
+    CCNode* civilianNode = [CCNode node];
+    CCLabelTTF* civilianLabel = [CCLabelTTF labelWithString:@"Civilians killed:" fontName:@"Helvetica" fontSize:20];
     civilianLabel.color = ccBLACK;
     civilianLabel.position = CGPointMake(0, 10);
     
-    [node addChild:civilianLabel];
+    [civilianNode addChild:civilianLabel];
     
-    int numKilled = 26;
+    int civilianNumKilled = _stat.numCiviliansConvertedToZombie + _stat.numCiviliansKilledByPlayer;
     
-    CCLabelTTF* civilianCount = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d", numKilled] fontName:@"Helvetica-Bold" fontSize:20];
+    CCLabelTTF* civilianCount = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d", civilianNumKilled] fontName:@"Helvetica-Bold" fontSize:20];
     civilianCount.color = ccBLACK;
     civilianCount.position = CGPointMake(0, -10);
-    [node addChild:civilianCount];
+    [civilianNode addChild:civilianCount];
     
-    node.position = CGPointMake(100, 100);
-    [self addChild:node];
+    civilianNode.position = CGPointMake(100, 0);
+    [countNode addChild:civilianNode];
+    
+    [self addChild:countNode];
 }
 
 @end
