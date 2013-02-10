@@ -69,15 +69,17 @@
 
 -(void)firstLevel:(id)sender {
     [self playClickSound];
-    [[GameManager sharedManager] loadLevelWithMap:@"map_one.tmx"];
+    [[GameManager sharedManager] loadLevelWithMap:@"map_finale_facile.tmx"];
 }
 
 -(void)secondLevel:(id)sender {
     [self playClickSound];
-    [[GameManager sharedManager] loadLevelWithMap:@"map_finale.tmx"];}
+    [[GameManager sharedManager] loadLevelWithMap:@"map_finale_medium.tmx"];
+}
 
 -(void)thirdLevel:(id)sender {
-    
+    [self playClickSound];
+    [[GameManager sharedManager] loadLevelWithMap:@"map_finale_difficile.tmx"];
 }
 
 -(CCMenuItemSprite*)createMenuItemWithNormalImage:(NSString*)normalImage selectedImage:(NSString*)selectedImage selector:(SEL)selector {
