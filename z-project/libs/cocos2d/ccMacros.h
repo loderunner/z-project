@@ -89,6 +89,10 @@ simple macro that swaps 2 variables
 		x = y; y = temp;		\
 })
 
+/** @def CCRANDOM_MINUS1_1
+ returns a random float between -1 and 1
+ */
+#define CCRANDOM_SEED() srandomdev()
 
 /** @def CCRANDOM_MINUS1_1
  returns a random float between -1 and 1
