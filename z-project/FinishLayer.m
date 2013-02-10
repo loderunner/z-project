@@ -27,9 +27,21 @@
         // Center the layer
         self.position = CGPointMake(winSize.width/2, winSize.height/2);
         
-        CCLabelTTF* finishLabel = [CCLabelTTF labelWithString:@"FAILURE" fontName:@"Helvetica-BoldOblique" fontSize:26];
+        NSString* finishTitle;
+        ccColor3B titleColor;
+        
+        if ([_stat numCivilians] == 0)
+        {
+            finishTitle = @"FAILURE";
+            titleColor = ccRED;
+        } else {
+            finishTitle = @"SUCCESS";
+            titleColor = ccGREEN;
+        }
+        
+        CCLabelTTF* finishLabel = [CCLabelTTF labelWithString:finishTitle fontName:@"Helvetica-BoldOblique" fontSize:26];
         finishLabel.position = CGPointMake(0, 100);
-        finishLabel.color = ccRED;
+        finishLabel.color = titleColor;
         [self addChild:finishLabel];
         
         [self addCount];
@@ -71,13 +83,13 @@
     [countNode addChild:zombieNode];
     
     CCNode* civilianNode = [CCNode node];
-    CCLabelTTF* civilianLabel = [CCLabelTTF labelWithString:@"Civilians killed:" fontName:@"Helvetica" fontSize:20];
+    CCLabelTTF* civilianLabel = [CCLabelTTF labelWithString:@"Civilians saved:" fontName:@"Helvetica" fontSize:20];
     civilianLabel.color = ccBLACK;
     civilianLabel.position = CGPointMake(0, 10);
     
     [civilianNode addChild:civilianLabel];
     
-    int civilianNumKilled = _stat.numCiviliansConvertedToZombie + _stat.numCiviliansKilledByPlayer;
+    int civilianNumKilled = _stat.numCivilians;
     
     CCLabelTTF* civilianCount = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d", civilianNumKilled] fontName:@"Helvetica-Bold" fontSize:20];
     civilianCount.color = ccBLACK;

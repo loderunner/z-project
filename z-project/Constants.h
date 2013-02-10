@@ -45,3 +45,4 @@ State;
 #define kHeadmenuSpriteForCivilian @"icon_menu_civilian.png" //TODO change with the correct file
 #define kHeadmenuSpriteForZombie @"icon_menu_zombie.png"
 #define kFinishmenuFillColor ccc4f(0.5, 0.5, 0.5, 0.5)
+#define kHomemenuSprit @"accueil-background.png"
