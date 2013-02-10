@@ -107,25 +107,37 @@
 
 -(void)addAchievements {
     
-    //TODO make a list of achievements
+    NSMutableArray *achievementList = [[NSMutableArray alloc] init];
     
-    id <AchievementProtocol> achivement1 = [[CivilianAchievement alloc] initWithNumOfCivilians:5];
+    [achievementList addObject:[[CivilianAchievement alloc] initWithNumOfCivilians:5]];
+
+    [achievementList addObject:[[CivilianAchievement alloc] initWithNumOfCivilians:10]];
+
+    [achievementList addObject:[[CivilianAchievement alloc] initWithNumOfCivilians:15]];
     
-    NSMutableString *message;
-    if ([achivement1 testStats:_stat]) {
-        //TODO add a beautiful imagie in case of successful achievement
-        message = [NSMutableString stringWithString:@"v "];
-    } else {
-        message = [NSMutableString stringWithString:@"x "];
+    CCNode* achievementNode = [CCNode node];
+    
+    achievementNode.position = CGPointMake(0, -100);
+    
+    for (NSUInteger i = 0; i < [achievementList count]; i++) {
+        id <AchievementProtocol> achievement = [achievementList objectAtIndex:i];
+        NSMutableString *message;
+        if ([achievement testStats:_stat]) {
+            //TODO add a beautiful imagie in case of successful achievement
+            message = [NSMutableString stringWithString:@"v "];
+        } else {
+            message = [NSMutableString stringWithString:@"x "];
+        }
+    
+        [message appendString:achievement.message];
+    
+        CCLabelTTF* achievementLabel = [CCLabelTTF labelWithString:message fontName:@"Helvetica" fontSize:20];
+        
+        achievementLabel.position = CGPointMake(0, i * 20);
+        [achievementNode addChild:achievementLabel];
     }
     
-    [message appendString:achivement1.message];
-    
-    CCLabelTTF* achievementLabel = [CCLabelTTF labelWithString:message fontName:@"Helvetica" fontSize:20];
-    
-    achievementLabel.position = CGPointMake(0, -100);
-    [self addChild:achievementLabel];
-    
+    [self addChild:achievementNode];
 }
 
 @end
