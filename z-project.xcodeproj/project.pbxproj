@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		2C01115B16C7D3A1005B3783 /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C01115A16C7D3A1005B3783 /* GameManager.m */; };
 		2C01115E16C7DD08005B3783 /* LevelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C01115D16C7DD08005B3783 /* LevelManager.m */; };
+		40654AF016C7F20C009F45FF /* cars_v4.png in Resources */ = {isa = PBXBuildFile; fileRef = 40654AEB16C7F20B009F45FF /* cars_v4.png */; };
+		40654AF116C7F20C009F45FF /* map_finale.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 40654AEC16C7F20B009F45FF /* map_finale.tmx */; };
+		40654AF216C7F20C009F45FF /* park_v3.png in Resources */ = {isa = PBXBuildFile; fileRef = 40654AED16C7F20B009F45FF /* park_v3.png */; };
+		40654AF316C7F20C009F45FF /* route.png in Resources */ = {isa = PBXBuildFile; fileRef = 40654AEE16C7F20B009F45FF /* route.png */; };
+		40654AF416C7F20C009F45FF /* trot.png in Resources */ = {isa = PBXBuildFile; fileRef = 40654AEF16C7F20B009F45FF /* trot.png */; };
+		40654AF616C7F245009F45FF /* arbres_lampadaires.png in Resources */ = {isa = PBXBuildFile; fileRef = 40654AF516C7F245009F45FF /* arbres_lampadaires.png */; };
+		40654AF816C7F5FB009F45FF /* maisons sans trottoir_filtre.png in Resources */ = {isa = PBXBuildFile; fileRef = 40654AF716C7F5FB009F45FF /* maisons sans trottoir_filtre.png */; };
 		408F6C5916C6E8DB008BF783 /* level1_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 408F6C5316C6E8DB008BF783 /* level1_normal.png */; };
 		408F6C5A16C6E8DB008BF783 /* level1_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 408F6C5416C6E8DB008BF783 /* level1_selected.png */; };
 		408F6C5B16C6E8DB008BF783 /* level2_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 408F6C5516C6E8DB008BF783 /* level2_normal.png */; };
@@ -192,7 +199,6 @@
 		40DA75C916C6DAFB005D90FA /* MainMenuLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 40DA75C616C6DAF6005D90FA /* MainMenuLayer.mm */; };
 		40DA75CA16C6DAFB005D90FA /* MenuLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 40DA75C716C6DAF6005D90FA /* MenuLayer.mm */; };
 		40DA75CB16C6DAFB005D90FA /* MiniMap.mm in Sources */ = {isa = PBXBuildFile; fileRef = 40DA75C816C6DAF7005D90FA /* MiniMap.mm */; };
-		6463C46916C6FFD800130B37 /* map_two.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 6463C46716C6FFD800130B37 /* map_two.tmx */; };
 		6470B13C16C7ACA400B254A9 /* SoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6470B13B16C7ACA400B254A9 /* SoundManager.m */; };
 		6470B14516C7AFD600B254A9 /* sfx_death_short2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6470B13D16C7AFD600B254A9 /* sfx_death_short2.mp3 */; };
 		6470B14616C7AFD600B254A9 /* sfx_death_short4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6470B13E16C7AFD600B254A9 /* sfx_death_short4.mp3 */; };
@@ -206,7 +212,6 @@
 		6470B15216C7B07C00B254A9 /* sfx_scream.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6470B14F16C7B07C00B254A9 /* sfx_scream.mp3 */; };
 		64A8E09B16C7C5C800858EDC /* icon_zombie.png in Resources */ = {isa = PBXBuildFile; fileRef = 64A8E09A16C7C5C800858EDC /* icon_zombie.png */; };
 		64A8E0A916C7DAB300858EDC /* map_one.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 64A8E0A816C7DAB300858EDC /* map_one.tmx */; };
-		64A8E0AE16C7DB1400858EDC /* arbres_lampadaires.png in Resources */ = {isa = PBXBuildFile; fileRef = 64A8E0AA16C7DB1400858EDC /* arbres_lampadaires.png */; };
 		64A8E0AF16C7DB1400858EDC /* cars.png in Resources */ = {isa = PBXBuildFile; fileRef = 64A8E0AB16C7DB1400858EDC /* cars.png */; };
 		64A8E0B016C7DB1400858EDC /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 64A8E0AC16C7DB1400858EDC /* map.png */; };
 		64A8E0B116C7DB1400858EDC /* park.png in Resources */ = {isa = PBXBuildFile; fileRef = 64A8E0AD16C7DB1400858EDC /* park.png */; };
@@ -236,6 +241,13 @@
 		2C01115A16C7D3A1005B3783 /* GameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameManager.m; sourceTree = "<group>"; };
 		2C01115C16C7DD08005B3783 /* LevelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelManager.h; sourceTree = "<group>"; };
 		2C01115D16C7DD08005B3783 /* LevelManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelManager.m; sourceTree = "<group>"; };
+		40654AEB16C7F20B009F45FF /* cars_v4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cars_v4.png; path = Resources/cars_v4.png; sourceTree = "<group>"; };
+		40654AEC16C7F20B009F45FF /* map_finale.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = map_finale.tmx; path = Resources/map_finale.tmx; sourceTree = "<group>"; };
+		40654AED16C7F20B009F45FF /* park_v3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = park_v3.png; path = Resources/park_v3.png; sourceTree = "<group>"; };
+		40654AEE16C7F20B009F45FF /* route.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = route.png; path = Resources/route.png; sourceTree = "<group>"; };
+		40654AEF16C7F20B009F45FF /* trot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = trot.png; path = Resources/trot.png; sourceTree = "<group>"; };
+		40654AF516C7F245009F45FF /* arbres_lampadaires.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arbres_lampadaires.png; path = Resources/arbres_lampadaires.png; sourceTree = "<group>"; };
+		40654AF716C7F5FB009F45FF /* maisons sans trottoir_filtre.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "maisons sans trottoir_filtre.png"; path = "Resources/maisons sans trottoir_filtre.png"; sourceTree = "<group>"; };
 		408F6C5316C6E8DB008BF783 /* level1_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = level1_normal.png; path = Resources/level1_normal.png; sourceTree = "<group>"; };
 		408F6C5416C6E8DB008BF783 /* level1_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = level1_selected.png; path = Resources/level1_selected.png; sourceTree = "<group>"; };
 		408F6C5516C6E8DB008BF783 /* level2_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = level2_normal.png; path = Resources/level2_normal.png; sourceTree = "<group>"; };
@@ -609,7 +621,6 @@
 		40DA75C716C6DAF6005D90FA /* MenuLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MenuLayer.mm; sourceTree = "<group>"; };
 		40DA75C816C6DAF7005D90FA /* MiniMap.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MiniMap.mm; sourceTree = "<group>"; };
 		6447E3CF16C795ED00AC86A8 /* AchievementProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievementProtocol.h; sourceTree = "<group>"; };
-		6463C46716C6FFD800130B37 /* map_two.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = map_two.tmx; path = Resources/map_two.tmx; sourceTree = "<group>"; };
 		6470B13A16C7ACA400B254A9 /* SoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundManager.h; sourceTree = "<group>"; };
 		6470B13B16C7ACA400B254A9 /* SoundManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundManager.m; sourceTree = "<group>"; };
 		6470B13D16C7AFD600B254A9 /* sfx_death_short2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = sfx_death_short2.mp3; path = Resources/sfx_death_short2.mp3; sourceTree = "<group>"; };
@@ -624,7 +635,6 @@
 		6470B14F16C7B07C00B254A9 /* sfx_scream.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = sfx_scream.mp3; path = Resources/sfx_scream.mp3; sourceTree = "<group>"; };
 		64A8E09A16C7C5C800858EDC /* icon_zombie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_zombie.png; path = Resources/icon_zombie.png; sourceTree = "<group>"; };
 		64A8E0A816C7DAB300858EDC /* map_one.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = map_one.tmx; path = Resources/map_one.tmx; sourceTree = "<group>"; };
-		64A8E0AA16C7DB1400858EDC /* arbres_lampadaires.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arbres_lampadaires.png; path = Resources/arbres_lampadaires.png; sourceTree = "<group>"; };
 		64A8E0AB16C7DB1400858EDC /* cars.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cars.png; path = Resources/cars.png; sourceTree = "<group>"; };
 		64A8E0AC16C7DB1400858EDC /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = map.png; path = Resources/map.png; sourceTree = "<group>"; };
 		64A8E0AD16C7DB1400858EDC /* park.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = park.png; path = Resources/park.png; sourceTree = "<group>"; };
@@ -1285,12 +1295,17 @@
 		40B9A93F16C5D278004DCC10 /* maps */ = {
 			isa = PBXGroup;
 			children = (
-				64A8E0AA16C7DB1400858EDC /* arbres_lampadaires.png */,
+				40654AF716C7F5FB009F45FF /* maisons sans trottoir_filtre.png */,
+				40654AF516C7F245009F45FF /* arbres_lampadaires.png */,
+				40654AEB16C7F20B009F45FF /* cars_v4.png */,
+				40654AEC16C7F20B009F45FF /* map_finale.tmx */,
+				40654AED16C7F20B009F45FF /* park_v3.png */,
+				40654AEE16C7F20B009F45FF /* route.png */,
+				40654AEF16C7F20B009F45FF /* trot.png */,
 				64A8E0AB16C7DB1400858EDC /* cars.png */,
 				64A8E0AC16C7DB1400858EDC /* map.png */,
 				64A8E0AD16C7DB1400858EDC /* park.png */,
 				64A8E0A816C7DAB300858EDC /* map_one.tmx */,
-				6463C46716C6FFD800130B37 /* map_two.tmx */,
 				40B9A93816C5C423004DCC10 /* tiles.png */,
 			);
 			name = maps;
@@ -1454,20 +1469,8 @@
 				408F6C5D16C6E8DB008BF783 /* level3_normal.png in Resources */,
 				408F6C5E16C6E8DB008BF783 /* level3_selected.png in Resources */,
 				64F8531716C6F911001BF71A /* icon_menu_zombie.png in Resources */,
-				6463C46916C6FFD800130B37 /* map_two.tmx in Resources */,
 				64F6A9D916C71AF100824D29 /* icon_menu_civilian.png in Resources */,
 				64F6A9DB16C7210500824D29 /* accueil-background.png in Resources */,
-				6470B12F16C7AC4300B254A9 /* clic sur play.mp3 in Resources */,
-				6470B13016C7AC4300B254A9 /* WilhelmScream_zombi.mp3 in Resources */,
-				6470B13116C7AC4300B254A9 /* WilhelmScream.mp3 in Resources */,
-				6470B13216C7AC4300B254A9 /* ZPROJECT_loopcarpenter_cityfxplusforts.mp3 in Resources */,
-				6470B13316C7AC4300B254A9 /* ZPROJECT_loopcarpenterasfuck.mp3 in Resources */,
-				6470B13416C7AC4300B254A9 /* ZPROJECT_sfxsploutch_long1-001.mp3 in Resources */,
-				6470B13516C7AC4300B254A9 /* ZPROJECT_sfxsploutch_long2.mp3 in Resources */,
-				6470B13616C7AC4300B254A9 /* ZPROJECT_sfxsploutch_long3.mp3 in Resources */,
-				6470B13716C7AC4300B254A9 /* ZPROJECT_sfxsploutch_long4.mp3 in Resources */,
-				6470B13816C7AC4300B254A9 /* ZPROJECT_sfxsploutch_short2.mp3 in Resources */,
-				6470B13916C7AC4300B254A9 /* ZPROJECT_sfxsploutch_short4.mp3 in Resources */,
 				9AB1B25916C73BA4006D42BB /* redbox.png in Resources */,
 				6470B14516C7AFD600B254A9 /* sfx_death_short2.mp3 in Resources */,
 				6470B14616C7AFD600B254A9 /* sfx_death_short4.mp3 in Resources */,
@@ -1481,7 +1484,6 @@
 				6470B15216C7B07C00B254A9 /* sfx_scream.mp3 in Resources */,
 				64A8E09B16C7C5C800858EDC /* icon_zombie.png in Resources */,
 				64A8E0A916C7DAB300858EDC /* map_one.tmx in Resources */,
-				64A8E0AE16C7DB1400858EDC /* arbres_lampadaires.png in Resources */,
 				64A8E0AF16C7DB1400858EDC /* cars.png in Resources */,
 				64A8E0B016C7DB1400858EDC /* map.png in Resources */,
 				64A8E0B116C7DB1400858EDC /* park.png in Resources */,
@@ -1489,6 +1491,13 @@
 				64A8E0B716C7E73D00858EDC /* sfx_scream_zombie2.mp3 in Resources */,
 				64A8E0B816C7E73D00858EDC /* sfx_scream_zombie3.mp3 in Resources */,
 				64A8E0B916C7E73D00858EDC /* sfx_scream_zombie4.mp3 in Resources */,
+				40654AF016C7F20C009F45FF /* cars_v4.png in Resources */,
+				40654AF116C7F20C009F45FF /* map_finale.tmx in Resources */,
+				40654AF216C7F20C009F45FF /* park_v3.png in Resources */,
+				40654AF316C7F20C009F45FF /* route.png in Resources */,
+				40654AF416C7F20C009F45FF /* trot.png in Resources */,
+				40654AF616C7F245009F45FF /* arbres_lampadaires.png in Resources */,
+				40654AF816C7F5FB009F45FF /* maisons sans trottoir_filtre.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
