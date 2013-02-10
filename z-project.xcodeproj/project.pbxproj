@@ -193,17 +193,18 @@
 		40DA75CB16C6DAFB005D90FA /* MiniMap.mm in Sources */ = {isa = PBXBuildFile; fileRef = 40DA75C816C6DAF7005D90FA /* MiniMap.mm */; };
 		6463C46816C6FFD800130B37 /* map_one.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 6463C46616C6FFD800130B37 /* map_one.tmx */; };
 		6463C46916C6FFD800130B37 /* map_two.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 6463C46716C6FFD800130B37 /* map_two.tmx */; };
-		6470B12F16C7AC4300B254A9 /* clic sur play.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6470B12416C7AC4300B254A9 /* clic sur play.mp3 */; };
-		6470B13016C7AC4300B254A9 /* WilhelmScream_zombi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6470B12516C7AC4300B254A9 /* WilhelmScream_zombi.mp3 */; };
-		6470B13116C7AC4300B254A9 /* WilhelmScream.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6470B12616C7AC4300B254A9 /* WilhelmScream.mp3 */; };
-		6470B13216C7AC4300B254A9 /* ZPROJECT_loopcarpenter_cityfxplusforts.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6470B12716C7AC4300B254A9 /* ZPROJECT_loopcarpenter_cityfxplusforts.mp3 */; };
-		6470B13316C7AC4300B254A9 /* ZPROJECT_loopcarpenterasfuck.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6470B12816C7AC4300B254A9 /* ZPROJECT_loopcarpenterasfuck.mp3 */; };
-		6470B13416C7AC4300B254A9 /* ZPROJECT_sfxsploutch_long1-001.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6470B12916C7AC4300B254A9 /* ZPROJECT_sfxsploutch_long1-001.mp3 */; };
-		6470B13516C7AC4300B254A9 /* ZPROJECT_sfxsploutch_long2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6470B12A16C7AC4300B254A9 /* ZPROJECT_sfxsploutch_long2.mp3 */; };
-		6470B13616C7AC4300B254A9 /* ZPROJECT_sfxsploutch_long3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6470B12B16C7AC4300B254A9 /* ZPROJECT_sfxsploutch_long3.mp3 */; };
-		6470B13716C7AC4300B254A9 /* ZPROJECT_sfxsploutch_long4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6470B12C16C7AC4300B254A9 /* ZPROJECT_sfxsploutch_long4.mp3 */; };
-		6470B13816C7AC4300B254A9 /* ZPROJECT_sfxsploutch_short2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6470B12D16C7AC4300B254A9 /* ZPROJECT_sfxsploutch_short2.mp3 */; };
-		6470B13916C7AC4300B254A9 /* ZPROJECT_sfxsploutch_short4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6470B12E16C7AC4300B254A9 /* ZPROJECT_sfxsploutch_short4.mp3 */; };
+		6470B13C16C7ACA400B254A9 /* SoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6470B13B16C7ACA400B254A9 /* SoundManager.m */; };
+		6470B14516C7AFD600B254A9 /* sfx_death_short2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6470B13D16C7AFD600B254A9 /* sfx_death_short2.mp3 */; };
+		6470B14616C7AFD600B254A9 /* sfx_death_short4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6470B13E16C7AFD600B254A9 /* sfx_death_short4.mp3 */; };
+		6470B14716C7AFD600B254A9 /* sfx_death1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6470B13F16C7AFD600B254A9 /* sfx_death1.mp3 */; };
+		6470B14816C7AFD600B254A9 /* sfx_death2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6470B14016C7AFD600B254A9 /* sfx_death2.mp3 */; };
+		6470B14916C7AFD600B254A9 /* sfx_death3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6470B14116C7AFD600B254A9 /* sfx_death3.mp3 */; };
+		6470B14A16C7AFD600B254A9 /* sfx_death4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6470B14216C7AFD600B254A9 /* sfx_death4.mp3 */; };
+		6470B14B16C7AFD600B254A9 /* sfx_music_city.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6470B14316C7AFD600B254A9 /* sfx_music_city.mp3 */; };
+		6470B14C16C7AFD600B254A9 /* sfx_music_home.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6470B14416C7AFD600B254A9 /* sfx_music_home.mp3 */; };
+		6470B15016C7B07C00B254A9 /* sfx_play.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6470B14D16C7B07C00B254A9 /* sfx_play.mp3 */; };
+		6470B15116C7B07C00B254A9 /* sfx_scream_zombie.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6470B14E16C7B07C00B254A9 /* sfx_scream_zombie.mp3 */; };
+		6470B15216C7B07C00B254A9 /* sfx_scream.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6470B14F16C7B07C00B254A9 /* sfx_scream.mp3 */; };
 		64D7297316C6E45C0047189A /* FinishLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D7297216C6E45C0047189A /* FinishLayer.m */; };
 		64D7297616C6E6520047189A /* ScoreCounters.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D7297516C6E6510047189A /* ScoreCounters.m */; };
 		64F6A9D916C71AF100824D29 /* icon_menu_civilian.png in Resources */ = {isa = PBXBuildFile; fileRef = 64F6A9D816C71AF100824D29 /* icon_menu_civilian.png */; };
@@ -597,17 +598,19 @@
 		6447E3CF16C795ED00AC86A8 /* AchievementProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievementProtocol.h; sourceTree = "<group>"; };
 		6463C46616C6FFD800130B37 /* map_one.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = map_one.tmx; path = Resources/map_one.tmx; sourceTree = "<group>"; };
 		6463C46716C6FFD800130B37 /* map_two.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = map_two.tmx; path = Resources/map_two.tmx; sourceTree = "<group>"; };
-		6470B12416C7AC4300B254A9 /* clic sur play.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "clic sur play.mp3"; sourceTree = "<group>"; };
-		6470B12516C7AC4300B254A9 /* WilhelmScream_zombi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = WilhelmScream_zombi.mp3; sourceTree = "<group>"; };
-		6470B12616C7AC4300B254A9 /* WilhelmScream.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = WilhelmScream.mp3; sourceTree = "<group>"; };
-		6470B12716C7AC4300B254A9 /* ZPROJECT_loopcarpenter_cityfxplusforts.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ZPROJECT_loopcarpenter_cityfxplusforts.mp3; sourceTree = "<group>"; };
-		6470B12816C7AC4300B254A9 /* ZPROJECT_loopcarpenterasfuck.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ZPROJECT_loopcarpenterasfuck.mp3; sourceTree = "<group>"; };
-		6470B12916C7AC4300B254A9 /* ZPROJECT_sfxsploutch_long1-001.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "ZPROJECT_sfxsploutch_long1-001.mp3"; sourceTree = "<group>"; };
-		6470B12A16C7AC4300B254A9 /* ZPROJECT_sfxsploutch_long2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ZPROJECT_sfxsploutch_long2.mp3; sourceTree = "<group>"; };
-		6470B12B16C7AC4300B254A9 /* ZPROJECT_sfxsploutch_long3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ZPROJECT_sfxsploutch_long3.mp3; sourceTree = "<group>"; };
-		6470B12C16C7AC4300B254A9 /* ZPROJECT_sfxsploutch_long4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ZPROJECT_sfxsploutch_long4.mp3; sourceTree = "<group>"; };
-		6470B12D16C7AC4300B254A9 /* ZPROJECT_sfxsploutch_short2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ZPROJECT_sfxsploutch_short2.mp3; sourceTree = "<group>"; };
-		6470B12E16C7AC4300B254A9 /* ZPROJECT_sfxsploutch_short4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ZPROJECT_sfxsploutch_short4.mp3; sourceTree = "<group>"; };
+		6470B13A16C7ACA400B254A9 /* SoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundManager.h; sourceTree = "<group>"; };
+		6470B13B16C7ACA400B254A9 /* SoundManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundManager.m; sourceTree = "<group>"; };
+		6470B13D16C7AFD600B254A9 /* sfx_death_short2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = sfx_death_short2.mp3; path = Resources/sfx_death_short2.mp3; sourceTree = "<group>"; };
+		6470B13E16C7AFD600B254A9 /* sfx_death_short4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = sfx_death_short4.mp3; path = Resources/sfx_death_short4.mp3; sourceTree = "<group>"; };
+		6470B13F16C7AFD600B254A9 /* sfx_death1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = sfx_death1.mp3; path = Resources/sfx_death1.mp3; sourceTree = "<group>"; };
+		6470B14016C7AFD600B254A9 /* sfx_death2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = sfx_death2.mp3; path = Resources/sfx_death2.mp3; sourceTree = "<group>"; };
+		6470B14116C7AFD600B254A9 /* sfx_death3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = sfx_death3.mp3; path = Resources/sfx_death3.mp3; sourceTree = "<group>"; };
+		6470B14216C7AFD600B254A9 /* sfx_death4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = sfx_death4.mp3; path = Resources/sfx_death4.mp3; sourceTree = "<group>"; };
+		6470B14316C7AFD600B254A9 /* sfx_music_city.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = sfx_music_city.mp3; path = Resources/sfx_music_city.mp3; sourceTree = "<group>"; };
+		6470B14416C7AFD600B254A9 /* sfx_music_home.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = sfx_music_home.mp3; path = Resources/sfx_music_home.mp3; sourceTree = "<group>"; };
+		6470B14D16C7B07C00B254A9 /* sfx_play.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = sfx_play.mp3; path = Resources/sfx_play.mp3; sourceTree = "<group>"; };
+		6470B14E16C7B07C00B254A9 /* sfx_scream_zombie.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = sfx_scream_zombie.mp3; path = Resources/sfx_scream_zombie.mp3; sourceTree = "<group>"; };
+		6470B14F16C7B07C00B254A9 /* sfx_scream.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = sfx_scream.mp3; path = Resources/sfx_scream.mp3; sourceTree = "<group>"; };
 		64D7296816C678900047189A /* MenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuLayer.h; sourceTree = "<group>"; };
 		64D7297116C6E45C0047189A /* FinishLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinishLayer.h; sourceTree = "<group>"; };
 		64D7297216C6E45C0047189A /* FinishLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinishLayer.m; sourceTree = "<group>"; };
@@ -714,6 +717,8 @@
 				40B9A71616C5C2B7004DCC10 /* Resources */,
 				40B9A73016C5C2B7004DCC10 /* libs */,
 				40B9A91C16C5C2BB004DCC10 /* Supporting Files */,
+				6470B13A16C7ACA400B254A9 /* SoundManager.h */,
+				6470B13B16C7ACA400B254A9 /* SoundManager.m */,
 			);
 			path = "z-project";
 			sourceTree = "<group>";
@@ -1306,17 +1311,17 @@
 		6470B12316C7AC1800B254A9 /* sound */ = {
 			isa = PBXGroup;
 			children = (
-				6470B12416C7AC4300B254A9 /* clic sur play.mp3 */,
-				6470B12516C7AC4300B254A9 /* WilhelmScream_zombi.mp3 */,
-				6470B12616C7AC4300B254A9 /* WilhelmScream.mp3 */,
-				6470B12716C7AC4300B254A9 /* ZPROJECT_loopcarpenter_cityfxplusforts.mp3 */,
-				6470B12816C7AC4300B254A9 /* ZPROJECT_loopcarpenterasfuck.mp3 */,
-				6470B12916C7AC4300B254A9 /* ZPROJECT_sfxsploutch_long1-001.mp3 */,
-				6470B12A16C7AC4300B254A9 /* ZPROJECT_sfxsploutch_long2.mp3 */,
-				6470B12B16C7AC4300B254A9 /* ZPROJECT_sfxsploutch_long3.mp3 */,
-				6470B12C16C7AC4300B254A9 /* ZPROJECT_sfxsploutch_long4.mp3 */,
-				6470B12D16C7AC4300B254A9 /* ZPROJECT_sfxsploutch_short2.mp3 */,
-				6470B12E16C7AC4300B254A9 /* ZPROJECT_sfxsploutch_short4.mp3 */,
+				6470B14D16C7B07C00B254A9 /* sfx_play.mp3 */,
+				6470B14E16C7B07C00B254A9 /* sfx_scream_zombie.mp3 */,
+				6470B14F16C7B07C00B254A9 /* sfx_scream.mp3 */,
+				6470B13D16C7AFD600B254A9 /* sfx_death_short2.mp3 */,
+				6470B13E16C7AFD600B254A9 /* sfx_death_short4.mp3 */,
+				6470B13F16C7AFD600B254A9 /* sfx_death1.mp3 */,
+				6470B14016C7AFD600B254A9 /* sfx_death2.mp3 */,
+				6470B14116C7AFD600B254A9 /* sfx_death3.mp3 */,
+				6470B14216C7AFD600B254A9 /* sfx_death4.mp3 */,
+				6470B14316C7AFD600B254A9 /* sfx_music_city.mp3 */,
+				6470B14416C7AFD600B254A9 /* sfx_music_home.mp3 */,
 			);
 			name = sound;
 			sourceTree = "<group>";
@@ -1412,17 +1417,17 @@
 				6463C46916C6FFD800130B37 /* map_two.tmx in Resources */,
 				64F6A9D916C71AF100824D29 /* icon_menu_civilian.png in Resources */,
 				64F6A9DB16C7210500824D29 /* accueil-background.png in Resources */,
-				6470B12F16C7AC4300B254A9 /* clic sur play.mp3 in Resources */,
-				6470B13016C7AC4300B254A9 /* WilhelmScream_zombi.mp3 in Resources */,
-				6470B13116C7AC4300B254A9 /* WilhelmScream.mp3 in Resources */,
-				6470B13216C7AC4300B254A9 /* ZPROJECT_loopcarpenter_cityfxplusforts.mp3 in Resources */,
-				6470B13316C7AC4300B254A9 /* ZPROJECT_loopcarpenterasfuck.mp3 in Resources */,
-				6470B13416C7AC4300B254A9 /* ZPROJECT_sfxsploutch_long1-001.mp3 in Resources */,
-				6470B13516C7AC4300B254A9 /* ZPROJECT_sfxsploutch_long2.mp3 in Resources */,
-				6470B13616C7AC4300B254A9 /* ZPROJECT_sfxsploutch_long3.mp3 in Resources */,
-				6470B13716C7AC4300B254A9 /* ZPROJECT_sfxsploutch_long4.mp3 in Resources */,
-				6470B13816C7AC4300B254A9 /* ZPROJECT_sfxsploutch_short2.mp3 in Resources */,
-				6470B13916C7AC4300B254A9 /* ZPROJECT_sfxsploutch_short4.mp3 in Resources */,
+				6470B14516C7AFD600B254A9 /* sfx_death_short2.mp3 in Resources */,
+				6470B14616C7AFD600B254A9 /* sfx_death_short4.mp3 in Resources */,
+				6470B14716C7AFD600B254A9 /* sfx_death1.mp3 in Resources */,
+				6470B14816C7AFD600B254A9 /* sfx_death2.mp3 in Resources */,
+				6470B14916C7AFD600B254A9 /* sfx_death3.mp3 in Resources */,
+				6470B14A16C7AFD600B254A9 /* sfx_death4.mp3 in Resources */,
+				6470B14B16C7AFD600B254A9 /* sfx_music_city.mp3 in Resources */,
+				6470B14C16C7AFD600B254A9 /* sfx_music_home.mp3 in Resources */,
+				6470B15016C7B07C00B254A9 /* sfx_play.mp3 in Resources */,
+				6470B15116C7B07C00B254A9 /* sfx_scream_zombie.mp3 in Resources */,
+				6470B15216C7B07C00B254A9 /* sfx_scream.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1593,6 +1598,7 @@
 				64D7297316C6E45C0047189A /* FinishLayer.m in Sources */,
 				64D7297616C6E6520047189A /* ScoreCounters.m in Sources */,
 				64F6A9E116C73D6E00824D29 /* CivilianAchievement.m in Sources */,
+				6470B13C16C7ACA400B254A9 /* SoundManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
