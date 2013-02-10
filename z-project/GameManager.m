@@ -89,7 +89,6 @@ typedef enum {
                 CCScene* scene = [IntroLayer scene];
                 [self loadInitialScene:scene];
                 self.state = kGameStateSplashScreen;
-                
             }
             break;
         case kGameStateSplashScreen:
@@ -113,6 +112,10 @@ typedef enum {
             break;
         default:
             break;
+    }
+    
+    if (previousState != self.state) {
+        NSLog(@"Game State transitionned from %d to %d",previousState,self.state);
     }
 }
 
