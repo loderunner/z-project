@@ -8,8 +8,9 @@
 
 typedef enum
 {
-    kTagZombie   = 0,
-    kTagCivilian
+    kTagZombie   = 1000,
+    kTagCivilian,
+    kTagTile
 }
 Tags;
 
@@ -32,7 +33,7 @@ typedef enum
     
     //civilian states
     kStateCivilianBeingEaten,
-    kStateCivilianDeadInfected,
+    kStateCivilianDeadInfected
 }
 State;
 
