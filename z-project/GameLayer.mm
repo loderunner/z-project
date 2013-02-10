@@ -265,10 +265,10 @@ static float const PTM_RATIO = 64.0f;
     int totalWidth  = mapSize.width  * tileSize.width;
     int totalHeight = mapSize.height * tileSize.height;
     
-    int x = arc4random_uniform(totalWidth);
-    int y = arc4random_uniform(totalHeight);
+    int x = CCRANDOM_0_1() * totalWidth;
+    int y = CCRANDOM_0_1() * totalHeight;
     
-    [self addCivilianAt:ccp(1000, 1000)];
+    [self addCivilianAt:ccp(x, y)];
 }
 
 - (void)addCivilianAt:(CGPoint)pos
