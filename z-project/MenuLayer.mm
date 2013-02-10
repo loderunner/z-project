@@ -33,14 +33,14 @@
         CCSprite* civilianIcone = [CCSprite spriteWithFile:kHeadmenuSpriteForCivilian];
         _civilianNum = [CCLabelTTF labelWithString:@"" fontName:@"Helvetica-BoldOblique" fontSize:20];
         
-        zombieIcone.position = CGPointMake(_size.width/2, winSize.height- _size.height/2);
+        zombieIcone.position = CGPointMake(_size.width/2 + 20, winSize.height- _size.height/2);
         [self addChild:zombieIcone];
-        _zombieNum.position = CGPointMake(positionNumber.x, winSize.height- positionNumber.y);
+        _zombieNum.position = CGPointMake(positionNumber.x + 20, winSize.height- positionNumber.y);
         [self addChild:_zombieNum];
         
-        civilianIcone.position = CGPointMake(winSize.width - _size.width/2, winSize.height-_size.height/2);
+        civilianIcone.position = CGPointMake(winSize.width - _size.width/2 - 20, winSize.height-_size.height/2);
         [self addChild:civilianIcone];
-        _civilianNum.position = CGPointMake(winSize.width - positionNumber.x, winSize.height- positionNumber.y);
+        _civilianNum.position = CGPointMake(winSize.width - positionNumber.x - 20 , winSize.height- positionNumber.y);
         [self addChild:_civilianNum];
     }
     return self;
