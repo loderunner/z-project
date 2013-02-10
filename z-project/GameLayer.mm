@@ -270,8 +270,26 @@ static float const PTM_RATIO = 64.0f;
     int totalWidth  = mapSize.width  * tileSize.width;
     int totalHeight = mapSize.height * tileSize.height;
     
-    int x = CCRANDOM_0_1() * totalWidth;
-    int y = CCRANDOM_0_1() * totalHeight;
+    int x,y;
+    BOOL intersects;
+    
+    do
+    {
+        intersects = NO;
+        
+        x = CCRANDOM_0_1() * totalWidth;
+        y = CCRANDOM_0_1() * totalHeight;
+        
+        for (BaseCharacter* tile in self.collidables)
+        {
+            if (CGRectContainsPoint([tile getCGRect], ccp(x, y)))
+            {
+                intersects = YES;
+                break;
+            }
+        }
+    }
+    while (intersects);
     
     [self addCivilianAt:ccp(x, y)];
 }
