@@ -68,11 +68,20 @@ static NSString* const FRAME_DEAD_INFECTED = @"civilian-dead-infected";
     [super kill];
 }
 
+- (void) eat
+{
+    self.state = kStateCivilianBeingEaten;
+    [self unschedule:@selector(fleeZombie)];
+    self.visible = NO;
+    [self scheduleOnce:@selector(infect) delay:1];
+}
+
 - (void) infect
 {
     self.state = kStateCivilianDeadInfected;
     [self unschedule:@selector(fleeZombie)];
     [self setDisplayFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:FRAME_DEAD_INFECTED]];
+    self.visible = YES;
 }
 
 

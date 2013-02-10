@@ -15,6 +15,7 @@
 
 
 -(Civilian*)initWithPosition:(CGPoint)position;
+-(void)eat;
 -(void)infect;
 -(void)fleeZombie;
 

@@ -517,10 +517,19 @@ static float const PTM_RATIO = 64.0f;
             {
                 if ([civilian isAlive] && [zombie isAlive])
                 {
+                    // kill civilian and wake as zombie in 3 seconds
                     [zombie eatCivilian:civilian];
                     
-                    // kill civilian and wake as zombie in 3 seconds
-                    [civilian infect];
+                    CCDelayTime* delayAction = [CCDelayTime actionWithDuration:3];
+                    CCCallBlock* blockAction = [CCCallBlock actionWithBlock:^(void)
+                                                {
+                                                    [_scoreCounters registerCivilianConvertedToZombie];
+                                                    [self addZombieAt:civilian.position];
+                                                    [self removeCivilian:civilian];
+                                                    
+                                                }];
+                    CCSequence* sequenceAction = [CCSequence actionOne:delayAction two:blockAction];
+                    [self runAction:sequenceAction];
                     
                     
                     CGPoint positionCivilian = civilian.position;
@@ -534,17 +543,6 @@ static float const PTM_RATIO = 64.0f;
                     } else {
                         [soundManager playScreamZombie];
                     }
-                    
-                    CCDelayTime* delayAction = [CCDelayTime actionWithDuration:3];
-                    CCCallBlock* blockAction = [CCCallBlock actionWithBlock:^(void)
-                                                {
-                                                    [_scoreCounters registerCivilianConvertedToZombie];
-                                                    [self addZombieAt:civilian.position];
-                                                    [self removeCivilian:civilian];
-                                                    
-                                                }];
-                    CCSequence* sequenceAction = [CCSequence actionOne:delayAction two:blockAction];
-                    [self runAction:sequenceAction];
                 }
             }
             else if (tile != nil && (zombie != nil || civilian != nil))

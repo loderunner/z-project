@@ -16,6 +16,7 @@ static NSString* const FRAME_FACING_RIGHT = @"zombie-right";
 static NSString* const FRAME_FACING_UP = @"zombie-up";
 static NSString* const FRAME_FACING_DOWN = @"zombie-down";
 static NSString* const FRAME_DEAD = @"zombie-dead";
+static NSString* const FRAME_ATTACKING = @"zombie-attacking";
 
 @interface Zombie()
 
@@ -71,8 +72,11 @@ static NSString* const FRAME_DEAD = @"zombie-dead";
 -(void)eatCivilian:(Civilian*)civilian
 {
     self.state = kStateZombieEating;
+    [self setDisplayFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:FRAME_ATTACKING]];
     self.position = civilian.position;
     [self scheduleOnce:@selector(doneEating) delay:1];
+    
+    [civilian eat];
 }
 
 - (void)doneEating
