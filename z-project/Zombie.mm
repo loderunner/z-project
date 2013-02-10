@@ -8,8 +8,8 @@
 
 #import "Zombie.h"
 #import "Civilian.h"
+#import "GameManager.h"
 
-static CGFloat const SPEED = 100.f;
 
 static NSString* const FRAME_FACING_LEFT = @"zombie-left";
 static NSString* const FRAME_FACING_RIGHT = @"zombie-right";
@@ -18,6 +18,8 @@ static NSString* const FRAME_FACING_DOWN = @"zombie-down";
 static NSString* const FRAME_DEAD = @"zombie-dead";
 
 @interface Zombie()
+
+@property (nonatomic,assign) CGFloat speed;
 
 @end
 
@@ -35,6 +37,7 @@ static NSString* const FRAME_DEAD = @"zombie-dead";
     {
         [self schedule:@selector(followCivilian) interval:1.0f];
         [self followCivilian];
+        _speed = [[GameManager sharedManager] currentLevel].zombieSpeed;
         self.zOrder = kZOrderZombie;
         self.state = kStateAlive;
     }
@@ -105,8 +108,8 @@ static NSString* const FRAME_DEAD = @"zombie-dead";
     {
         angle = ccpToAngle(ccpSub(minCivilian.position, self.position));
     }
-    CGFloat x = cosf(angle) * SPEED;
-    CGFloat y = sinf(angle) * SPEED;
+    CGFloat x = cosf(angle) * self.speed;
+    CGFloat y = sinf(angle) * self.speed;
     self.velocity = ccp(x, y);
     
     //select frame from angle
