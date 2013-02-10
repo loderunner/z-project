@@ -38,15 +38,6 @@ static NSArray* allMenuSounds;
                   kSoundPlay] retain];
 }
 
-+(SoundManager*)sharedManager {
-    static SoundManager* manager;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        manager = [[SoundManager alloc] init];
-    });
-    return manager;
-}
-
 -(id)init {
     if (self = [super init]) {
         SimpleAudioEngine* engine = [SimpleAudioEngine sharedEngine];

@@ -26,6 +26,5 @@
 -(void)stopMusic;
 -(void)playSound:(NSString*)sound;
 -(void)playDeathSound;
-+(SoundManager*)sharedManager;
 
 @end

@@ -6,7 +6,6 @@
 //
 //
 
-
 #import "GameManager.h"
 #import "IntroLayer.h"
 #import "MainMenuLayer.h"
@@ -80,7 +79,7 @@ typedef enum {
 }
 
 -(void)transitionStateTo:(GameState)newState {
-
+    // detect and transition the scenes
     GameState previousState = self.state;
     switch (previousState) {
         case kGameStateNotRunning:
@@ -89,6 +88,7 @@ typedef enum {
                 CCScene* scene = [IntroLayer scene];
                 [self loadInitialScene:scene];
                 self.state = kGameStateSplashScreen;
+                
             }
             break;
         case kGameStateSplashScreen:
@@ -97,6 +97,8 @@ typedef enum {
                 CCScene *menuScene = [MainMenuLayer scene];
                 [self transitionToScene:menuScene duration:0.5];
                 self.state = kGameStateLevelSelectionMenu;
+                // sound events
+                [self.soundManager startMusic:kMusicHome];
             }
             break;
         case kGameStateLevelSelectionMenu:
@@ -104,14 +106,12 @@ typedef enum {
                 // Level Selection -> In Game
                 CCScene *gameScene = [GameLayer sceneForLevel:self.level];
                 [self transitionToScene:gameScene duration:1.0];
+                // sound events
+                [self.soundManager startMusic:kMusicCity];
             }
             break;
         default:
             break;
-    }
-    
-    if (previousState != self.state) {
-        NSLog(@"Game State transitionned from %d to %d",previousState,self.state);
     }
 }
 
@@ -119,6 +119,7 @@ typedef enum {
 
 -(void)dealloc {
     [_soundManager release];
+    [super dealloc];
 }
 
 @end
