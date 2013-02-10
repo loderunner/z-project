@@ -74,6 +74,7 @@ static NSString* const FRAME_ATTACKING = @"zombie-attacking";
     self.state = kStateZombieEating;
     [self setDisplayFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:FRAME_ATTACKING]];
     self.position = civilian.position;
+    [self unschedule:@selector(followCivilian)];
     [self scheduleOnce:@selector(doneEating) delay:1];
     
     [civilian eat];
@@ -82,6 +83,8 @@ static NSString* const FRAME_ATTACKING = @"zombie-attacking";
 - (void)doneEating
 {
     self.state = kStateAlive;
+    [self followCivilian];
+    [self schedule:@selector(followCivilian) interval:1.0f];
 }
 
 -(void)followCivilian {

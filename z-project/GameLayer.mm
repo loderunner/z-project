@@ -219,7 +219,7 @@ static float const PTM_RATIO = 64.0f;
     {
         if ([character isKindOfClass:BaseCharacter.class])
         {
-            if (CGRectContainsPoint(character.boundingBox, location) && [character isAlive]) {
+            if (CGRectContainsPoint(character.boundingBox, location) && ([character isAlive] || (character.tag == kTagZombie && character.state == kStateZombieEating))) {
                 return character;
             }
         }
