@@ -25,7 +25,7 @@
   <image source="tiles.png" width="517" height="516"/>
   <tile id="9">
    <properties>
-    <property name="no_walk" value="0"/>
+    <property name="can_walk" value="0"/>
    </properties>
   </tile>
  </tileset>
@@ -35,7 +35,7 @@
   </data>
  </layer>
  <objectgroup name="spawnPoints" width="64" height="48">
-  <object name="point1" x="493" y="1942" width="170" height="112">
+  <object name="point1" x="352" y="1942" width="170" height="112">
    <properties>
     <property name="time" value="0"/>
     <property name="zombie_nbr" value="1"/>
@@ -47,31 +47,42 @@
     <property name="zombie_nbr" value="2"/>
    </properties>
   </object>
-  <object name="point3" x="1950" y="1532" width="219" height="116">
+  <object name="point3" x="1892" y="1694" width="219" height="116">
    <properties>
     <property name="time" value="12"/>
     <property name="zombie_nbr" value="5"/>
    </properties>
   </object>
-  <object name="point4" x="863" y="824" width="207" height="124">
+  <object name="point4" x="846" y="814" width="207" height="124">
    <properties>
     <property name="time" value="17"/>
     <property name="zombie_nbr" value="2"/>
    </properties>
   </object>
-  <object name="point5" x="2269" y="808" width="207" height="124">
+  <object name="point5" x="2293" y="790" width="207" height="124">
    <properties>
     <property name="time" value="17"/>
     <property name="zombie_nbr" value="2"/>
    </properties>
   </object>
-  <object name="point6" x="787" y="2865" width="290" height="161">
+  <object name="point6" x="823" y="2889" width="184" height="112">
    <properties>
     <property name="time" value="25"/>
     <property name="zombie_nbr" value="5"/>
    </properties>
   </object>
-  <object x="878" y="2907"/>
+  <object name="point1" x="1100" y="2229" width="170" height="112">
+   <properties>
+    <property name="time" value="0"/>
+    <property name="zombie_nbr" value="2"/>
+   </properties>
+  </object>
+  <object name="point2" x="1918" y="2630" width="155" height="155">
+   <properties>
+    <property name="time" value="5"/>
+    <property name="zombie_nbr" value="1"/>
+   </properties>
+  </object>
  </objectgroup>
  <layer name="pavements" width="64" height="48">
   <data encoding="base64" compression="zlib">
@@ -95,7 +106,7 @@
  </layer>
  <layer name="cars" width="64" height="48">
   <data encoding="base64" compression="zlib">
-   eJzt2MdPFVEUgPGhv/fAEgvdgl3pEY2KhR7Lxl5j2YiiWGL5B0SDskZBBXuJYgN7ib0kNjD2kogFggUbqKhB/dgZFy+PZHC8c+Ykv90szpfJnWSuplljjf6z3qZpBSi0Gb2JMXOA7mKUCO2/RPdlXBHa/4jux3gitP893R/wUWi/p13TvOBtN3oTYyaI7mCECO23xvjJ5duzGmuQh3ysxToh36RddO5GEfZgL/Zhv5D+03SewVmcw3lcwEUh/bfpvIO7uIf7eICHQvpVme28jx3YKfS9nKD7JE4J7S+luwy3nPS7OTTNHR7whBe84eP4d3s21bykuwKVTvr96QxAIIIQjBCEmqD/G93f8cNJfzidEYhEFKIRg1gT9DfnH6EFWjr5V0igMxFJSEYKUpFmgv7OdHdBV5P9K7l6B9iP7v4YYLJ+Fe4AN7HbZmzBVmzTcVcV7gAPs9sRHMUxHNdxVxXuAK+y2zVcxw3c1HFXFe4An7JbOZ7hOV7ouKt1B2jdAVrTuKni/L3Ca7zBW1Tj3X/8DflzPrFnDWrxGV/wFXUu7l/Pcz/xq+F5zo0b3OGhyBnyYU8b7HDAF35o5uL+rXiuNdqgLfwRgEBF+kPZsx3aowM6IgydFNnfGmtUmm6cq+7ogZ7ohXBEIFLAmYuncSAGYTCGIAGJSBLQP5LGURiNMRiLcRiPCQL6Z9KYjlmYjQzMwVxkCug34/TmvcWhD/oiCtGIQayAdzqUxmEYjhFIRgpSkSagfyqN0zAdMzARkzAZUwT0L6JxMZZgKeZhPhZgoYD+bBpXYhVysAxZWI4VAvoLaCzEBmwU0Pv3FNNcgoM41MT9vwFarYPh
+   eJzt2MdPFVEUgPGxv/dEJCodRcWC0mMJgiI9lo1i11g2KnZj+QcUg7gWEQEbKkFBBbsYe0nERrBgSSyosXfFEpHPnXHx8kgGxztnTvLbzeJ8mdxJ5mqaNdboP3k2TctHgc3oTYyZvXSXoVxo/zm6z+OC0P47dN/FPaH9b+l+h/dC+1vaNa0VWtuN3sSY8aXbD/5C+60xftby7cnGOuRgPXKxQcg3qZjOndiFEpRiN/YI6T9O5wmcxCmcxhmcFdJfTed13MBN3EINbgvpV2W28z52oEjoezlKdwWOCe2/Svc1VAntf0z3Ezx10u/l0DRv+MAXfvBHgOPf7dlU843u7/jhpD+EzlCEIRwRiESUCfrd+UdoDw8n/wrxdCYgEUlIRgpSTdAfRHcP9DTZv5Krd4DRdA9CjMn6VbgD3MxuW7AVhdim464q3AEeYLeDOITDOKLjrircAV5kt0pcwmVc0XFXFe4A77PbAzzEI9TquKt1B2jdAVrTuHnG+XuOF3iJV3iNN//xN+TP+cCeH/EJn/EFdfjq4v4/ea4ev34/z7lphuZoocgZasOeNtjhQFu4oZ2L+3fguY7oBE94wRs+ivQHsGdndEEguqIbuiuyvzXWqDS9OFe9EYw+6IsQhCJMwJmLpXEwhiAOQxGPBCQK6B9F42ikYQzGYhzGY4KA/pk0zsJspGMO5mIe5gvoN+P04731xwAMRDgiEIkoAe90GI3DMQIjkYRkpCBVQP9UGqdhOmZgIiZhMqYI6F9C41Isw3IswEIswmIB/Zk0rkYW1mAFViIDqwT059NYgI3YJKD37ymjuRz7sL+J+xsAwZeDfw==
   </data>
  </layer>
  <layer name="urban_objects" width="64" height="48">
