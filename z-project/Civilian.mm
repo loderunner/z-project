@@ -98,21 +98,25 @@ static NSString* const FRAME_DEAD_INFECTED = @"civilian-dead-infected";
     
     //select frame from angle
     CCSpriteFrameCache* cache = [CCSpriteFrameCache sharedSpriteFrameCache];
-    if (angle > 7*M_PI_4 || angle <= M_PI_4)
-    {
-        [self setDisplayFrame:[cache spriteFrameByName:FRAME_FACING_RIGHT]];
-    }
-    else if (angle > M_PI_4 && angle <= 3*M_PI_4)
-    {
-        [self setDisplayFrame:[cache spriteFrameByName:FRAME_FACING_UP]];
-    }
-    else if (angle > 3*M_PI_4 && angle <= 5*M_PI_4)
+    if (angle < -3*M_PI_4)
     {
         [self setDisplayFrame:[cache spriteFrameByName:FRAME_FACING_LEFT]];
     }
-    else if (angle > 5*M_PI_4 && angle <= 7*M_PI_4)
+    else if (angle < -M_PI_4)
     {
         [self setDisplayFrame:[cache spriteFrameByName:FRAME_FACING_DOWN]];
+    }
+    else if (angle < M_PI_4)
+    {
+        [self setDisplayFrame:[cache spriteFrameByName:FRAME_FACING_RIGHT]];
+    }
+    else if (angle < 3*M_PI_4)
+    {
+        [self setDisplayFrame:[cache spriteFrameByName:FRAME_FACING_UP]];
+    }
+    else
+    {
+        [self setDisplayFrame:[cache spriteFrameByName:FRAME_FACING_LEFT]];
     }
 }
 
