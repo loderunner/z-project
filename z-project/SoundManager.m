@@ -63,8 +63,8 @@ static NSArray* allMenuSounds;
             [engine preloadEffect:sound];
         }
         
-        [engine setBackgroundMusicVolume:0.05];
-        [engine setEffectsVolume:1];
+        [engine setBackgroundMusicVolume:.2];
+        [engine setEffectsVolume:.2];
     }
     return self;
 }
