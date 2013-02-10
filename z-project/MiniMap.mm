@@ -37,7 +37,7 @@
 - (void)draw
 {
     glEnable(GL_LINE_SMOOTH);
-    glColor4ub(255, 255, 255, 255);
+    glColor4ub(0x66, 0x00, 0x00, 0xFF);
     glLineWidth(2);
     ccColor4F fillColor = kMinimapFillColor;
     ccDrawSolidRect(self.point,ccp(self.point.x+self.size.width,self.point.y+self.size.height), fillColor);

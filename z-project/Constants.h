@@ -51,7 +51,7 @@ State;
 #define kMinimapImageKey @"ImageForMiniMap"
 #define kMinimapSpriteForCivilian @"icon_civilian.png"
 #define kMinimapSpriteForZombie @"icon_zombie.png"
-#define kMinimapFillColor ccc4f(0.5, 0.5, 0.5, 0.5)
+#define kMinimapFillColor ccc4f(0x00, 0x00, 0x00, 0.2)
 #define kHeadmenuSpriteForCivilian @"icon_menu_civilian.png" //TODO change with the correct file
 #define kHeadmenuSpriteForZombie @"icon_menu_zombie.png"
 #define kFinishmenuFillColor ccc4f(0.5, 0.5, 0.5, 0.5)
