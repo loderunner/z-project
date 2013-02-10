@@ -138,15 +138,19 @@ static float const PTM_RATIO = 64.0f;
             NSString* timeString = [spawnPoint objectForKey:@"time"];
             if (timeString) {
                 float value = [timeString floatValue];
-                timeForLastSpawn = MAX(timeForLastSpawn,value);
-                NSNumber *keyValue = [NSNumber numberWithFloat:value];
-                NSMutableArray* list = [[_zombitesTospawn objectForKey:keyValue] retain];
-                if (!list) {
-                    list = [[NSMutableArray alloc] init];
-                    [_zombitesTospawn setObject:list forKey:keyValue];
+                if (value > 0) {
+                    timeForLastSpawn = MAX(timeForLastSpawn,value);
+                    NSNumber *keyValue = [NSNumber numberWithFloat:value];
+                    NSMutableArray* list = [[_zombitesTospawn objectForKey:keyValue] retain];
+                    if (!list) {
+                        list = [[NSMutableArray alloc] init];
+                        [_zombitesTospawn setObject:list forKey:keyValue];
+                    }
+                    [list addObject:[NSValue valueWithCGPoint:pos]];
+                    [list release];
+                } else {
+                    [self addZombieAt:pos];
                 }
-                [list addObject:[NSValue valueWithCGPoint:pos]];
-                [list release];
             } else {
                 [_scoreCounters registerZombieSpawned];
                 [self addZombieAt:pos];
