@@ -9,6 +9,7 @@
 #import "FinishLayer.h"
 #import <GLKit/GLKit.h>
 #import "Constants.h"
+#import "AchievementProtocol.h"
 #import "CivilianAchievement.h"
 
 @interface FinishLayer()
@@ -107,9 +108,8 @@
 -(void)addAchievements {
     
     //TODO make a list of achievements
-    //TODO achievement must be a protocol
     
-    CivilianAchievement *achivement1 = [[CivilianAchievement alloc] initWithNumOfCivilians:5];
+    id <AchievementProtocol> achivement1 = [[CivilianAchievement alloc] initWithNumOfCivilians:5];
     
     NSMutableString *message;
     if ([achivement1 testStats:_stat]) {

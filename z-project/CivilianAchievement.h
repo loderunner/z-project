@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ScoreCounters.h"
+#import "AchievementProtocol.h"
 
-@interface CivilianAchievement : NSObject
+@interface CivilianAchievement : NSObject <AchievementProtocol>
 
 @property (nonatomic,readonly) NSString* message;
 
