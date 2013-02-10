@@ -81,12 +81,6 @@ static float const PTM_RATIO = 64.0f;
         _map = [[TiledMap alloc] initWithTMXFile:level.mapFile];
         _map.anchorPoint = CGPointZero;
         
-        //        [self enumerateTilesInMap:_map layer:collidables usingBlock:^(NSUInteger x, NSUInteger y, NSDictionary *property) {
-        //            if ([@"0" compare: [property objectForKey:@"can_walk"]] == NSOrderedSame) {
-        //                int xOnScreen = x * _map.tileSize.width;
-        //                int yOnScreen = (_map.mapSize.height - y) * _map.tileSize.height;
-        //            }
-        //        }];
         _collidables = [[NSMutableArray alloc] init];
         CCTMXLayer* collidables = [_map layerNamed:@"collidables"];
         for (NSUInteger y = 0; y < collidables.layerSize.height; y++)
@@ -164,7 +158,6 @@ static float const PTM_RATIO = 64.0f;
             
             [self schedule:@selector(updateMiniMapCharacters:) interval:.7f];
             [self schedule:@selector(updateMiniMapPosition:) interval:.05f];  // 1/20th sec
-            
         }
         
         [self createMenuLayer];
