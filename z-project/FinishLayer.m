@@ -9,6 +9,7 @@
 #import "FinishLayer.h"
 #import <GLKit/GLKit.h>
 #import "Constants.h"
+#import "CivilianAchievement.h"
 
 @interface FinishLayer()
 
@@ -45,6 +46,7 @@
         [self addChild:finishLabel];
         
         [self addCount];
+        [self addAchievements];
     }
     return self;
 }
@@ -100,6 +102,30 @@
     [countNode addChild:civilianNode];
     
     [self addChild:countNode];
+}
+
+-(void)addAchievements {
+    
+    //TODO make a list of achievements
+    //TODO achievement must be a protocol
+    
+    CivilianAchievement *achivement1 = [[CivilianAchievement alloc] initWithNumOfCivilians:5];
+    
+    NSMutableString *message;
+    if ([achivement1 testStats:_stat]) {
+        //TODO add a beautiful imagie in case of successful achievement
+        message = [NSMutableString stringWithString:@"v "];
+    } else {
+        message = [NSMutableString stringWithString:@"x "];
+    }
+    
+    [message appendString:achivement1.message];
+    
+    CCLabelTTF* achievementLabel = [CCLabelTTF labelWithString:message fontName:@"Helvetica" fontSize:20];
+    
+    achievementLabel.position = CGPointMake(0, -100);
+    [self addChild:achievementLabel];
+    
 }
 
 @end
